@@ -1,0 +1,516 @@
+// --------------------------------------------------------------------------
+// Group
+// --------------------------------------------------------------------------
+
+.ui-group {
+    display: flex;
+    vertical-align: top;
+
+    & > .btn {
+        border-radius: 0;
+        margin: 0 -1px 0 0;
+        &:first-of-type {
+            border-top-left-radius: 2px;
+            border-bottom-left-radius: 2px;
+            z-index: 1;
+        }
+        &:last-of-type {
+            border-top-right-radius: 2px;
+            border-bottom-right-radius: 2px;
+            z-index: 1;
+            margin: 0;
+        }
+    }
+
+    & > .ui-check {
+        margin: 0 -1px 0 0;
+        flex: 1;
+        .ui-check__btn, .ui-check__display {
+            border-radius: 0;
+        }
+        &:first-of-type {
+            .ui-check__btn, .ui-check__display {
+                border-top-left-radius: 2px;
+                border-bottom-left-radius: 2px;
+            }
+        }
+        &:last-of-type {
+           .ui-check__btn, .ui-check__display {
+                border-top-right-radius: 2px;
+                border-bottom-right-radius: 2px;
+           }
+        }
+    }
+}
+
+
+.ui-group--fullwidth {
+    @include breakpointMax(md) {
+        flex-direction: column;
+        & > .ui-check {
+            margin: 0 0 -1px;
+            .ui-check__btn {
+                border-radius: 0;
+            }
+            &:first-of-type {
+                .ui-check__btn {
+                    border-radius: 2px 2px 0 0;
+                }
+            }
+            &:last-of-type {
+               .ui-check__btn {
+                border-radius: 0 0 2px 2px;
+               }
+            }
+        }
+    }
+}
+
+
+
+// -----
+
+
+
+.ui-btn-group {
+    .row {
+        margin: 0 -7px -14px;
+        & > [class^="col"] {
+            padding: 0 7px 14px;
+        }
+    }
+}
+
+
+// ------
+
+
+
+
+.ui-input-group {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 0 0 20px;
+    .row {
+        align-items: center;
+        flex: 1 1 auto;
+        margin: 0 -12px -20px;
+        & > [class^="col"] {
+            padding: 0 12px 20px;
+        }
+    }
+    .row-gutter-10 {
+        margin: 0 -5px -10px;
+        & > [class^="col"] {
+            padding: 0 5px 10px;
+        }
+    }
+    .row-gutter-30 {
+        margin: 0 -15px -10px;
+        & > [class^="col"] {
+            padding: 0 15px 10px;
+        }
+    }
+    .ui-input-field {
+        margin: 0;
+    }
+    .ui-input, .ui-select, .ui-textarea, .ui-textarea-wrapper {
+        margin: 0 -1px 0 0;
+        flex: 1 1 auto;
+        &:last-of-type {
+            margin: 0;
+        }
+      
+    }
+
+    .ui-textarea {
+        min-width: auto;
+    }
+
+    & > .ui-input,
+    & > .ui-textarea {
+        border-radius: 0;
+        &:first-child {
+            border-top-left-radius: 2px;
+            border-bottom-left-radius: 2px;
+        }
+        &:last-child {
+            border-top-right-radius: 2px;
+            border-bottom-right-radius: 2px;
+        }
+    }
+
+    .ui-input--w200 {
+        flex: 0 0 200px;
+    }
+    &:last-child {
+        margin: 0;
+    }
+
+    &.ui-input-group--textarea {
+        align-items: stretch;
+    }
+
+
+    &--phone,
+    &--email,
+    &--textarea {
+        @include breakpointMax(xl) {
+            flex-wrap: wrap;
+            padding: 0 49px 0 0;
+            & > .ui-input {
+                margin: 0 -1px -1px 0;
+                &:first-of-type {
+                    margin: 0 -1px -1px 0;
+                    border-radius: 2px 0 0 0;
+                }
+                &:last-of-type {
+                    margin: 0 -1px 0 0;
+                    border-radius: 0 0 0 2px;
+                }
+            }
+
+            & > .ui-textarea-wrapper {
+                margin: 0 -1px -1px 0;
+                &:nth-of-type(1) {
+                    margin: 0 -1px -1px 0;
+                    border-radius: 2px 0 0 0;
+                }
+                &:nth-of-type(2) {
+                    margin: 0 -1px 0 0;
+                    border-radius: 0 0 0 2px;
+                }
+            }
+            .ui-input-append {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 48px;
+            }
+        }
+    }
+}
+
+
+
+
+
+.ui-input-price {
+    position: relative;
+    display: flex;
+    margin: 0 0 20px;
+
+    .ui-input {
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .ui-input-append {
+        .btn {
+            border-radius: 0;
+            &:first-of-type {
+                border-radius: 0;
+            }
+            &:last-of-type {
+                border-radius: 0 2px 2px 0;
+            }
+        }
+    }
+
+    @include breakpointMax(md) {
+        flex-wrap: wrap;
+        .ui-input-append {
+            .btn {
+                &:last-of-type {
+                    border-radius: 0 0 2px 0;
+                }
+            }
+        }
+    }
+}
+
+
+
+.ui-input-price-val {
+    flex: 1;
+    display: flex;
+    margin: 0 -1px 0 0;
+    .ui-input {
+        border-radius: 2px 0 0 2px;
+    }
+    @include breakpointMax(md) {
+        flex: 0 0 100%;
+        margin: 0 0 -1px;
+        .ui-input {
+            border-radius: 2px 0 0 2px;
+            &:first-child {
+                border-radius: 2px 2px 0 0;
+            }
+        }
+    }
+}
+
+.ui-input-price-field {
+    display: flex;
+    flex: 0 0 300px;
+    @include breakpointMax(md) {
+        flex: 0 0 100%;
+        .ui-input {
+            border-radius: 0 0 0 2px;
+        }
+    }
+}
+
+
+.ui-input-clear {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0.4rem;
+    display: flex;
+    align-items: center;
+    z-index: 1200;
+    width: 9rem;
+    .btn {
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 15px;
+    }
+
+    & ~ .ui-input {
+        padding-right: 12rem;
+    }
+}
+
+
+.ui-input-field {
+    flex: 1 1 auto;
+    position: relative;
+    margin: 0 0 20px;
+    .ui-input {
+        margin: 0;
+    }
+    &:hover {
+        z-index: 500;
+    }
+}
+
+.ui-input-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 48px;
+    color: #72bb53;
+    z-index: 1100;
+    & ~ .ui-input {
+        padding-left: 48px;
+    }
+
+}
+
+.ui-input-append {
+    display: flex;
+    flex: 0 0 auto;
+    // align-self: stretch;
+    // min-width: 38px;
+    .ui-help {
+        margin: 0 0 0 16px;
+    }
+    .btn {
+        margin: 0 0 0 -1px;
+        border-radius: 0;
+        &:first-child {
+            border-top-left-radius: 2px;
+            border-bottom-left-radius: 2px;
+        }
+        &:last-child {
+            border-top-right-radius: 2px;
+            border-bottom-right-radius: 2px;
+        }
+    }
+
+    .btn--48 {
+        min-width: 48px;
+    }
+}
+
+
+.ui-input-cancel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 50px;
+    color: #ccc;
+    z-index: 1100;
+    &:hover {
+        color: #131313;
+    }
+    & ~ .ui-input {
+        padding-right: 50px;
+    }
+}
+
+
+
+.ui-input-phone {
+    display: flex;
+    margin: 0 0 20px;
+    &:last-child {
+        margin: 0;
+    }
+    .ui-select {
+        margin: 0 -1px 0 0;
+        flex: 0 0 15rem;
+        width: 15rem;
+        max-width: 15rem;
+        .ui-selectric {
+            border-radius: 2px 0 0 2px;
+            .label {
+                margin: 0 40px 0 20px;
+            }
+            .arrow {
+                border: none;
+                width: 40px;
+            }
+        }
+        &:last-of-type {
+            margin: 0 -1px 0 0;
+        }
+        &:hover {
+            z-index: 2;
+        }
+    }
+
+    .ui-input {
+        border-radius: 0 2px 2px 0;
+        margin: 0;
+        &:hover {
+            z-index: 2;
+        }
+    }
+
+    @include breakpointMax(xs) {
+        flex-wrap: wrap;
+
+        & > .ui-select {
+            flex: 0 0 100%;
+            width: 100%;
+            max-width: 100%;
+            .ui-selectric-wrapper {
+                margin: 0 0 -1px;
+            }
+            .ui-selectric {
+                border-radius: 2px 2px 0 0;
+            }
+            &:last-of-type {
+                margin: 0 0 -1px;
+            }
+        }
+        .ui-input {
+            border-radius: 0 0 2px 2px;
+        }
+    }
+}
+
+
+
+
+.ui-input-delete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0 0 0 18px;
+    color: #cccccc;
+    cursor: pointer;
+    
+    &:hover {
+        color: #131313;
+    }
+}
+
+// -----
+
+.ui-check-group {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    .ui-check {
+        margin: 0 10px 10px 0;
+    }
+    .ui-input {
+        margin: 0;
+    }
+}
+
+// ------
+
+
+.ui-switch-group {
+    .ui-check {
+        width: 100%;
+        margin: 0 0 20px;
+        &:last-child {
+            margin: 0;
+        }
+    }
+}
+
+
+// -----
+
+
+.ui-date-group {
+    display: flex;
+    max-width: 336px;
+    margin: 0 0 20px;
+    .ui-select {
+        margin: 0 -1px 0 0;
+        flex: 0 0 33.333%;
+        max-width: 33.333%;
+        .ui-selectric {
+            border-radius: 0;
+
+            .label {
+                margin-right: 40px;
+            }
+            .arrow {
+                width: 40px;
+                border: none;
+            }
+        }
+
+        &:first-of-type .ui-selectric {
+            border-radius: 2px 0 0 2px;
+        }
+        &:last-of-type .ui-selectric {
+            border-radius: 0 2px 2px 0;
+        }
+    }
+}
+
+
+
+.ui-input-wrap-xs {
+    @include breakpointMax(xs) {
+        flex-wrap: wrap;
+    }
+}

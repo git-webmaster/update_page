@@ -1,0 +1,81 @@
+// --------------------------------------------------------------------------
+// Stations
+// --------------------------------------------------------------------------
+
+.stations {
+    padding: 30px 0;
+    // background-color: #fafafa;
+}
+
+.stations__heading {
+    display: block;
+    font-size: 24px;
+    line-height: 1.25;
+    font-weight: 400;
+    color: #808080;
+    margin: 0 0 22px;
+    text-align: center;
+}
+
+.stations__grid {
+    @include list-style-none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px -5px;
+
+    font-size: 18px;
+    line-height: 1;
+
+    & > li {
+        padding: 0 10px 20px;
+    }
+
+    @include breakpointMax(xs) {
+        & > li {
+            padding-bottom: 0;
+        }
+    }
+}
+
+
+.stations__list {
+    @include list-style-none;
+
+    font-size: 18px;
+    line-height: 20px;
+    & > li {
+        position: relative;
+        padding: 0 0 0 26px;
+        margin: 0 0 20px;
+    }
+    .icon-circle {
+        position: absolute;
+        top: 4px;
+        left: 0;
+    }
+}
+
+
+.stations__more {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        border-top: 1px solid #ebebeb;
+    }
+
+    .btn {
+        .icon-arrow-down {
+            top: 1px;
+            vertical-align: middle;
+            margin: 0 0 0 10px;
+        }
+    }
+}

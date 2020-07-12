@@ -1,0 +1,100 @@
+// --------------------------------------------------------------------------
+// Links
+// --------------------------------------------------------------------------
+
+.ui-link {
+	text-decoration: none;
+
+	u {
+		text-decoration: none;
+		border-bottom: 1px solid transparent;
+	}
+	&:hover {
+		text-decoration: none;
+	}
+
+	[class^="icon-"] {
+		margin: 0 8px 0 0;
+	}
+	img {
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 8px 0 0;
+	}
+}
+
+.ui-link--dotted {
+	border-bottom: 1px dotted transparent;
+}
+
+.ui-link--dashed {
+	border-bottom: 1px dashed transparent;
+}
+
+.ui-link--underline {
+	border-bottom: 1px solid transparent;
+}
+
+.ui-link--red {
+	color: #FF5050;
+	border-color: rgba(#FF5050, 0.4);
+	u {
+		border-bottom: 1px solid rgba(#FF5050, 0.4);
+	}
+	&:hover {
+		color: rgba(#FF5050,0.8);
+	}
+}
+
+.ui-link--blue {
+	color: #299AE0;
+	border-color: rgba(41, 154, 224, 0.3);
+	u {
+		border-color: rgba(41, 154, 224, 0.3);
+	}
+	&:hover {
+		color: #299AE0;
+		opacity: 0.5;
+	}
+}
+
+.ui-link--dark {
+	color: #131313;
+	border-color: rgba(179, 179, 179, 0.4);
+	u {
+		border-color: rgba(179, 179, 179, 0.4);
+	}
+	&:hover {
+		color: #131313;
+		opacity: 0.5;
+	}
+}
+
+.ui-link--grey {
+	color: #808080;
+	border-color: rgba(179, 179, 179, 0.4);
+	u {
+		border-color: rgba(179, 179, 179, 0.4);
+	}
+	&:hover {
+		color: #808080;
+		opacity: 0.5;
+	}
+}
+
+.ui-link--green {
+	color: #72BB53;
+	border-color: rgba(#72BB53, 0.4);
+	u {
+		border-bottom: 1px solid rgba(#72BB53, 0.4);
+	}
+	&:hover {
+		color: lighten(#72BB53, 20%);
+	}
+}
+
+.owl-item .ui-link {
+	word-break: break-all;
+}
+
+

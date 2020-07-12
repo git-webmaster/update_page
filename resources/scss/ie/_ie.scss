@@ -1,0 +1,47 @@
+// --------------------------------------------------------------------------
+// Ie
+// --------------------------------------------------------------------------
+
+@media all and (-ms-high-contrast:none) {
+    
+    .panel__place-distance {
+        &:after, &:before {
+            display: none;
+        }
+    }
+
+    .ui-filter__wrapper {
+    	white-space: nowrap;
+    	font-size: 0;
+    }
+
+    .ui-filter__list {
+    	display: inline-block;
+    	vertical-align: top;
+    	& > li {
+    		display: inline-block;
+    		vertical-align: top;
+
+    		& > * {
+    			min-height: 50px;
+    		}
+    	}
+    }
+
+    .ui-filter__dropdown-wrapper {
+    	display: inline-block;
+    	vertical-align: top;
+    }
+
+    // -----
+
+
+    .syst {
+        flex: none;
+        min-height: 100vh;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+
+}

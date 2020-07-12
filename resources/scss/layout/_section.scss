@@ -1,0 +1,15 @@
+//- --------------------------------------------------------------------------
+//- Section
+//- --------------------------------------------------------------------------
+
+.section:not(.hero) {
+    background: #fafafa;
+    &:nth-of-type(odd) {
+        box-shadow: 0 6px 6px rgba(0, 0, 0, 0.01);
+        border: 1px solid #ebebeb;
+        background-color: #ffffff;
+    }
+    &:last-of-type {
+        //margin: 0 0 -30px;
+    }
+}

@@ -1,0 +1,112 @@
+@import '../base/_settings';
+@import '../base/_mixins';
+
+
+// --------------------------------------------------------------------------
+// Themes brand
+// --------------------------------------------------------------------------
+
+// :root {
+//     --brand-bg: #124cb0;
+//     --brand-borders: #073482;
+//     --brand-color-opacity: rgba(255,255,255,0.5);
+//     --brand-color: #fff;
+    
+//     --brand-nav-bg: #fff;
+//     --brand-nav-color: #131313;
+// }
+
+
+// color: var(--brand-color);
+
+$brand-bg: #124cb0;
+$brand-borders: #073482;
+$brand-color-opacity: rgba(255,255,255,0.5);
+$brand-color: #fff;
+    
+$brand-nav-bg: #fff;
+$brand-nav-color: #131313;
+
+
+.is-theme-brand {
+
+	.header {
+        background: $brand-bg;
+        border-color: $brand-borders;
+    }
+    .header__logo {
+        color: $brand-color;
+        &:after {
+            background: $brand-borders;
+        }
+    }
+    .header__blind, .header__dark, .header__signin {
+        border-color: $brand-borders;
+        color: $brand-color-opacity;
+        &:hover {
+            background: none;
+        }
+    }
+
+    .header__breadcrumbs-link {
+        color: $brand-color;
+        border-color: $brand-color-opacity;
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .header__dark-toggle {
+        background: $brand-color-opacity;
+    }
+
+    .header__signin-btn {
+        color: $brand-color;
+        u {
+            border-color: $brand-color-opacity;
+        }
+        [class^="icon-"] {
+            color: $brand-color-opacity;
+        }
+        &:hover {
+            background: none;
+        }
+    }
+
+    // -----
+    
+	.company__head {
+        background: $brand-bg;
+    }
+    .company__heading,
+    .company__caption,
+    .company__text {
+        color: $brand-color;
+    }
+
+    .company__taglist {
+        padding: 0 0 30px;
+    }
+
+    .company__taglist-menu {
+        @include breakpointMax(xs) {
+            & > li {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+    }
+
+    .company__taglist-link {
+        line-height: 40px;
+        background: $brand-nav-bg;
+        color: $brand-nav-color;
+    }
+}
+
+
+.is-theme-blind {
+    .header__breadcrumbs-link {
+        
+    }
+}

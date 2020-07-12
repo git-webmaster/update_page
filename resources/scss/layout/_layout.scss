@@ -1,0 +1,1305 @@
+// --------------------------------------------------------------------------
+// Layout
+// --------------------------------------------------------------------------
+
+
+
+html {
+	font-size: 62.5%;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	background: $baseBg;
+	color: $baseColor;
+
+     // -webkit-overflow-scrolling: touch;
+     
+}
+
+.app {
+	position: relative;
+	min-height: 100%;
+	overflow: hidden;
+	width: 100%;
+	min-width: 320px;
+
+	// display: flex;
+	// flex-direction: column;
+}
+
+.container-fluid {
+	max-width: $baseMaxWidth;
+	padding: 0 20px;
+}
+
+
+// --------------------------------------------------------------------------
+// Layount base
+// --------------------------------------------------------------------------
+
+.l {
+
+    position: relative;
+
+	&--help {
+		.panel__buttons {
+	        padding: 0;
+	        margin: 0 0 30px;
+	    }
+	    .l__head {
+	    	padding: 20px 0;
+	    }
+
+	    .l__heading {
+		    font-size: 26px;
+	    }
+
+	    .l__sidebar {
+	    	.panel {
+		        margin-left: 0;
+		        margin-right: 0;
+		    }
+	    }
+	}
+
+	&--photo {
+		.panel__pagination {
+	        padding: 0;
+	    }
+
+        .panel__sorting {
+            padding: 0;
+        }
+
+	    .l__heading {
+	    	font-size: 22px;
+	    	font-weight: 700;
+		    @include breakpoint(md) {
+		        font-size: 24px;
+		    }
+	    }
+	}
+
+	&--search {
+		margin: 0;
+
+		.ui-search {
+			margin: 0;
+		}
+
+		.l__head {
+			padding: 30px 0;
+		}
+
+		.l__body {
+			@include breakpoint(md) {
+				padding: 0 20px;
+			}
+			@include breakpoint(lg) {
+				padding: 0;
+			}
+		}
+
+        .l__sidebar {
+            @include breakpoint(xl) {
+                padding: 0;
+            }
+            
+        }
+
+	}
+
+	&--hotel {
+		 // margin: 0 0 -30px;
+         margin: 0;
+
+		.hotel__head {
+			padding: 20px 0;
+			@include breakpoint(lg) {
+				padding: 15px 0 30px;
+			}
+		}
+
+        .l__head {
+          padding: 15px 0;
+          @include breakpoint(lg) {
+            padding: 15px 0;
+          }
+        }
+
+        .l__rating {
+          margin: 0 0 5px;
+        }
+
+		.l__heading {
+			font-size: 22px;
+            font-weight: 700;
+            margin: 0 0 5px;
+
+			@include breakpoint(xs) {
+		        font-size: 24px;
+		    }
+		    @include breakpoint(md) {
+		        font-size: 28px;
+		    }
+		}
+
+        .l__taglist {
+          margin: 0 0 10px!important;
+        }
+
+		.l__text {
+          margin: 0 0 15px;
+          font-size: 16px;
+
+			@include breakpoint(md) {
+		        font-size: 20px;
+		    }
+		}
+
+		.l__content {
+			 @include breakpoint(xl) {
+		        flex: 1;
+		        min-width: 0;
+		        order: 1;
+		    }
+		}
+
+		.l__sidebar {
+			@include breakpoint(xl) {
+				flex: 0 0 45%;
+		        max-width: 550px;
+		        margin: 0 0 0 20px;
+		        order: 2;
+			}
+		}
+
+	}
+
+	&--category {
+
+        position: relative;
+
+		.l__head {
+			padding: 20px 0;
+			@include breakpoint(lg) {
+				padding: 20px 0 20px;
+			}
+		}
+
+		.l__heading {
+			font-size: 22px;
+		    font-weight: 700;
+            margin: 0 0 5px;
+
+		    @include breakpoint(xs) {
+		        font-size: 24px;
+		    }
+		    @include breakpoint(md) {
+		        font-size: 30px;
+		    }
+		}
+
+		.l__text {
+          font-weight: 300;
+            margin: 0 0 10px;
+			@include breakpoint(md) {
+		        font-size: 20px;
+		    }
+		}
+	}
+
+
+	&--company {
+
+		position: relative;
+
+		.l__head {
+			position: relative;
+			z-index: 100;
+			padding: 20px 0 0;
+		    background: #fff;
+		    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.01);
+		    &:after {
+		        content: '';
+		        display: block;
+		        position: absolute;
+		        left: 0;
+		        right: 0;
+		        bottom: 0;
+		        border-top: 1px solid transparent;
+		        z-index: 100;
+		    }
+		}
+
+		.l__heading {
+			font-size: 23px;
+			font-weight: 700;
+		    margin: 0 0 6px;
+		    @include breakpoint(md) {
+		        font-size: 26px;
+		    }
+		}
+		
+		.l__body {
+			padding: 20px 0;
+		}
+
+
+
+		.l__wrapper {
+			
+			@include breakpoint(xl) {
+		        padding: 0 356px 0 0;
+		    }
+		}
+
+		.l__sidebar {
+			@include breakpoint(xl) {
+		        position: absolute;
+		        top: 0;
+		        right: 0;
+		        width: 336px;
+		        padding: 0;
+		        display: block;
+		        height: 100%;
+		        
+			}
+		}
+
+		.l__text {
+			font-size: 17px;
+		    line-height: 1.12;
+		    margin: 0 0 19px;
+		    color: #555555;
+		}
+	}
+
+
+	&--tablist {
+		.l__head {
+            background: none;
+            box-shadow: none;
+        }
+        .l__body {
+            position: static;
+        }
+	}
+
+
+}
+
+
+.l__badges {
+    padding: 0 0 18px;
+    margin: 0 0 -12px;
+    .ui-badge {
+        margin: 0 12px 12px 0;
+    }
+}
+
+.l__bg {
+	position: absolute;
+    top: 0;
+    left: 50%;
+    bottom: 0;
+    margin: 0;
+    width: 100vw;
+    margin: 0 0 0 -50vw;
+    z-index: -1;
+    overflow: hidden;
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.l__head {
+	position: relative;
+	z-index: 200;
+    padding: 30px 0;
+    & > .container-fluid > *:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.l__body {
+	position: relative;
+	z-index: 100;
+}
+
+
+.l__container {
+	position: relative;
+}
+
+.l__wrapper {
+    @include breakpoint(xl) {
+        display: flex;
+    }
+    &--reverse {
+        @include breakpointMax(xl) {
+            display: flex;
+            flex-direction: column;
+            .l__content {
+                order: 2;
+            }
+            .l__sidebar {
+                order : 1;
+            }
+        }
+    }
+}
+
+.l__content {
+    @include breakpoint(xl) {
+        flex: 1;
+        min-width: 0;
+        width: calc(100% - 356px);
+    }
+}
+
+
+.l__sidebar {
+    @include breakpoint(xl) {
+        flex: 0 0 336px;
+        max-width: 336px;
+        margin: 0 0 0 20px;
+    }
+}
+
+
+.l__sidebar-banner {
+	.row {
+        justify-content: center;
+    }
+
+    @include breakpoint(md) {
+        .panel {
+            margin: 0 0 30px;
+        }
+    }
+}
+
+
+// ------
+
+
+.l__breadcrumbs {
+    margin: 0 0 15px;
+    color: #b3b3b3;
+    font-size: 18px;
+}
+
+.l__breadcrumbs-menu {
+    @include list-style-none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    & > li {
+        position: relative;
+        padding: 0 20px 0 0;
+        margin: 0 12px 0 0;
+        &:last-of-type {
+            margin: 0;
+            padding: 0;
+            .icon-arrow-right {
+                display: none;
+            }
+        }
+    }
+    .icon-arrow-right {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 6px;
+        height: 12px;
+        margin: -6px 0 0;
+    }
+}
+
+.l__breadcrumbs-link {
+    @extend .ui-link;
+    @extend .ui-link--underline;
+    @extend .ui-link--blue;
+}
+
+
+// ------
+
+
+.l__nav {
+    position: relative;
+    padding: 11px 0;
+    margin: -30px 0 10px;
+
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 400;
+
+    display: flex;
+    align-items: center;
+
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 120vw;
+        margin: 0 0 0 -60vw;
+        z-index: -1;
+        background: #f5f5f5;
+        border-bottom: 1px solid #ebebeb;
+        pointer-events: none;
+    }
+
+    @include breakpoint(md) {
+        padding: 16px 0;
+    }
+
+    @include breakpoint(xl) {
+        margin-right: -20px;
+    }
+}
+
+.l__nav-menu {
+    margin: 0 -7px -7px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    white-space: nowrap;
+    & > li {
+        padding: 0 7px 7px;
+        position: relative;
+        display: inline-block;
+
+    }
+}
+
+.l__nav-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 8px 0;
+    color: #808080;
+    white-space: nowrap;
+    border-radius: 2px;
+    u {
+        text-decoration: none;
+        border-bottom: 1px dotted currentColor;
+    }
+    [class^="icon-"] {
+        margin: 0 10px 0 0;
+        top: -1px;
+    }
+   
+    &:hover {
+        text-decoration: none;
+        color: #131313;
+    }
+    &.is-active {
+        background: #999999;
+        color: #fff;
+        padding: 8px 14px;
+        u {
+            border-color: transparent;
+        }
+    }
+}
+
+.l__nav-dropdown-wrapper {
+    position: relative;
+    z-index: 1000;
+    display: block;
+    margin: 0 0 0 auto;
+}
+
+
+.l__nav-dropdown {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    right: -10px;
+    min-width: 100%;
+
+    background: #fff;
+    border: 1px solid #ebebeb;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.25s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+    margin: 9px 0 0;
+    max-width: calc(100vw - 20px);
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 100%;
+        right: 20px;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid #fff;
+        z-index: 1;
+    }
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 100%;
+        right: 20px;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid transparent;
+        z-index: 2;
+        margin: 1px 0 0;
+    }
+    & > li {
+        border-bottom: 1px solid #ebebeb;
+        &:last-child {
+            border: none;
+        }
+    }
+
+    &.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .l__nav-link {
+        padding: 15px 20px;
+    }
+}
+
+
+.is-open .l__nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+}
+
+.l__nav-dropdown-toggle {
+    display: block;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0 0 0 14px;
+    font-size: 18px;
+    line-height: 36px;
+    font-weight: 400;
+    color: #808080;
+    white-space: nowrap;
+    border-radius: 2px;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    position: relative;
+    display: none;
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 100;
+    }
+    u {
+        text-decoration: none;
+        border-bottom: 1px solid #B3B3B3;
+    }
+    
+    .icon-dots {
+        color: #ccc;
+        margin: 0 10px 0 0;
+    }
+    &:hover {
+        color: #131313;
+    }
+    &.priority-nav-is-visible {
+        opacity: 1;
+        visibility: visible;
+        position: relative;
+        display: block;
+    }
+    @include breakpoint(xl) {
+        padding: 0 20px 0 0;
+    }
+}
+
+// ------
+
+.l__body {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+}
+
+.l__topbar {
+    display: block;
+    position: relative;
+    z-index: 1;
+
+    font-size: 24px;
+    line-height: 30px;
+    padding: 20px 0;
+    margin: -30px 0 10px;
+    
+
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 100vw;
+        margin: 0 0 0 -50vw;
+        z-index: -1;
+        background: #f5f5f5;
+        border-bottom: 1px solid #ebebeb;
+    }
+
+    & + .l__heading {
+        padding: 20px 0 0;
+    }
+}
+
+
+.l__topbar-menu {
+    @include list-style-none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -22px -10px;
+    font-size: 22px;
+    line-height: 24px;
+    font-weight: 400;
+
+    color: #808080;
+
+    & > li {
+        position: relative;
+        padding: 0 22px 10px;
+        &:last-child {
+            .icon-arrow-right {
+                display: none;
+            }
+        }
+    }
+
+    .icon-arrow-right {
+        position: absolute;
+        top: 50%;
+        right: -5px;
+        margin: -15px 0 0;
+        color: #b3b3b3;
+        width: 10px;
+        height: 20px;
+    }
+
+    @include breakpoint(md) {
+        font-size: 26px;
+        line-height: 30px;
+        margin: 0 -35px -10px;
+        & > li {
+            padding: 0 35px 10px;
+        }
+    }
+}
+
+.l__topbar-link {
+    display: block;
+    text-decoration: none;
+    color: #131313;
+    border-bottom: 1px solid rgba(179, 179, 179, 0.4);
+    &:hover {
+        text-decoration: none;
+        color: #131313;
+        opacity: 0.5;
+    }
+    &.is-active {
+        border-color: transparent;
+        color: #808080;
+        pointer-events: none;
+    }
+}
+
+.l__heading {
+    display: block;
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 400;
+    margin: 0 0 12px;
+    .ui-link {
+        position: relative;
+
+        top: -2px;
+        display: inline-block;
+        vertical-align: middle;
+        [class^="icon-"] {
+            margin: 0;
+        }
+    }
+}
+
+
+.l__text {
+    font-size: 15px;
+    line-height: 1.1;
+    margin: 0 0 28px;
+    color: #808080;
+    @include breakpoint(xs) {
+        font-size: 16px;
+    }
+    @include breakpoint(md) {
+        font-size: 20px;
+    }
+}
+
+
+.l__caption {
+    font-size: 16px;
+    line-height: 1.125;
+    opacity: 0.8;
+    margin: 0 0 25px;
+    display: block;
+    max-width: 1200px;
+}
+
+.l__back {
+    display: inline-block;
+    vertical-align: top;
+
+    font-size: 15px;
+    line-height: 1;
+    color: #808080;
+    text-decoration: none;
+    u {
+        text-decoration: none;
+        border-bottom: 1px solid rgba(179, 179, 179, 0.4);
+    }
+    [class^="icon-"] {
+        margin: 0 8px 0 0;
+    }
+    &:hover {
+        text-decoration: none;
+        color: #808080;
+        opacity: 0.5;
+    }
+
+    @include breakpoint(md) {
+        font-size: 16px;
+    }
+}
+
+.l__location {
+    display: block;
+    font-size: 16px;
+    line-height: 20px;
+    color: #808080;
+    margin: 0 0 8px;
+    .icon-location {
+        top: -1px;
+        width: 13px;
+        height: 16px;
+        margin: 0 8px 0 0;
+        color: #72bb53;
+    }
+}
+
+
+.l__steps {
+    margin: 0 0 20px;
+}
+
+
+.l__steps-menu {
+    margin: 0 -44px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #b3b3b3;
+
+    & > li {
+        position: relative;
+        padding: 0 44px;
+        &:last-child {
+            .icon-arrow-right {
+                display: none;
+            }
+        }
+
+        &.is-active {
+            .l__steps-item {
+                background-color: #999999;
+                color: #fff;
+                
+            }
+            .l__steps-item-icon {
+                display: none;
+            }
+            & ~ li {
+                .l__steps-item {
+                    background-color: #ebebeb;
+                    color: #808080;
+                }
+                .l__steps-item-icon {
+                    display: none;
+                }
+            }
+        }
+    }
+    
+    
+    .icon-arrow-right {
+        position: absolute;
+        top: 50%;
+        right: -5px;
+        width: 10px;
+        height: 20px;
+        margin: -10px 0 0;
+    }
+
+
+    @include breakpointMax(md) {
+
+        margin: 0 -24px;
+        & > li {
+            padding: 0 24px;
+        }
+        & > li.is-active {
+            .l__steps-item {
+                border-radius: 2px;
+            }
+            .l__steps-item-number {
+                display: none;
+            }
+            .l__steps-item-text {
+                display: block;
+            }
+        }
+
+        .icon-arrow-right {
+            width: 8px;
+            height: 14px;
+            right: -4px;
+            margin: -7px 0 0;
+        }
+    }
+}
+
+
+.l__steps-item {
+    border-radius: 2px;
+
+    font-size: 18px;
+    line-height: 20px;
+    
+    padding: 10px 14px;
+
+    color: #72bb53;
+    background-color: rgba(114, 187, 83, 0.3);
+    min-width: 3.8rem;
+    min-height: 3.8rem;
+    text-align: center;
+
+    @include breakpointMax(md) {
+        border-radius: 50%;
+        font-size: 16px;
+    }
+        
+
+}
+
+.l__steps-item-icon {
+    margin: 0 12px 0 0;
+    @include breakpointMax(md) {
+        display: none;
+    }
+}
+
+.l__steps-item-text {
+    @include breakpointMax(md) {
+        display: none;
+    }
+}
+
+.l__steps-item-number {
+    display: none;
+    @include breakpointMax(md) {
+        display: block;
+    }
+}
+// -----
+
+
+
+// ------
+
+
+.l__info {
+    font-size: 16px;
+    line-height: 17px;
+    font-weight: 400;
+    color: #808080;
+    position: relative;
+    margin: 0;
+    padding: 8px 0;
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        width: 100vw;
+        margin: 0 0 0 -50vw;
+        border-top: 1px solid #ebebeb;
+    }
+}
+
+
+.l__info-menu {
+    margin: 0 -8px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    & > li {
+        padding: 6px 8px;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    [class^="icon-"] {
+        top: -1px;
+        margin: 0 5px 0 0;
+        flex: 0 0 auto;
+    }
+
+    a {
+        @extend .ui-link;
+        @extend .ui-link--underline;
+        @extend .ui-link--grey;
+    }
+
+    @include breakpoint(xl) {
+        margin: 0 -15px;
+        & > li {
+            padding: 6px 15px;
+        }
+    }
+}
+
+.l__info-text {
+    display: block;
+    // flex: 0 0 auto;
+    word-break: break-word;
+    flex: 1 1 auto;
+}
+
+
+// -----
+
+
+
+.l__results {
+	position: relative;
+	
+	margin: -21px;
+    padding: 0;
+	&:after {
+		content: '';
+		display: table;
+		width: 100%;
+	}
+	.panel {
+		margin: 0;
+		border-bottom: 1px solid #ebebeb;
+		&:last-of-type {
+			border: none;
+		}
+	}
+	.panel__loadmore {
+		padding: 20px 20px 0;
+		box-shadow: none;
+	}
+	.panel__pagination {
+		padding: 20px;
+	}
+
+
+}
+
+.l__results-content {
+    @include breakpoint(lg) {
+        padding: 0 275px 0 0;
+    }
+    @include breakpoint(xl) {
+        padding: 0 450px 0 0;
+    }
+}
+
+.l__results-map {
+	overflow: hidden;
+	width: 100%;
+	height: 320px;
+	border: 1px solid #ebebeb;
+	background: #ebebeb;
+
+	@include breakpoint(lg) {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 275px;
+		height: auto;
+	}
+	@include breakpoint(xl) {
+		width: 450px;
+	}
+	
+}
+
+
+// -----
+
+
+.l__rating {
+    margin: 0 0 10px;
+    .ui-rating {
+        margin: 0;
+    }
+}
+
+
+
+// -----
+
+
+.l__navbar {
+    position: relative;
+    margin: 0 -20px;
+
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 400;
+    
+    &:after, &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 50%;
+        width: 100vw;
+        margin: 0 0 0 -50vw;
+        border-top: 1px solid #ebebeb;
+    }
+    &:after {
+        top: 0;
+    }
+    &:before {
+        bottom: 0;
+    }
+
+    
+
+    @include breakpoint(xl) {
+        margin: 0;
+    }
+
+    &.is-open {
+        .l__navbar-menu > li:nth-of-type(3) ~ li {
+            display: block;
+            animation: fadeIn 1s forwards;
+        }
+        .l__navbar-control {
+            display: none;
+        }
+    }
+}
+
+.l__navbar-menu {
+    @include list-style-none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1px;
+    & > li {
+        flex: 0 0 100%;
+        max-width: 100%;
+        &:nth-of-type(3) ~ li {
+            display: none;
+        }
+    }
+
+    @include breakpoint(xs) {
+        & > li {
+            flex: 0 0 50%;
+            max-width: 50%;
+            &:nth-of-type(3) ~ li {
+                display: block;
+            }
+        }
+    }
+
+    @include breakpoint(md) {
+        & > li {
+            flex: 0 0 33.333%;
+            max-width: 33.333%;
+        }
+    }
+
+    @include breakpoint(xl) {
+        flex-wrap: nowrap;
+        & > li {
+            flex: 1 1 auto;
+            max-width: none;
+            margin: 0;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.l__navbar-link, .l__navbar-btn {
+    min-width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-decoration: none;
+    background: #fff;
+    color: #131313;
+    
+    border: 1px solid #ebebeb;
+    height: 52px;
+    // min-height: 52px;
+    margin: -1px;
+    padding: 0 20px 0 48px;
+    white-space: nowrap;
+    cursor: pointer;
+    &:hover {
+        text-decoration: none;
+        color: #131313;
+        background: #fafafa;
+    }
+    mark {
+        font-size: 15px;
+        color: #999999;
+        margin: 0 0 0 5px;
+    }
+
+    @include breakpoint(xs) {
+        padding: 0 20px;
+        justify-content: center;
+    }
+
+}
+
+.l__navbar-btn {
+    color: #808080;
+    text-decoration: none;
+    u {
+        text-decoration: none;
+        border-bottom: 1px solid rgba(#B3B3B3,0.4);
+    }
+    &:hover {
+        color: #808080;
+    }
+}
+
+.l__navbar-icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ccc;
+    @include breakpoint(xs) {
+        position: relative;
+        top: -2px;
+        width: auto;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 10px 0 0;
+    }
+}
+
+.l__navbar-arrow {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translate(0,-50%);
+    color: #B2B2B2;
+    @include breakpoint(xs) {
+        display: inline-block;
+        position: relative;
+        top: 0;
+        right: 0;
+        transform: none;
+        margin: 0 0 0 10px;
+    }
+    @include breakpoint(md) {
+        display: none;
+    }
+}
+
+.l__navbar-control {
+    margin: -1px 0 0;
+    .l__navbar-btn {
+        margin: 0;
+    }
+    @include breakpoint(xs) {
+        display: none;
+    }
+}
+
+
+// -----
+
+
+.l__taglist {
+    // padding: 0 0 10px;
+    .ui-taglist {
+        padding: 0;
+    }
+}
+
+
+// -----
+
+.l__banners {
+    .row {
+        justify-content: center;
+    }
+
+    @include breakpoint(md) {
+        .panel {
+            margin: 0 0 30px;
+        }
+    }
+}

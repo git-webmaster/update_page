@@ -1,0 +1,116 @@
+// --------------------------------------------------------------------------
+// Voice
+// --------------------------------------------------------------------------
+
+.ui-voice {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    border-radius: 2px;
+    min-width: 124px;
+    height: 36px;
+    color: #ccc;
+    &--green {
+        color: #72BB53;
+    }
+    &--red {
+        color: #FF5050;
+    }
+}
+
+
+.ui-voice--rounded {
+    font-size: 18px;
+    .ui-voice__number {
+        border: none;
+        background: none;
+    }
+    .ui-voice__btn {
+        border-radius: 20px!important;
+        min-width: 40px;
+        &:first-of-type {
+            border-radius: 20px;
+        }
+        &:last-of-type {
+            border-radius: 20px;
+        }
+    }
+}
+
+.ui-voice__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 100%;
+    background: #fff;
+    border: 1px solid #e7e7e7;
+    cursor: pointer;
+    position: relative;
+    color: #ccc;
+    white-space: nowrap;
+    font-size: 16px;
+    line-height: 1;
+    padding: 0 10px;
+
+    outline: none;
+
+    z-index: 10;
+
+    &:first-of-type {
+        border-radius: 2px 0 0 2px;
+    }
+    &:last-of-type {
+        border-radius: 0 2px 2px 0;
+    }
+
+    &:hover {
+        background: #fafafa;
+        border-color: #ccc;
+        color: #131313;
+    }
+
+    &:focus {
+		border-color: #299ae0;
+		background: #fff;
+        box-shadow: 0 0 0 2px rgba(41, 154, 224, 0.3);
+        border-radius: 2px;
+	}
+	&:active {
+		border-color: #ccc;
+		background: #fafafa;
+		color: #131313;
+		box-shadow: inset 2px 2px 5px rgba(153, 153, 153, 0.2);
+	}
+
+
+    &--like {
+        &:hover, &:focus {
+            color: #72BB53;
+        }
+    }
+    &--dislike {
+        &:hover, &:focus {
+            color: #FF5050;
+        }
+    }
+}
+
+.ui-voice__number {
+
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    background: #fff;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 15px;
+    line-height: 1.2;
+    padding: 0 10px;
+    flex: 1 1 auto;
+}

@@ -1,0 +1,116 @@
+// --------------------------------------------------------------------------
+// Pin
+// --------------------------------------------------------------------------
+
+.ui-pin {
+    max-width: 100%;
+    width: 100%;
+    border: 1px solid #FFC959;
+    background: rgba(252, 225, 170, 0.3);
+    border-radius: 2px;
+    overflow: hidden;
+
+
+    color: #131313;
+
+    &.is-open {
+        background: #fff;
+        border-color: #ccc;
+    }
+
+}
+
+.ui-pin__label {
+    position: relative;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    margin: 0;
+    white-space: nowrap;
+
+    .icon-star {
+        flex: 0 0 18px;
+        width: 18px;
+        height: 18px;
+        top: -1px;
+        margin: 0 10px 0 0;
+        color: #FFC959;
+    }
+    .ui-check__switch {
+        margin: 0 0 0 10px;
+    }
+}
+
+
+.ui-pin__content {
+    display: none;
+    border-top: 1px solid #ccc;
+}
+
+.ui-pin__content-in {
+    padding: 20px;
+}
+
+.ui-pin__info {
+    @include list-style-none;
+    position: relative;
+    font-size: 16px;
+    line-height: 1.06;
+    padding: 0 0 0 26px;
+    margin: 0 0 20px;
+    strong {
+        display: block;
+        margin: 0 0 5px;
+    }
+    p {
+        margin: 0;
+    }
+    
+    .icon-pin-up, .icon-pin-color {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .icon-pin-up {
+        color: #299AE0;
+    }
+    .icon-pin-color {
+        color: #FF5050;
+    }
+}
+
+
+.ui-pin__days {
+    display: flex;
+    align-items: center;
+    .ui-group {
+        flex: 1;
+        margin: 0 10px 0 0;
+    }
+    .ui-check {
+        flex: 1 1 auto;
+    }
+    .ui-check__btn {
+        padding: 0;
+    }
+    .ui-help {
+        margin: 0;
+    }
+
+    .ui-check__btn {
+
+    }
+}
+
+.ui-pin__notice {
+    margin: 20px -20px -20px;
+    background: rgba(114, 187, 83, 0.08);
+    font-size: 20px;
+    line-height: 24px;
+    padding: 15px 20px;
+    color: #72BB53;
+    border-top: 1px solid #ccc;
+}

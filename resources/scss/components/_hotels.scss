@@ -1,0 +1,75 @@
+// --------------------------------------------------------------------------
+// Hotels
+// --------------------------------------------------------------------------
+
+.hotels {
+    padding: 30px 0;
+    // background: #fafafa;
+}
+
+.hotels__heading {
+    display: block;
+    font-size: 24px;
+    line-height: 1.25;
+    font-weight: 400;
+    color: #808080;
+    margin: 0 0 30px;
+    text-align: center;
+}
+
+.hotels__item {
+    display: block;
+    min-height: 100%;
+    background: #fff;
+    border: 1px solid #ebebeb;
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.hotels__item-image {
+    overflow: hidden;
+    position: relative;
+    margin: 0 0 18px;
+    background: #ebebeb;
+    width: 100%;
+    &:before {
+        content: '';
+        float: left;
+        padding: 100% 0 0 0;
+    }
+}
+
+.hotels__item-title {
+    display: block;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 400;
+    margin: 0 0 10px;
+    padding: 0 4px;
+}
+
+.hotels__item-info {
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+    margin: auto 0 0;
+
+    .ui-rating {
+        margin: 0 10px 0 0;
+        flex: 1;
+    }
+    .ui-mark {
+        flex: 0 0 auto;
+    }
+}
+
+
+
+.hotels__more {
+    padding: 30px 0 5px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 20px;
+}

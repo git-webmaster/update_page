@@ -1,0 +1,667 @@
+{# detect pages with company page view #}
+{% if page_type == 'company' or page_type == 'item' or page_type == 'post' or page_type == 'hotel' %}
+	{% set company_template = true %}
+{% else %}
+	{% set company_template = false %}
+{% endif %}
+
+{% if page_type == 'city' or page_type == 'country' %}
+<!-- Header :: Start-->
+<header class="header">
+	<div class="header__topbar">
+		<div class="container-fluid">
+			<div class="header__logo">
+				<a href="/" title="Перейти на главную">
+					<svg width="175" height="25" viewBox="0 0 175 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M18.5821 8.8533C18.5821 11.3981 17.4038 14.5717 13.491 18.7495C12.4509 19.8604 11.0132 21.0901 9.17736 22.4406C7.46604 21.2981 6.02877 20.0675 4.86651 18.7495C1.47075 14.8976 0 11.2533 0 8.8533C0 4.01981 4.34481 0 9.17736 0C14.0094 0 18.5821 4.01981 18.5821 8.8533Z" fill="#FF4747"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M14.6418 8.94859C14.6399 11.9297 12.2234 14.3462 9.2423 14.3481C6.2607 14.3462 3.84419 11.9297 3.84277 8.94859C3.84419 5.96698 6.2607 3.55094 9.2423 3.54906C12.2234 3.55094 14.6399 5.96698 14.6418 8.94859Z" fill="white"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M59.0334 10.7363C60.1857 9.22029 61.9952 8.34906 63.8985 8.39293L63.9004 8.39246C67.1608 8.39246 69.3768 10.634 69.3749 13.9708C69.3749 17.384 66.8532 20.2113 62.9815 20.2113C58.0655 20.2113 55.7725 16.951 55.7725 12.5698C55.7725 5.84623 59.7994 3.78208 68.1013 2.35567V5.69293C67.633 5.77642 67.1275 5.84801 66.6029 5.9223C63.4463 6.36931 59.5997 6.91403 59.0334 10.7363ZM33.6145 15.1693C32.6754 15.1835 31.7372 15.1066 30.8126 14.9401H30.8107V19.7783H27.3721V3.67972H33.7164C38.4541 3.67972 40.2117 6.27972 40.2117 9.38727C40.2117 13.6156 36.9513 15.1693 33.6145 15.1693ZM33.5126 6.68538H30.8126H30.8117V12.1109C31.5791 12.225 32.3541 12.276 33.1296 12.2637C35.1174 12.2637 36.6202 11.4741 36.6202 9.30897C36.6202 7.85708 35.9834 6.68538 33.5126 6.68538ZM46.756 24.6193L46.7573 24.6165H46.7589L46.756 24.6193ZM46.7573 24.6165H43.1919L46.5032 18.4778L41.2051 7.0934H45.0768L48.057 14.8113L50.9098 7.0934H54.6032L46.7573 24.6165ZM62.7023 17.1802C60.6645 17.1802 59.2636 15.7538 59.2636 13.3085C60.1117 12.1198 61.4716 11.4024 62.9315 11.3745C64.6636 11.3745 65.9372 12.4953 65.9372 14.2783C65.9381 15.9307 64.5372 17.1802 62.7023 17.1802ZM79.5136 20.2113C78.1178 20.2528 76.7749 19.6745 75.8457 18.6321V24.6179H72.3301V7.09529H75.3617L75.5145 9.08208C76.3824 7.50708 78.0744 6.56699 79.8702 6.66227C83.9183 6.66227 85.8051 9.56604 85.8051 13.183C85.8051 16.9 83.5636 20.2113 79.5136 20.2113ZM79.0532 17.2311C77.8796 17.2882 76.7263 16.9071 75.8183 16.1613V10.7613C76.7282 10.0071 77.8716 9.59293 79.0532 9.58963C81.2438 9.58963 82.2136 11.1434 82.2136 13.2576C82.2145 15.3972 81.2975 17.2043 79.056 17.2311H79.0532ZM99.3537 7.0934H100.653H100.658V19.7783H97.3721V12.6462L89.8782 19.7783H88.5791V7.0934H91.865V14.2255L99.3537 7.0934ZM104.323 19.7783H107.835V14.7349H109.058L112.828 19.7783H117.158L111.965 13.2321L116.703 7.0934H112.499L108.959 12.1099H107.838V7.0934H104.323V19.7783ZM130.075 11.8566V19.7783L130.074 19.7764H127.552L127.222 18.0189C125.999 19.5726 124.624 20.0566 122.357 20.0566C119.657 20.0566 118.179 18.0189 118.179 15.8538C118.179 12.6189 120.726 11.3962 123.631 11.3962C124.678 11.3873 125.719 11.5505 126.713 11.8802V11.4217C126.713 9.84435 125.363 9.48774 124.14 9.48774C122.557 9.4552 120.989 9.78633 119.555 10.4557V7.39906C121.196 6.89246 122.906 6.64293 124.624 6.66038C127.655 6.66038 130.075 7.88303 130.075 11.8566ZM126.712 15.7538C126.061 16.8203 124.905 17.4755 123.655 17.4859C122.407 17.4859 121.693 16.7472 121.693 15.7793C121.693 14.3783 122.559 13.716 124.394 13.716C125.206 13.6906 126.009 13.8934 126.712 14.3019V15.7538ZM132.136 7.0934H143.395V9.94623H139.523V19.7783H136.008V9.94623H132.136V7.0934ZM151.624 20.2113C155.979 20.2107 158.551 17.2307 158.551 13.3594C158.551 9.86887 156.309 6.66133 151.623 6.66133C147.292 6.66133 144.72 9.61604 144.72 13.5132C144.721 17.0274 146.988 20.1604 151.624 20.2113ZM154.959 13.5377C154.959 11.4981 153.991 9.56416 151.623 9.56416L151.624 9.56274C149.128 9.56274 148.338 11.551 148.337 13.3085C148.337 15.3736 149.279 17.3076 151.623 17.3076C154.144 17.3076 154.959 15.3208 154.959 13.5377ZM164.995 18.6321C165.924 19.6745 167.267 20.2528 168.663 20.2113C172.713 20.2113 174.955 16.9 174.955 13.183C174.955 9.56604 173.068 6.66227 169.019 6.66227C167.223 6.56699 165.531 7.50708 164.664 9.08208L164.511 7.09529H161.48V24.6179H164.995V18.6321ZM164.967 16.1613C165.875 16.9071 167.029 17.2882 168.202 17.2311H168.206C170.447 17.2043 171.364 15.3972 171.363 13.2576C171.363 11.1434 170.393 9.58963 168.202 9.58963C167.021 9.59293 165.877 10.0071 164.967 10.7613V16.1613Z" fill="currentColor"/>
+					</svg>
+				</a>
+			</div>
+		</div>
+	</div>
+</header>
+<!-- Header :: End-->
+{% elseif page_type == 'index' %}
+<header class="header">
+		<div class="header__topbar">
+		</div>
+	</header>
+{% else %}
+<!-- Header :: Start-->
+<header class="header">
+	{% if not not_show_ads and ads_show_head_block %}
+	<div class="header__banner">
+		<img src="{{ static_cdn }}/images/banner-768x90.jpg" />
+	</div>
+	{% endif %}
+
+	{% if company_template and user.admin %}
+		<div class="header__notice header__notice--collapsed js-notice">
+
+			<div class="header__notice-content js-notice-content">
+				<div class="container-fluid">
+					<p class="header__notice-text panel__admin">
+
+						<label class="ui-check">
+							<input class="ui-check__input settings_input" data-setting="not_show_images" required="" type="checkbox" {% if not_show_images %}checked{% endif %} />
+							<span class="ui-check__switch"></span>
+							<span class="ui-check__text">Скрыть загрузки</span>
+
+							<span class="ui-help js-tooltip" title="Скрывает все фото и все кнопки загрузки фото">
+								<svg class="icon-help" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-help"></use>
+								</svg>
+							</span>
+
+						</label>
+
+						<label class="ui-check">
+							<input class="ui-check__input settings_input" data-setting="not_allow_images" required="" type="checkbox" {% if not_allow_images %}checked{% endif %} />
+							<span class="ui-check__switch"></span>
+							<span class="ui-check__text">Загрузки запрещены</span>
+
+							<span class="ui-help js-tooltip" title="Скрывает все кнопки загрузки фото, уже загруженные остаются на странице">
+								<svg class="icon-help" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-help"></use>
+								</svg>
+							</span>
+
+						</label>
+
+						<label class="ui-check">
+							<input class="ui-check__input settings_input" data-setting="not_show_reviews" required="" type="checkbox" {% if not_show_reviews %}checked{% endif %} />
+							<span class="ui-check__switch"></span>
+							<span class="ui-check__text">Скрыть отзывы</span>
+
+							<span class="ui-help js-tooltip" title="Скрывает все отзывы и все кнопки добавления отзывов">
+								<svg class="icon-help" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-help"></use>
+								</svg>
+							</span>
+
+						</label>
+
+						<label class="ui-check">
+							<input class="ui-check__input settings_input" data-setting="not_allow_reviews" required="" type="checkbox" {% if not_allow_reviews %}checked{% endif %} />
+							<span class="ui-check__switch"></span>
+							<span class="ui-check__text">Отзывы запрещены</span>
+
+							<span class="ui-help js-tooltip" title="Скрывает все кнопки добавления отзывов, уже добавленные остаются на странице">
+								<svg class="icon-help" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-help"></use>
+								</svg>
+							</span>
+
+						</label>
+
+						<br/>
+
+						<label class="ui-check">
+							<input class="ui-check__input settings_input" data-setting="not_show_ads_1" required="" type="checkbox" {% if not_show_ads_1 %}checked{% endif %} />
+							<span class="ui-check__switch"></span>
+							<span class="ui-check__text">Без рекламы (Google)</span>
+
+							<span class="ui-help js-tooltip" title="Скрывает рекламу уровня 1 (Google)">
+								<svg class="icon-help" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-help"></use>
+								</svg>
+							</span>
+
+						</label>
+
+						<label class="ui-check">
+							<input class="ui-check__input settings_input" data-setting="not_show_ads_2" required="" type="checkbox" {% if not_show_ads_2 %}checked{% endif %} />
+							<span class="ui-check__switch"></span>
+							<span class="ui-check__text">Без рекламы (Yandex)</span>
+
+							<span class="ui-help js-tooltip" title="Скрывает рекламу уровня 2 (Yandex)">
+								<svg class="icon-help" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-help"></use>
+								</svg>
+							</span>
+
+						</label>
+
+						<label class="ui-check">
+							<input class="ui-check__input settings_input" data-setting="not_show_ads_3" required="" type="checkbox" {% if not_show_ads_3 %}checked{% endif %} />
+							<span class="ui-check__switch"></span>
+							<span class="ui-check__text">Без рекламы (Inner)</span>
+
+							<span class="ui-help js-tooltip" title="Скрывает рекламу уровня 3 (Внутренняя реклама)">
+								<svg class="icon-help" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-help"></use>
+								</svg>
+							</span>
+
+						</label>
+
+						<label class="ui-check">
+							<input class="ui-check__input settings_input" data-setting="not_show_ads_4" required="" type="checkbox" {% if not_show_ads_1 and not_show_ads_2 and not_show_ads_3 %}checked{% endif %} />
+							<span class="ui-check__switch"></span>
+							<span class="ui-check__text">Скрыть всю рекламу</span>
+
+							<span class="ui-help js-tooltip" title="Убирает всю рекламу со страницы">
+								<svg class="icon-help" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-help"></use>
+								</svg>
+							</span>
+
+						</label>
+
+						<br/>
+
+						<label class="ui-check">
+							<input class="ui-check__input settings_input" data-setting="allow_html" required="" type="checkbox" {% if allow_html %}checked{% endif %} />
+							<span class="ui-check__switch"></span>
+							<span class="ui-check__text">HTML в описании</span>
+
+							<span class="ui-help js-tooltip" title="Разрешить HTML-теги в блоке Описание">
+								<svg class="icon-help" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-help"></use>
+								</svg>
+							</span>
+
+						</label>
+
+						<label class="ui-check">
+							<input class="ui-check__input settings_input" data-setting="not_allow_from_ru" required="" type="checkbox" {% if not_allow_from_ru %}checked{% endif %} />
+							<span class="ui-check__switch"></span>
+							<span class="ui-check__text">Бан RU траффика</span>
+
+							<span class="ui-help js-tooltip" title="Заблокировать посетителей из России (по IP, выдается ошибка 451)">
+								<svg class="icon-help" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-help"></use>
+								</svg>
+							</span>
+
+						</label>
+
+						<label class="ui-check">
+							<input class="ui-check__input settings_input" data-setting="mark_as_closed" required="" type="checkbox" {% if mark_as_closed %}checked{% endif %} />
+							<span class="ui-check__switch"></span>
+							<span class="ui-check__text">Закрытая компания</span>
+
+							<span class="ui-help js-tooltip" title="Компания помечается закрытой">
+								<svg class="icon-help" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-help"></use>
+								</svg>
+							</span>
+
+						</label>
+
+						<label class="ui-check">
+							<input class="ui-check__input settings_input" data-setting="mark_as_deleted" required="" type="checkbox" {% if mark_as_deleted %}checked{% endif %} />
+							<span class="ui-check__switch"></span>
+							<span class="ui-check__text">Удалить</span>
+
+							<span class="ui-help js-tooltip" title="Компания помечается удаленной">
+								<svg class="icon-help" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-help"></use>
+								</svg>
+							</span>
+
+						</label>
+
+						<label class="ui-check">
+							<input class="ui-check__input settings_input" data-setting="not_show_videos" required="" type="checkbox" {% if not_show_videos %}checked{% endif %} />
+							<span class="ui-check__switch"></span>
+							<span class="ui-check__text">Скрыть видео</span>
+
+							<span class="ui-help js-tooltip" title="Скрыть блок с видео">
+								<svg class="icon-help" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-help"></use>
+								</svg>
+							</span>
+
+						</label>
+
+						<label class="ui-check">
+							<input class="ui-check__input settings_input" data-setting="not_show_nsfw_images" required="" type="checkbox" {% if not_show_nsfw_images %}checked{% endif %} />
+							<span class="ui-check__switch"></span>
+							<span class="ui-check__text">Скрыть NSFW фото</span>
+
+							<span class="ui-help js-tooltip" title="NSFW фото не будут показываться">
+								<svg class="icon-help" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-help"></use>
+								</svg>
+							</span>
+
+						</label>
+
+						<label class="ui-check">
+							<input class="ui-check__input settings_input" data-setting="not_show_nsfw_reviews" required="" type="checkbox" {% if not_show_nsfw_reviews %}checked{% endif %} />
+							<span class="ui-check__switch"></span>
+							<span class="ui-check__text">Скрыть NSFW отзывы</span>
+
+							<span class="ui-help js-tooltip" title="NSFW отзывы не будут показываться">
+								<svg class="icon-help" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-help"></use>
+								</svg>
+							</span>
+
+						</label>
+
+						<br/>
+						<br/>
+
+						<a class="btn btn__admin btn--30 btn--white" href="#" data-id="{{ id }}" id="admin-copy-id">ID {{ id }}</a>
+						<a class="btn btn__admin btn--30 btn--white" href="#" target="_blank">Редактировать</a>
+						<a class="btn btn__admin btn--30 btn--white" href="#" target="_blank">Отзывы в БД</a>
+						<a class="btn btn__admin btn--30 btn--white" href="#" target="_blank">Загрузки в БД</a>
+						<a class="btn btn__admin btn--30 btn--white" href="#" id="admin-hide-rev-panels">Админ-панели отзывов on/off</a>
+						<a class="btn btn__admin btn--30 btn--white" href="/logout" target="_blank">Выход</a>
+
+					</p>
+				</div>
+			</div>
+
+			<button class="header__notice-close js-notice-close">
+				<svg aria-hidden="true" class="icon-close">
+					<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-close"></use>
+				</svg>
+			</button>
+
+			<button class="header__notice-btn js-notice-btn">
+				<svg aria-hidden="true" class="icon-dots">
+					<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-dots"></use>
+				</svg>
+			</button>
+		</div>
+	{% endif %}
+
+	<div class="header__topbar {% if page_type == 'map' %}shadow{% endif %}">
+		<div class="container-fluid">
+
+			<div class="header__logo">
+				<a href="/" title="Перейти на главную">
+					<svg width="175" height="25" viewBox="0 0 175 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M18.5821 8.8533C18.5821 11.3981 17.4038 14.5717 13.491 18.7495C12.4509 19.8604 11.0132 21.0901 9.17736 22.4406C7.46604 21.2981 6.02877 20.0675 4.86651 18.7495C1.47075 14.8976 0 11.2533 0 8.8533C0 4.01981 4.34481 0 9.17736 0C14.0094 0 18.5821 4.01981 18.5821 8.8533Z" fill="#FF4747"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M14.6418 8.94859C14.6399 11.9297 12.2234 14.3462 9.2423 14.3481C6.2607 14.3462 3.84419 11.9297 3.84277 8.94859C3.84419 5.96698 6.2607 3.55094 9.2423 3.54906C12.2234 3.55094 14.6399 5.96698 14.6418 8.94859Z" fill="white"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M59.0334 10.7363C60.1857 9.22029 61.9952 8.34906 63.8985 8.39293L63.9004 8.39246C67.1608 8.39246 69.3768 10.634 69.3749 13.9708C69.3749 17.384 66.8532 20.2113 62.9815 20.2113C58.0655 20.2113 55.7725 16.951 55.7725 12.5698C55.7725 5.84623 59.7994 3.78208 68.1013 2.35567V5.69293C67.633 5.77642 67.1275 5.84801 66.6029 5.9223C63.4463 6.36931 59.5997 6.91403 59.0334 10.7363ZM33.6145 15.1693C32.6754 15.1835 31.7372 15.1066 30.8126 14.9401H30.8107V19.7783H27.3721V3.67972H33.7164C38.4541 3.67972 40.2117 6.27972 40.2117 9.38727C40.2117 13.6156 36.9513 15.1693 33.6145 15.1693ZM33.5126 6.68538H30.8126H30.8117V12.1109C31.5791 12.225 32.3541 12.276 33.1296 12.2637C35.1174 12.2637 36.6202 11.4741 36.6202 9.30897C36.6202 7.85708 35.9834 6.68538 33.5126 6.68538ZM46.756 24.6193L46.7573 24.6165H46.7589L46.756 24.6193ZM46.7573 24.6165H43.1919L46.5032 18.4778L41.2051 7.0934H45.0768L48.057 14.8113L50.9098 7.0934H54.6032L46.7573 24.6165ZM62.7023 17.1802C60.6645 17.1802 59.2636 15.7538 59.2636 13.3085C60.1117 12.1198 61.4716 11.4024 62.9315 11.3745C64.6636 11.3745 65.9372 12.4953 65.9372 14.2783C65.9381 15.9307 64.5372 17.1802 62.7023 17.1802ZM79.5136 20.2113C78.1178 20.2528 76.7749 19.6745 75.8457 18.6321V24.6179H72.3301V7.09529H75.3617L75.5145 9.08208C76.3824 7.50708 78.0744 6.56699 79.8702 6.66227C83.9183 6.66227 85.8051 9.56604 85.8051 13.183C85.8051 16.9 83.5636 20.2113 79.5136 20.2113ZM79.0532 17.2311C77.8796 17.2882 76.7263 16.9071 75.8183 16.1613V10.7613C76.7282 10.0071 77.8716 9.59293 79.0532 9.58963C81.2438 9.58963 82.2136 11.1434 82.2136 13.2576C82.2145 15.3972 81.2975 17.2043 79.056 17.2311H79.0532ZM99.3537 7.0934H100.653H100.658V19.7783H97.3721V12.6462L89.8782 19.7783H88.5791V7.0934H91.865V14.2255L99.3537 7.0934ZM104.323 19.7783H107.835V14.7349H109.058L112.828 19.7783H117.158L111.965 13.2321L116.703 7.0934H112.499L108.959 12.1099H107.838V7.0934H104.323V19.7783ZM130.075 11.8566V19.7783L130.074 19.7764H127.552L127.222 18.0189C125.999 19.5726 124.624 20.0566 122.357 20.0566C119.657 20.0566 118.179 18.0189 118.179 15.8538C118.179 12.6189 120.726 11.3962 123.631 11.3962C124.678 11.3873 125.719 11.5505 126.713 11.8802V11.4217C126.713 9.84435 125.363 9.48774 124.14 9.48774C122.557 9.4552 120.989 9.78633 119.555 10.4557V7.39906C121.196 6.89246 122.906 6.64293 124.624 6.66038C127.655 6.66038 130.075 7.88303 130.075 11.8566ZM126.712 15.7538C126.061 16.8203 124.905 17.4755 123.655 17.4859C122.407 17.4859 121.693 16.7472 121.693 15.7793C121.693 14.3783 122.559 13.716 124.394 13.716C125.206 13.6906 126.009 13.8934 126.712 14.3019V15.7538ZM132.136 7.0934H143.395V9.94623H139.523V19.7783H136.008V9.94623H132.136V7.0934ZM151.624 20.2113C155.979 20.2107 158.551 17.2307 158.551 13.3594C158.551 9.86887 156.309 6.66133 151.623 6.66133C147.292 6.66133 144.72 9.61604 144.72 13.5132C144.721 17.0274 146.988 20.1604 151.624 20.2113ZM154.959 13.5377C154.959 11.4981 153.991 9.56416 151.623 9.56416L151.624 9.56274C149.128 9.56274 148.338 11.551 148.337 13.3085C148.337 15.3736 149.279 17.3076 151.623 17.3076C154.144 17.3076 154.959 15.3208 154.959 13.5377ZM164.995 18.6321C165.924 19.6745 167.267 20.2528 168.663 20.2113C172.713 20.2113 174.955 16.9 174.955 13.183C174.955 9.56604 173.068 6.66227 169.019 6.66227C167.223 6.56699 165.531 7.50708 164.664 9.08208L164.511 7.09529H161.48V24.6179H164.995V18.6321ZM164.967 16.1613C165.875 16.9071 167.029 17.2882 168.202 17.2311H168.206C170.447 17.2043 171.364 15.3972 171.363 13.2576C171.363 11.1434 170.393 9.58963 168.202 9.58963C167.021 9.59293 165.877 10.0071 164.967 10.7613V16.1613Z" fill="currentColor"/>
+					</svg>
+				</a>
+			</div>
+
+			<nav class="header__breadcrumbs">
+				{% if page_type == 'company' %}
+				<ul class="header__breadcrumbs-menu">
+					<li>
+						<a class="header__breadcrumbs-link" href="{{ city_link }}">{{ city }}</a>
+						<svg class="icon-arrow-right" aria-hidden="true">
+							<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-arrow-right"></use>
+						</svg>
+					</li>
+					<li>
+						<a class="header__breadcrumbs-link" href="{{ categories.0.self_link }}">{{ categories.0.name }}</a>
+						<svg class="icon-arrow-right" aria-hidden="true">
+							<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-arrow-right"></use>
+						</svg>
+					</li>
+					<li class="current">
+						{{ name }}
+					</li>
+				</ul>
+				{% elseif page_type == 'update' %}
+					<ul class="header__breadcrumbs-menu">
+						<li>
+							<a class="header__breadcrumbs-link" href="{{ back_link }}">
+								{{ name }}
+							</a>
+							<svg class="icon-arrow-right" aria-hidden="true">
+								<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-arrow-right"></use>
+							</svg>
+						</li>
+						<li class="current">
+							Изменение данных
+						</li>
+					</ul>
+				{% elseif page_type == 'post' %}
+				<ul class="header__breadcrumbs-menu">
+					{% if city_link|length %}
+						<li>
+							<a class="header__breadcrumbs-link" title="Перейти на страницу «Почты в {{ in_city_word|default('городе ' ~ city_ns_safe) }}»" href="{{ city_link }}">
+								Почты в {{ in_city_word|default('городе ' ~ city_ns_safe) }}
+							</a>
+
+							<svg class="icon-arrow-right" aria-hidden="true">
+								<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-arrow-right"></use>
+							</svg>
+						</li>
+					{% endif %}
+
+					<li>
+						Отделение {{ post_index }}
+					</li>
+				</ul>
+				{% elseif page_type == 'item' %}
+					{% if categories|length %}
+					<ul class="header__breadcrumbs-menu">
+							{% for category in categories %}
+							<li>
+								<a class="header__breadcrumbs-link" title="Перейти на страницу «{{ category.name }}»" href="{{ category.link }}">{{ category.name }}</a>
+								<svg class="icon-arrow-right" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-arrow-right"></use>
+								</svg>
+							</li>
+							{% endfor %}
+					</ul>
+					{% endif %}
+				{% elseif page_type == 'hotel' %}
+					<ul class="header__breadcrumbs-menu">
+						<li>
+							{% if country_word_kogo|length %}
+								{% set country_title = "Отели " ~ country_word_kogo %}
+							{% else %}
+								{% if country_word|length %}
+									{% set country_title = "Отели в " ~ country_word %}
+								{% else %}
+									{% set country_title = country_en %}
+								{% endif %}
+							{% endif %}
+
+							<a class="header__breadcrumbs-link" href="{{ country_link }}" title="{{ country_ru|default(country_en) }}">{{ country_title }}</a>
+							<svg class="icon-arrow-right" aria-hidden="true">
+								<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-arrow-right"></use>
+							</svg>
+						</li>
+						<li>
+							{% if city_word_kogo|length %}
+								{% set city_title = "Отели " ~ city_word_kogo %}
+							{% else %}
+								{% if city_ru|length %}
+									{% set city_title = "Отели в городе " ~ city_ru %}
+								{% else %}
+									{% set city_title = "Отели в городе " ~ city_en %}
+								{% endif %}
+							{% endif %}
+
+							<a class="header__breadcrumbs-link" href="{{ city_link }}" title="{{ city_title }}">{{ city_ru|default(city_en) }}</a>
+							<svg class="icon-arrow-right" aria-hidden="true">
+								<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-arrow-right"></use>
+							</svg>
+						</li>
+						<li class="current">
+							{{ name }}
+						</li>
+					</ul>
+				{% elseif page_type == 'map' %}
+					{% if page_subtype == 'hotel' %}
+						<ul class="header__breadcrumbs-menu">
+							<li>
+								<a class="header__breadcrumbs-link" href="{{ country_link }}">{{ country_name }}</a>
+								<svg class="icon-arrow-right" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-arrow-right"></use>
+								</svg>
+							</li>
+							<li>
+								<a class="header__breadcrumbs-link" href="{{ city_link }}">{{ city.city_name }}</a>
+								<svg class="icon-arrow-right" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-arrow-right"></use>
+								</svg>
+							</li>
+							<li class="current">
+								На карте
+							</li>
+						</ul>
+					{% else %}
+					<ul class="header__breadcrumbs-menu">
+						<li>
+							<a class="header__breadcrumbs-link" href="{{ city_link }}">{{ city.city_name }}</a>
+							<svg class="icon-arrow-right" aria-hidden="true">
+								<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-arrow-right"></use>
+							</svg>
+						</li>
+						<li>
+							<a class="header__breadcrumbs-link" href="{{ category.self_link }}">{{ category.name }}</a>
+							<svg class="icon-arrow-right" aria-hidden="true">
+								<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-arrow-right"></use>
+							</svg>
+						</li>
+						<li class="current">
+							На карте
+						</li>
+					</ul>
+					{% endif %}
+				{% elseif page_type == 'category' %}
+					<ul class="header__breadcrumbs-menu">
+
+						{#
+						{% if country_name|length and country_slug|length %}
+						<li>
+							<a class="header__breadcrumbs-link" title="Перейти на страницу «{{ country_name }}»" href="/{{ country_slug }}">
+								{{ country_name}}
+							</a>
+							<svg class="icon-arrow-right" aria-hidden="true">
+								<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-arrow-right"></use>
+							</svg>
+						</li>
+						{% endif %}
+						#}
+
+						{% if city.city_ns_safe|length and city_link|length %}
+							<li>
+								<a class="header__breadcrumbs-link" title="Перейти на страницу «{{ city.city_ns_safe }}»" href="/{{ city_link }}">
+									{{ city.city_ns_safe}}
+								</a>
+								<svg class="icon-arrow-right" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-arrow-right"></use>
+								</svg>
+							</li>
+						{% endif %}
+
+						{% if place_name|length %}
+
+							{% if place_type == 'metro' %}
+								{% set place_front = 'м. ' %}
+							{% elseif place_type == 'stop' %}
+								{% set place_front = 'ост. ' %}
+							{% elseif place_type == 'region' %}
+								{% set place_front = 'район ' %}
+							{% endif %}
+
+							<li>
+								<span class="dark-text">
+									{{ place_front ~ place_name }}
+								</span>
+								<svg class="icon-arrow-right" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-arrow-right"></use>
+								</svg>
+							</li>
+						{% endif %}
+
+						{% if categories.0.name|length %}
+							<li>
+								{{ categories.0.name }}
+							</li>
+						{% endif %}
+
+					</ul>
+				{% elseif page_type == 'category_post' %}
+					<ul class="header__breadcrumbs-menu">
+
+						{#
+						{% if country_name|length and country_slug|length %}
+							<li>
+								<a class="header__breadcrumbs-link" title="Перейти на страницу «{{ country_name }}»" href="/{{ country_slug }}">
+									{{ country_name}}
+								</a>
+								<svg class="icon-arrow-right" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-arrow-right"></use>
+								</svg>
+							</li>
+						{% endif %}
+						#}
+
+						{% if city.city_ns_safe|length and city_link|length %}
+							<li>
+								<a class="header__breadcrumbs-link" title="Перейти на страницу «{{ city.city_ns_safe }}»" href="{{ city_link }}">
+									{{ city.city_ns_safe }}
+								</a>
+
+								<svg class="icon-arrow-right" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-arrow-right"></use>
+								</svg>
+							</li>
+						{% endif %}
+
+						<li>
+							Почты
+						</li>
+					</ul>
+				{% elseif page_type == 'category_hotel' %}
+
+					<ul class="header__breadcrumbs-menu">
+
+						{% if (country.whom_word|length or country.name_ns_safe|length) and country.self_link|length %}
+							<li>
+								<a class="header__breadcrumbs-link" title="Перейти на страницу" href="{{ country.self_link }}">
+									{{ "Отели " ~ country.whom_word|default('(' ~ country.name_ns_safe ~ ')') }}
+								</a>
+								<svg class="icon-arrow-right" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-arrow-right"></use>
+								</svg>
+							</li>
+						{% endif %}
+
+						{% if mark.slug|length %}
+							{% if city.name_ns_safe|length and city_link|length %}
+								<li>
+
+									<a class="header__breadcrumbs-link" title="Перейти на страницу «{{ city.name_ns_safe }}»" href="{{ city_link }}">
+									{{ city.name_ns_safe }}
+									</a>
+
+									<svg class="icon-arrow-right" aria-hidden="true">
+										<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-arrow-right"></use>
+									</svg>
+								</li>
+							{% endif %}
+						{% else %}
+							{% if city.name_ns_safe|length %}
+								<li>
+									<span class="dark-text">
+									{{ city.name_ns_safe }}
+									</span>
+
+									<svg class="icon-arrow-right" aria-hidden="true">
+										<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-arrow-right"></use>
+									</svg>
+								</li>
+							{% endif %}
+						{% endif %}
+
+						<li>
+							{{ mark.name }}
+						</li>
+					</ul>
+
+				{% elseif page_type == 'category_item' %}
+
+					<ul class="header__breadcrumbs-menu">
+						{% for category in categories %}
+						<li>
+							{% if loop.last %}
+								{{ category.category_name }}
+							{% else %}
+							<a class="header__breadcrumbs-link" title="Перейти на страницу" href="{{ category.self_link }}">
+								{{ category.category_name }}
+							</a>
+							<svg class="icon-arrow-right" aria-hidden="true">
+								<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-arrow-right"></use>
+							</svg>
+						</li>
+							{% endif %}
+						{% endfor %}
+					</ul>
+
+				{% elseif page_type == 'search' %}
+					<ul class="header__breadcrumbs-menu">
+						<li>Поиск по сайту</li>
+					</ul>
+				{% endif %}
+			</nav>
+			{% if page_type != 'map' %}
+			<div class="header__control">
+				<button class="header__blind js-theme-blind">аА</button>
+				<button class="header__dark js-theme-dark"><span class="header__dark-toggle"></span>
+					<svg class="icon-moon" aria-hidden="true">
+						<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-moon"></use>
+					</svg>
+				</button>
+			</div>
+			{% endif %}
+			<div class="header__offcanvas js-offcanvas">
+				<button class="header__offcanvas-btn js-offcanvas-btn"><span></span><span></span><span></span></button>
+				<div class="header__offcanvas-dropdown js-offcanvas-dropdown">
+					<button class="header__offcanvas-close js-offcanvas-close">
+						<svg class="icon-close" aria-hidden="true">
+							<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-close"></use>
+						</svg>
+					</button>
+					<div class="header__offcanvas-user">
+						<a class="header__offcanvas-user-link" href="#">
+							<span class="header__offcanvas-user-icon">
+							  <svg class="icon-user" aria-hidden="true">
+								<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-user"></use>
+							  </svg>
+							</span>
+							<span class="header__offcanvas-user-text">Константин Константинович Константинопольский</span>
+						</a>
+					</div>
+					<div class="header__offcanvas-breadcrumbs">
+						<ul class="header__offcanvas-breadcrumbs-menu">
+							<li><a class="header__offcanvas-breadcrumbs-link" href="#">Санкт-Петербург</a>
+								<svg class="icon-arrow-right" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-arrow-right"></use>
+								</svg>
+							</li>
+							<li><a class="header__offcanvas-breadcrumbs-link" href="#">Страховые компании</a>
+								<svg class="icon-arrow-right" aria-hidden="true">
+									<use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-arrow-right"></use>
+								</svg>
+							</li>
+						</ul>
+					</div>
+					<ul class="header__offcanvas-menu">
+						<li><a class="header__offcanvas-link" href="#"><span class="header__offcanvas-icon">
+                        <svg class="icon-offcanvas-heart" aria-hidden="true">
+                          <use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-offcanvas-heart"></use>
+                        </svg></span><span class="header__offcanvas-text">Избранное</span></a></li>
+						<li><a class="header__offcanvas-link" href="#"><span class="header__offcanvas-icon">
+                        <svg class="icon-offcanvas-reviews" aria-hidden="true">
+                          <use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-offcanvas-reviews"></use>
+                        </svg></span><span class="header__offcanvas-text">Мои отзывы</span></a></li>
+						<li><a class="header__offcanvas-link" href="#"><span class="header__offcanvas-icon">
+                        <svg class="icon-offcanvas-balance" aria-hidden="true">
+                          <use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-offcanvas-balance"></use>
+                        </svg></span><span class="header__offcanvas-text">Баланс 99900 ₽</span></a></li>
+						<li><a class="header__offcanvas-link" href="#"><span class="header__offcanvas-icon">
+                        <svg class="icon-offcanvas-messages" aria-hidden="true">
+                          <use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-offcanvas-messages"></use>
+                        </svg></span><span class="header__offcanvas-text">Сообщения (1180)</span><span class="icon-pulse"></span></a></li>
+						<li><a class="header__offcanvas-link" href="#"><span class="header__offcanvas-icon">
+                        <svg class="icon-offcanvas-business" aria-hidden="true">
+                          <use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-offcanvas-business"></use>
+                        </svg></span><span class="header__offcanvas-text">Мой бизнес</span></a></li>
+						<li><a class="header__offcanvas-link" href="#"><span class="header__offcanvas-icon">
+                        <svg class="icon-offcanvas-profile" aria-hidden="true">
+                          <use xlink:href="{{ static_cdn }}/sprites/sprite.svg#icon-offcanvas-profile"></use>
+                        </svg></span><span class="header__offcanvas-text">Профиль</span></a></li>
+					</ul>
+					<div class="header__offcanvas-themes">
+						<button class="header__offcanvas-dark js-theme-dark">
+							<span class="header__offcanvas-dark-toggle"></span>Ночная тема
+						</button>
+						<button class="header__offcanvas-blind js-theme-blind">
+							<span class="header__offcanvas-blind-icon">аА</span>Версия для слабовидящих
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<!-- Header :: End-->
+{% endif %}

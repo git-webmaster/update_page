@@ -1,0 +1,46 @@
+// --------------------------------------------------------------------------
+// Scrollbar
+// --------------------------------------------------------------------------
+
+[data-scrollbar] {
+    position: relative;
+    &:focus {
+        box-shadow: none;
+    }
+
+    &.is-disabled {
+        pointer-events: none;
+        .scroll-content {
+            pointer-events: none;
+        }
+    }
+}
+
+
+
+.scrollbar-track-y {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    overflow: hidden;
+    z-index: 100;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.scrollbar-thumb-y {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    height: auto;
+    cursor: pointer;
+    background-color: #aaa;
+    border-radius: 4px;
+    &:hover {
+        background: #808080;
+    }
+}

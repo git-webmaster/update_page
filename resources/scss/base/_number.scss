@@ -1,0 +1,93 @@
+// --------------------------------------------------------------------------
+// Number
+// --------------------------------------------------------------------------
+
+.ui-number {
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	padding: 0 47px;
+	height: 48px;
+	margin: 0 0 20px;
+	width: 100%;
+}
+
+
+.ui-number--w340 {
+	max-width: 340px;
+}
+
+.ui-number__btn {
+	font: 400 16px/24px $fontBase;
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	border: 1px solid #ccc;
+	background: none;
+	padding: 11px 18px;
+	border-radius: 2px;
+	text-decoration: none;
+	text-align: center;
+	cursor: pointer;
+	background: #fafafa;
+	color: #131313;
+
+	&:hover {
+		border-color: #ccc;
+		background: #ebebeb;
+		color: #131313;
+	}
+	&:active {
+		border-color: #ccc;
+		background: #fafafa;
+		color: #131313;
+		box-shadow: inset 2px 2px 5px rgba(153, 153, 153, 0.2);
+	}
+
+
+
+	background-color: #fafafa;
+	width: 48px;
+	position: absolute;
+	top: 0;
+	text-indent: -9999px;
+	height: inherit;
+	&:after, &:before {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		background: currentColor;
+	}
+	&:after {
+		width: 22px;
+		height: 2px;
+		margin: -1px 0 0 -11px;
+	}
+	&:before {
+		height: 22px;
+		width: 2px;
+		margin: -11px 0 0 -1px;
+	}
+	&--minus {
+		left: 0;
+		border-radius: 2px 0 0 2px;
+		&:before {
+			display: none;
+		}
+	}
+	&--plus {
+		right: 0;
+		border-radius: 0 2px 2px 0;
+	}
+
+}
+
+.ui-number__input {
+	@extend .ui-input;
+	margin: 0;
+	border-radius: 0;
+	height: inherit;
+	text-align: center;
+}

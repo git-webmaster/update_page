@@ -1,0 +1,12 @@
+
+{% if preload|length %}
+	{% for link in preload %}
+
+		<link rel="preconnect" href="{{ link }}" />
+
+	{% endfor %}
+{% endif %}
+
+	<link rel="preload" as="script" href="{{ static_cdn }}/js/app.full.min.js?v={{ static_version }}" />
+	<link rel="preload" as="script" href="{{ static_cdn }}/js/update.js?v={{ static_version }}" />
+

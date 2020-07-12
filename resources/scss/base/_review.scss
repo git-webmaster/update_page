@@ -1,0 +1,127 @@
+// --------------------------------------------------------------------------
+// Review
+// --------------------------------------------------------------------------
+
+.ui-review {
+    display: flex;
+    padding: 1px;
+
+    @include breakpointMax(md) {
+        flex-direction: column;
+    }
+}
+
+
+.ui-review__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+
+    // &:checked + .ui-review__btn {
+    //     background: #F9F9F9;
+    //     border-color: #FAFAFA;
+    //     z-index: 100;
+    // }
+
+    // &:checked + .ui-review__btn--red {
+    //     border-color: #FF5050;
+    //     background: #FAF5F5;
+    // }
+    // &:checked + .ui-review__btn--orange {
+    //     border-color: #FFC959;
+    //     background: #FAF8F5;
+    // }
+    // &:checked + .ui-review__btn--green {
+    //     background: #EDF4E9;
+    //     border-color: #72BB53;
+    // }
+
+    &:focus {
+        & + .ui-review__btn {
+            border-color: #299ae0;
+            box-shadow: 0 0 0 2px rgba(41, 154, 224, 0.3);
+            z-index: 1000;
+            // border-radius: 2px;
+             // background: #fff;
+            // color: #131313;
+        }
+        
+    }
+
+}
+
+.ui-review__btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    background: #fff;
+    min-width: 42px;
+    min-height: 42px;
+    margin: -1px;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 400;
+    text-align: center;
+    color: #131313;
+    flex: 1;
+    cursor: pointer;
+    border-radius: 0;
+    &:hover {
+        border-color: #CCCCCC;
+		background: #FAFAFA;
+		color: #131313;
+    }
+    &:active {
+		background: #FAFAFA;
+		color: #131313;
+		box-shadow: inset 2px 2px 5px rgba(153, 153, 153, 0.2);
+    }
+    
+    &:first-of-type {
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+    }
+    &:last-of-type {
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+    }
+
+    &.is-active {
+        background: #F9F9F9;
+        border-color: #FAFAFA;
+        z-index: 100;
+    }
+
+    &.is-active.ui-review__btn--lightblue {
+        border-color: rgba(41, 154, 224, 0.5);
+        background: rgba(80, 184, 249, 0.1);
+
+    }
+    &.is-active.ui-review__btn--red {
+        border-color: #FF5050;
+        background: #FAF5F5;
+    }
+    &.is-active.ui-review__btn--orange {
+        border-color: #FFC959;
+        background: #FAF8F5;
+    }
+    &.is-active.ui-review__btn--green {
+        background: #EDF4E9;
+        border-color: #72BB53;
+    }
+
+    @include breakpointMax(md) {
+        flex-direction: column;
+        border-radius: 0;
+        &:first-of-type {
+            border-radius: 2px 2px 0 0;
+        }
+        &:last-of-type {
+            border-radius: 0 0 2px 2px;
+        }
+    }
+
+}

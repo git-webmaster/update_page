@@ -1,0 +1,73 @@
+// --------------------------------------------------------------------------
+// Colors
+// --------------------------------------------------------------------------
+
+.ui-colors {
+	margin: 0 0 20px;
+	&--offset {
+        padding-left: 28px;
+    }
+	.minicolors {
+		position: absolute;
+		top: 100%;
+		right: 0;
+		transition: 0.25s;
+		opacity: 0;
+		visibility: hidden;
+		z-index: 1200;
+		margin: 10px 0 0;
+	}
+	&.is-open {
+		.minicolors,
+		.ui-colors-style {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+}
+
+
+.ui-colors__group {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -5px;
+	padding: 0 0 10px;
+	.ui-check {
+		padding: 0 5px 10px;
+		margin: 0;
+	}
+}
+
+.ui-colors__control {
+	position: relative;
+	.ui-input {
+		margin: 0;
+		padding-right: 100px;
+	}
+	.btn {
+		position: absolute;
+		top: 50%;
+		right: 5px;
+		transform: translate(0,-50%);
+		width: 90px;
+		z-index: 1100;
+	}
+
+	@include breakpoint(md) {
+		max-width: 400px;
+	}
+}
+
+.ui-colors-style {
+	position: absolute;
+	top: 50%;
+	right: 100px;
+	width: 36px;
+	height: 36px;
+	display: block;
+	transform: translate(0,-50%);
+	border-radius: 2px;
+	margin: 0;
+	opacity: 0;
+	visibility: hidden;
+}

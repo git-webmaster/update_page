@@ -1,0 +1,30 @@
+// --------------------------------------------------------------------------
+// Standart
+// --------------------------------------------------------------------------
+
+.ui-wysiwyg {
+
+
+    a:not([class^="ui-"]) {
+        @extend .ui-link;
+        @extend .ui-link--underline;
+        @extend .ui-link--blue;
+    }
+	
+	ul:not([class^="ui-"]) {
+		@extend .ui-ul;
+	}
+
+	ol {
+		@extend .ui-ol;
+	}
+
+	table {
+		@extend .ui-table;
+	}
+
+	figure {
+		@extend .ui-figure;
+	}
+
+}

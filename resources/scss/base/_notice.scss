@@ -1,0 +1,82 @@
+// --------------------------------------------------------------------------
+// Notice
+// --------------------------------------------------------------------------
+
+.ui-notice {
+    display: block;
+    margin: 0 0 20px;
+    padding: 20px 24px 20px 52px;
+    font-size: 16px;
+    line-height: 18px;
+    border: 1px solid transparent;
+    position: relative;
+    &--green {
+        background: rgba(114, 187, 83, 0.08);
+        .ui-notice__icon {
+            color: #72bb53;
+        }
+    }
+    &--red {
+        background: rgba(255, 80, 80, 0.06);
+        .ui-notice__icon {
+            color: #FF5050;
+        }
+    }
+    &--orange {
+        background: #F8F5EE;
+        .ui-notice__icon {
+            color: #FFC959;
+        }
+    }
+    &--violet {
+        background: rgba(29, 30, 244, 0.04);
+        // border-color: #E7E7E7;
+        .ui-notice__icon {
+            color: #1D1EF4;
+        }
+    }
+
+    @include breakpoint(sm) {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+.ui-notice__icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ui-notice__text {
+    flex: 1;
+    margin: 0 0 10px;
+    p {
+        margin: 0 0 10px;
+        &:last-child {
+            margin: 0;
+        }
+    }
+    @include breakpoint(sm) {
+        margin: 0 20px 0 0;
+    }
+}
+
+.ui-notice__control {
+    margin: 0;
+    white-space: nowrap;
+    .btn {
+        margin: 0 10px 0 0;
+        &:last-child {
+            margin: 0;
+        }
+    }
+
+    @include breakpoint(sm) {
+        margin: -8px -12px -8px 0;
+    }
+}

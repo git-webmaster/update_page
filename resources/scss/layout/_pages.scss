@@ -1,0 +1,104 @@
+//- --------------------------------------------------------------------------
+//- Pages
+//- --------------------------------------------------------------------------
+
+.is-page-country, .is-page-city, .is-page-index {
+
+    body {
+        background: #f5f5f5;
+    }
+
+    .header {
+        background: none;
+        border: none;
+    }
+
+    .header__logo {
+        background: none;
+    }
+
+    .header__control {
+        right: 0;
+    }
+
+    .header__topbar {
+        height: 60px;
+    }
+
+    .header__logo {
+        &:after, &:before {
+            display: none;
+        }
+        img, svg {
+            width: 200px;
+            height: auto;
+        }
+    }
+
+    .header__blind, .header__dark {
+        display: none;
+    }
+
+    .header__signin {
+        border: none;
+        display: flex;
+        align-items: center;
+    }
+
+    .header__signin-btn {
+        min-width: auto;
+        padding: 0;
+        background: none;
+        height: auto;
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+}
+
+
+.is-page-index {
+    .header__logo {
+        display: none;
+    }
+}
+
+.is-page-admin {
+    // .scrolltop {
+        
+    //     @include breakpoint(hd) {
+    //         top: -30px;
+    //         bottom: 0;
+    //     }
+    // }
+}
+
+
+.is-page-client {
+    .scrolltop {
+        
+        @include breakpoint(hd) {
+            top: -30px;
+            bottom: -30px;
+        }
+    }
+
+    .l--checkout .scrolltop {
+        @include breakpoint(hd) {
+            top: 0;
+        }
+    }
+
+    .l--edit .scrolltop {
+        @include breakpoint(hd) {
+            top: -30px;
+        }
+    }
+}
+
+
+.is-page-syst {
+    .main {
+        display: flex;
+    }
+}

@@ -1,0 +1,209 @@
+// --------------------------------------------------------------------------
+// selection
+// --------------------------------------------------------------------------
+
+.ui-selection {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    z-index: 100;
+    margin: 0 0 20px;
+
+    &--w130 {
+        width: 130px;
+    }
+
+    &--w150 {
+        width: 150px;
+    }
+    
+    &--w160 {
+        width: 160px;
+    }
+
+    &.is-open {
+        z-index: 110;
+        .ui-selection__dropdown {
+            opacity: 1;
+            visibility: visible;
+            max-height: 300px;
+            transform: translate(0,0);
+        }
+    }
+
+    &.is-changed {
+        .ui-selection__icon {
+            .icon-selection-arrow {
+                display: none;
+            }
+            .icon-selection-cancel {
+                display: block;
+            }
+        }
+    }
+}
+
+
+
+.ui-selection__btn {
+    font: 400 15px/32px $fontBase;
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #999;
+    position: relative;
+    padding: 0 44px 0 15px;
+    text-align: left;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 2px;
+    outline: none;
+    &:hover {
+        box-shadow: 0px 2px 4px rgba(128, 128, 128, 0.1);
+        border-color: #808080;
+    }
+    &:focus {
+        border-color: #299ae0;
+        box-shadow: 0 0 0 2px rgba(41, 154, 224, 0.3);
+    }
+}
+
+.ui-selection__text {
+    color: #777;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ui-selection__icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    border-left: 1px solid transparent;
+    border-color: inherit;
+    color: #131313;
+
+    .icon-selection-cancel {
+        display: none;
+    }
+}
+
+.ui-selection__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 250px;
+    margin: 18px 0 0 -125px;
+    background: #fff;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.11);
+    padding: 12px;
+    border: 1px solid #e7e7e7;
+    transition: 0.3s cubic-bezier(0.17, 0.04, 0.03, 0.94);;
+    
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    // transform: translate(0,10px);
+
+
+
+    &:after, &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 50%;
+        bottom: 100%;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 15px solid transparent;
+        margin: 0 0 0 -10px;
+    }
+    &:after {
+        z-index: 1;
+        border-bottom-color: #ebebeb;
+    }
+    &:before {
+        z-index: 2;
+        border-bottom-color: #fff;
+        margin-bottom: -1px;
+    }
+}
+
+.ui-selection__search {
+    position: relative;
+    margin: 0 0 20px;
+}
+
+.ui-selection__search-input {
+    font: 400 15px/18px $fontBase;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    display: block;
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+
+}
+
+.ui-selection__search-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    pointer-events: none;
+    width: 40px;
+    color: #999;
+}
+
+.ui-selection__scrollbar {
+    max-height: 186px;
+    
+    .ps__rail-y {
+        opacity: 1;
+    }
+}
+
+.ui-selection__menu {
+    @include list-style-none;
+
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 400;
+    white-space: normal;
+    padding: 2px;
+    & > li {
+        
+        margin: 0 0 10px;
+        &:last-child {
+            margin: 0;
+        }
+        
+    }
+    .icon-circle {
+        width: 8px;
+        height: 8px;
+        margin: 5px 10px 5px 0;
+        flex: 0 0 auto;
+    }
+}
+
+.ui-selection__option {
+    border: none;
+    background: none;
+    text-align: left;
+    display: flex;
+    color: #808080;
+    cursor: pointer;
+    &:hover {
+        color: #131313;
+    }   
+}

@@ -1,0 +1,57 @@
+/* ==========================================================================
+   Utilites
+   ========================================================================== */
+.is-theme-brand .header {
+  background: #124cb0;
+  border-color: #073482; }
+
+.is-theme-brand .header__logo {
+  color: #fff; }
+  .is-theme-brand .header__logo:after {
+    background: #073482; }
+
+.is-theme-brand .header__blind, .is-theme-brand .header__dark, .is-theme-brand .header__signin {
+  border-color: #073482;
+  color: rgba(255, 255, 255, 0.5); }
+  .is-theme-brand .header__blind:hover, .is-theme-brand .header__dark:hover, .is-theme-brand .header__signin:hover {
+    background: none; }
+
+.is-theme-brand .header__breadcrumbs-link {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.5); }
+  .is-theme-brand .header__breadcrumbs-link:hover {
+    opacity: 1; }
+
+.is-theme-brand .header__dark-toggle {
+  background: rgba(255, 255, 255, 0.5); }
+
+.is-theme-brand .header__signin-btn {
+  color: #fff; }
+  .is-theme-brand .header__signin-btn u {
+    border-color: rgba(255, 255, 255, 0.5); }
+  .is-theme-brand .header__signin-btn [class^="icon-"] {
+    color: rgba(255, 255, 255, 0.5); }
+  .is-theme-brand .header__signin-btn:hover {
+    background: none; }
+
+.is-theme-brand .company__head {
+  background: #124cb0; }
+
+.is-theme-brand .company__heading,
+.is-theme-brand .company__caption,
+.is-theme-brand .company__text {
+  color: #fff; }
+
+.is-theme-brand .company__taglist {
+  padding: 0 0 30px; }
+
+@media (max-width: 479px) {
+  .is-theme-brand .company__taglist-menu > li {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%; } }
+
+.is-theme-brand .company__taglist-link {
+  line-height: 4rem;
+  background: #fff;
+  color: #131313; }

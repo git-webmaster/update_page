@@ -1,0 +1,31 @@
+// --------------------------------------------------------------------------
+// Marks
+// --------------------------------------------------------------------------
+
+.ui-mark {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+    min-width: 26px;
+    padding: 0 5px;
+    text-align: center;
+    border-radius: 2px;
+    &--green {
+        background-color: rgba(114, 187, 83, 0.3);
+        color: #131313;
+    }
+    &--red {
+        background-color: rgba(255, 80, 80, 0.3);
+        color: #131313;
+    }
+    &--orange {
+        background-color: rgba(255, 201, 89, 0.3);
+        color: #131313;
+    }
+    &--grey {
+        background-color: rgb(231, 231, 231);
+        color: #131313;
+    }
+}

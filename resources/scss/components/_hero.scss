@@ -1,0 +1,146 @@
+// --------------------------------------------------------------------------
+// Hero
+// --------------------------------------------------------------------------
+
+.hero {
+    position: relative;
+    z-index: 100;
+    padding: 30px 0 30px;
+    @include breakpoint(md) {
+        font-size: 30px;
+        padding: 20px 0 100px;
+    }
+}
+
+
+.hero__bg {
+    position: absolute;
+    top: -90px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(#606dbc,0.1),
+      rgba(#606dbc,0.1) 10px,
+      rgba(#465298, 0.1) 10px,
+      rgba(#465298, 0.1) 20px
+    );
+
+    img {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.hero__logo {
+    margin: -40px auto 70px;
+    text-align: center;
+    width: 100%;
+    max-width: 244px;
+    img, svg {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+
+.hero__countries {
+    @include list-style-none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 18px;
+    line-height: 20px;
+    padding: 20px 0 0;
+    margin: 0 -16px;
+    & > li {
+        padding: 0 16px;
+        margin: 0 0 20px;
+    }
+
+    @include breakpoint(md) {
+        margin-bottom: -40px;
+        justify-content: center;
+        & > li {
+            margin: 0;
+        }
+    }
+
+    @include breakpoint(lg) {
+        font-size: 20px;
+    }
+
+}
+
+
+.hero__countries-link {
+    @extend .ui-link;
+    @extend .ui-link--blue;
+    white-space: nowrap;
+}
+
+.hero__heading {
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 400;
+    text-align: center;
+    margin: 0 0 30px;
+    @include breakpoint(lg) {
+        font-size: 30px;
+    }
+}
+
+.hero__search {
+    display: block;
+    line-height: 1;
+    .row {
+        flex-wrap: nowrap;
+        margin: 0 -10px;
+        & > [class^="col-"] {
+            padding: 0 10px;
+        }
+    }
+    .ui-search {
+        margin: 0 0 20px;
+    }
+    .btn {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    @include breakpoint(md) {
+        display: flex;
+    }
+}
+
+.hero__search-primary {
+    flex: 1;
+    margin: 0;
+
+    .btn {
+        
+    }
+    @include breakpoint(md) {
+        //margin: 0 20px 0 0;
+    }
+}
+
+.hero__search-secondary {
+    flex: 0 0 340px;
+
+    @include breakpoint(lg) {
+        flex: 0 0 400px;
+    }
+}
+

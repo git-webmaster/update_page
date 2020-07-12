@@ -1,0 +1,192 @@
+$sprite: (
+	icon-drag-hover: (
+		offset-x: -218px,
+		offset-y: -41px,
+		width: 15px,
+		height: 31px,
+		total-width: 233px,
+		total-height: 174px,
+		image: '/sprites/sprite.png'
+	),
+	icon-drag: (
+		offset-x: -218px,
+		offset-y: 0px,
+		width: 15px,
+		height: 31px,
+		total-width: 233px,
+		total-height: 174px,
+		image: '/sprites/sprite.png'
+	),
+	icon-engine-1: (
+		offset-x: -70px,
+		offset-y: 0px,
+		width: 64px,
+		height: 64px,
+		total-width: 233px,
+		total-height: 174px,
+		image: '/sprites/sprite.png'
+	),
+	icon-engine-2: (
+		offset-x: -144px,
+		offset-y: 0px,
+		width: 64px,
+		height: 64px,
+		total-width: 233px,
+		total-height: 174px,
+		image: '/sprites/sprite.png'
+	),
+	icon-engine-3: (
+		offset-x: 0px,
+		offset-y: 0px,
+		width: 60px,
+		height: 70px,
+		total-width: 233px,
+		total-height: 174px,
+		image: '/sprites/sprite.png'
+	),
+	icon-engine-4: (
+		offset-x: 0px,
+		offset-y: -80px,
+		width: 70px,
+		height: 54px,
+		total-width: 233px,
+		total-height: 174px,
+		image: '/sprites/sprite.png'
+	),
+	icon-price-5: (
+		offset-x: -80px,
+		offset-y: -80px,
+		width: 50px,
+		height: 50px,
+		total-width: 233px,
+		total-height: 174px,
+		image: '/sprites/sprite.png'
+	),
+	icon-services-next: (
+		offset-x: -140px,
+		offset-y: -80px,
+		width: 28px,
+		height: 50px,
+		total-width: 233px,
+		total-height: 174px,
+		image: '/sprites/sprite.png'
+	),
+	icon-services-prev: (
+		offset-x: -178px,
+		offset-y: -80px,
+		width: 28px,
+		height: 50px,
+		total-width: 233px,
+		total-height: 174px,
+		image: '/sprites/sprite.png'
+	),
+	icon-social-im: (
+		offset-x: 0px,
+		offset-y: -144px,
+		width: 30px,
+		height: 30px,
+		total-width: 233px,
+		total-height: 174px,
+		image: '/sprites/sprite.png'
+	),
+	icon-social-vk: (
+		offset-x: -40px,
+		offset-y: -144px,
+		width: 30px,
+		height: 30px,
+		total-width: 233px,
+		total-height: 174px,
+		image: '/sprites/sprite.png'
+	),
+);
+
+
+@mixin sprite-size($image) {
+	background-size: map-get(map-get($sprite, $image), 'total-width') map-get(map-get($sprite, $image), 'total-height');
+}
+
+@mixin sprite-width($image) {
+	width: map-get(map-get($sprite, $image), 'width');
+}
+
+@mixin sprite-height($image) {
+	height: map-get(map-get($sprite, $image), 'height');
+}
+
+@mixin sprite-position($image) {
+	background-position: map-get(map-get($sprite, $image), 'offset-x') map-get(map-get($sprite, $image), 'offset-y');
+}
+
+@mixin sprite-image($image) {
+	background-image: url(map-get(map-get($sprite, $image), 'image'));
+}
+
+@mixin sprite-image-retina($image) {
+	$image-path: map-get(map-get($sprite, $image), 'image');
+	$image-path-retina: str-slice($image-path, 1, str-index($image-path, '.png') - 1) + '@2x.png';
+
+	background-image: url($image-path-retina);
+}
+
+@mixin sprite($image, $size: true) {
+	@include sprite-image($image);
+	@include sprite-position($image);
+	background-repeat: no-repeat;
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+
+	@if $size {
+		@include sprite-width($image);
+		@include sprite-height($image);
+	}
+
+	@media
+		only screen and (-webkit-min-device-pixel-ratio: 2),
+		only screen and (   min--moz-device-pixel-ratio: 2),
+		only screen and (     -o-min-device-pixel-ratio: 2/1),
+		only screen and (        min-device-pixel-ratio: 2),
+		only screen and (                min-resolution: 192dpi),
+		only screen and (                min-resolution: 2dppx) {
+
+		@include sprite-size($image);
+		@include sprite-image-retina($image);
+
+	}
+}
+
+
+
+	.icon-drag-hover {
+		@include sprite(icon-drag-hover)
+	}
+	.icon-drag {
+		@include sprite(icon-drag)
+	}
+	.icon-engine-1 {
+		@include sprite(icon-engine-1)
+	}
+	.icon-engine-2 {
+		@include sprite(icon-engine-2)
+	}
+	.icon-engine-3 {
+		@include sprite(icon-engine-3)
+	}
+	.icon-engine-4 {
+		@include sprite(icon-engine-4)
+	}
+	.icon-price-5 {
+		@include sprite(icon-price-5)
+	}
+	.icon-services-next {
+		@include sprite(icon-services-next)
+	}
+	.icon-services-prev {
+		@include sprite(icon-services-prev)
+	}
+	.icon-social-im {
+		@include sprite(icon-social-im)
+	}
+	.icon-social-vk {
+		@include sprite(icon-social-vk)
+	}

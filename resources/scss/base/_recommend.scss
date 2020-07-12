@@ -1,0 +1,203 @@
+// --------------------------------------------------------------------------
+// Recommend
+// --------------------------------------------------------------------------
+
+
+.ui-recommend {
+    position: relative;
+    margin: 0 0 20px;
+    &--green {
+        .ui-recommend__badge {
+            background: rgba(#72BB53, 0.08);
+            color: #5a9d3e;
+        }
+    }
+    &--red {
+        .ui-recommend__badge {
+            background: rgba(#FF5050, 0.08);
+            color: #FF5050;
+        }
+    }
+    &--grey {
+        .ui-recommend__badge {
+            background: #f4f4f4;
+            color: #444;
+        }
+    }
+    &--disabled {
+        .ui-recommend__badge {
+            padding-left: 0;
+            padding-right: 0;
+            color: #808080;
+        }
+        .ui-recommend__line-progress  {
+            display: none;
+        }
+        .ui-recommend__line {
+            background: #ebebeb;
+        }
+        .ui-recommend__arrow:before {
+            border-top-color: #EBEBEB;
+        }
+    }
+}
+
+
+.ui-recommend__head {
+    display: flex;
+    align-items: center;
+    margin: 0 0 18px;
+    color: #999999;
+}
+
+.ui-recommend__body {
+    position: relative;
+    margin: 0 0 20px;
+}
+
+.ui-recommend__foot {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 20px;
+    .btn {
+        margin: 0 10px 0 0;
+        color: #131313;
+        small {
+            color: #999;
+        }
+        &:last-child {
+            margin: 0;
+        }
+    }
+
+    .icon-like, .icon-dislike {
+        top: -1px;
+        margin-left: -5px;
+        margin-right: 5px;
+        width: 27px;
+        height: 26px;
+    }
+}
+
+.ui-recommend__badge {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 20px;
+    line-height: 44px;
+    font-weight: 400;
+    padding: 0 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    margin: 0 15px 0 0;
+    white-space: nowrap;
+    .icon-like, .icon-dislike {
+        top: -2px;
+        margin: 0 0 0 10px;
+        width: 27px;
+        height: 26px;
+    }
+    &--green {
+        background: rgba(#72BB53,0.08);
+        color: #5a9d3e;
+    }
+    &--red {
+        background: rgba(#FF5050,0.08);
+        color: #FF5050;
+    }
+    &--grey {
+        background: #f4f4f4;
+        color: #444;
+    }
+    @include breakpoint(md) {
+        font-size: 22px;
+        padding: 0 14px;
+        margin: 0 20px 0 0;
+    }
+}
+
+.ui-recommend__caption {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.13;
+    @include breakpoint(md) {
+        font-size: 16px;
+    }
+}
+
+
+.ui-recommend__line {
+    height: 8px;
+    border-radius: 2px;
+    background: #ccc;
+    overflow: hidden;
+    position: relative;
+}
+
+.ui-recommend__line-progress {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    &:after, &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100vw;
+    }
+    &:after {
+        left: 100%;
+        background: #FF5050;
+    }
+    &:before {
+        right: 100%;
+        background: #72BB53;
+    }
+}
+
+.ui-recommend__line-progress--grey {
+    &:after {
+        left: 100%;
+        background: #b4b4b4;
+    }
+    &:before {
+        right: 100%;
+        background: #b4b4b4;
+    }
+}
+
+.ui-recommend__arrow {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-left: 14px solid transparent;
+        border-right: 14px solid transparent;
+        border-top: 28px solid #FFFFFF;
+        z-index: 1;
+        margin: -14px 0 0 -14px;
+        filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.2));
+    }
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-top: 14px solid #FFC959;
+        z-index: 2;
+        margin: -10px 0 0 -7px;
+        
+    }
+}

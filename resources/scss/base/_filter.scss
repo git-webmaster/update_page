@@ -1,0 +1,150 @@
+// --------------------------------------------------------------------------
+// Filter
+// --------------------------------------------------------------------------
+
+.is-filter {
+    .ui-filter {
+        overflow: visible;
+    }
+    .ui-filter__wrapper {
+        opacity: 1;
+    }
+}
+
+.ui-filter {
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.01);
+    border: 1px solid #ebebeb;
+    background: #fff;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    z-index: 1000;
+
+    .ui-label, .ui-check, .ui-selection {
+        margin: 0;
+    }
+    .ui-label {
+        margin: 0 12px 0 0;
+    }
+    .ui-label, .ui-check {
+        color: #131313;
+        [class^="icon-"] {
+            color: #999;
+        }
+    }
+
+    @include breakpointMax(md) {
+        margin: 0 -21px;
+    }
+}
+
+.ui-filter__text {
+    margin: 0 20px 0 0;
+}
+
+.ui-filter__wrapper {
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transition-delay: 100ms;
+}
+
+.ui-filter__list {
+    @include list-style-none;
+    display: flex;
+    & > li {
+        display: flex;
+        align-items: center;
+        padding: 0 18px;
+        border-right: 1px solid #EBEBEB;
+        // flex: 1 1 auto;
+        flex: 0 0 auto;
+        flex-shrink: 0;
+        height: 5rem;
+        &:last-child {
+            border: none;
+        }
+    }
+}
+
+.ui-filter__dropdown-wrapper {
+    position: relative;
+    border-left: 1px solid #EBEBEB;
+    margin: 0 0 0 auto;
+    @include breakpointMax(md) {
+        border: none;
+        flex: 1;
+    }
+   
+}
+
+.ui-filter__dropdown-toggle {
+    font: 16px/40px $fontBase;
+    display: block;
+    border: 1px solid transparent;
+    background: none;
+    cursor: pointer;
+    padding: 0 18px;
+    color: #131313;
+    width: 100%;
+    text-align: center;
+    .icon-dots {
+        margin: 0 10px 0 0;
+        color: #ccc;
+    }
+    
+    &.priority-nav-is-hidden {
+        display: none;
+    }
+
+    @include breakpointMax(sm) {
+        background: #fafafa;
+    }
+}
+
+.ui-filter__dropdown {
+    @include list-style-none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 100%;
+    margin: 0 -1px;
+    background: #fff;
+    border: 1px solid #ebebeb;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.25s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+    & > li {
+        border-bottom: 1px solid #ebebeb;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        &:last-child {
+            border: none;
+        }
+    }
+
+    &.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .ui-filter__group {
+        height: auto;
+    }
+
+    @include breakpointMax(xs) {
+        min-width: auto;
+        left: 0;
+    }
+}
+
+
+.ui-filter__group {
+    height: 50px;
+    display: flex;
+    align-items: center;
+}

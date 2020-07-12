@@ -1,0 +1,94 @@
+// --------------------------------------------------------------------------
+// Taglist
+// --------------------------------------------------------------------------
+
+
+.ui-taglist {
+    padding: 0 20px;
+    @include breakpoint(lg) {
+        padding: 0;
+    }
+}
+
+.ui-taglist__menu {
+    @include list-style-none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 -8px;
+    & > li {
+        margin: 0 8px 8px 0;
+    }
+    @include breakpoint(xs) {
+        margin: 0 0 -10px;
+        & > li {
+            padding: 0 10px 10px 0;
+            margin: 0;
+        }
+    }
+}
+
+.ui-taglist__link {
+    position: relative;
+    display: block;
+    white-space: nowrap;
+    border-radius: 2px;
+    background: #EBEBEB;
+    border: 1px solid #ebebeb;
+    padding: 0 12px;
+    text-decoration: none;
+    color: #131313;
+
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center;
+    mark {
+        font-size: 13px;
+        color: #999999;
+    }
+   
+    &:hover {
+        text-decoration: none;
+        border-color: #F5F5F5;
+        background: #F5F5F5;
+        color: #131313;
+    }
+    &:active {
+        box-shadow: inset 2px 2px 5px rgba(19, 19, 19, 0.2);
+    }
+
+    @include breakpoint(xs) {
+        font-size: 16px;
+        mark {
+            font-size: 15px;
+        }
+    }
+
+    @include breakpoint(md) {
+        font-size: 18px;
+        line-height: 45px;
+        padding: 0 18px;
+    }
+
+}
+
+.ui-taglist__icon {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    margin: 0 8px 0 0;
+    .icon-nav-call {
+        color: #72bb53;
+    }
+    .icon-nav-checked {
+        color: #b3b3b3;
+    }
+}
+
+.ui-taglist__arrow {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    top: -1px;
+    margin: 0 0 0 8px;
+    color: #AAAAAA;
+}

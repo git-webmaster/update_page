@@ -1,0 +1,198 @@
+// --------------------------------------------------------------------------
+// Categories
+// --------------------------------------------------------------------------
+
+
+.categories {
+    padding: 30px 0 10px;
+    // background: #fafafa;
+}
+
+.categories__heading {
+    display: block;
+    font-size: 24px;
+    line-height: 1.25;
+    font-weight: 400;
+    color: #808080;
+    margin: 0 0 30px;
+    text-align: center;
+}
+
+
+.categories__grid {
+    @include list-style-none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px 20px;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    line-height: 20px;
+
+    & > li {
+        padding: 0 10px 20px;
+        &:nth-of-type(8) ~ li:not(:last-of-type) {
+            display: none;
+        }
+        
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    @include breakpoint(lg) {
+        & > li:nth-of-type(8) ~ li:not(:last-of-type) {
+            display: block;
+        }
+    }
+}
+
+
+.categories__card {
+    background: #fff;
+    border: 1px solid #ebebeb;
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.01);
+    border-radius: 5px;
+    padding: 14px 20px 14px 68px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    max-height: 182px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #131313;
+    position: relative;
+
+    &:hover {
+        text-decoration: none;
+        color: #131313;
+
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        border-color: #299ae0;
+    }
+
+    @include breakpoint(xs) {
+        display: block;
+        padding: 10px 20px;
+        text-align: center;
+    }
+
+    @include breakpoint(md) {
+        padding: 30px 20px;
+    }
+
+    &--more {
+        @include breakpointMax(md) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 20px;
+            .categories__card-icon {
+                max-width: 50px;
+                height: auto;
+                margin: 0 15px 0 0;
+                position: relative;
+            }
+            .categories__card-text {
+                margin: 0;
+            }
+        }
+    }
+}
+
+.categories__card-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 68px;
+    color: #72bb53;
+    margin: 0;
+
+    [class^="icon-"] {
+        max-width: 30px;
+    }
+
+    [class^="icon-categories-more"] {
+        width: 52px;
+        height: 12px;
+        color: #999;
+        // fill: none;
+        // stroke: currentColor;
+        // stroke-width: 2;
+    }
+
+    @include breakpoint(xs) {
+        position: relative;
+        height: 60px;
+        width: 100%;
+        margin: 0 0 14px;
+        [class^="icon-"] {
+            max-width: 52px;
+            max-height: 40px;
+        }
+    }
+
+    @include breakpoint(md) {
+        height: 80px;
+        [class^="icon-"] {
+            max-width: none;
+            max-height: none;
+        }
+    }
+}
+
+.categories__card-title,
+.categories__card-text {
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: 400;
+    display: block;
+    margin: 0;
+
+    @include breakpoint(xs) {
+        margin: 0 0 12px;
+    }
+    @include breakpoint(md) {
+        font-size: 18px;
+    }
+    
+}
+
+.categories__card-text {
+    color: #808080;
+}
+
+.category__image {
+    width: 40px;
+
+    @include breakpoint(md) {
+        width: 60px;
+    }
+}
+
+// ------
+
+
+.categories__link {
+    display: flex;
+    @extend .ui-link;
+    @extend .ui-link--blue;
+   
+}
+
+.categories__link-icon {
+    margin: 0 10px 0 0;
+    width: 20px;
+    height: 20px;
+    color: #808080;
+}
+
+.categories__link-text {
+    display: block;
+}

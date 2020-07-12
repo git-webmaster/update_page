@@ -1,0 +1,75 @@
+// --------------------------------------------------------------------------
+// Menua
+// --------------------------------------------------------------------------
+
+
+.ui-menu {
+
+	display: table;
+	
+	.ui-label {
+		width: 100%;
+	}
+
+	@include breakpointMax(md) {
+		display: block;
+	}
+}
+
+.ui-menu__row {
+	display: table-row;
+	@include breakpointMax(md) {
+		display: flex;
+		flex-wrap: wrap;
+	}
+}
+
+
+.ui-menu__action, .ui-menu__icon, .ui-menu__content {
+	display: table-cell;
+	vertical-align: top;
+	@include breakpointMax(md) {
+		display: block;
+	}
+}
+
+.ui-menu__action {
+	width: 1%;
+	padding: 0 20px 0 0;
+	.ui-check {
+		margin: 12px 0;
+	}
+	@include breakpointMax(md) {
+		width: 50%;
+	}
+}
+
+.ui-menu__icon {
+	width: 110px;
+	padding: 0 20px 0 0;
+	@include breakpointMax(md) {
+		width: 50%;
+		padding: 0;
+		.ui-select {
+			width: auto;
+		}
+	}
+}
+
+
+.ui-menu__content {
+	.row {
+		margin: 0;
+
+		& > [class^="col-"] {
+			padding: 0;
+			margin: 0 -1px 0 0;
+			&:first-of-type .ui-input {
+				border-radius: 2px 0 0 2px;
+			}
+			&:last-of-type .ui-input {
+				border-radius: 0 2px 2px 0;
+			}
+		}
+	}
+}

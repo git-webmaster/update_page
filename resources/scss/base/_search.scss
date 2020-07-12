@@ -1,0 +1,268 @@
+// --------------------------------------------------------------------------
+// Search
+// --------------------------------------------------------------------------
+
+
+.is-search-open {
+    .ui-search__dropdown {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.ui-search {
+    margin: 0 0 20px;
+}
+
+.ui-search__find {
+    font-size: 14px;
+    line-height: 1.1;
+    margin: 0 0 20px;
+    color: #999;
+
+    @include breakpoint(md) {
+        font-size: 16px;
+    }
+}
+
+.ui-search__field {
+    position: relative;
+}
+
+.ui-search__icon {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    pointer-events: none;
+    z-index: 1100;
+}
+
+.ui-search__input {
+    @extend .ui-input;
+    @extend .ui-input--44;
+
+    font-size: 15px;
+    padding-left: 48px;
+    margin: 0;
+}
+
+.ui-search__btn {
+    @extend .btn;
+    @extend .btn--36;
+    @extend .btn--green;
+    position: absolute;
+    top: 50%;
+    right: 0.4rem;
+    transform: translate(0,-50%);
+    min-width: 88px;
+    z-index: 1100;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 3.6rem;
+
+    &:hover {
+        z-index: 1100;
+    }
+
+    .icon-search-arrow {
+        top: 0;
+        display: block;
+        margin: 0 auto;
+    }
+
+    @include breakpointMax(xs) {
+        min-width: auto;
+        width: 36px;
+        padding-left: 0;
+        padding-right: 0;
+
+        .icon-search-arrow {
+            margin: 0;
+        }
+       
+    }
+}
+
+
+.ui-search__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.11);
+    border-radius: 0 0 2px 2px;
+    border: 1px solid #ccc;
+    z-index: 1100;
+    margin: -1px 0 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.ui-search__progress {
+    display: block;
+    color: #808080;
+    font-size: 16px;
+    line-height: 1.2;
+    padding: 10px;
+    .icon-reload {
+        margin: 0 10px 0 0;
+        top: -2px;
+        animation: animProgress 0.7s linear infinite;
+    }
+}
+
+
+.ui-search__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    & > li {
+        cursor: pointer;
+        padding: 10px 15px 10px 47px;
+        &.selected {
+            background: #f0f0f0;
+        }
+        &:hover {
+
+        }
+        &:nth-of-type(even) {
+
+        }
+    }
+}
+
+.ui-search__item {
+    font-size: 16px;
+    line-height: 1.4;
+    *:last-child {
+        margin: 0;
+    }
+}
+
+.ui-search__item-open {
+    display: block;
+    font-weight: 700;
+    color: #808080;
+    margin: 0 0 10px;
+    a {
+        font-weight: 400;
+    }
+}
+
+.ui-search__item-title {
+    display: block;
+    font-size: 18px;
+    line-height: 1.2;
+    margin: 0 0 10px;
+}
+
+
+.ui-search__item-category {
+    display: block;
+    color: #808080;
+    margin: 0 0 10px;
+}
+
+.ui-search__item-text {
+    display: block;
+    margin: 0 0 10px;
+}
+
+.ui-search__item-author {
+    display: block;
+    color: #808080;
+}
+
+
+// ------
+
+
+.ui-search__categories {
+
+}
+
+.ui-search__categories-title {
+    display: block;
+    padding: 15px 20px;
+    background: #fafafa;
+    color: #808080;
+    font-size: 16px;
+    line-height: 1.2;
+
+}
+
+.ui-search__categories-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    & > li {
+        padding: 10px 20px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+
+.ui-search__categories-item {
+    display: inline-block;
+    vertical-align: top;
+    padding: 5px 0;
+    margin: 0 20px 0 0;
+}
+
+
+
+
+// -----
+
+
+.ui-search__all {
+    background: #F5F5F5;
+    border-top: 1px solid #ebebeb;
+
+    font-size: 18px;
+    line-height: 1.2;
+
+    padding: 18px 20px;
+}
+
+.searchloader {
+    margin-left: 8px;
+    border: 0.2em solid #ebebeb;
+    border-top: 0.2em solid #3498db;
+    border-radius: 50%;
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: middle;
+    display: inline-block;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes animProgress {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+

@@ -1,0 +1,149 @@
+// --------------------------------------------------------------------------
+// Badges
+// --------------------------------------------------------------------------
+
+.ui-badge {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    padding: 0 10px;
+    font-size: 15px;
+    line-height: 28px;
+    border: 1px solid transparent;
+    color: #131313;
+    min-width: 30px;
+    text-align: center;
+    border-radius: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+
+    .icon-badge-open {
+        margin: 0 8px 0 0;
+        top: -2px;
+    }
+    .icon-badge-star {
+        margin: 0 8px 0 0;
+        top: -2px;
+    }
+
+    [class^="icon-"] {
+        margin: 0 8px 0 0;
+        top: -2px;
+    }
+
+    @include breakpointMax(md) {
+        white-space: normal;
+        text-align: left;
+    }
+}
+
+// -----
+
+.ui-badge--25 {
+    line-height: 25px;
+    padding: 0 8px;
+}
+
+.ui-badge--34 {
+    font-size: 16px;
+    line-height: 32px;
+    padding: 0 8px;
+}
+
+.ui-badge--rating {
+    font-size: 18px;
+}
+
+// -----
+
+.ui-badge--red {
+    background: rgba(255, 80, 80, 0.3);
+    color: #131313;
+}
+
+.ui-badge--premium {
+    background: #FFC959;
+    color: #131313;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.ui-badge--green {
+    background: #72BB53;
+    color: #fff;
+    .icon-star {
+        color: #FFC959;
+    }
+}
+
+.ui-badge--greenlight {
+    background: rgba(114, 187, 83, 0.3);
+    color: #131313;
+}
+
+.ui-badge--popular {
+    background: rgba(255, 199, 87, 0.25);
+    color: #131313;
+}
+
+.ui-badge--open {
+    background: rgba(114, 187, 83, 0.16);
+    .icon-badge-open {
+        color: #417505;
+    }
+}
+
+.ui-badge--purple {
+    background: #E3CBFC;
+    .icon-badge-star {
+        color: #555555;
+    }
+}
+
+.ui-badge--grey {
+    background: #f0f0f0;
+    color: #555;
+    .icon-badge-star {
+        color: #555555;
+    }
+}
+
+
+.ui-badge--dark-grey {
+    background: #aaa;
+    color: #fff;
+    .icon-badge-star {
+        color: #333;
+    }
+}
+
+.ui-badge--wifi {
+    background: rgba(41, 154, 224, 0.1);
+    color: #299ae0;
+}
+
+.ui-badge--parking {
+    background: rgba(114, 187, 83, 0.1);
+    color: #72bb53;
+}
+
+.ui-badge--fitness {
+    background: #ebebeb;
+    color: #808080;
+}
+
+
+.ui-badge--air, .ui-badge--beach {
+    color: #333;
+    background: #fff;
+    border-color: #e7e7e7;
+    [class^="icon-"]  {
+        color: #999;
+    }
+}
+
+
+.ui-badge--orange {
+    background: #FFC959;
+    color: #000;
+}
