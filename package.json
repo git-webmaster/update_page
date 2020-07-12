@@ -83,7 +83,7 @@
     "fingerprintjs2": "https://github.com/Valve/fingerprintjs2",
     "garlicjs": "https://github.com/guillaumepotier/garlic.js",
     "inputmask": "^3.3.11",
-    "jquery": "3.4.1",
+    "jquery": "3.5.1",
     "jquery-touchswipe": "^1.6.19",
     "js-base64": "^2.5.2",
     "leaflet-plugins": "https://github.com/shramov/leaflet-plugins",
