@@ -3,6 +3,13 @@ var jwindow = jwindow || $(window),
     jdoc = jdoc || $(document),
     jbody = jbody || $('body');
 
+
+var deleted={}
+deleted['categories']=[]
+deleted['telephone']=[]
+deleted['email']=[]
+deleted['site']=[]
+deleted['video-link']=[]
 // первый блок radio click
 jdoc.on('click', '.ui-check', function (e) {
 
@@ -26,10 +33,15 @@ jdoc.on('change', '.js-worktime-checkbox', function () {
 
     if ($(this).is(':checked')) {
         $(this).closest('.js-worktime').addClass('is-active');
+        $('.worktime-input').val('yes').trigger('change')
     } else {
         $(this).closest('.js-worktime').removeClass('is-active');
         $(this).closest('.js-worktime').find('.js-worktime-btn').removeClass('is-active');
         $(this).closest('.js-worktime').find('.js-worktime-content').hide();
+
+        if($('.js-worktime-checkbox').is(':checked')==false){
+            $('.worktime-input').val('').trigger('change')
+        }
     }
 
 });
@@ -131,11 +143,76 @@ $(document).ready(function () {
     $('.progress-input').trigger('change')
 
     //удаление инпутов по клику на крестик
-    $('.ui-input-delete').click(function () {
-        $(this).parents('.ui-input-group').remove()
+    $('.ui-input-delete').click(function (e) {
+        e.preventDefault()
+        let parent =  $(this).parents('.ui-input-group').find('.ui-input')
+        deleted[''+parent.attr("name")+''].push(parent.data('id'))
+        parent.remove()
+
     })
-    // Добавление новой строки в форму прайс листа
-    jdoc.on('click', '.btn-add-row', function () {
+    //TODO здесь идет много кода вставки шаблонов полей, как вариант, если это будет использоваться только здесь, то можно написать одну универсальную функцию которая будет по дата-атрибутам понимать куда/чего
+    // либо смотреть на вышестоящий элемент , забирать его html и генерировать новый элемент
+    jdoc.on('click', '.btn-add-email', function (e) {
+        e.preventDefault()
+        if ($(this).parent('.panel__settings-group').find('.panel__settings-row').length < 10){
+            let emailRow = $('<div class="panel__settings-row">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-group">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="row">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="col-md-6">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label class="ui-label" for="update-email">Email</label>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input" type="email" placeholder="name@mail.ru" id="update-email" name="email" value="raduga@mail.ru" data-id="123">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="col-md-6">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label class="ui-label">Комментарий к email</label>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-group">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input" name="email-comment" type="text" placeholder="отдел продаж">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-append">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class="ui-input-delete">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<svg class="icon-delete" aria-hidden="true">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<use xlink:href="/sprites/sprite.svg#icon-delete"></use>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</svg>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t</div>')
+            $('.btn-add-email__row').prepend(emailRow)
+        }
+    })
+    jdoc.on('click', '.btn-add-tel', function (e) {
+        e.preventDefault()
+        if ($(this).parent('.panel__settings-group').find('.panel__settings-row').length < 10){
+            let telephoneRow = $('<div class="panel__settings-row">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-group">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="row">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="col-md-6">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label class="ui-label is-md-hidden">Телефон</label>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input" type="tel" name="telephone" placeholder="+7 999 12 34 567" id="update-tel2" data-id="123">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="col-md-6">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label class="ui-label is-md-hidden">Комментарий к телефону</label>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-group">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input" name="telephone-name" type="text" placeholder="отдел продаж">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-append">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class="ui-input-delete">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<svg class="icon-delete" aria-hidden="true">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<use xlink:href="/sprites/sprite.svg#icon-delete"></use>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</svg>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t</div>')
+            $('.btn-add-tel__row').prepend(telephoneRow)
+        }
+    })
+
+    jdoc.on('click', '.btn-add-row', function (e) {
+        e.preventDefault();
         let priceRow = $('<li class="ui-input-price">\n' +
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-price-val">\n' +
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input" type="text" placeholder="Наименование" value="">\n' +
@@ -158,9 +235,62 @@ $(document).ready(function () {
             '\t\t\t\t\t\t\t\t\t\t\t\t\t</li>')
         $(".panel__sortable").append(priceRow)
     })
+
+    jdoc.on('click', '.btn-add-site', function (e) {
+        e.preventDefault();
+        if ($(this).parent('.panel__settings-group').find('.panel__settings-row').length < 10){
+        let siteRow = $('\t<div class="panel__settings-row">\n' +
+            '\t\t\t\t\t\t\t\t\t\t\t\t\t<label class="ui-label" for="update-website">Сайт</label>\n' +
+            '\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-group">\n' +
+            '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input progress-input" type="text" name="site" placeholder="http://www.renins.com" id="update-website" data-id="123" value="">\n' +
+            '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-append">\n' +
+            '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class="ui-input-delete">\n' +
+            '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<svg class="icon-delete" aria-hidden="true">\n' +
+            '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<use xlink:href="/sprites/sprite.svg#icon-delete"></use>\n' +
+            '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</svg>\n' +
+            '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n' +
+            '\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
+            '\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
+            '\t\t\t\t\t\t\t\t\t\t\t\t</div>')
+        $(".btn-add-site__row").prepend(siteRow)
+            }
+    })
+    jdoc.on('click', '.btn-add-video', function (e) {
+        e.preventDefault();
+        console.log($('.btn-add-video__row').siblings('.panel__settings-row'))
+        if ($(this).parent('.panel__settings-group').find('.panel__settings-row').length < 10){
+            let videoRow = $('\t<div class="panel__settings-row">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t<label class="ui-label">Видео (только YouTube)</label>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-group">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="row">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="col-sm-6">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input" type="text"  name="video-link" placeholder="Ссылка на видео">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="col-sm-6">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-group">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input" type="text" name="video-name" placeholder="Название видео">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-append">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class="ui-input-delete">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<svg class="icon-delete" aria-hidden="true">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<use xlink:href="/sprites/sprite.svg#icon-delete"></use>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</svg>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t</div>')
+            $(".btn-add-video__row").prepend(videoRow)
+        }
+
+    })
+
+
     // Добавление нового заголовка в форму прайс листа
-    jdoc.on('click', '.btn-add-title', function () {
-        let priceTitle = $('<li class="ui-input-price">\n' +
+    jdoc.on('click', '.btn-add-title', function (e) {
+        e.preventDefault();
+        let priceTitle = $('<li class="ui-input-price  title-price">\n' +
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-price-val">\n' +
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-icon">\n' +
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<svg class="icon-badge" aria-hidden="true">\n' +
@@ -184,39 +314,6 @@ $(document).ready(function () {
             '\t\t\t\t\t\t\t\t\t\t\t\t\t</li>');
         $(".panel__sortable").append(priceTitle)
     })
-
-
-    var inputSite = $('<div class="ui-input-group">\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input progress-input" type="text" placeholder="http://www.renins.com" id="update-website" data-id="123" value="">\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-append">\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class="ui-input-delete">\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<svg class="icon-delete" aria-hidden="true">\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<use xlink:href="/sprites/sprite.svg#icon-delete"></use>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</svg>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t</div>')
-
-    var inputVideo = $('<div class="ui-input-group">\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="row">\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="col-sm-6">\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input" type="text" placeholder="Ссылка на видео">\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="col-sm-6">\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-group">\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input" type="text" placeholder="Название видео">\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-append">\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class="ui-input-delete">\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<svg class="icon-delete" aria-hidden="true">\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<use xlink:href="/sprites/sprite.svg#icon-delete"></use>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</svg>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t</div>')
-
     // Сортировка полей прайслиста по drag ивенту
     $("ol.panel__sortable").sortable({
         group: 'no-drop',
@@ -260,7 +357,8 @@ $(document).ready(function () {
         if($(this).val().length>=2){
             searchProgress.removeClass('hidden')
             searchList.empty()
-            setTimeout(searchCategories, 200);
+            clearTimeout(search);
+            var search =setTimeout(searchCategories, 200);
         }
     })
     jdoc.on('click', '.search-categories__list li', function () {
@@ -292,6 +390,7 @@ $(document).ready(function () {
     })
     jdoc.on('click', '.search-categories__categories .btn__delete', function (e) {
         $(this).parents('.col-auto').remove()
+        deleted['categories'].push($(this).parents('.btn--selected').data('id'))
     })
     jdoc.on('click', '.js-select__b-office option', function (e) {
         $('.js-select__b-office option').removeClass('selected')
@@ -303,8 +402,7 @@ $(document).ready(function () {
     function init() {
         var officeMap = new ymaps.Map("mapDrag", {
             center: [55.76, 37.64],
-            zoom: 15,
-            controls: []
+            zoom: 10,
         }, {
             searchControlProvider: 'yandex#search'
         })
@@ -326,64 +424,155 @@ $(document).ready(function () {
                     'office': '206',
                     'additional':'Дополнительный комментарий',
                     'coords':{
-                        'longitude':55.76,
-                        'latitude':37.64
+                        'longitude': 55.763761,
+                        'latitude':37.621732
                     }
                 }
             $('#update-address').val(answer['address']);
             $('#update-address-floor').val(answer['floor']);
             $('#update-address-office').val(answer['office']);
             $('#update-address-additional').val(answer['additional']);
-            officeMap.geoObjects.removeAll()
-            officeMap.geoObjects
-                .add(new ymaps.GeoObject({
-                    geometry: {
-                        type: "Point",
-                        coordinates: [answer['coords']['longitude'], answer['coords']['latitude']],
-                        draggable: true
+            $('.address-coords').val([
+                answer['coords']['longitude'],
+                answer['coords']['latitude']
+            ])
+            officeMap.geoObjects.removeAll();
+            if(answer['coords']['latitude']!==null && answer['coords']['longitude'] !== null ){
+                let lat =answer['coords']['latitude']
+               let lon =answer['coords']['longitude']
+                officeMap.geoObjects.removeAll()
+                var myPlacemark = new ymaps.Placemark([lon, lat], null, {
+                    preset: 'islands#blueDotIcon',
+                    draggable: true
+                });
+                myPlacemark.events.add('dragend', function (e) {
+                    function SetByCoord(result) {
+                        result= JSON.parse(result)
+                        if(result["suggestions"][0]["value"])
+                            $('#update-address').val(result["suggestions"][0]["value"])
                     }
-                }))
+                      var cord = e.get('target').geometry.getCoordinates();
+                        var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/geolocate/address";
+                        var token = "e42b1ce121984f1fba3256837f67e961b2982b05";
+                        var query = { lat: cord[0], lon: cord[1] };
+                        var options = {
+                            method: "POST",
+                            mode: "cors",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "Accept": "application/json",
+                                "Authorization": "Token " + token
+                            },
+                            body: JSON.stringify(query)
+                        }
+                        fetch(url, options)
+                            .then(response => response.text())
+                            .then(result =>SetByCoord(result))
+                            .catch(error => console.log("error", error));
+
+                });
+                officeMap.geoObjects.add(myPlacemark);
+                // Слушаем событие окончания перетаскивания на метке.
+                officeMap.setCenter([lon,lat], 10)
+                $('.address-coords').val([lon,lat])
+            }
         })
+
         //Автозаполнение адреса
-        jdoc.on('change', '#update-address', function (e) {
-            let officeId = $(this).find('.ui-selectric-scroll .selected').data('index');
-            // $.ajax({
-            //     type: 'GET',
-            //     url: 'https://api.github.com/users/starred',
-            //     dataType: "json",
-            //     data: officeId,
-            //     success: function (response) {
-            //     }
-            // })
+        var searchAddress=$('.search__address')
+        function showSuggest (response) {
+            response=JSON.parse(response)
+            for (i in response["suggestions"]) {
+                searchAddress.empty()
+                let result = $('<li data-lat="' + response["suggestions"][i]['data']['geo_lat'] + '" data-lon="' + response["suggestions"][i]['data']['geo_lon'] + '" >\n' +
+                    '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-search__item">\n' +
+                    '\t\t\t\t\t\t\t\t\t\t\t\t\t<span class="ui-search__item-text">\n'+ response["suggestions"][i]['value'] + ' \n' +
+                    '\t\t\t\t\t\t\t\t\t\t\t\t\t</span>\n' +
+                    '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
+                    '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</li>')
+                searchAddress.append(result)
+            }
+        }
+        function getAddressSuggestions() {
             var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
-            var token = "e36246a169fd1131e98c47fc3c16a02848a05a6e";
-            var query = $(this).val();
+            var token = "e42b1ce121984f1fba3256837f67e961b2982b05";
+            var query = $('#update-address').val();
 
             var options = {
                 method: "POST",
                 mode: "cors",
                 headers: {
+                    "Accept": "application/json",
                     "Content-Type": "application/json",
                     "Authorization": "Token " + token,
 
                 },
-                body: JSON.stringify([query])
+                body: JSON.stringify({query: query, count: 5, language:'ru',})
             }
-
             fetch(url, options)
                 .then(response => response.text())
-                .then(result => console.log(result))
+                .then(response =>showSuggest(response))
                 .catch(error => console.log("error", error));
+        }
+        jdoc.on('keyup', '#update-address', function (e) {
+            clearTimeout(search);
+             var search = setTimeout(getAddressSuggestions, 200)
+
+
         })
-
+        jdoc.on('change', '#update-address', function (e) {
+                let address = $('.search__address').find('.selected')
+                let lon = address.data('lon')
+                let lat = address.data('lat')
+                let val = address.find('.ui-search__item-text').text();
+                $(this).val('' + val + '')
+                officeMap.geoObjects.removeAll()
+                var myPlacemark = new ymaps.Placemark([lat, lon], null, {
+                    preset: 'islands#blueDotIcon',
+                    draggable: true
+                });
+                myPlacemark.events.add('dragend', function (e) {
+                    function SetByCoord(result) {
+                        result= JSON.parse(result)
+                        if(result["suggestions"][0]["value"])
+                            $('#update-address').val(result["suggestions"][0]["value"])
+                    }
+                    var cord = e.get('target').geometry.getCoordinates();
+                    var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/geolocate/address";
+                    var token = "e42b1ce121984f1fba3256837f67e961b2982b05";
+                    var query = { lat: cord[0], lon: cord[1] };
+                    var options = {
+                        method: "POST",
+                        mode: "cors",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Accept": "application/json",
+                            "Authorization": "Token " + token
+                        },
+                        body: JSON.stringify(query)
+                    }
+                    fetch(url, options)
+                        .then(response => response.text())
+                        .then(result =>SetByCoord(result))
+                        .catch(error => console.log("error", error));
+                });
+                officeMap.geoObjects.add(myPlacemark);
+                // Слушаем событие окончания перетаскивания на метке.
+                officeMap.setCenter([lat,lon], 10)
+                $('.address-coords').val([lon,lat])
+        });
     }
-    //принудительно заполняю поля по загрузке страницы
-    $('.js-select__b-office').trigger('change');
+    jdoc.on('focusin', '#update-address', function (e) {
+        e.preventDefault();
+        if (!jhtml.hasClass('is-search-open'))
+        {
+            var all_li = $(this).find('.ui-search__list > li');
+            jhtml.addClass('is-search-open');
+            all_li.removeClass('selected');
+        }
+    });
 
-//    автозаполнение адреса
-    $('#suggest-address').keyup(function () {
 
-    })
 //Добавление поля комментария для модератора
     jdoc.on('click', '.panel__settings-moderator .ui-link', function (e) {
        $(this).addClass('hidden');
@@ -393,15 +582,15 @@ $(document).ready(function () {
 //Блок с временем работы
     function SetWorkHours(elem, msg_1, msg_2){
         $(elem).find('.js-select').change(function () {
-            let aroundTheClock = $(elem).find('.ui-check__input');
+
             let from = $(elem).find('.js-select').first().val();
             let to = $(elem).find('.js-select').last().val();
             if(from=='00:00' && to=='00:00'){
-                var msg =msg_1;
-                aroundTheClock.prop('checked', true)
+                var msg = msg_1;
+                $(elem).find('.ui-check__input').prop('checked', true)
             }else{
                 var msg = msg_2 +from+' -- '+to;
-                aroundTheClock.prop('checked', false)
+                $(elem).find('.ui-check__input').prop('checked', false)
             }
             // в дата таргет стоит id + # вначале,в верстке так изначально было
             $('.ui-worktime__period-btn[data-target="#'+ $(elem).attr('id')+'"]').text(msg);
@@ -425,7 +614,8 @@ $(document).ready(function () {
     $('.ui-worktime__period-btn').each(function () {
         $(this).click(function () {
             let val =$(this).text().split(' ');
-            let inputs = $(''+$(this).data('target')+'');
+            let inputs = $(''+$(this).data('target')+'')
+
             let from = inputs.find('.js-select').first();
             let to = inputs.find('.js-select').last();
             let checkbox = inputs.find('.ui-check__input');
@@ -436,10 +626,163 @@ $(document).ready(function () {
             }else {
                 from.val(val[1]).trigger('change');
                 to.val(val[3]).trigger('change');
-                checkbox.prop('checked',true)
+                checkbox.prop('checked',false)
             }
         })
     })
+    //принудительно заполняю поля по загрузке страницы
+    $('.js-select__b-office option').trigger('click')
+    $('.js-select__b-office').trigger('change');
+
+
+//    переключение вида формы
+    $('.ui-check__input[name="update-status"]').change(function () {
+        let val = $(this).val()
+        switch (val) {
+            case "update":
+                $('.ui-taglist').show()
+                $('.panel__settings-group').show();
+                $(".l__sticky.js-sticky").show();
+                jbody.trigger("sticky_kit:recalc");
+                break
+            case "transfer":
+                $('.ui-taglist').hide()
+                $('.panel__settings-group:not(.change_address):not(.pm-comment):not(.panel__settings-m-comment)').hide();
+                $('.panel__settings-group.change_address').show();
+                if ($('.panel__settings-m-comment.hidden').length >0)
+                    $('.panel__settings-moderator .ui-link').first().trigger('click');
+                $(".l__sticky.js-sticky").hide();
+                break
+            default:
+                $('.ui-taglist').hide()
+                $('.panel__settings-group:not(.pm-comment):not(.panel__settings-m-comment)').hide();
+                if ($('.panel__settings-m-comment.hidden').length >0)
+                    $('.panel__settings-moderator .ui-link').first().trigger('click');
+                $(".l__sticky.js-sticky").hide();
+                break
+        }
+
+    })
+//Сериализация формы
+    $('.btn--submit').click(function (e) {
+        $('.ui-worktime__period-btn').trigger('click');
+        e.preventDefault()
+        var data={}
+        let array = $('.company-info').serializeArray();
+        data['telephone']=[]
+        data['email']=[]
+        data['site']=[]
+        data['video']=[]
+        //не уверен что именно ид такое нужно подставлять в этом поле
+        data['type-of-issue']=$('.panel__tabs-btn.js-tabsid-btn.is-active').data('tabsBtn')
+
+        for (var i in array){
+
+            switch (array[i]['name']) {
+                case "telephone":
+                    data['telephone'].push({'telephone':array[i]['value'],'comment': array[(parseInt(i)+1)]['value']})
+                    break
+                case "email":
+                    data['email'].push({'email':array[i]['value'],'comment': array[(parseInt(i)+1)]['value']})
+                    break
+                case "site":
+                    data['site'].push({'email':array[i]['value'],'comment':array[(parseInt(i)+1)]['value']})
+                    break
+                case "video-link":
+                    data['video'].push({'video': array[i]['value'], 'name':array[(parseInt(i)+1)]['value']})
+                    break
+                default:
+                    if(array[i]['name']!== "telephone-name"|| array[i]['name']!== "email-comment" || array[i]['name']!=="video-name"){
+                        data[array[i]['name']]=array[i]['value']
+                    }
+
+
+
+            }
+        }
+        let days=[
+            'monday',
+            'tuesday',
+            'wednesday',
+            'thursday',
+            'friday',
+            'saturday',
+            'sunday'
+        ]
+        data['schedule']= {
+            'monday': {},
+            'tuesday': {},
+            'wednesday': {},
+            'thursday': {},
+            'friday': {},
+            'saturday': {},
+            'sunday': {},
+        }
+        $('.ui-worktime__row').each(function (index, elem) {
+            if($(this).find('.js-worktime-checkbox').attr("checked")!=='checked'){
+                data['schedule'][''+days[index] +'']['not_working']=true
+            }else{
+                data['schedule'][''+days[index] +'']['not_working']=false;
+
+                if( $(this).find('.ui-worktime__period-content[id *= "time"]').find('.ui-check__input').is(':checked')){
+                    data['schedule'][''+days[index] +'']['24/7']=true;
+                }else{
+                    data['schedule'][''+days[index] +'']['24/7']=false;
+                    data['schedule'][''+days[index] +'']['from']=$(this).find('.ui-worktime__period-content[id *= "time"]').find('.js-select').first().val();
+                    data['schedule'][''+days[index] +'']['to']=$(this).find('.ui-worktime__period-content[id *= "time"]').find('.js-select').last().val();
+                }
+
+                if( $(this).find('.ui-worktime__period-content[id *= "break"]').find('.ui-check__input').is(':checked')){
+                    data['schedule'][''+days[index] +'']['no_break']=  true
+                }else{
+                    data['schedule'][''+days[index] +'']['no_break']=  false
+                    data['schedule'][''+days[index] +'']['break_from']=$(this).find('.ui-worktime__period-content[id *= "break"]').find('.js-select').first().val();
+                    data['schedule'][''+days[index] +'']['break_to']=$(this).find('.ui-worktime__period-content[id *= "break"]').find('.js-select').last().val();
+                }
+                data['schedule'][''+days[index] +'']['comment']=$(this).find('.ui-input--40').val()
+            }
+        })
+
+        data['pricelist']= {
+            "value":[]
+        }
+
+        $('.panel__sortable').find('.ui-input-price').each(function (index,elem) {
+            let text =$(this).find('.ui-input-price-val').find('.ui-input').val()
+            if($(this).hasClass('title-price')){
+                data['pricelist']["value"][index]={}
+                data['pricelist']["value"][index]['type']='title'
+                data['pricelist']["value"][index]['text']=text
+                data['pricelist']["value"][index]['order']=index
+            }else{
+
+                let value =$(this).find('.ui-input--w200').val()
+                data['pricelist']["value"][index]={}
+                data['pricelist']["value"][index]['type']='string'
+                data['pricelist']["value"][index]['text']=text
+                data['pricelist']["value"][index]['value']=value
+                data['pricelist']["value"][index]['order']=index
+            }
+        })
+        data['categories']=[]
+        $('.search-categories__categories').find('.btn--selected').each(function () {
+            data['categories'].push($(this).data('id'))
+        })
+        data['socials']={}
+        $('.ui-input[id*="update-social-"]').each(function () {
+            data['socials'][''+this.id+'']=$(this).val()
+        })
+        data['deleted']=deleted
+        console.log(data)
+    })
+    $('.is-acceptence').change(function () {
+     if($(this).is(':checked')){
+         $('.btn--submit').removeAttr('disabled').removeClass('disabled')
+     }else{
+         $('.btn--submit').attr('disabled','disabled').addClass('disabled')
+     }
+    })
+
 })
 
 

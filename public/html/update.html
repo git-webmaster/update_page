@@ -208,6 +208,7 @@
 				</div>
 
 				<div class="l__body">
+					<form class="company-info" method="post">
 					<div class="container-fluid">
 
 						<div class="l__wrapper">
@@ -302,7 +303,7 @@
 								<!-- Panel :: End-->
 							</div>
 						</div>
-<form class="company-info" method="post">
+
 						<div class="l__wrapper js-sticky-container hidden" id="update-container">
 							<div class="l__content">
 								<!-- Panel :: Start-->
@@ -315,7 +316,7 @@
 													<div class="ui-input-group">
 														<div class="ui-input-field">
 
-															<input class="ui-input progress-input" type="text" placeholder="Радуга" value="Ренессанс Страхование" id="update-name">
+															<input class="ui-input progress-input" type="text"  name="name" placeholder="Радуга" value="Ренессанс Страхование" id="update-name">
 														</div>
 
 														<div class="ui-input-append">
@@ -333,7 +334,7 @@
 													<label class="ui-label" for="update-desc">Короткое описание</label>
 													<div class="ui-input-group">
 
-														<input class="ui-input progress-input" type="text" placeholder="Магазин детских игрушек" id="update-desc" value="">
+														<input class="ui-input progress-input" name="description" type="text" placeholder="Магазин детских игрушек" id="update-desc" value="">
 
 														<div class="ui-input-append">
 															<div class="ui-help js-tooltip" title="Отображается второй строкой под названием<br/>Например: Магазин детских игрушек">
@@ -365,7 +366,7 @@
 																	<span class="ml7">идёт поиск..</span>
 																</div>
 
-																<div class="ui-search__results">
+																<div class="ui-search__results ">
 																	<ul class="ui-search__list search-categories__list">
 
 																		<li data-num="1">
@@ -431,15 +432,15 @@
 													<div class="row">
 														<div class="col-md-12">
 															<label class="ui-label" for="update-person">Юридическое лицо</label>
-															<input class="ui-input progress-input " type="text" placeholder="" value="АО Страхование" id="update-person">
+															<input class="ui-input progress-input " type="text"  name="legal-entity" placeholder="" value="АО Страхование" id="update-person">
 														</div>
 														<div class="col-md-6">
 															<label class="ui-label" for="update-ogrn">ИНН</label>
-															<input class="ui-input" type="text" placeholder="1020405896" id="update-ogrn">
+															<input class="ui-input" type="text" name="TIN" placeholder="1020405896" id="update-ogrn">
 														</div>
 														<div class="col-md-6">
 															<label class="ui-label" for="update-inn">ОГРН</label>
-															<input class="ui-input" type="text" placeholder="1020405896" id="update-inn">
+															<input class="ui-input" type="text" name="main-state-registration-number" placeholder="1020405896" id="update-inn">
 														</div>
 													</div>
 												</div>
@@ -450,12 +451,12 @@
 														<div class="row">
 															<div class="col-md-6">
 																<label class="ui-label" for="update-email">Телефон</label>
-																<input class="ui-input progress-input" type="tel" placeholder="+7 999 12 34 567" id="update-tel" value="+79991234567" data-id="123">
+																<input class="ui-input progress-input" type="tel" name="telephone" placeholder="+7 999 12 34 567" id="update-tel" value="+79991234567" data-id="123">
 															</div>
 															<div class="col-md-6">
 																<label class="ui-label">Комментарий к телефону</label>
 																<div class="ui-input-group">
-																	<input class="ui-input" type="text" placeholder="отдел продаж">
+																	<input class="ui-input"  name="telephone-name" type="text" placeholder="отдел продаж">
 																	<div class="ui-input-append">
 																		<button class="ui-input-delete">
 																			<svg class="icon-delete" aria-hidden="true">
@@ -473,12 +474,12 @@
 														<div class="row">
 															<div class="col-md-6">
 																<label class="ui-label is-md-hidden">Телефон</label>
-																<input class="ui-input" type="tel" placeholder="+7 999 12 34 567" id="update-tel2" data-id="123">
+																<input class="ui-input" type="tel"  name="telephone" placeholder="+7 999 12 34 567" id="update-tel2" data-id="123">
 															</div>
 															<div class="col-md-6">
 																<label class="ui-label is-md-hidden">Комментарий к телефону</label>
 																<div class="ui-input-group">
-																	<input class="ui-input" type="text" placeholder="отдел продаж">
+																	<input class="ui-input"  name="telephone-name" type="text" placeholder="отдел продаж">
 																	<div class="ui-input-append">
 																		<button class="ui-input-delete">
 																			<svg class="icon-delete" aria-hidden="true">
@@ -491,8 +492,8 @@
 														</div>
 													</div>
 												</div>
-												<div class="panel__settings-row">
-													<button class="btn btn--36 btn--dark">
+												<div class="panel__settings-row btn-add-tel__row">
+													<button class="btn btn--36 btn--dark btn-add-tel">
 														<svg class="icon-add" aria-hidden="true">
 															<use xlink:href="/sprites/sprite.svg#icon-add"></use>
 														</svg>Добавить телефон
@@ -505,12 +506,12 @@
 														<div class="row">
 															<div class="col-md-6">
 																<label class="ui-label" for="update-email">Email</label>
-																<input class="ui-input" type="email" placeholder="name@mail.ru" id="update-email" value="raduga@mail.ru" data-id="123">
+																<input class="ui-input" type="email"  name="email" placeholder="name@mail.ru" id="update-email" value="raduga@mail.ru" data-id="123">
 															</div>
 															<div class="col-md-6">
 																<label class="ui-label">Комментарий к email</label>
 																<div class="ui-input-group">
-																	<input class="ui-input" type="text" placeholder="отдел продаж">
+																	<input class="ui-input" type="text"  name="email-comment"placeholder="отдел продаж">
 																	<div class="ui-input-append">
 																		<button class="ui-input-delete">
 																			<svg class="icon-delete" aria-hidden="true">
@@ -523,8 +524,8 @@
 														</div>
 													</div>
 												</div>
-												<div class="panel__settings-row">
-													<button class="btn btn--36 btn--dark">
+												<div class="panel__settings-row btn-add-email__row">
+													<button class="btn btn--36 btn--dark btn-add-email">
 														<svg class="icon-add" aria-hidden="true">
 															<use xlink:href="/sprites/sprite.svg#icon-add"></use>
 														</svg>Добавить email
@@ -535,7 +536,7 @@
 												<div class="panel__settings-row">
 													<label class="ui-label" for="update-website">Сайт</label>
 													<div class="ui-input-group">
-														<input class="ui-input progress-input" type="text" placeholder="http://www.renins.com" id="update-website" data-id="123" value="">
+														<input class="ui-input progress-input" type="text" name="site" placeholder="http://www.renins.com" id="update-website" data-id="123" value="">
 														<div class="ui-input-append">
 															<button class="ui-input-delete">
 																<svg class="icon-delete" aria-hidden="true">
@@ -545,8 +546,8 @@
 														</div>
 													</div>
 												</div>
-												<div class="panel__settings-row">
-													<button class="btn btn--36 btn--dark">
+												<div class="panel__settings-row btn-add-site__row">
+													<button class="btn btn--36 btn--dark btn-add-site">
 														<svg class="icon-add" aria-hidden="true">
 															<use xlink:href="/sprites/sprite.svg#icon-add"></use>
 														</svg>Добавить сайт
@@ -619,11 +620,11 @@
 													<div class="ui-input-group">
 														<div class="row">
 															<div class="col-sm-6">
-																<input class="ui-input" type="text" placeholder="Ссылка на видео">
+																<input class="ui-input" type="text"  name="video-link" placeholder="Ссылка на видео">
 															</div>
 															<div class="col-sm-6">
 																<div class="ui-input-group">
-																	<input class="ui-input" type="text" placeholder="Название видео">
+																	<input class="ui-input" type="text" name="video-name" placeholder="Название видео">
 																	<div class="ui-input-append">
 																		<button class="ui-input-delete">
 																			<svg class="icon-delete" aria-hidden="true">
@@ -637,14 +638,15 @@
 													</div>
 												</div>
 												<div class="panel__settings-row">
+													<label class="ui-label">Видео (только YouTube)</label>
 													<div class="ui-input-group">
 														<div class="row">
 															<div class="col-sm-6">
-																<input class="ui-input" type="text" placeholder="Ссылка на видео">
+																<input class="ui-input" type="text"  name="video-link" placeholder="Ссылка на видео">
 															</div>
 															<div class="col-sm-6">
 																<div class="ui-input-group">
-																	<input class="ui-input" type="text" placeholder="Название видео">
+																	<input class="ui-input" type="text" name="video-name" placeholder="Название видео">
 																	<div class="ui-input-append">
 																		<button class="ui-input-delete">
 																			<svg class="icon-delete" aria-hidden="true">
@@ -657,8 +659,8 @@
 														</div>
 													</div>
 												</div>
-												<div class="panel__settings-row">
-													<button class="btn btn--36 btn--dark">
+												<div class="panel__settings-row btn-add-video__row">
+													<button class="btn btn--36 btn--dark btn-add-video">
 														<svg class="icon-add" aria-hidden="true">
 															<use xlink:href="/sprites/sprite.svg#icon-add"></use>
 														</svg>Добавить видео
@@ -678,7 +680,7 @@
 													</div>
 												</div>
 												<ol class="panel__settings-row panel__sortable">
-													<li class="ui-input-price">
+													<li class="ui-input-price title-price">
 														<div class="ui-input-price-val">
 															<input class="ui-input" type="text" placeholder="Наименование" value="Печать листа А4 с полным покрытием">
 														</div>
@@ -787,7 +789,7 @@
 												<textarea class="ui-textarea"></textarea>
 											</div>
 
-											<div class="panel__settings-group panel__settings-group--grey">
+											<div class="panel__settings-group panel__settings-group--grey change_address">
 												<div class="panel__settings-row">
 													<label class="ui-label" for="update-category">Филиал</label>
 													<div class="ui-input-group">
@@ -824,39 +826,14 @@
 																		<use xlink:href="/sprites/sprite.svg#icon-search"></use>
 																	</svg>
 																</figure>
-																<input class="ui-search__input js-search-input address-suggest__search" autocomplete="off"  type="search" placeholder="Санк-Петербург, ул. Римского-Корсакова, дом 22" id="update-address" aria-invalid="false">
+																<input class="ui-search__input js-search-input progress-input address-suggest__search" autocomplete="off" name="address" type="search" placeholder="Санк-Петербург, ул. Римского-Корсакова, дом 22" id="update-address" aria-invalid="false">
 																<div class="ui-search__dropdown">
 																	<div class="ui-search__progress hidden search-categories__progress">
 																		<div class="searchloader"></div>
 																		<span class="ml7">идёт поиск..</span>
 																	</div>
 																	<div class="ui-search__results">
-																		<ul class="ui-search__list search-categories__list">
-
-																			<li data-num="1">
-																				<div class="ui-search__item">
-													<span class="ui-search__item-text">
-														Санкт-Петербург, Ленинский проспект
-													</span>
-																				</div>
-																			</li>
-
-																			<li data-num="2">
-																				<div class="ui-search__item">
-													<span class="ui-search__item-text">
-														автозапчасти
-													</span>
-																				</div>
-																			</li>
-
-																			<li data-num="3">
-																				<div class="ui-search__item">
-													<span class="ui-search__item-text">
-														+7 953 30 35 448
-													</span>
-																				</div>
-																			</li>
-
+																		<ul class="ui-search__list search__address">
 																		</ul>
 																	</div>
 																</div>
@@ -864,20 +841,21 @@
 														</div>
 														<div class="col-md-4">
 															<label class="ui-label" for="update-address-floor">Этаж</label>
-															<input class="ui-input" type="text" placeholder="1 этаж" id="update-address-floor">
+															<input class="ui-input" name="floor" type="text" placeholder="1 этаж" id="update-address-floor">
 														</div>
 														<div class="col-md-4">
 															<label class="ui-label" for="update-address-office">Офис</label>
-															<input class="ui-input" type="text" placeholder="офис 401" id="update-address-office">
+															<input class="ui-input" name="office-number"  type="text" placeholder="офис 401" id="update-address-office">
 														</div>
 														<div class="col-md-4">
 															<label class="ui-label" for="update-address-additional">Дополнительно</label>
-															<input class="ui-input" type="text" placeholder="БЦ Меркурий, вход со двора" id="update-address-additional">
+															<input class="ui-input"   name="address-additional" type="text" placeholder="БЦ Меркурий, вход со двора" id="update-address-additional">
 														</div>
+														<input type="hidden" class="address-coords" name="coords" value="">
 													</div>
 												</div>
 											</div>
-											<div class="panel__settings-group panel__settings-group--grey">
+											<div class="panel__settings-group panel__settings-group--grey change_address">
 												<div class="panel__settings-map">
 													<p class="panel__settings-map-caption">Переместите метку для уточнения места</p>
 													<div class="panel__settings-map-container" id="mapDrag"></div>
@@ -885,7 +863,8 @@
 											</div>
 											<div class="panel__settings-group panel__settings-group--grey">
 												<label class="ui-label">Режим работы (Дзержинского проспект, 211а)</label>
-												<div class="ui-worktime progress-input " id="update-worktime">
+												<div class="ui-worktime">
+													<input type="text"  class="progress-input worktime-input"  name="worktime" id="update-worktime" value="yes">
 													<div class="ui-worktime__row js-worktime is-active">
 														<div class="ui-worktime__day">
 															<label class="ui-check">
@@ -1664,7 +1643,7 @@
 												</div>
 											</div>
 
-											<div class="panel__settings-group panel__settings-group--grey">
+											<div class="panel__settings-group panel__settings-group--grey pm-comment">
 												<div class="panel__settings-moderator">
 														<span class="ui-link ui-link--blue ui-link--dotted ui-link--underline cursor-pointer">Добавить комментарий для модератора</span>
 														<span class="ui-link ui-link--blue ui-link--dotted ui-link--underline cursor-pointer hidden">Не добавлять комментарий</span>
@@ -1735,9 +1714,9 @@
 											<div class="panel__tabs-content js-tabsid-content" data-tabs-content="02">Далеко-далеко за словесными горами в стране гласных, и согласных живут рыбные тексты. Даже диких скатился вопроса рукописи. Коварный заголовок путь, выйти безопасную рыбного возвращайся вершину, свою, пояс но маленькая ipsum на берегу обеспечивает.</div>
 											<div class="panel__request-control">
 												<label class="ui-check">
-													<input class="ui-check__input" type="checkbox"><span class="ui-check__switch"></span><span class="ui-check__text">Согласен с условиями предоставления услуги</span>
+													<input class="ui-check__input is-acceptence" type="checkbox"><span class="ui-check__switch"></span><span class="ui-check__text">Согласен с условиями предоставления услуги</span>
 												</label>
-												<button class="btn btn--54 btn--green">Отправить + оплатить 499 р.</button>
+												<button class="btn btn--54 btn--green btn--submit disabled" disabled >Отправить + оплатить 499 р.</button>
 											</div>
 										</div>
 									</div>
@@ -1784,7 +1763,7 @@
 																	<use xlink:href="/sprites/sprite.svg#icon-bookmark"></use>
 																</svg>
 																<u>Адрес и место</u></a></li>
-														<li><a class="panel__bookmark-link" href="#update-worktime">
+														<li><a class="panel__bookmark-link" href="#update-worktime" val="">
 																<svg class="icon-bookmark" aria-hidden="true">
 																	<use xlink:href="/sprites/sprite.svg#icon-bookmark"></use>
 																</svg>
@@ -1930,6 +1909,11 @@
 	}
 	.ui-worktime__row:not(.is-active) .ui-worktime__period--off {
 		display: table-cell;
+	}
+	.worktime-input{
+		position: absolute;
+		opacity: 0;
+		visibility: hidden;
 	}
 </style>
 </html>
