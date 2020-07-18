@@ -1360,12 +1360,4 @@ function loadEvents() {
 loadEvents();
 
 // preload links in viewport
-quicklink.listen({
-	priority: true,
-	throttle: 2,
-	ignores: [
-		uri => uri.includes('#'),
-		uri => uri.includes('/vcard/')
-	]
-});
 

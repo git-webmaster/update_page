@@ -14,7 +14,7 @@
 	<!--<link rel="preconnect" href="https://mc.yandex.ru" />-->
 	<!--<link rel="preload" as="script" href="https://mc.yandex.ru/metrika/watch.js" />-->
 
-	<link rel="preload" as="style" href="/css/app.min.css?v=2" />
+	<link rel="preload" as="style" href="../css/app.min.css?v=2" />
 
 	<script>
 		window.page = {};
@@ -23,11 +23,11 @@
 		window.page.ugc_cdn = 'https://a.kekcdn.com';
 	</script>
 
-	
-	
 
-	<link rel="preload" as="script" href="/js/app.full.min.js?v=2" />
-	<link rel="preload" as="script" href="/js/update.js?v=2" />
+
+
+	<link rel="preload" as="script" href="../js/app.full.min.js?v=2" />
+	<link rel="preload" as="script" href="../js/update.js?v=2" />
 
 
 	<style>
@@ -63,16 +63,16 @@
 
 
 	<link rel="canonical" href="https://rubrikator.local/russia/saint-petersburg/baltika-med" />
-	<link rel="stylesheet" href="/css/app.min.css?v=2" />
+	<link rel="stylesheet" href="../css/app.min.css?v=2" />
 
 </head>
 <body>
 <div class="app">
-		
+
 <!-- Header :: Start-->
 <header class="header">
-	
-	
+
+
 	<div class="header__topbar ">
 		<div class="container-fluid">
 
@@ -203,7 +203,7 @@
 												<p class="l__location">
 							Санкт-Петербург, Стачек проспект, 101 к1 (1 этаж)
 						</p>
-						
+
 					</div>
 				</div>
 
@@ -220,25 +220,25 @@
 											<ul class="ui-check-vertical">
 												<li>
 													<label class="ui-check ui-check--18 ui-check--dark">
-														<input class="ui-check__input" type="radio" name="update-status" value="update" />
+														<input class="ui-check__input select-form " type="radio" name="update-status" value="update" />
 														<span class="ui-check__wrapper"><span class="ui-check__radio"></span><span class="ui-check__text">Обновить данные</span></span>
 													</label>
 												</li>
 												<li>
 													<label class="ui-check ui-check--18 ui-check--dark">
-														<input class="ui-check__input" type="radio" name="update-status" value="transfer" />
+														<input class="ui-check__input select-form " type="radio" name="update-status" value="transfer" />
 														<span class="ui-check__wrapper"><span class="ui-check__radio"></span><span class="ui-check__text">Переезд</span></span>
 													</label>
 												</li>
 												<li>
 													<label class="ui-check ui-check--18 ui-check--dark">
-														<input class="ui-check__input" type="radio" name="update-status" value="closed_temp" />
+														<input class="ui-check__input select-form " type="radio" name="update-status" value="closed_temp" />
 														<span class="ui-check__wrapper"><span class="ui-check__radio"></span><span class="ui-check__text">Временно не работает</span></span>
 													</label>
 												</li>
 												<li>
 													<label class="ui-check ui-check--18 ui-check--dark">
-														<input class="ui-check__input" type="radio" name="update-status" value="closed" />
+														<input class="ui-check__input select-form " type="radio" name="update-status" value="closed" />
 														<span class="ui-check__wrapper"><span class="ui-check__radio"></span><span class="ui-check__text">Больше не работает</span></span>
 													</label>
 												</li>
@@ -302,7 +302,7 @@
 								<!-- Panel :: End-->
 							</div>
 						</div>
-
+<form class="company-info" method="post">
 						<div class="l__wrapper js-sticky-container hidden" id="update-container">
 							<div class="l__content">
 								<!-- Panel :: Start-->
@@ -315,7 +315,7 @@
 													<div class="ui-input-group">
 														<div class="ui-input-field">
 
-															<input class="ui-input" type="text" placeholder="Радуга" value="Ренессанс Страхование" id="update-name">
+															<input class="ui-input progress-input" type="text" placeholder="Радуга" value="Ренессанс Страхование" id="update-name">
 														</div>
 
 														<div class="ui-input-append">
@@ -333,7 +333,7 @@
 													<label class="ui-label" for="update-desc">Короткое описание</label>
 													<div class="ui-input-group">
 
-														<input class="ui-input" type="text" placeholder="Магазин детских игрушек" id="update-desc">
+														<input class="ui-input progress-input" type="text" placeholder="Магазин детских игрушек" id="update-desc" value="">
 
 														<div class="ui-input-append">
 															<div class="ui-help js-tooltip" title="Отображается второй строкой под названием<br/>Например: Магазин детских игрушек">
@@ -357,16 +357,16 @@
 																</svg>
 															</figure>
 
-															<input class="ui-search__input js-search-input" type="search" placeholder="Поиск" id="search" />
+															<input class="ui-search__input js-search-input search-categories__search" autocomplete="off" data-max-categories="3" type="search" placeholder="Поиск" id="search" />
 															<div class="ui-search__dropdown">
 
-																<div class="ui-search__progress hidden">
+																<div class="ui-search__progress hidden search-categories__progress">
 																	<div class="searchloader"></div>
 																	<span class="ml7">идёт поиск..</span>
 																</div>
 
 																<div class="ui-search__results">
-																	<ul class="ui-search__list">
+																	<ul class="ui-search__list search-categories__list">
 
 																		<li data-num="1">
 																			<div class="ui-search__item">
@@ -400,10 +400,10 @@
 
 												<div class="panel__settings-row">
 													<div class="ui-btn-group">
-														<div class="row">
+														<div class="row search-categories__categories">
 
 															<div class="col-auto">
-																<button class="btn btn--selected" data-id="123">Страхование
+																<button type="button" class="btn btn--selected" data-id="123">Страхование
 																	<span class="btn__delete">
 																		<svg class="icon-delete" aria-hidden="true">
 																			<use xlink:href="/sprites/sprite.svg#icon-delete"></use>
@@ -413,7 +413,7 @@
 															</div>
 
 															<div class="col-auto">
-																<button class="btn btn--selected" data-id="124">ОСАГО
+																<button   type="button" class="btn btn--selected" data-id="124">ОСАГО
 																	<span class="btn__delete">
 																		<svg class="icon-delete" aria-hidden="true">
 																			<use xlink:href="/sprites/sprite.svg#icon-delete"></use>
@@ -431,7 +431,7 @@
 													<div class="row">
 														<div class="col-md-12">
 															<label class="ui-label" for="update-person">Юридическое лицо</label>
-															<input class="ui-input" type="text" placeholder="" value="АО Страхование" id="update-person">
+															<input class="ui-input progress-input " type="text" placeholder="" value="АО Страхование" id="update-person">
 														</div>
 														<div class="col-md-6">
 															<label class="ui-label" for="update-ogrn">ИНН</label>
@@ -450,7 +450,7 @@
 														<div class="row">
 															<div class="col-md-6">
 																<label class="ui-label" for="update-email">Телефон</label>
-																<input class="ui-input" type="tel" placeholder="+7 999 12 34 567" id="update-tel" value="+79991234567" data-id="123">
+																<input class="ui-input progress-input" type="tel" placeholder="+7 999 12 34 567" id="update-tel" value="+79991234567" data-id="123">
 															</div>
 															<div class="col-md-6">
 																<label class="ui-label">Комментарий к телефону</label>
@@ -535,7 +535,7 @@
 												<div class="panel__settings-row">
 													<label class="ui-label" for="update-website">Сайт</label>
 													<div class="ui-input-group">
-														<input class="ui-input" type="text" placeholder="http://www.renins.com" id="update-website" data-id="123">
+														<input class="ui-input progress-input" type="text" placeholder="http://www.renins.com" id="update-website" data-id="123" value="">
 														<div class="ui-input-append">
 															<button class="ui-input-delete">
 																<svg class="icon-delete" aria-hidden="true">
@@ -677,8 +677,8 @@
 														<div class="col-sm-auto"><a class="ui-link ui-link--underline ui-link--blue" href="#">Как сделать прайс-лист</a></div>
 													</div>
 												</div>
-												<div class="panel__settings-row">
-													<div class="ui-input-price">
+												<ol class="panel__settings-row panel__sortable">
+													<li class="ui-input-price">
 														<div class="ui-input-price-val">
 															<input class="ui-input" type="text" placeholder="Наименование" value="Печать листа А4 с полным покрытием">
 														</div>
@@ -690,15 +690,15 @@
 																		<use xlink:href="/sprites/sprite.svg#icon-delete"></use>
 																	</svg>
 																</button>
-																<button class="btn btn--48 btn--light">
+																<button class="btn btn-move btn-move btn-move btn--48 btn--light">
 																	<svg class="icon-move" aria-hidden="true">
 																		<use xlink:href="/sprites/sprite.svg#icon-move"></use>
 																	</svg>
 																</button>
 															</div>
 														</div>
-													</div>
-													<div class="ui-input-price">
+													</li>
+													<li class="ui-input-price">
 														<div class="ui-input-price-val">
 															<div class="ui-input-icon">
 																<svg class="icon-badge" aria-hidden="true">
@@ -712,15 +712,15 @@
 																		<use xlink:href="/sprites/sprite.svg#icon-delete"></use>
 																	</svg>
 																</button>
-																<button class="btn btn--48 btn--light">
+																<button class="btn btn-move btn-move btn-move btn--48 btn--light">
 																	<svg class="icon-move" aria-hidden="true">
 																		<use xlink:href="/sprites/sprite.svg#icon-move"></use>
 																	</svg>
 																</button>
 															</div>
 														</div>
-													</div>
-													<div class="ui-input-price">
+													</li>
+													<li class="ui-input-price">
 														<div class="ui-input-price-val">
 															<input class="ui-input" type="text" placeholder="Наименование" value="Подготовка макета">
 														</div>
@@ -732,35 +732,15 @@
 																		<use xlink:href="/sprites/sprite.svg#icon-delete"></use>
 																	</svg>
 																</button>
-																<button class="btn btn--48 btn--light">
+																<button class="btn btn-move btn-move btn-move btn--48 btn--light">
 																	<svg class="icon-move" aria-hidden="true">
 																		<use xlink:href="/sprites/sprite.svg#icon-move"></use>
 																	</svg>
 																</button>
 															</div>
 														</div>
-													</div>
-													<div class="ui-input-price">
-														<div class="ui-input-price-val">
-															<input class="ui-input" type="text" placeholder="Наименование" value="Инструменты прайс-лист актуален до июля 2018">
-														</div>
-														<div class="ui-input-price-field">
-															<input class="ui-input ui-input--w200 text-blue" type="text" placeholder="Цена" value="instrumenti_s..2.docx">
-															<div class="ui-input-append">
-																<button class="btn btn--48 btn--light">
-																	<svg class="icon-delete" aria-hidden="true">
-																		<use xlink:href="/sprites/sprite.svg#icon-delete"></use>
-																	</svg>
-																</button>
-																<button class="btn btn--48 btn--light">
-																	<svg class="icon-move" aria-hidden="true">
-																		<use xlink:href="/sprites/sprite.svg#icon-move"></use>
-																	</svg>
-																</button>
-															</div>
-														</div>
-													</div>
-													<div class="ui-input-price">
+													</li>
+													<li class="ui-input-price">
 														<div class="ui-input-price-val">
 															<input class="ui-input" type="text" placeholder="Наименование">
 														</div>
@@ -772,37 +752,30 @@
 																		<use xlink:href="/sprites/sprite.svg#icon-delete"></use>
 																	</svg>
 																</button>
-																<button class="btn btn--48 btn--light">
+																<button class="btn btn-move btn-move btn--48 btn--light">
 																	<svg class="icon-move" aria-hidden="true">
 																		<use xlink:href="/sprites/sprite.svg#icon-move"></use>
 																	</svg>
 																</button>
 															</div>
 														</div>
-													</div>
-												</div>
+													</li>
+												</ol>
 												<div class="panel__settings-row">
 													<div class="ui-btn-group">
 														<div class="row">
 															<div class="col-auto">
-																<button class="btn btn--36 btn--dark">
+																<button class="btn btn-add-title btn--36 btn--dark">
 																	<svg class="icon-add" aria-hidden="true">
 																		<use xlink:href="/sprites/sprite.svg#icon-add"></use>
 																	</svg>Добавить заголовок
 																</button>
 															</div>
 															<div class="col-auto">
-																<button class="btn btn--36 btn--dark">
+																<button class="btn btn-add-row btn--36 btn--dark">
 																	<svg class="icon-add" aria-hidden="true">
 																		<use xlink:href="/sprites/sprite.svg#icon-add"></use>
 																	</svg>Добавить cтроку
-																</button>
-															</div>
-															<div class="col-auto">
-																<button class="btn btn--36 btn--dark">
-																	<svg class="icon-add" aria-hidden="true">
-																		<use xlink:href="/sprites/sprite.svg#icon-add"></use>
-																	</svg>Добавить файл
 																</button>
 															</div>
 														</div>
@@ -819,7 +792,7 @@
 													<label class="ui-label" for="update-category">Филиал</label>
 													<div class="ui-input-group">
 														<div class="ui-select">
-															<select class="js-select">
+															<select class="js-select js-select__b-office ">
 																<option data-id="123">Москва, Дзержинского проспект, 211а</option>
 																<option data-id="124">Москва, Снайпера Рубахо, 42 / Дзержинского, 148</option>
 																<option data-id="125">Новороссийск, Хворостянского, 13б</option>
@@ -845,7 +818,49 @@
 													<div class="row">
 														<div class="col-md-12">
 															<label class="ui-label" for="update-address">Адрес</label>
-															<input class="ui-input" type="email" placeholder="Санк-Петербург, ул. Римского-Корсакова, дом 22" value="Дзержинского проспект, 211а" id="update-address">
+															<div class="ui-search__field">
+																<figure class="ui-search__icon">
+																	<svg class="icon-search" aria-hidden="true">
+																		<use xlink:href="/sprites/sprite.svg#icon-search"></use>
+																	</svg>
+																</figure>
+																<input class="ui-search__input js-search-input address-suggest__search" autocomplete="off"  type="search" placeholder="Санк-Петербург, ул. Римского-Корсакова, дом 22" id="update-address" aria-invalid="false">
+																<div class="ui-search__dropdown">
+																	<div class="ui-search__progress hidden search-categories__progress">
+																		<div class="searchloader"></div>
+																		<span class="ml7">идёт поиск..</span>
+																	</div>
+																	<div class="ui-search__results">
+																		<ul class="ui-search__list search-categories__list">
+
+																			<li data-num="1">
+																				<div class="ui-search__item">
+													<span class="ui-search__item-text">
+														Санкт-Петербург, Ленинский проспект
+													</span>
+																				</div>
+																			</li>
+
+																			<li data-num="2">
+																				<div class="ui-search__item">
+													<span class="ui-search__item-text">
+														автозапчасти
+													</span>
+																				</div>
+																			</li>
+
+																			<li data-num="3">
+																				<div class="ui-search__item">
+													<span class="ui-search__item-text">
+														+7 953 30 35 448
+													</span>
+																				</div>
+																			</li>
+
+																		</ul>
+																	</div>
+																</div>
+															</div>
 														</div>
 														<div class="col-md-4">
 															<label class="ui-label" for="update-address-floor">Этаж</label>
@@ -870,17 +885,20 @@
 											</div>
 											<div class="panel__settings-group panel__settings-group--grey">
 												<label class="ui-label">Режим работы (Дзержинского проспект, 211а)</label>
-												<div class="ui-worktime">
+												<div class="ui-worktime progress-input " id="update-worktime">
 													<div class="ui-worktime__row js-worktime is-active">
 														<div class="ui-worktime__day">
 															<label class="ui-check">
 																<input class="ui-check__input js-worktime-checkbox" type="checkbox" checked><span class="ui-check__switch"></span><span class="ui-check__text">ПН</span>
 															</label>
 														</div>
+														<div class="ui-worktime__period ui-worktime__period--off">
+															<p class="ui-worktime__period-text">Выходной</p>
+														</div>
 														<div class="ui-worktime__period">
 															<ul class="ui-worktime__period-control">
 																<li>
-																	<button class="ui-worktime__period-btn js-worktime-btn" data-target="#time-01">с 8:00 — 20:00</button>
+																	<button class="ui-worktime__period-btn js-worktime-btn" data-target="#time-01">с 08:00 — 20:00</button>
 																</li>
 																<li>
 																	<button class="ui-worktime__period-btn js-worktime-btn" data-target="#break-01">перерыв 13:00 — 14:00</button>
@@ -1024,6 +1042,9 @@
 															<label class="ui-check">
 																<input class="ui-check__input js-worktime-checkbox" type="checkbox" checked><span class="ui-check__switch"></span><span class="ui-check__text">ВТ</span>
 															</label>
+														</div>
+														<div class="ui-worktime__period ui-worktime__period--off">
+															<p class="ui-worktime__period-text">Выходной</p>
 														</div>
 														<div class="ui-worktime__period">
 															<ul class="ui-worktime__period-control">
@@ -1173,6 +1194,9 @@
 																<input class="ui-check__input js-worktime-checkbox" type="checkbox" checked><span class="ui-check__switch"></span><span class="ui-check__text">СР</span>
 															</label>
 														</div>
+														<div class="ui-worktime__period ui-worktime__period--off">
+															<p class="ui-worktime__period-text">Выходной</p>
+														</div>
 														<div class="ui-worktime__period">
 															<ul class="ui-worktime__period-control">
 																<li>
@@ -1320,6 +1344,9 @@
 															<label class="ui-check">
 																<input class="ui-check__input js-worktime-checkbox" type="checkbox" checked><span class="ui-check__switch"></span><span class="ui-check__text">ЧТ</span>
 															</label>
+														</div>
+														<div class="ui-worktime__period ui-worktime__period--off">
+															<p class="ui-worktime__period-text">Выходной</p>
 														</div>
 														<div class="ui-worktime__period">
 															<ul class="ui-worktime__period-control">
@@ -1469,6 +1496,9 @@
 																<input class="ui-check__input js-worktime-checkbox" type="checkbox" checked><span class="ui-check__switch"></span><span class="ui-check__text">ПТ</span>
 															</label>
 														</div>
+														<div class="ui-worktime__period ui-worktime__period--off">
+															<p class="ui-worktime__period-text">Выходной</p>
+														</div>
 														<div class="ui-worktime__period">
 															<ul class="ui-worktime__period-control">
 																<li>
@@ -1617,7 +1647,7 @@
 																<input class="ui-check__input js-worktime-checkbox" type="checkbox"><span class="ui-check__switch"></span><span class="ui-check__text">СБ</span>
 															</label>
 														</div>
-														<div class="ui-worktime__period">
+														<div class="ui-worktime__period ui-worktime__period--off">
 															<p class="ui-worktime__period-text">Выходной</p>
 														</div>
 													</div>
@@ -1627,7 +1657,7 @@
 																<input class="ui-check__input js-worktime-checkbox" type="checkbox"><span class="ui-check__switch"></span><span class="ui-check__text">ВС</span>
 															</label>
 														</div>
-														<div class="ui-worktime__period">
+														<div class="ui-worktime__period ui-worktime__period--off">
 															<p class="ui-worktime__period-text">Выходной</p>
 														</div>
 													</div>
@@ -1637,7 +1667,18 @@
 											<div class="panel__settings-group panel__settings-group--grey">
 												<div class="panel__settings-moderator">
 														<span class="ui-link ui-link--blue ui-link--dotted ui-link--underline cursor-pointer">Добавить комментарий для модератора</span>
+														<span class="ui-link ui-link--blue ui-link--dotted ui-link--underline cursor-pointer hidden">Не добавлять комментарий</span>
 												</div>
+												<div class="panel__settings-group panel__settings-m-comment hidden">
+													<div class="panel__settings-row">
+
+														<div class="ui-input-group">
+															<div class="ui-input-field">
+																<input class="ui-input progress-input" name="moderator-comment" type="text" placeholder="Комментарий для модератора" value="">
+															</div>
+
+														</div>
+													</div></div>
 											</div>
 										</div>
 									</div>
@@ -1688,15 +1729,16 @@
 													<div class="panel__request-total"><b class="panel__request-total-price">= 499 <small>р.</small></b>
 														<p class="panel__request-total-text">VISA, Яндекс.Деньги, QIWI, PayPal</p>
 													</div>
-													<div class="panel__request-control">
-														<label class="ui-check">
-															<input class="ui-check__input" type="checkbox"><span class="ui-check__switch"></span><span class="ui-check__text">Согласен с условиями предоставления услуги</span>
-														</label>
-														<button class="btn btn--54 btn--green">Отправить + оплатить 499 р.</button>
-													</div>
+
 												</div>
 											</div>
 											<div class="panel__tabs-content js-tabsid-content" data-tabs-content="02">Далеко-далеко за словесными горами в стране гласных, и согласных живут рыбные тексты. Даже диких скатился вопроса рукописи. Коварный заголовок путь, выйти безопасную рыбного возвращайся вершину, свою, пояс но маленькая ipsum на берегу обеспечивает.</div>
+											<div class="panel__request-control">
+												<label class="ui-check">
+													<input class="ui-check__input" type="checkbox"><span class="ui-check__switch"></span><span class="ui-check__text">Согласен с условиями предоставления услуги</span>
+												</label>
+												<button class="btn btn--54 btn--green">Отправить + оплатить 499 р.</button>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -1717,37 +1759,37 @@
 											<div class="panel__body">
 												<nav class="panel__bookmark">
 													<ul class="panel__bookmark-menu">
-														<li><a class="panel__bookmark-link" href="#">
+														<li><a class="panel__bookmark-link" href="#update-name">
 																<svg class="icon-bookmark" aria-hidden="true">
 																	<use xlink:href="/sprites/sprite.svg#icon-bookmark"></use>
 																</svg>
 																<u>Название</u></a></li>
-														<li><a class="panel__bookmark-link" href="#">
+														<li><a class="panel__bookmark-link" href="#update-person">
 																<svg class="icon-bookmark" aria-hidden="true">
 																	<use xlink:href="/sprites/sprite.svg#icon-bookmark"></use>
 																</svg>
 																<u>Юридическое лицо</u></a></li>
-														<li><a class="panel__bookmark-link" href="#">
+														<li><a class="panel__bookmark-link" href="#update-tel">
 																<svg class="icon-bookmark" aria-hidden="true">
 																	<use xlink:href="/sprites/sprite.svg#icon-bookmark"></use>
 																</svg>
 																<u>Контакты</u></a></li>
-														<li><a class="panel__bookmark-link" href="#">
+														<li><a class="panel__bookmark-link" href="#update-website">
 																<svg class="icon-bookmark" aria-hidden="true">
 																	<use xlink:href="/sprites/sprite.svg#icon-bookmark"></use>
 																</svg>
 																<u>Сайт и соц. сети</u></a></li>
-														<li><a class="panel__bookmark-link" href="#">
+														<li><a class="panel__bookmark-link" href="#update-address">
 																<svg class="icon-bookmark" aria-hidden="true">
 																	<use xlink:href="/sprites/sprite.svg#icon-bookmark"></use>
 																</svg>
 																<u>Адрес и место</u></a></li>
-														<li><a class="panel__bookmark-link" href="#">
+														<li><a class="panel__bookmark-link" href="#update-worktime">
 																<svg class="icon-bookmark" aria-hidden="true">
 																	<use xlink:href="/sprites/sprite.svg#icon-bookmark"></use>
 																</svg>
 																<u>Режим работы</u></a></li>
-														<li><a class="panel__bookmark-link" href="#">
+														<li><a class="panel__bookmark-link" href="#update-desc">
 																<svg class="icon-bookmark" aria-hidden="true">
 																	<use xlink:href="/sprites/sprite.svg#icon-bookmark"></use>
 																</svg>
@@ -1773,6 +1815,7 @@
 								</div>
 							</div>
 						</div>
+</form>
 					</div>
 				</div>
 		</div>
@@ -1840,6 +1883,53 @@
 	</div>
 </footer>
 <!-- Footer :: End-->	</div>
-	<script defer src="/js/app.full.min.js?v=2"></script>
-<script defer src="/js/update.js?v=2"></script></body>
+	<script defer src="../js/app.full.min.js"></script>
+<script defer src="../../resources/js/all_pages.js"></script>
+<script defer src="../js/update.js"></script>
+<script defer src="https://api-maps.yandex.ru/2.1/?lang=ru-RU" type="text/javascript"></script>
+</body>
+<style>
+	.ui-link.hidden{
+		display: none;
+	}
+	.panel__sortable{
+		list-style: circle;
+	}
+	ol.panel__sortable li{
+		color:#FFFFFF;
+	}
+	body.dragging, body.dragging * {
+		cursor: move !important;
+	}
+
+	.dragged {
+		position: absolute!important;
+		opacity: 0.5;
+		z-index: 2000;
+	}
+	.ui-search__progress.hidden{
+		display: none;
+	}
+	.search-categories__list{
+		cursor: pointer;
+	}
+	.panel__settings-m-comment.hidden{
+		display: none;
+	}
+	.panel__settings-m-comment{
+		padding: 20px 0;
+	}
+	.ui-worktime__row.is-active .ui-worktime__period--off {
+		display: none;
+	}
+	.ui-worktime__row:not(.is-active) .ui-worktime__period {
+		display: none;
+	}
+	.ui-worktime__row:not(.is-active) .ui-worktime__comment {
+		display: none;
+	}
+	.ui-worktime__row:not(.is-active) .ui-worktime__period--off {
+		display: table-cell;
+	}
+</style>
 </html>

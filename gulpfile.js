@@ -676,3 +676,12 @@ gulp.task('default', function() {
 	}
 	
 });
+gulp.task('update-js', function() {
+	return gulp.src([
+		'node_modules/jquery-validation/dist/jquery.validate.js',
+		'node_modules/jquery-sortable/source/js/jquery-sortable.js',
+		'resources/js/update.js',
+	])
+		.pipe(concat('update.js'))
+		.pipe(gulp.dest(dist.js))
+});
