@@ -2498,6 +2498,15 @@ $(document).ready(function () {
         let parent =  $(this).parents('.ui-input-group').find('.ui-input')
         deleted[''+parent.attr("name")+''].push(parent.data('id'))
         parent.remove()
+        $(this).remove()
+
+    })
+    $('.ui-input-price').click(function (e) {
+        e.preventDefault()
+        let parent =  $(this).parents('.ui-input-group').find('.ui-input')
+
+        parent.remove()
+        $(this).remove()
 
     })
     //TODO здесь идет много кода вставки шаблонов полей, как вариант, если это будет использоваться только здесь, то можно написать одну универсальную функцию которая будет по дата-атрибутам понимать куда/чего
@@ -2740,6 +2749,7 @@ $(document).ready(function () {
     })
     jdoc.on('click', '.search-categories__categories .btn__delete', function (e) {
         $(this).parents('.col-auto').remove()
+
         deleted['categories'].push($(this).parents('.btn--selected').data('id'))
     })
     jdoc.on('click', '.js-select__b-office option', function (e) {
