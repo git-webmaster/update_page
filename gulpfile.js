@@ -52,7 +52,7 @@ var src = {
 	html: 'resources/pug/**/[^_]*.pug',
 	
 	scssWatch: 'resources/scss/**/*.scss',
-	scss: ['resources/scss/app.scss', 'resources/scss/plugins/*'],
+	scss: ['./resources/scss/app.scss', './resources/scss/plugins/*'],
 	scssThemes: 'resources/scss/themes/*',
 	cssPlugins: 'resources/css/**/*.css',
 
@@ -284,7 +284,7 @@ gulp.task('scss', function() {
 		}))
 		.pipe(concat('app.min.css'))
 		.pipe(pxtorem({rootValue: 10}))
-		.pipe(gulpif(release_mode, cleanCSS()))
+
 		.pipe(gulpif(release_mode, minify_css()))
 		.pipe(gulp.dest(dist.css))
 });
