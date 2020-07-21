@@ -179,6 +179,9 @@ function init() {
         officeMap.setCenter([lat, lon], 10)
         $('.address-coords').val([lon, lat])
     });
+    $('.select-form').change(function () {
+        officeMap.container.fitToViewport()
+    })
 }
 jdoc.on('click', '.ui-check', function (e) {
 
@@ -220,7 +223,7 @@ jdoc.on('click', '.js-worktime-btn', function (e) {
     e.preventDefault();
     var targetId = $(this).data('target');
 
-    $(this).closest('.js-worktime').find('.js-worktime-content').hide();
+    $('.js-worktime-content').hide();
 
     if ($(this).is('.is-active')) {
         $(this).removeClass('is-active');
@@ -262,6 +265,8 @@ $(document).ready(function () {
     $('.js-select__b-office').trigger('change')
     //выбор заявки
     $('.select-form').change(function () {
+        $('.panel__settings-group').show()
+        $('.l__wrapper').removeClass('hidden')
         switch ($(this).val()) {
             case 'update':
                 $('.company-info .panel__settings').children().show()
@@ -325,11 +330,16 @@ $(document).ready(function () {
         let parent = $(this).parents('.panel__settings-row')
         let parentInput = parent.find('.ui-input')
         deleted['' + parentInput.attr("name") + ''].push(parentInput.data('id'))
-        parent.remove()
+        if(parent.hasClass('panel__video')||parent.hasClass('panel__site')){
+            parent.find('.ui-input-group').remove()
+            parent.css('margin-bottom','0')
+        }else {
+            parent.remove()
+        }
         $(this).remove()
 
     })
-    jdoc.on('click', '.ui-input-price', function (e) {
+    jdoc.on('click', '.ui-input-price .btn--remove', function (e) {
         e.preventDefault()
         let parent = $(this).parents('.ui-input-group').find('.ui-input')
         parent.remove()
@@ -348,7 +358,7 @@ $(document).ready(function () {
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input" type="email" placeholder="name@mail.ru" id="update-email" name="email" value="raduga@mail.ru" data-id="123">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="col-md-6">\n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label class="ui-label">Комментарий к email</label>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label class="ui-label is-md-hidden ">Комментарий к email</label>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-group">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input" name="email-comment" type="text" placeholder="отдел продаж">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-append">\n' +
@@ -404,7 +414,7 @@ $(document).ready(function () {
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-price-field">\n' +
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input ui-input--w200" type="text" placeholder="Цена" value="">\n' +
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-append">\n' +
-            '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button  type="button" class ="btn btn--48 btn--light">\n' +
+            '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button  type="button" class ="btn btn--48 btn--light btn--remove">\n' +
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<svg class="icon-delete" aria-hidden="true">\n' +
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<use xlink:href="/sprites/sprite.svg#icon-delete"></use>\n' +
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</svg>\n' +
@@ -423,8 +433,7 @@ $(document).ready(function () {
     jdoc.on('click', '.btn-add-site', function (e) {
         e.preventDefault();
         if ($(this).parent('.panel__settings-group').find('.panel__settings-row').length < 10) {
-            let siteRow = $('\t<div class="panel__settings-row">\n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t\t<label class="ui-label is-md-hidden" for="update-website">Сайт</label>\n' +
+            let siteRow = $('\t<div class="panel__settings-row panel__new">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-group">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input progress-input" type="text" name="site" placeholder="http://www.renins.com" id="update-website" data-id="123" value="">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-append">\n' +
@@ -440,10 +449,9 @@ $(document).ready(function () {
     })
     jdoc.on('click', '.btn-add-video', function (e) {
         e.preventDefault();
-        console.log($('.btn-add-video__row').siblings('.panel__settings-row'))
+
         if ($(this).parent('.panel__settings-group').find('.panel__settings-row').length < 10) {
-            let videoRow = $('\t<div class="panel__settings-row">\n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t\t<label class="ui-label is-md-hidden ">Видео (только YouTube)</label>\n' +
+            let videoRow = $('\t<div class="panel__settings-row panel__new">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-group">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="row">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="col-sm-6">\n' +
@@ -498,16 +506,11 @@ $(document).ready(function () {
         $(".panel__sortable").append(priceTitle)
     })
     // Сортировка полей прайслиста по drag ивенту
-    $("ol.panel__sortable").sortable({
-        group: 'no-drop',
-        handle: '.btn-move',
-        onDragStart: function ($item, container, _super) {
-            // Duplicate items of the no drop area
-            if (!container.options.drop)
-                $item.clone().insertAfter($item);
-            _super($item, container);
+    const sortable = new Sortable.default(
+        document.querySelector('ol.panel__sortable'), {
+            draggable: 'li.ui-input-price',
         }
-    });
+    )
     // делаю поиск с задержкой к обращению к апи в 200 мс, если неактуально в данном конкретном случае то нужно убрать setTimeout в ивентлисенере ниже
     var searchList = $('.search-categories__list');
     var searchProgress = $('.search-categories__progress');
@@ -521,17 +524,27 @@ $(document).ready(function () {
             url: 'https://api.github.com/users/' + val + '/starred',
             dataType: "json",
             success: function (response) {
-                console.log(response)
+
                 for (let i in response) {
                     let result = $('<li data-id="' + response[i]['id'] + '" data-num="' + i + '">\n' +
                         '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-search__item">\n' +
                         '\t\t\t\t\t\t\t\t\t\t\t\t\t<span class="ui-search__item-text">\n' +
-                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t ' + response[i]['name'] + ' \n' +
+                        '' + response[i]['name'] + '' +
                         '\t\t\t\t\t\t\t\t\t\t\t\t\t</span>\n' +
                         '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                         '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</li>')
                     searchList.append(result)
                 }
+            },
+            error:function () {
+                let result = $('<li class="search-failed">\n' +
+                    '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-search__item">\n' +
+                    '\t\t\t\t\t\t\t\t\t\t\t\t\t<span class="ui-search__item-text">\n' +
+                    'Ничего не найдено' +
+                    '\t\t\t\t\t\t\t\t\t\t\t\t\t</span>\n' +
+                    '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
+                    '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</li>')
+                searchList.append(result)
             }
         })
         searchProgress.addClass('hidden')
@@ -665,7 +678,6 @@ $(document).ready(function () {
             let from = inputs.find('.js-select').first();
             let to = inputs.find('.js-select').last();
             let checkbox = inputs.find('.ui-check__input');
-            console.log(val[0])
             if (val[0] == 'Круглосуточно' || val[0] == 'Без') {
                 from.val('00:00').change().selectric('refresh');
                 to.val('00:00').change().selectric('refresh');
@@ -688,6 +700,7 @@ $(document).ready(function () {
                 $('.ui-taglist').show()
                 $('.panel__settings-group').show();
                 $(".l__sticky.js-sticky").show();
+                $('.change_address').removeClass('no-after')
                 jbody.trigger("sticky_kit:recalc");
                 break
             case "transfer":
@@ -697,9 +710,11 @@ $(document).ready(function () {
                 if ($('.panel__settings-m-comment.hidden').length > 0)
                     $('.panel__settings-moderator .ui-link').first().trigger('click');
                 $(".l__sticky.js-sticky").hide();
+                $('.change_address').addClass('no-after')
                 break
             default:
                 $('.ui-taglist').hide()
+                $('.change_address').addClass('no-after')
                 $('.panel__settings-group:not(.pm-comment):not(.panel__settings-m-comment)').hide();
                 if ($('.panel__settings-m-comment.hidden').length > 0)
                     $('.panel__settings-moderator .ui-link').first().trigger('click');
@@ -771,7 +786,7 @@ $(document).ready(function () {
             'sunday': {},
         }
         $('.ui-worktime__row').each(function (index, elem) {
-            if ($(this).find('.js-worktime-checkbox').attr("checked") !== 'checked') {
+            if ($(this).find('.js-worktime-checkbox').is(":checked") ==false) {
                 data['schedule']['' + days[index] + '']['not_working'] = true
             } else {
                 data['schedule']['' + days[index] + '']['not_working'] = false;
