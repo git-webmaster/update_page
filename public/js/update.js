@@ -7059,7 +7059,7 @@ $(document).ready(function () {
     })
     jdoc.on('click', '.ui-input-price .btn--remove', function (e) {
         e.preventDefault()
-        let parent = $(this).parents('.ui-input-group').find('.ui-input')
+        let parent = $(this).parents('.ui-input-price')
         parent.remove()
         $(this).remove()
     })
@@ -7208,7 +7208,7 @@ $(document).ready(function () {
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input ui-input--light" type="text" placeholder="Услуги печати">\n' +
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-append">\n' +
-            '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button  type="button" class ="btn btn--48 btn--light">\n' +
+            '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button  type="button" class ="btn btn--48 btn--light btn--remove">\n' +
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<svg class="icon-delete" aria-hidden="true">\n' +
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<use xlink:href="/sprites/sprite.svg#icon-delete"></use>\n' +
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</svg>\n' +
@@ -7242,7 +7242,7 @@ $(document).ready(function () {
             url: 'https://api.github.com/users/' + val + '/starred',
             dataType: "json",
             success: function (response) {
-
+                searchList.empty()
                 for (let i in response) {
                     let result = $('<li data-id="' + response[i]['id'] + '" data-num="' + i + '">\n' +
                         '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-search__item">\n' +
@@ -7255,6 +7255,7 @@ $(document).ready(function () {
                 }
             },
             error:function () {
+                searchList.empty()
                 let result = $('<li class="search-failed">\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-search__item">\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t<span class="ui-search__item-text">\n' +
@@ -7272,7 +7273,7 @@ $(document).ready(function () {
         if ($(this).val().length >= 2) {
             searchProgress.removeClass('hidden')
             searchList.empty()
-            clearTimeout(search);
+            clearTimeout(searchCategories);
             var search = setTimeout(searchCategories, 100);
         }
     })
