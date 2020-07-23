@@ -1302,8 +1302,8 @@ function loadEvents() {
 	});
 
 	// suggest click
-	jdoc.on('click', '.ui-search__list > li', function(e){
-		e.preventDefault();
+	jdoc.on('click', '.ui-search__list > li', function(){
+
 
 		var t = $(this),
 			t_text = $.trim(t.find('.ui-search__item-text').html()),

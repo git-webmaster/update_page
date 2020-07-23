@@ -787,10 +787,15 @@
 													</div>
 												</div>
 												<div class="panel__settings-row">
-													<button type="button"   class="btn btn--36 btn--dark">
+													<button type="button"   class="btn btn--36 btn--dark btn__add-office">
 														<svg class="icon-add" aria-hidden="true">
 															<use xlink:href="/sprites/sprite.svg#icon-add"></use>
 														</svg>Добавить филиал
+													</button>
+													<button type="button"   class="btn btn--36 btn--dark btn__delete-office">
+														<svg class="icon-delete" aria-hidden="true">
+															<use xlink:href="/sprites/sprite.svg#icon-delete"></use>
+														</svg>Удалить филиал
 													</button>
 												</div>
 												<div class="ui-input-group">
@@ -803,7 +808,7 @@
 																		<use xlink:href="/sprites/sprite.svg#icon-search"></use>
 																	</svg>
 																</figure>
-																<input class="ui-search__input js-search-input progress-input address-suggest__search" autocomplete="off" name="address" type="search" placeholder="Санк-Петербург, ул. Римского-Корсакова, дом 22" id="update-address" aria-invalid="false">
+																<input class="ui-search__input js-search-input progress-input address-suggest__search" autocomplete="off"  type="search" placeholder="Санк-Петербург, ул. Римского-Корсакова, дом 22" id="update-address" aria-invalid="false">
 																<div class="ui-search__dropdown">
 																	<div class="ui-search__progress hidden search-categories__progress">
 																		<div class="searchloader"></div>
@@ -818,17 +823,17 @@
 														</div>
 														<div class="col-md-4">
 															<label class="ui-label" for="update-address-floor">Этаж</label>
-															<input class="ui-input" name="floor" type="text" placeholder="1 этаж" id="update-address-floor">
+															<input class="ui-input" type="text" placeholder="1 этаж" id="update-address-floor">
 														</div>
 														<div class="col-md-4">
 															<label class="ui-label" for="update-address-office">Офис</label>
-															<input class="ui-input" name="office-number"  type="text" placeholder="офис 401" id="update-address-office">
+															<input class="ui-input"   type="text" placeholder="офис 401" id="update-address-office">
 														</div>
 														<div class="col-md-4">
 															<label class="ui-label" for="update-address-additional">Дополнительно</label>
-															<input class="ui-input"   name="address-additional" type="text" placeholder="БЦ Меркурий, вход со двора" id="update-address-additional">
+															<input class="ui-input"    type="text" placeholder="БЦ Меркурий, вход со двора" id="update-address-additional">
 														</div>
-														<input type="hidden" class="address-coords" name="coords" value="">
+														<input type="hidden" class="address-coords"  value="">
 													</div>
 												</div>
 											</div>
@@ -854,10 +859,161 @@
 														<div class="ui-worktime__period">
 															<ul class="ui-worktime__period-control">
 																<li>
-																	<button type="button"   class="ui-worktime__period-btn js-worktime-btn" data-target="#time-01">с 08:00 — 20:00</button>
+																	<button type="button"   class="ui-worktime__period-btn js-worktime-btn" data-target="#time-00">с 08:00 — 20:00</button>
 																</li>
 																<li>
-																	<button type="button"   class="ui-worktime__period-btn js-worktime-btn" data-target="#break-01">перерыв 13:00 — 14:00</button>
+																	<button type="button"   class="ui-worktime__period-btn js-worktime-btn" data-target="#break-00">перерыв 13:00 — 14:00</button>
+																</li>
+															</ul>
+															<div class="ui-worktime__period-content js-worktime-content" id="time-00">
+																<div class="ui-worktime__period-panel">
+																	<ul class="ui-worktime__period-fromto">
+																		<li>
+																			<div class="ui-select ui-select--36">
+																				<select class="js-select">
+																					<option>08:00</option>
+																					<option>09:00</option>
+																					<option>10:00</option>
+																					<option>11:00</option>
+																					<option>12:00</option>
+																					<option>13:00</option>
+																					<option>14:00</option>
+																					<option>15:00</option>
+																					<option>16:00</option>
+																					<option>17:00</option>
+																					<option>18:00</option>
+																					<option>19:00</option>
+																					<option>20:00</option>
+																					<option>21:00</option>
+																					<option>22:00</option>
+																					<option>23:00</option>
+																					<option>00:00</option>
+																				</select>
+																			</div>
+																		</li>
+																		<li>
+																			<div class="ui-select ui-select--36">
+																				<select class="js-select">
+																					<option>08:00</option>
+																					<option>09:00</option>
+																					<option>10:00</option>
+																					<option>11:00</option>
+																					<option>12:00</option>
+																					<option>13:00</option>
+																					<option>14:00</option>
+																					<option>15:00</option>
+																					<option>16:00</option>
+																					<option>17:00</option>
+																					<option>18:00</option>
+																					<option>19:00</option>
+																					<option>20:00</option>
+																					<option>21:00</option>
+																					<option>22:00</option>
+																					<option>23:00</option>
+																					<option>00:00</option>
+																				</select>
+																			</div>
+																		</li>
+																	</ul>
+																	<label class="ui-check">
+																		<input class="ui-check__input" type="checkbox"><span class="ui-check__checkbox">
+                                          <svg class="icon-checked" aria-hidden="true">
+                                            <use xlink:href="/sprites/sprite.svg#icon-checked"></use>
+                                          </svg></span><span class="ui-check__text">Круглосуточно</span>
+																	</label>
+																</div>
+															</div>
+															<div class="ui-worktime__period-content js-worktime-content" id="break-00">
+																<div class="ui-worktime__period-panel">
+																	<ul class="ui-worktime__period-fromto">
+																		<li>
+																			<div class="ui-select ui-select--36">
+																				<select class="js-select">
+																					<option>08:00</option>
+																					<option>09:00</option>
+																					<option>10:00</option>
+																					<option>11:00</option>
+																					<option>12:00</option>
+																					<option>13:00</option>
+																					<option>14:00</option>
+																					<option>15:00</option>
+																					<option>16:00</option>
+																					<option>17:00</option>
+																					<option>18:00</option>
+																					<option>19:00</option>
+																					<option>20:00</option>
+																					<option>21:00</option>
+																					<option>22:00</option>
+																					<option>23:00</option>
+																					<option>00:00</option>
+																				</select>
+																			</div>
+																		</li>
+																		<li>
+																			<div class="ui-select ui-select--36">
+																				<select class="js-select">
+																					<option>08:00</option>
+																					<option>09:00</option>
+																					<option>10:00</option>
+																					<option>11:00</option>
+																					<option>12:00</option>
+																					<option>13:00</option>
+																					<option>14:00</option>
+																					<option>15:00</option>
+																					<option>16:00</option>
+																					<option>17:00</option>
+																					<option>18:00</option>
+																					<option>19:00</option>
+																					<option>20:00</option>
+																					<option>21:00</option>
+																					<option>22:00</option>
+																					<option>23:00</option>
+																					<option>00:00</option>
+																				</select>
+																			</div>
+																		</li>
+																	</ul>
+																	<label class="ui-check">
+																		<input class="ui-check__input" type="checkbox"><span class="ui-check__checkbox">
+                                          <svg class="icon-checked" aria-hidden="true">
+                                            <use xlink:href="/sprites/sprite.svg#icon-checked"></use>
+                                          </svg></span><span class="ui-check__text">Без перерыва</span>
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="ui-worktime__comment js-worktime-comment">
+															<div class="ui-worktime__comment-add">
+																<button type="button"   class="btn btn--40 btn--dark js-worktime-comment-btn">Добавить комментарий</button>
+															</div>
+															<div class="ui-worktime__comment-field">
+																<div class="ui-input-group">
+																	<button type="button"   class="ui-input-cancel js-worktime-comment-cancel">
+																		<svg class="icon-cancel" aria-hidden="true">
+																			<use xlink:href="/sprites/sprite.svg#icon-cancel"></use>
+																		</svg>
+																	</button>
+																	<input class="ui-input ui-input--40" type="text" placeholder="Ваш комментарий">
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="ui-worktime__row js-worktime is-active">
+														<div class="ui-worktime__day">
+															<label class="ui-check">
+																<input class="ui-check__input js-worktime-checkbox" type="checkbox" checked><span class="ui-check__switch"></span><span class="ui-check__text">ВТ</span>
+															</label>
+														</div>
+														<div class="ui-worktime__period ui-worktime__period--off">
+															<p class="ui-worktime__period-text">Выходной</p>
+														</div>
+														<div class="ui-worktime__period">
+															<ul class="ui-worktime__period-control">
+																<li>
+																	<button type="button"   class="ui-worktime__period-btn js-worktime-btn" data-target="#time-01">Круглосуточно</button>
+																</li>
+																<li>
+																	<button type="button"   class="ui-worktime__period-btn js-worktime-btn" data-target="#break-01">Без перерыва</button>
 																</li>
 															</ul>
 															<div class="ui-worktime__period-content js-worktime-content" id="time-01">
@@ -996,7 +1152,7 @@
 													<div class="ui-worktime__row js-worktime is-active">
 														<div class="ui-worktime__day">
 															<label class="ui-check">
-																<input class="ui-check__input js-worktime-checkbox" type="checkbox" checked><span class="ui-check__switch"></span><span class="ui-check__text">ВТ</span>
+																<input class="ui-check__input js-worktime-checkbox" type="checkbox" checked><span class="ui-check__switch"></span><span class="ui-check__text">СР</span>
 															</label>
 														</div>
 														<div class="ui-worktime__period ui-worktime__period--off">
@@ -1147,7 +1303,7 @@
 													<div class="ui-worktime__row js-worktime is-active">
 														<div class="ui-worktime__day">
 															<label class="ui-check">
-																<input class="ui-check__input js-worktime-checkbox" type="checkbox" checked><span class="ui-check__switch"></span><span class="ui-check__text">СР</span>
+																<input class="ui-check__input js-worktime-checkbox" type="checkbox" checked><span class="ui-check__switch"></span><span class="ui-check__text">ЧТ</span>
 															</label>
 														</div>
 														<div class="ui-worktime__period ui-worktime__period--off">
@@ -1159,7 +1315,7 @@
 																	<button type="button"   class="ui-worktime__period-btn js-worktime-btn" data-target="#time-03">Круглосуточно</button>
 																</li>
 																<li>
-																	<button type="button"   class="ui-worktime__period-btn js-worktime-btn" data-target="#break-03">Без перерыва</button>
+																	<button type="button"   class="ui-worktime__period-btn js-worktime-btn" data-target="#break-03">перерыв <span class="ui-worktime__period-time">13:00 — 14:00</span></button>
 																</li>
 															</ul>
 															<div class="ui-worktime__period-content js-worktime-content" id="time-03">
@@ -1298,7 +1454,7 @@
 													<div class="ui-worktime__row js-worktime is-active">
 														<div class="ui-worktime__day">
 															<label class="ui-check">
-																<input class="ui-check__input js-worktime-checkbox" type="checkbox" checked><span class="ui-check__switch"></span><span class="ui-check__text">ЧТ</span>
+																<input class="ui-check__input js-worktime-checkbox" type="checkbox" checked><span class="ui-check__switch"></span><span class="ui-check__text">ПТ</span>
 															</label>
 														</div>
 														<div class="ui-worktime__period ui-worktime__period--off">
@@ -1310,7 +1466,7 @@
 																	<button type="button"   class="ui-worktime__period-btn js-worktime-btn" data-target="#time-04">Круглосуточно</button>
 																</li>
 																<li>
-																	<button type="button"   class="ui-worktime__period-btn js-worktime-btn" data-target="#break-04">перерыв <span class="ui-worktime__period-time">13:00 — 14:00</span></button>
+																	<button type="button"   class="ui-worktime__period-btn js-worktime-btn" data-target="#break-04">Без перерыва</button>
 																</li>
 															</ul>
 															<div class="ui-worktime__period-content js-worktime-content" id="time-04">
@@ -1446,10 +1602,10 @@
 															</div>
 														</div>
 													</div>
-													<div class="ui-worktime__row js-worktime is-active">
+													<div class="ui-worktime__row js-worktime">
 														<div class="ui-worktime__day">
 															<label class="ui-check">
-																<input class="ui-check__input js-worktime-checkbox" type="checkbox" checked><span class="ui-check__switch"></span><span class="ui-check__text">ПТ</span>
+																<input class="ui-check__input js-worktime-checkbox" type="checkbox"><span class="ui-check__switch"></span><span class="ui-check__text">СБ</span>
 															</label>
 														</div>
 														<div class="ui-worktime__period ui-worktime__period--off">
@@ -1600,7 +1756,7 @@
 													<div class="ui-worktime__row js-worktime">
 														<div class="ui-worktime__day">
 															<label class="ui-check">
-																<input class="ui-check__input js-worktime-checkbox" type="checkbox"><span class="ui-check__switch"></span><span class="ui-check__text">СБ</span>
+																<input class="ui-check__input js-worktime-checkbox" type="checkbox"><span class="ui-check__switch"></span><span class="ui-check__text">ВС</span>
 															</label>
 														</div>
 														<div class="ui-worktime__period ui-worktime__period--off">
@@ -1674,157 +1830,6 @@
 																</div>
 															</div>
 															<div class="ui-worktime__period-content js-worktime-content" id="break-06">
-																<div class="ui-worktime__period-panel">
-																	<ul class="ui-worktime__period-fromto">
-																		<li>
-																			<div class="ui-select ui-select--36">
-																				<select class="js-select">
-																					<option>08:00</option>
-																					<option>09:00</option>
-																					<option>10:00</option>
-																					<option>11:00</option>
-																					<option>12:00</option>
-																					<option>13:00</option>
-																					<option>14:00</option>
-																					<option>15:00</option>
-																					<option>16:00</option>
-																					<option>17:00</option>
-																					<option>18:00</option>
-																					<option>19:00</option>
-																					<option>20:00</option>
-																					<option>21:00</option>
-																					<option>22:00</option>
-																					<option>23:00</option>
-																					<option>00:00</option>
-																				</select>
-																			</div>
-																		</li>
-																		<li>
-																			<div class="ui-select ui-select--36">
-																				<select class="js-select">
-																					<option>08:00</option>
-																					<option>09:00</option>
-																					<option>10:00</option>
-																					<option>11:00</option>
-																					<option>12:00</option>
-																					<option>13:00</option>
-																					<option>14:00</option>
-																					<option>15:00</option>
-																					<option>16:00</option>
-																					<option>17:00</option>
-																					<option>18:00</option>
-																					<option>19:00</option>
-																					<option>20:00</option>
-																					<option>21:00</option>
-																					<option>22:00</option>
-																					<option>23:00</option>
-																					<option>00:00</option>
-																				</select>
-																			</div>
-																		</li>
-																	</ul>
-																	<label class="ui-check">
-																		<input class="ui-check__input" type="checkbox"><span class="ui-check__checkbox">
-                                          <svg class="icon-checked" aria-hidden="true">
-                                            <use xlink:href="/sprites/sprite.svg#icon-checked"></use>
-                                          </svg></span><span class="ui-check__text">Без перерыва</span>
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div class="ui-worktime__comment js-worktime-comment">
-															<div class="ui-worktime__comment-add">
-																<button type="button"   class="btn btn--40 btn--dark js-worktime-comment-btn">Добавить комментарий</button>
-															</div>
-															<div class="ui-worktime__comment-field">
-																<div class="ui-input-group">
-																	<button type="button"   class="ui-input-cancel js-worktime-comment-cancel">
-																		<svg class="icon-cancel" aria-hidden="true">
-																			<use xlink:href="/sprites/sprite.svg#icon-cancel"></use>
-																		</svg>
-																	</button>
-																	<input class="ui-input ui-input--40" type="text" placeholder="Ваш комментарий">
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="ui-worktime__row js-worktime">
-														<div class="ui-worktime__day">
-															<label class="ui-check">
-																<input class="ui-check__input js-worktime-checkbox" type="checkbox"><span class="ui-check__switch"></span><span class="ui-check__text">ВС</span>
-															</label>
-														</div>
-														<div class="ui-worktime__period ui-worktime__period--off">
-															<p class="ui-worktime__period-text">Выходной</p>
-														</div>
-														<div class="ui-worktime__period">
-															<ul class="ui-worktime__period-control">
-																<li>
-																	<button type="button"   class="ui-worktime__period-btn js-worktime-btn" data-target="#time-07">Круглосуточно</button>
-																</li>
-																<li>
-																	<button type="button"   class="ui-worktime__period-btn js-worktime-btn" data-target="#break-07">Без перерыва</button>
-																</li>
-															</ul>
-															<div class="ui-worktime__period-content js-worktime-content" id="time-07">
-																<div class="ui-worktime__period-panel">
-																	<ul class="ui-worktime__period-fromto">
-																		<li>
-																			<div class="ui-select ui-select--36">
-																				<select class="js-select">
-																					<option>08:00</option>
-																					<option>09:00</option>
-																					<option>10:00</option>
-																					<option>11:00</option>
-																					<option>12:00</option>
-																					<option>13:00</option>
-																					<option>14:00</option>
-																					<option>15:00</option>
-																					<option>16:00</option>
-																					<option>17:00</option>
-																					<option>18:00</option>
-																					<option>19:00</option>
-																					<option>20:00</option>
-																					<option>21:00</option>
-																					<option>22:00</option>
-																					<option>23:00</option>
-																					<option>00:00</option>
-																				</select>
-																			</div>
-																		</li>
-																		<li>
-																			<div class="ui-select ui-select--36">
-																				<select class="js-select">
-																					<option>08:00</option>
-																					<option>09:00</option>
-																					<option>10:00</option>
-																					<option>11:00</option>
-																					<option>12:00</option>
-																					<option>13:00</option>
-																					<option>14:00</option>
-																					<option>15:00</option>
-																					<option>16:00</option>
-																					<option>17:00</option>
-																					<option>18:00</option>
-																					<option>19:00</option>
-																					<option>20:00</option>
-																					<option>21:00</option>
-																					<option>22:00</option>
-																					<option>23:00</option>
-																					<option>00:00</option>
-																				</select>
-																			</div>
-																		</li>
-																	</ul>
-																	<label class="ui-check">
-																		<input class="ui-check__input" type="checkbox"><span class="ui-check__checkbox">
-                                          <svg class="icon-checked" aria-hidden="true">
-                                            <use xlink:href="/sprites/sprite.svg#icon-checked"></use>
-                                          </svg></span><span class="ui-check__text">Круглосуточно</span>
-																	</label>
-																</div>
-															</div>
-															<div class="ui-worktime__period-content js-worktime-content" id="break-07">
 																<div class="ui-worktime__period-panel">
 																	<ul class="ui-worktime__period-fromto">
 																		<li>
@@ -2132,6 +2137,9 @@
 <script  src="https://api-maps.yandex.ru/2.1/?lang=ru-RU" type="text/javascript"></script>
 </body>
 <style>
+	.ui-input{
+		box-sizing: border-box;
+	}
 	.ui-link.hidden{
 		display: none;
 	}
