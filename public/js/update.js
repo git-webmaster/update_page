@@ -6770,8 +6770,8 @@ function init() {
                 'latitude': 37.621732
             },
             "schedule":{
-                'monday': {'from':'08:00', 'to': '14:00', 'break_from':'11:00','break_to': '12:00'},
-                'tuesday': {'from':'08:00', 'to': '21:00', 'break_from':'11:00','break_to': '12:00'},
+                'monday': {'not_working':true},
+                'tuesday': {'from':'08:00', 'to': '21:00', 'break_from':'11:00','break_to': '15:00'},
                 'wednesday': {'from':'08:00', 'to': '16:00', 'break_from':'11:00','break_to': '12:00'},
                 'thursday': {'from':'08:00', 'to': '09:00', 'no_break': true},
                 'friday': {'24/7':true, 'no_break': true},
@@ -6790,9 +6790,9 @@ function init() {
                 'latitude': 40.621732
             },
             "schedule":{
-                'tuesday': {'from':'08:00', 'to': '14:00', 'break_from':'11:00','break_to': '12:00'},
+                'tuesday':{'not_working':true},
                 'monday': {'from':'08:00', 'to': '21:00', 'break_from':'11:00','break_to': '12:00'},
-                'thursday': {'from':'07:00', 'to': '16:00', 'break_from':'11:00','break_to': '12:00'},
+                'thursday': {'from':'08:00', 'to': '16:00', 'break_from':'11:00','break_to': '12:00'},
                 'wednesday': {'from':'08:00', 'to': '09:00', 'no_break': true},
                 'friday': {'24/7':true, 'no_break': true},
                 'saturday': {'not_working':true},
@@ -6833,9 +6833,9 @@ function init() {
 
         })
     }
-    $('.ui-worktime__row.js-worktime').change(function () {
-        addSchedule()
-    })
+    // $('.ui-worktime__row.js-worktime').change(function () {
+    //     addSchedule()
+    // })
     //подставляю данные из выбранного филиала в селекты
     function showSelectedAddress(){
         let officeAddress =$('.js-select__b-office').val();
@@ -6893,35 +6893,40 @@ function init() {
                     $('.address-coords').val([lon, lat])
                 }
                 for(let i in days){
-                    if (backOffices[office]['schedule'][days[i]]['not_working']==false|| backOffices[office]['schedule'][days[i]]['not_working']==undefined){
-                        if(backOffices[office]['schedule'][days[i]]['24/7']==false|| backOffices[office]['schedule'][days[i]]['24/7']==undefined){
+                    if (backOffices[office]['schedule'][days[i]]['not_working']==false || backOffices[office]['schedule'][days[i]]['not_working']==undefined){
+                        let input =$('.js-worktime-checkbox').eq(i)
+                        if(input.is(':checked')==false)
+                            input.trigger('click')
+                        if(backOffices[office]['schedule'][days[i]]['24/7']==true){
                             let input =$('#time-0'+i).find('.ui-check__input')
                             if(input.is(':checked')==false)
-                                input.trigger('change')
+                                input.trigger('click')
                         }else{
                             let input =$('#time-0'+i).find('.ui-check__input')
                             if(input.is(':checked')==true)
-                                input.trigger('change')
-                            console.log( backOffices[office]['schedule'][days[i]]['from'])
-                            console.log(backOffices[office]['schedule'][days[i]]['to'])
+                                input.trigger('click')
+
                             $('#time-0'+i).find('.js-select').first().val(backOffices[office]['schedule'][days[i]]['from']).trigger('change').selectric('refresh');
                             $('#time-0'+i).find('.js-select').last().val(backOffices[office]['schedule'][days[i]]['to']).trigger('change').selectric('refresh');
                         }
-                        if(backOffices[office]['schedule'][days[i]]['no_break']!==false || backOffices[office]['schedule'][days[i]]['no_break']!==undefined){
+                        if(backOffices[office]['schedule'][days[i]]['no_break']==false){
                             let input =$('#break-0'+i).find('.ui-check__input')
-                            if(input.is(':checked')==false)
-                                input.trigger('change')
+                            if(input.is(':checked')==false){
+                                input.trigger('click')
+                            }
                         }else{
-                            let input =$('#break-0'+i).find('.ui-check__input')
-                            if(input.is(':checked')==true)
-                                input.trigger('change')
-                            $('#break-0'+i).find('.js-select').first().val(backOffices[office]['schedule'][days[i]]['break_from']).trigger('change').selectric('refresh');
-                            $('#break-0'+i).find('.js-select').last().val(backOffices[office]['schedule'][days[i]]['break_to']).trigger('change').selectric('refresh');
+                            if(backOffices[office]['schedule'][days[i]]['no_break']==undefined){
+                                let input =$('#break-0'+i).find('.ui-check__input')
+                                if(input.is(':checked')==true)
+                                    input.trigger('click')
+                                $('#break-0'+i).find('.js-select').first().val(backOffices[office]['schedule'][days[i]]['break_from']).trigger('change').selectric('refresh');
+                                $('#break-0'+i).find('.js-select').last().val(backOffices[office]['schedule'][days[i]]['break_to']).trigger('change').selectric('refresh');
+                            }
                         }
                     }else{
                         let input =$('.js-worktime-checkbox').eq(i)
                         if(input.is(':checked'))
-                            input.trigger('change')
+                            input.trigger('click')
                     }
                 }
             }
@@ -6943,11 +6948,11 @@ function init() {
         for (i in response["suggestions"]) {
             searchAddress.empty()
             let result = $('<li data-lat="' + response["suggestions"][i]['data']['geo_lat'] + '" data-lon="' + response["suggestions"][i]['data']['geo_lon'] + '" >\n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-search__item">\n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t\t<span class="ui-search__item-text">\n' + response["suggestions"][i]['value'] + ' \n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t\t</span>\n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</li>')
+                '<div class="ui-search__item">\n' +
+                '<span class="ui-search__item-text">\n' + response["suggestions"][i]['value'] + ' \n' +
+                '</span>\n' +
+                '</div>\n' +
+                '</li>')
             searchAddress.append(result)
         }
     }
@@ -7359,13 +7364,17 @@ $(document).ready(function () {
     const maxCategories = $('.search-categories__search').data('maxCategories')
 
     function searchCategories() {
+        if(jhtml.hasClass('is-search-open')==false) {
+            searchList.empty()
+        }
+        if($('.ui-search__list' + ':hover').length==0) {
         let val = $('#search').val()
+        searchProgress.removeClass('hidden')
         $.ajax({
             type: 'GET',
             url: 'https://api.github.com/users/' + val + '/starred',
             dataType: "json",
             success: function (response) {
-                searchList.empty()
                 for (let i in response) {
                     let result = $('<li data-id="' + response[i]['id'] + '" data-num="' + i + '">\n' +
                         '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-search__item">\n' +
@@ -7390,13 +7399,11 @@ $(document).ready(function () {
             }
         })
         searchProgress.addClass('hidden')
-    }
+     }}
 
     jdoc.on('keyup', '.search-categories__search', function () {
         if ($(this).val().length >= 2) {
-            searchProgress.removeClass('hidden')
-            searchList.empty()
-            clearTimeout(searchCategories);
+            clearTimeout(search);
             var search = setTimeout(searchCategories, 100);
         }
     })
@@ -7406,15 +7413,15 @@ $(document).ready(function () {
         $('.search-categories__search').trigger('change');
     })
     jdoc.on('change', '.search-categories__search', function () {
-        if (maxCategories !== 1) {
-            if ($('.search-categories__categories').find('.btn--selected').length >= maxCategories) {
-                alrt('Можно добавить не более ' + maxCategories + ' шт.')
-                return false
-            } else {
+        if($('.ui-search__list' + ':hover').length==0)  {
+            if (maxCategories !== 1) {
+                if ($('.search-categories__categories').find('.btn--selected').length >= maxCategories) {
+                    alrt('Можно добавить не более ' + maxCategories + ' шт.')
+                    return false
+                } else {
                     if ($('.search-categories__list li.seleeted').length == 0) {
                         return false
-                    }
-                    else {
+                    } else {
                         let id = $('.search-categories__list li.selected').data('id')
                         if ($('.search-categories__categories').find('.btn[data-id="' + id + '"]').length === 0) {
                             let val = $('.search-categories__list li.selected').text()
@@ -7428,8 +7435,7 @@ $(document).ready(function () {
                                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n' +
                                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>')
                             CategoriesBlock.append(category)
-                        }
-                        else {
+                        } else {
                             CategoriesBlock.empty()
                             let id = $('.search-categories__list li.selected').data('id')
                             if ($('.search-categories__categories').find('.btn[data-id="' + id + '"]').length === 0) {
@@ -7447,7 +7453,8 @@ $(document).ready(function () {
                             }
                         }
                     }
-                $(this).val('')
+                    $(this).val('')
+                }
             }
         }
     })

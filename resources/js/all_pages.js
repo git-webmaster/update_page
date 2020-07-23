@@ -1218,7 +1218,6 @@ function loadEvents() {
 
 	// suggest arrow up-down
 	jdoc.on('keydown', '#search', function (e) {
-
 		var t = $(this),
 			all_li = $('.ui-search__list > li'),
 			li_total = all_li.length;
@@ -1237,7 +1236,7 @@ function loadEvents() {
 				selected_suggest_num--;
 				t.setCursorPosition(user_text.length);
 				all_li.removeClass('selected');
-				t.val(user_text);
+				// t.val(user_text);
 			}
 			else
 			{
@@ -1250,7 +1249,7 @@ function loadEvents() {
 				all_li.removeClass('selected');
 				this_li.addClass('selected');
 
-				t.val(selected_suggest_text);
+				// t.val(selected_suggest_text);
 				t.setCursorPosition(selected_suggest_text.length);
 			}
 
@@ -1312,7 +1311,7 @@ function loadEvents() {
 
 		if (typeof t_text !== "undefined" && t_text.length)
 		{
-			search_input.val(t_text);
+			$(this).parents('.ui-search__input').val(t_text);
 
 			if (jhtml.hasClass('is-search-open'))
 			{
