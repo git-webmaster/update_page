@@ -1,12 +1,22 @@
-
 var deleted = {}
 deleted['categories'] = []
 deleted['telephone'] = []
 deleted['email'] = []
 deleted['site'] = []
 deleted['video-link'] = []
+var days = [
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday',
+    'sunday'
+]
 // первый блок radio click
 //Карта
+var schedule = {}
+
 ymaps.load(init);
 
 function init() {
@@ -16,82 +26,195 @@ function init() {
     }, {
         searchControlProvider: 'yandex#search'
     })
-    function changeAddress(){
-        let officeId = $(this).find('.ui-selectric-scroll .selected').data('index');
-        // $.ajax({
-        //     type: 'GET',
-        //     url: 'https://api.github.com/users/starred',
-        //     dataType: "json",
-        //     data: officeId,
-        //     success: function (response) {
-        //     }
-        // })
-        let answer =
-            {
-                'address': 'Пример адреса',
-                'floor': '3',
-                'office': '206',
-                'additional': 'Дополнительный комментарий',
-                'coords': {
-                    'longitude': 55.763761,
-                    'latitude': 37.621732
+
+//Пока оставил отправку по дата-атрибуту селекта как было ранее в тз, но можно и одним запросом отправлять если вам удобней так будет
+    var backOffices=[]
+    $('.js-select__b-office .ui-selectric-scroll option').each(function (index, elem) {
+            let officeId = $(elem).data('index');
+            // $.ajax({
+            //     type: 'GET',
+            //     url: 'https://api.github.com/users/starred',
+            //     dataType: "json",
+            //     data: officeId,
+            //     success: function (response) {
+            //      backOffices.push(response)
+            //     }
+            // })
+        })
+    let answer_1={
+            'name': 'Москва, Дзержинского проспект, 211а',
+            'address': 'Пример адреса',
+            'floor': '3',
+            'office': '206',
+            'additional': 'Дополнительный комментарий',
+            'coords': {
+                'longitude': 55.763761,
+                'latitude': 37.621732
+            },
+            "schedule":{
+                'monday': {'from':'08:00', 'to': '14:00', 'break_from':'11:00','break_to': '12:00'},
+                'tuesday': {'from':'08:00', 'to': '21:00', 'break_from':'11:00','break_to': '12:00'},
+                'wednesday': {'from':'08:00', 'to': '16:00', 'break_from':'11:00','break_to': '12:00'},
+                'thursday': {'from':'08:00', 'to': '09:00', 'no_break': true},
+                'friday': {'24/7':true, 'no_break': true},
+                'saturday': {'24/7':true, 'break_from':'11:00','break_to': '12:00'},
+                'sunday': {'not_working':true},
+            }
+        }
+    let answer_2= {
+            'name' :'Новороссийск, Хворостянского, 13б',
+            'address': 'Пример второго адреса',
+            'floor': '34',
+            'office': '26',
+            'additional': 'Дополнительный второй комментарий',
+            'coords': {
+                'longitude': 51.763761,
+                'latitude': 40.621732
+            },
+            "schedule":{
+                'tuesday': {'from':'08:00', 'to': '14:00', 'break_from':'11:00','break_to': '12:00'},
+                'monday': {'from':'08:00', 'to': '21:00', 'break_from':'11:00','break_to': '12:00'},
+                'thursday': {'from':'07:00', 'to': '16:00', 'break_from':'11:00','break_to': '12:00'},
+                'wednesday': {'from':'08:00', 'to': '09:00', 'no_break': true},
+                'friday': {'24/7':true, 'no_break': true},
+                'saturday': {'not_working':true},
+                'sunday': {'not_working':true},
+            }
+        }
+    backOffices.push(answer_1,answer_2)
+    //заполняю поля в массиве с филиалами по событию change
+    function addSchedule(){
+        let backOfficeName = $('.js-select__b-office').val()
+        $('.ui-worktime__row').each(function (index, elem) {
+            for( let i in backOffices){
+                if( backOffices[i]['name']==backOfficeName){
+                    if ($(this).find('.js-worktime-checkbox').is(":checked") ==false) {
+                        backOffices[i]['schedule']['' + days[index] + '']['not_working'] = true
+                    } else {
+                        backOffices[i]['schedule']['' + days[index] + '']['not_working'] = false;
+
+                        if ($(this).find('.ui-worktime__period-content[id *= "time"]').find('.ui-check__input').is(':checked')) {
+                            backOffices[i]['schedule']['' + days[index] + '']['24/7'] = true;
+                        } else {
+                            backOffices[i]['schedule']['' + days[index] + '']['24/7'] = false;
+                            backOffices[i]['schedule']['' + days[index] + '']['from'] = $(this).find('.ui-worktime__period-content[id *= "time"]').find('.js-select').first().val();
+                            backOffices[i]['schedule']['' + days[index] + '']['to'] = $(this).find('.ui-worktime__period-content[id *= "time"]').find('.js-select').last().val();
+                        }
+
+                        if ($(this).find('.ui-worktime__period-content[id *= "break"]').find('.ui-check__input').is(':checked')) {
+                            backOffices[i]['schedule']['' + days[index] + '']['no_break'] = true
+                        } else {
+                            backOffices[i]['schedule']['' + days[index] + '']['no_break'] = false
+                            backOffices[i]['schedule']['' + days[index] + '']['break_from'] = $(this).find('.ui-worktime__period-content[id *= "break"]').find('.js-select').first().val();
+                            backOffices[i]['schedule']['' + days[index] + '']['break_to'] = $(this).find('.ui-worktime__period-content[id *= "break"]').find('.js-select').last().val();
+                        }
+                        backOffices[i]['schedule']['' + days[index] + '']['comment'] = $(this).find('.ui-input--40').val()
+                    }
                 }
             }
-        $('#update-address').val(answer['address']);
-        $('#update-address-floor').val(answer['floor']);
-        $('#update-address-office').val(answer['office']);
-        $('#update-address-additional').val(answer['additional']);
-        $('.address-coords').val([
-            answer['coords']['longitude'],
-            answer['coords']['latitude']
-        ])
-        officeMap.geoObjects.removeAll();
-        if (answer['coords']['latitude'] !== null && answer['coords']['longitude'] !== null) {
-            let lat = answer['coords']['latitude']
-            let lon = answer['coords']['longitude']
-            officeMap.geoObjects.removeAll()
-            var myPlacemark = new ymaps.Placemark([lon, lat], null, {
-                preset: 'islands#blueDotIcon',
-                draggable: true
-            });
-            myPlacemark.events.add('dragend', function (e) {
-                function SetByCoord(result) {
-                    result = JSON.parse(result)
-                    if (result["suggestions"][0]["value"])
-                        $('#update-address').val(result["suggestions"][0]["value"])
-                }
 
-                var cord = e.get('target').geometry.getCoordinates();
-                var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/geolocate/address";
-                var token = "e42b1ce121984f1fba3256837f67e961b2982b05";
-                var query = {lat: cord[0], lon: cord[1]};
-                var options = {
-                    method: "POST",
-                    mode: "cors",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json",
-                        "Authorization": "Token " + token
-                    },
-                    body: JSON.stringify(query)
-                }
-                fetch(url, options)
-                    .then(response => response.text())
-                    .then(result => SetByCoord(result))
-                    .catch(error => console.log("error", error));
+        })
+    }
+    $('.ui-worktime__row.js-worktime').change(function () {
+        addSchedule()
+    })
+    //подставляю данные из выбранного филиала в селекты
+    function showSelectedAddress(){
+        let officeAddress =$('.js-select__b-office').val();
+        for(let office in backOffices){
+            if (backOffices[office]['name']==officeAddress){
+                $('#update-address').val(backOffices[office]['address']);
+                $('#update-address-floor').val(backOffices[office]['floor']);
+                $('#update-address-office').val(backOffices[office]['office']);
+                $('#update-address-additional').val(backOffices[office]['additional']);
+                $('.address-coords').val([
+                    backOffices[office]['coords']['longitude'],
+                    backOffices[office]['coords']['latitude']
+                ])
+                officeMap.geoObjects.removeAll();
+                if (backOffices[office]['coords']['latitude'] !== null && backOffices[office]['coords']['longitude'] !== null) {
+                    let lat = backOffices[office]['coords']['latitude']
+                    let lon = backOffices[office]['coords']['longitude']
+                    officeMap.geoObjects.removeAll()
+                    var myPlacemark = new ymaps.Placemark([lon, lat], null, {
+                        preset: 'islands#blueDotIcon',
+                        draggable: true
+                    });
+                    myPlacemark.events.add('dragend', function (e) {
+                        function SetByCoord(result) {
+                            result = JSON.parse(result)
+                            if (result["suggestions"][0]["value"]){
+                                backOffices[office]['coords']['latitude']= cord[0];
+                                backOffices[office]['coords']['longitude']= cord[1];
+                                $('#update-address').val(result["suggestions"][0]["value"]);
+                            }
+                        }
+                        var cord = e.get('target').geometry.getCoordinates();
+                        var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/geolocate/address";
+                        var token = "e42b1ce121984f1fba3256837f67e961b2982b05";
+                        var query = {lat: cord[0], lon: cord[1]};
+                        var options = {
+                            method: "POST",
+                            mode: "cors",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "Accept": "application/json",
+                                "Authorization": "Token " + token
+                            },
+                            body: JSON.stringify(query)
+                        }
+                        fetch(url, options)
+                            .then(response => response.text())
+                            .then(result => SetByCoord(result, cord))
+                            .catch(error => console.log("error", error));
 
-            });
-            officeMap.geoObjects.add(myPlacemark);
-            // Слушаем событие окончания перетаскивания на метке.
-            officeMap.setCenter([lon, lat], 10)
-            $('.address-coords').val([lon, lat])
+                    });
+                    officeMap.geoObjects.add(myPlacemark);
+                    // Слушаем событие окончания перетаскивания на метке.
+                    officeMap.setCenter([lon, lat], 10)
+                    $('.address-coords').val([lon, lat])
+                }
+                for(let i in days){
+                    if (backOffices[office]['schedule'][days[i]]['not_working']==false|| backOffices[office]['schedule'][days[i]]['not_working']==undefined){
+                        if(backOffices[office]['schedule'][days[i]]['24/7']==false|| backOffices[office]['schedule'][days[i]]['24/7']==undefined){
+                            let input =$('#time-0'+i).find('.ui-check__input')
+                            if(input.is(':checked')==false)
+                                input.trigger('change')
+                        }else{
+                            let input =$('#time-0'+i).find('.ui-check__input')
+                            if(input.is(':checked')==true)
+                                input.trigger('change')
+                            console.log( backOffices[office]['schedule'][days[i]]['from'])
+                            console.log(backOffices[office]['schedule'][days[i]]['to'])
+                            $('#time-0'+i).find('.js-select').first().val(backOffices[office]['schedule'][days[i]]['from']).trigger('change').selectric('refresh');
+                            $('#time-0'+i).find('.js-select').last().val(backOffices[office]['schedule'][days[i]]['to']).trigger('change').selectric('refresh');
+                        }
+                        if(backOffices[office]['schedule'][days[i]]['no_break']!==false || backOffices[office]['schedule'][days[i]]['no_break']!==undefined){
+                            let input =$('#break-0'+i).find('.ui-check__input')
+                            if(input.is(':checked')==false)
+                                input.trigger('change')
+                        }else{
+                            let input =$('#break-0'+i).find('.ui-check__input')
+                            if(input.is(':checked')==true)
+                                input.trigger('change')
+                            $('#break-0'+i).find('.js-select').first().val(backOffices[office]['schedule'][days[i]]['break_from']).trigger('change').selectric('refresh');
+                            $('#break-0'+i).find('.js-select').last().val(backOffices[office]['schedule'][days[i]]['break_to']).trigger('change').selectric('refresh');
+                        }
+                    }else{
+                        let input =$('.js-worktime-checkbox').eq(i)
+                        if(input.is(':checked'))
+                            input.trigger('change')
+                    }
+                }
+            }
         }
     }
-    changeAddress()
-    //Выбор офиса
-    jdoc.on('change', '.js-select__b-office', function (e) {
-        changeAddress()
+    //расставляю значения прешедшие из апи по форме адреса
+    showSelectedAddress()
 
+    //Выбор офиса
+    jdoc.on('change', '.js-select__b-office', function (index, elem) {
+        showSelectedAddress(elem)
     })
 
     //Автозаполнение адреса
@@ -511,7 +634,7 @@ $(document).ready(function () {
             draggable: 'li.ui-input-price',
         }
     )
-    // делаю поиск с задержкой к обращению к апи в 200 мс, если неактуально в данном конкретном случае то нужно убрать setTimeout в ивентлисенере ниже
+    // делаю поиск с задержкой к обращению к апи в 100 мс, если неактуально в данном конкретном случае то нужно убрать setTimeout в ивентлисенере ниже
     var searchList = $('.search-categories__list');
     var searchProgress = $('.search-categories__progress');
     var CategoriesBlock = $('.search-categories__categories')
@@ -642,56 +765,32 @@ $(document).ready(function () {
 //Блок с временем работы
     function SetWorkHours(elem, msg_1, msg_2) {
         $(elem).find('.js-select').change(function () {
-
             let from = $(elem).find('.js-select').first().val();
             let to = $(elem).find('.js-select').last().val();
-            if (from == '00:00' && to == '00:00') {
-                var msg = msg_1;
-                $(elem).find('.ui-check__input').prop('checked', true)
-            } else {
-                var msg = msg_2 + from + ' -- ' + to;
-                $(elem).find('.ui-check__input').prop('checked', false)
-            }
+            var msg = msg_2 + from + ' -- ' + to;
+            $(elem).find('.ui-check__input').prop('checked', false)
             // в дата таргет стоит id + # вначале,в верстке так изначально было
             $('.ui-worktime__period-btn[data-target="#' + $(elem).attr('id') + '"]').text(msg);
         })
         $(elem).find('.ui-check__input').change(function () {
             if ($(this).is(":checked") == true) {
                 var msg = msg_1
-                $(elem).find('.js-select').first().val('00:00').change().selectric('refresh');
-                $(elem).find('.js-select').last().val('00:00').change().selectric('refresh');
+                $('.ui-worktime__period-btn[data-target="#' + $(elem).attr('id') + '"]').text(msg);
+            }else{
+                let from = $(elem).find('.js-select').first().val();
+                let to = $(elem).find('.js-select').last().val();
+                var msg = msg_2 + from + ' -- ' + to;
                 $('.ui-worktime__period-btn[data-target="#' + $(elem).attr('id') + '"]').text(msg);
             }
         })
     }
-
     $('.ui-worktime__period [id *= "time"]').each(function (index, elem) {
         SetWorkHours(elem, 'Круглосуточно', 'c ')
     })
     $('.ui-worktime__period [id *= "break"]').each(function (index, elem) {
         SetWorkHours(elem, 'Без перерыва', 'перерыв ')
     })
-    //сделал не на спанах внутри кнопки для уменьшения работы бека
-    $(document).on('click', '.ui-worktime__period-btn', function (e) {
-        try{  let val = $(this).text().split(' ');
-            let inputs = $('' + $(this).data('target') + '')
-
-            let from = inputs.find('.js-select').first();
-            let to = inputs.find('.js-select').last();
-            let checkbox = inputs.find('.ui-check__input');
-            if (val[0] == 'Круглосуточно' || val[0] == 'Без') {
-                from.val('00:00').change().selectric('refresh');
-                to.val('00:00').change().selectric('refresh');
-                checkbox.prop('checked', true);
-            } else {
-                from.val(val[1]).change().selectric('refresh');
-                to.val(val[3]).change().selectric('refresh');
-                checkbox.prop('checked', false)
-            }}catch (e) {
-            console.log(e)
-        }
-
-    })
+    //Заполнение селектов по значениям линкованным в кнопку, сделал не на спанах внутри кнопки для уменьшения работы бека
 
 //    переключение вида формы
     $('.ui-check__input[name="update-status"]').change(function () {
@@ -732,6 +831,7 @@ $(document).ready(function () {
             return false
         }
         $('.ui-worktime__period-btn').trigger('click');
+
         e.preventDefault()
         var data = {}
         let array = $('.company-info').serializeArray();
@@ -768,49 +868,6 @@ $(document).ready(function () {
 
             }
         }
-        let days = [
-            'monday',
-            'tuesday',
-            'wednesday',
-            'thursday',
-            'friday',
-            'saturday',
-            'sunday'
-        ]
-        data['schedule'] = {
-            'monday': {},
-            'tuesday': {},
-            'wednesday': {},
-            'thursday': {},
-            'friday': {},
-            'saturday': {},
-            'sunday': {},
-        }
-        $('.ui-worktime__row').each(function (index, elem) {
-            if ($(this).find('.js-worktime-checkbox').is(":checked") ==false) {
-                data['schedule']['' + days[index] + '']['not_working'] = true
-            } else {
-                data['schedule']['' + days[index] + '']['not_working'] = false;
-
-                if ($(this).find('.ui-worktime__period-content[id *= "time"]').find('.ui-check__input').is(':checked')) {
-                    data['schedule']['' + days[index] + '']['24/7'] = true;
-                } else {
-                    data['schedule']['' + days[index] + '']['24/7'] = false;
-                    data['schedule']['' + days[index] + '']['from'] = $(this).find('.ui-worktime__period-content[id *= "time"]').find('.js-select').first().val();
-                    data['schedule']['' + days[index] + '']['to'] = $(this).find('.ui-worktime__period-content[id *= "time"]').find('.js-select').last().val();
-                }
-
-                if ($(this).find('.ui-worktime__period-content[id *= "break"]').find('.ui-check__input').is(':checked')) {
-                    data['schedule']['' + days[index] + '']['no_break'] = true
-                } else {
-                    data['schedule']['' + days[index] + '']['no_break'] = false
-                    data['schedule']['' + days[index] + '']['break_from'] = $(this).find('.ui-worktime__period-content[id *= "break"]').find('.js-select').first().val();
-                    data['schedule']['' + days[index] + '']['break_to'] = $(this).find('.ui-worktime__period-content[id *= "break"]').find('.js-select').last().val();
-                }
-                data['schedule']['' + days[index] + '']['comment'] = $(this).find('.ui-input--40').val()
-            }
-        })
-
         data['pricelist'] = {
             "value": []
         }
@@ -841,6 +898,7 @@ $(document).ready(function () {
             data['socials']['' + this.id + ''] = $(this).val()
         })
         data['deleted'] = deleted
+        data['schedule']=schedule
         console.log(data)
     })
     $('.is-acceptence').change(function () {
@@ -885,3 +943,31 @@ $(document).ready(function () {
     });
 
 })
+// $('.ui-worktime__period-btn').each(function (index, elem) {
+//         let dayIndex = $('.ui-worktime__row.js-worktime').index()
+//
+//         let val = $(elem).text().split(' ');
+//         let inputs = $('' + $(elem).data('target') + '')
+//         let from = inputs.find('.js-select').first();
+//         let to = inputs.find('.js-select').last();
+//         let checkbox = inputs.find('.ui-check__input');
+//         if (val[0] == 'Круглосуточно' ) {
+//             from.val('00:00').change().selectric('refresh');
+//             to.val('00:00').change().selectric('refresh');
+//             checkbox.prop('checked', true);
+//             $(elem).text('Круглосуточно')
+//         } else {
+//             if(val[0] == 'Без'){
+//                 from.val('00:00').change().selectric('refresh');
+//                 to.val('00:00').change().selectric('refresh');
+//                 checkbox.prop('checked', true);
+//                 $(elem).text('Без перерыва')
+//             }
+//             else{
+//                 from.val(val[1]).change().selectric('refresh');
+//                 to.val(val[3]).change().selectric('refresh');
+//                 checkbox.prop('checked', false)
+//             }
+//         }
+//
+// })
