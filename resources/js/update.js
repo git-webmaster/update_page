@@ -4,7 +4,7 @@ deleted['telephone'] = []
 deleted['email'] = []
 deleted['site'] = []
 deleted['video-link'] = []
-deleted['backOffices']=[]
+deleted['backOffices'] = []
 var days = [
     'monday',
     'tuesday',
@@ -16,7 +16,7 @@ var days = [
 ]
 // первый блок radio click
 //Карта
-var backOffices=[]
+var backOffices = []
 var schedule = {}
 
 ymaps.load(init);
@@ -32,99 +32,101 @@ function init() {
 //Пока оставил отправку по дата-атрибуту селекта как было ранее в тз, но можно и одним запросом отправлять если вам удобней так будет
 
     $('.js-select__b-office .ui-selectric-scroll option').each(function (index, elem) {
-            let officeId = $(elem).data('index');
-            // $.ajax({
-            //     type: 'GET',
-            //     url: 'https://api.github.com/users/starred',
-            //     dataType: "json",
-            //     data: officeId,
-            //     success: function (response) {
-            //      backOffices.push(response)
-            //     }
-            // })
-        })
-    let answer_1={
-            'name': 'Москва, Дзержинского проспект, 211а',
-            'address': 'Пример адреса',
-            'floor': '3',
-            'office': '206',
-            'additional': 'Дополнительный комментарий',
-            'coords': {
-                'longitude': 55.763761,
-                'latitude': 37.621732
-            },
-            "schedule":{
-                'monday': {'not_working':true},
-                'tuesday': {'from':'08:00', 'to': '21:00', 'break_from':'11:00','break_to': '15:00'},
-                'wednesday': {'from':'08:00', 'to': '16:00', 'break_from':'11:00','break_to': '12:00'},
-                'thursday': {'from':'08:00', 'to': '09:00', 'no_break': true},
-                'friday': {'aroundClock':true,'break_from':'15:00','break_to': '20:00'},
-                'saturday': {'aroundClock':true, 'break_from':'11:00','break_to': '12:00'},
-                'sunday': {'not_working':true},
-            }
+        let officeId = $(elem).data('index');
+        // $.ajax({
+        //     type: 'GET',
+        //     url: 'https://api.github.com/users/starred',
+        //     dataType: "json",
+        //     data: officeId,
+        //     success: function (response) {
+        //      backOffices.push(response)
+        //     }
+        // })
+    })
+    let answer_1 = {
+        'name': 'Москва, Дзержинского проспект, 211а',
+        'address': 'Пример адреса',
+        'floor': '3',
+        'office': '206',
+        'additional': 'Дополнительный комментарий',
+        'coords': {
+            'longitude': 55.763761,
+            'latitude': 37.621732
+        },
+        "schedule": {
+            'monday': {'not_working': true},
+            'tuesday': {'from': '08:00', 'to': '21:00', 'break_from': '11:00', 'break_to': '15:00'},
+            'wednesday': {'from': '08:00', 'to': '16:00', 'break_from': '11:00', 'break_to': '12:00'},
+            'thursday': {'from': '08:00', 'to': '09:00', 'no_break': true},
+            'friday': {'aroundClock': true, 'break_from': '15:00', 'break_to': '20:00'},
+            'saturday': {'aroundClock': true, 'break_from': '11:00', 'break_to': '12:00'},
+            'sunday': {'not_working': true},
         }
-    let answer_2= {
-            'name' :'Новороссийск, Хворостянского, 13б',
-            'address': 'Пример второго адреса',
-            'floor': '34',
-            'office': '26',
-            'additional': 'Дополнительный второй комментарий',
-            'coords': {
-                'longitude': 51.763761,
-                'latitude': 40.621732
-            },
-            "schedule":{
-                'tuesday':{'not_working':true},
-                'monday': {'from':'08:00', 'to': '21:00', 'break_from':'11:00','break_to': '12:00'},
-                'thursday': {'from':'08:00', 'to': '16:00', 'break_from':'11:00','break_to': '12:00'},
-                'wednesday': {'from':'08:00', 'to': '09:00', 'no_break': true},
-                'friday': {'aroundClock':true, 'no_break': true},
-                'saturday': {'not_working':true},
-                'sunday': {'not_working':true},
-            }
+    }
+    let answer_2 = {
+        'name': 'Новороссийск, Хворостянского, 13б',
+        'address': 'Пример второго адреса',
+        'floor': '34',
+        'office': '26',
+        'additional': 'Дополнительный второй комментарий',
+        'coords': {
+            'longitude': 51.763761,
+            'latitude': 40.621732
+        },
+        "schedule": {
+            'tuesday': {'not_working': true},
+            'monday': {'from': '08:00', 'to': '21:00', 'break_from': '11:00', 'break_to': '12:00'},
+            'thursday': {'from': '08:00', 'to': '16:00', 'break_from': '11:00', 'break_to': '12:00'},
+            'wednesday': {'from': '08:00', 'to': '09:00', 'no_break': true},
+            'friday': {'aroundClock': true, 'no_break': true},
+            'saturday': {'not_working': true},
+            'sunday': {'not_working': true},
         }
-    backOffices.push(answer_1,answer_2)
+    }
+    backOffices.push(answer_1, answer_2)
+
     //заполняю поля времени работы в массиве с филиалами по событию change
-    function addSchedule(){
+    function addSchedule() {
         $('.ui-worktime__row').each(function (index, elem) {
             $(this).change(function () {
-             let backOfficeName = $('.js-select__b-office').val()
-            for( let i in backOffices){
-                if( backOffices[i]['name']==backOfficeName){
-                    if ($(this).find('.js-worktime-checkbox').is(":checked") ==false) {
-                        backOffices[i]['schedule']['' + days[index] + '']['not_working'] = true
-                    } else {
-                        backOffices[i]['schedule']['' + days[index] + '']['not_working'] = false;
-
-                        if ($(this).find('.ui-worktime__period-content[id *= "time"]').find('.ui-check__input').is(':checked')) {
-                            backOffices[i]['schedule']['' + days[index] + '']['aroundClock'] = true;
+                let backOfficeName = $('.js-select__b-office').val()
+                for (let i in backOffices) {
+                    if (backOffices[i]['name'] == backOfficeName) {
+                        if ($(this).find('.js-worktime-checkbox').is(":checked") == false) {
+                            backOffices[i]['schedule']['' + days[index] + '']['not_working'] = true
                         } else {
-                            backOffices[i]['schedule']['' + days[index] + '']['aroundClock'] = false;
-                            backOffices[i]['schedule']['' + days[index] + '']['from'] = $(this).find('.ui-worktime__period-content[id *= "time"]').find('.js-select').first().val();
-                            backOffices[i]['schedule']['' + days[index] + '']['to'] = $(this).find('.ui-worktime__period-content[id *= "time"]').find('.js-select').last().val();
-                        }
+                            backOffices[i]['schedule']['' + days[index] + '']['not_working'] = false;
 
-                        if ($(this).find('.ui-worktime__period-content[id *= "break"]').find('.ui-check__input').is(':checked')) {
-                            backOffices[i]['schedule']['' + days[index] + '']['no_break'] = true
-                        } else {
-                            backOffices[i]['schedule']['' + days[index] + '']['no_break'] = false
-                            backOffices[i]['schedule']['' + days[index] + '']['break_from'] = $(this).find('.ui-worktime__period-content[id *= "break"]').find('.js-select').first().val();
-                            backOffices[i]['schedule']['' + days[index] + '']['break_to'] = $(this).find('.ui-worktime__period-content[id *= "break"]').find('.js-select').last().val();
+                            if ($(this).find('.ui-worktime__period-content[id *= "time"]').find('.ui-check__input').is(':checked')) {
+                                backOffices[i]['schedule']['' + days[index] + '']['aroundClock'] = true;
+                            } else {
+                                backOffices[i]['schedule']['' + days[index] + '']['aroundClock'] = false;
+                                backOffices[i]['schedule']['' + days[index] + '']['from'] = $(this).find('.ui-worktime__period-content[id *= "time"]').find('.js-select').first().val();
+                                backOffices[i]['schedule']['' + days[index] + '']['to'] = $(this).find('.ui-worktime__period-content[id *= "time"]').find('.js-select').last().val();
+                            }
+
+                            if ($(this).find('.ui-worktime__period-content[id *= "break"]').find('.ui-check__input').is(':checked')) {
+                                backOffices[i]['schedule']['' + days[index] + '']['no_break'] = true
+                            } else {
+                                backOffices[i]['schedule']['' + days[index] + '']['no_break'] = false
+                                backOffices[i]['schedule']['' + days[index] + '']['break_from'] = $(this).find('.ui-worktime__period-content[id *= "break"]').find('.js-select').first().val();
+                                backOffices[i]['schedule']['' + days[index] + '']['break_to'] = $(this).find('.ui-worktime__period-content[id *= "break"]').find('.js-select').last().val();
+                            }
+                            backOffices[i]['schedule']['' + days[index] + '']['comment'] = $(this).find('.ui-input--40').val()
                         }
-                        backOffices[i]['schedule']['' + days[index] + '']['comment'] = $(this).find('.ui-input--40').val()
                     }
                 }
-            }
             })
         })
     }
+
     addSchedule()
     //заполняю остальнын поля по событию change
     $('#update-address').change(function () {
         let office = $('.js-select__b-office').val()
-        for(let i in backOffices){
-            if(backOffices[i]['name']==office){
-                backOffices[i]['address']=$(this).val()
+        for (let i in backOffices) {
+            if (backOffices[i]['name'] == office) {
+                backOffices[i]['address'] = $(this).val()
             }
         }
 
@@ -132,9 +134,9 @@ function init() {
     })
     $('#update-address-floor').change(function () {
         let office = $('.js-select__b-office').val()
-        for(let i in backOffices){
-            if(backOffices[i]['name']==office){
-                backOffices[i]['floor']=$(this).val()
+        for (let i in backOffices) {
+            if (backOffices[i]['name'] == office) {
+                backOffices[i]['floor'] = $(this).val()
             }
         }
 
@@ -142,9 +144,9 @@ function init() {
     })
     $('#update-address-office').change(function () {
         let office = $('.js-select__b-office').val()
-        for(let i in backOffices){
-            if(backOffices[i]['name']==office){
-                backOffices[i]['office']=$(this).val()
+        for (let i in backOffices) {
+            if (backOffices[i]['name'] == office) {
+                backOffices[i]['office'] = $(this).val()
             }
         }
 
@@ -152,19 +154,20 @@ function init() {
     })
     $('#update-address-additional').change(function () {
         let office = $('.js-select__b-office').val()
-        for(let i in backOffices){
-            if(backOffices[i]['name']==office){
-                backOffices[i]['additional']=$(this).val()
+        for (let i in backOffices) {
+            if (backOffices[i]['name'] == office) {
+                backOffices[i]['additional'] = $(this).val()
             }
         }
 
 
     })
+
     //подставляю данные из выбранного филиала в селекты
-    function showSelectedAddress(){
-        let officeAddress =$('.js-select__b-office').val();
-        for(let office in backOffices){
-            if (backOffices[office]['name']==officeAddress){
+    function showSelectedAddress() {
+        let officeAddress = $('.js-select__b-office').val();
+        for (let office in backOffices) {
+            if (backOffices[office]['name'] == officeAddress) {
                 $('#update-address').val(backOffices[office]['address']);
                 $('#update-address-floor').val(backOffices[office]['floor']);
                 $('#update-address-office').val(backOffices[office]['office']);
@@ -181,20 +184,23 @@ function init() {
                     myPlacemark.events.add('dragend', function (e) {
                         function SetByCoord(result) {
                             result = JSON.parse(result)
-                            if (result["suggestions"][0]["value"]){
-                                backOffices[office]['coords']['latitude']= cord[0];
-                                backOffices[office]['coords']['longitude']= cord[1];
+                            if (result["suggestions"][0]["value"]) {
+                                backOffices[office]['coords']['latitude'] = cord[0];
+                                backOffices[office]['coords']['longitude'] = cord[1];
                                 console.log(cord)
                                 $('#update-address').val(result["suggestions"][0]["value"]);
                                 $('#update-address').trigger('change')
                             }
                         }
+
                         function notFound() {
-                            backOffices[office]['coords']['latitude']= 'not_found';
-                            backOffices[office]['coords']['longitude']= 'not_found';
+                            backOffices[office]['coords']['latitude'] = 'not_found';
+                            backOffices[office]['coords']['longitude'] = 'not_found';
                         }
+
                         var cord = e.get('target').geometry.getCoordinates();
                         var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/geolocate/address";
+                        //TODO токен дадаты
                         var token = "e42b1ce121984f1fba3256837f67e961b2982b05";
                         var query = {lat: cord[0], lon: cord[1]};
                         var options = {
@@ -216,56 +222,57 @@ function init() {
                     officeMap.geoObjects.add(myPlacemark);
                     // Слушаем событие окончания перетаскивания на метке.
                     officeMap.setCenter([lon, lat], 10)
-                    backOffices[office]['coords']['latitude']= lat;
-                    backOffices[office]['coords']['longitude']= lon;
+                    backOffices[office]['coords']['latitude'] = lat;
+                    backOffices[office]['coords']['longitude'] = lon;
                 }
-                for(var day in days){
-                    if (backOffices[office]['schedule'][days[day]]['not_working']==false || backOffices[office]['schedule'][days[day]]['not_working']==undefined){
-                        let input =$('.js-worktime-checkbox').eq(+day)
-                        if(input.is(':checked')==false)
+                for (var day in days) {
+                    if (backOffices[office]['schedule'][days[day]]['not_working'] == false || backOffices[office]['schedule'][days[day]]['not_working'] == undefined) {
+                        let input = $('.js-worktime-checkbox').eq(+day)
+                        if (input.is(':checked') == false)
                             input.trigger('click')
-                        if(backOffices[office]['schedule'][days[day]]['aroundClock']==true){
-                            let input =$('#time-0'+day).find('.ui-check__input')
-                            if(input.is(':checked')==false)
+                        if (backOffices[office]['schedule'][days[day]]['aroundClock'] == true) {
+                            let input = $('#time-0' + day).find('.ui-check__input')
+                            if (input.is(':checked') == false)
                                 input.trigger('click')
-                        }else{
-                            let input =$('#time-0'+day).find('.ui-check__input')
-                            if(input.is(':checked')==true)
+                        } else {
+                            let input = $('#time-0' + day).find('.ui-check__input')
+                            if (input.is(':checked') == true)
                                 input.trigger('click')
 
-                            $('#time-0'+day).find('.js-select').first().val(backOffices[office]['schedule'][days[day]]['from']).trigger('change').selectric('refresh');
-                            $('#time-0'+day).find('.js-select').last().val(backOffices[office]['schedule'][days[day]]['to']).trigger('change').selectric('refresh');
+                            $('#time-0' + day).find('.js-select').first().val(backOffices[office]['schedule'][days[day]]['from']).trigger('change').selectric('refresh');
+                            $('#time-0' + day).find('.js-select').last().val(backOffices[office]['schedule'][days[day]]['to']).trigger('change').selectric('refresh');
                         }
-                        if(backOffices[office]['schedule'][days[day]]['no_break']==true){
-                            let input =$('#break-0'+day).find('.ui-check__input')
-                            if(input.is(':checked')==false){
+                        if (backOffices[office]['schedule'][days[day]]['no_break'] == true) {
+                            let input = $('#break-0' + day).find('.ui-check__input')
+                            if (input.is(':checked') == false) {
                                 input.trigger('click')
                             }
-                        }else{
-                            if(backOffices[office]['schedule'][days[day]]['no_break']==undefined){
-                                let input =$('#break-0'+day).find('.ui-check__input')
-                                if(input.is(':checked')==true)
+                        } else {
+                            if (backOffices[office]['schedule'][days[day]]['no_break'] == undefined) {
+                                let input = $('#break-0' + day).find('.ui-check__input')
+                                if (input.is(':checked') == true)
                                     input.trigger('click')
-                                $('#break-0'+day).find('.js-select').first().val(backOffices[office]['schedule'][days[day]]['break_from']).trigger('change').selectric('refresh');
-                                $('#break-0'+day).find('.js-select').last().val(backOffices[office]['schedule'][days[day]]['break_to']).trigger('change').selectric('refresh');
+                                $('#break-0' + day).find('.js-select').first().val(backOffices[office]['schedule'][days[day]]['break_from']).trigger('change').selectric('refresh');
+                                $('#break-0' + day).find('.js-select').last().val(backOffices[office]['schedule'][days[day]]['break_to']).trigger('change').selectric('refresh');
                             }
                         }
-                    }else{
-                        let input =$('.js-worktime-checkbox').eq(+day)
-                        if(input.is(':checked'))
+                    } else {
+                        let input = $('.js-worktime-checkbox').eq(+day)
+                        if (input.is(':checked'))
                             input.trigger('click')
                     }
                 }
             }
         }
     }
+
     //расставляю значения прешедшие из апи по форме адреса
-    var newOfficeIndex=1
+    var newOfficeIndex = 1
     showSelectedAddress()
     //Добавление нового офиса
     $('.btn__add-office').click(function () {
-        let newOffice= {
-            'name' :'Новый филиал #1',
+        let newOffice = {
+            'name': 'Новый филиал #1',
             'address': '',
             'floor': '',
             'office': '',
@@ -274,42 +281,42 @@ function init() {
                 'longitude': 55.763761,
                 'latitude': 37.621732
             },
-            "schedule":{
-                'tuesday':{'not_working':true},
-                'monday': {'not_working':true},
-                'thursday': {'not_working':true},
-                'wednesday': {'not_working':true},
-                'friday': {'not_working':true},
-                'saturday': {'not_working':true},
-                'sunday': {'not_working':true},
+            "schedule": {
+                'tuesday': {'not_working': true},
+                'monday': {'not_working': true},
+                'thursday': {'not_working': true},
+                'wednesday': {'not_working': true},
+                'friday': {'not_working': true},
+                'saturday': {'not_working': true},
+                'sunday': {'not_working': true},
             }
         }
         backOffices.push(newOffice)
-        $('.js-select__b-office').append('<option data-id="">Новый филиал #'+newOfficeIndex+'</option>').val('Новый филиал #'+newOfficeIndex+'').selectric('refresh');
+        $('.js-select__b-office').append('<option data-id="">Новый филиал #' + newOfficeIndex + '</option>').val('Новый филиал #' + newOfficeIndex + '').selectric('refresh');
         $('.update-address').focus()
         showSelectedAddress()
-        newOfficeIndex+=1
+        newOfficeIndex += 1
     })
     //Удаление офиса
     $('.btn__delete-office').click(function () {
-        let officeSelect=$('.js-select__b-office');
-        if($('.js-select__b-office option').length>1){
-            let deletedOffice= officeSelect.val()
+        let officeSelect = $('.js-select__b-office');
+        if ($('.js-select__b-office option').length > 1) {
+            let deletedOffice = officeSelect.val()
             $(".js-select__b-office option").each(function () {
-                if($(this).val()==deletedOffice){
+                if ($(this).val() == deletedOffice) {
                     $(this).remove();
                 }
             })
-            officeSelect.val( $('.js-select__b-office option').val()).trigger('change').selectric('refresh')
-            if($('.js-select__b-office .selected').data('id')!=''){
-                for(let i in backOffices){
-                    if(backOffices[i]['name']==deletedOffice){
-                        backOffices[i]='deleted'
+            officeSelect.val($('.js-select__b-office option').val()).trigger('change').selectric('refresh')
+            if ($('.js-select__b-office .selected').data('id') != '') {
+                for (let i in backOffices) {
+                    if (backOffices[i]['name'] == deletedOffice) {
+                        backOffices[i] = 'deleted'
                     }
                 }
-            }else{
-                for(let i in backOffices){
-                    if(backOffices[i]['name']==deletedOffice){
+            } else {
+                for (let i in backOffices) {
+                    if (backOffices[i]['name'] == deletedOffice) {
                         delete backOffices[i]
                     }
                 }
@@ -412,6 +419,7 @@ function init() {
         officeMap.container.fitToViewport()
     })
 }
+
 jdoc.on('click', '.ui-check', function (e) {
 
     var t = $(this), val = t.find('.ui-check__input').val();
@@ -531,9 +539,9 @@ $(document).ready(function () {
         $('.progress-input').each(function () {
             if ($(this).val() !== '') {
                 $('.panel__bookmark-link[href="#' + $(this).attr('id') + '"]').css('color', 'green');
-                if( currentStep >= 100 ||  Math.ceil(currentStep + fillingStep) >= 100){
+                if (currentStep >= 100 || Math.ceil(currentStep + fillingStep) >= 100) {
                     currentStep = 100
-                }else{
+                } else {
                     currentStep += fillingStep
                 }
                 progressBar.css('width', '' + currentStep + '%');
@@ -559,10 +567,10 @@ $(document).ready(function () {
         let parent = $(this).parents('.panel__settings-row')
         let parentInput = parent.find('.ui-input')
         deleted['' + parentInput.attr("name") + ''].push(parentInput.data('id'))
-        if(parent.hasClass('panel__video')||parent.hasClass('panel__site')){
+        if (parent.hasClass('panel__video') || parent.hasClass('panel__site')) {
             parent.find('.ui-input-group').remove()
-            parent.css('margin-bottom','0')
-        }else {
+            parent.css('margin-bottom', '0')
+        } else {
             parent.remove()
         }
         $(this).remove()
@@ -601,7 +609,7 @@ $(document).ready(function () {
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t</div>').insertBefore( $('.btn-add-email__row'))
+                '\t\t\t\t\t\t\t\t\t\t\t\t</div>').insertBefore($('.btn-add-email__row'))
 
         }
     })
@@ -630,7 +638,7 @@ $(document).ready(function () {
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t</div>').insertBefore( $('.btn-add-tel__row'))
+                '\t\t\t\t\t\t\t\t\t\t\t\t</div>').insertBefore($('.btn-add-tel__row'))
         }
     })
 
@@ -673,7 +681,7 @@ $(document).ready(function () {
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t</div>').insertBefore( $(".btn-add-site__row"))
+                '\t\t\t\t\t\t\t\t\t\t\t\t</div>').insertBefore($(".btn-add-site__row"))
         }
     })
     jdoc.on('click', '.btn-add-video', function (e) {
@@ -700,7 +708,7 @@ $(document).ready(function () {
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t</div>').insertBefore( $(".btn-add-video__row"))
+                '\t\t\t\t\t\t\t\t\t\t\t\t</div>').insertBefore($(".btn-add-video__row"))
 
         }
 
@@ -745,57 +753,75 @@ $(document).ready(function () {
     var searchProgress = $('.search-categories__progress');
     var CategoriesBlock = $('.search-categories__categories')
     const maxCategories = $('.search-categories__search').data('maxCategories')
+    var maxResponce = 5
 
     function searchCategories() {
-        if(jhtml.hasClass('is-search-open')==false) {
+        if (jhtml.hasClass('is-search-open') == false) {
             searchList.empty()
         }
-        if($('.ui-search__list' + ':hover').length==0) {
-        let val = $('#search').val()
-        searchProgress.removeClass('hidden')
-        $.ajax({
-            type: 'GET',
-            url: 'https://api.github.com/users/' + val + '/starred',
-            dataType: "json",
-             headers: {
-                authorization: "token 47175dd75342e5e23e57e18f20547a5fb91d3968"
-            },
-            success: function (response) {
+        if ($('.ui-search__list' + ':hover').length == 0) {
+            let val = $('#search').val()
+            searchProgress.removeClass('hidden')
+            $.ajax({
+                type: 'GET',
+                url: 'https://api.github.com/users/' + val + '/starred',
+                dataType: "json",
+                success: function (response) {
+                    searchProgress.addClass('hidden')
                     $('.search-failed').remove()
-                for (let i in response) {
-                    let result = $('<li data-id="' + response[i]['id'] + '" data-num="' + i + '">\n' +
-                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-search__item">\n' +
-                        '\t\t\t\t\t\t\t\t\t\t\t\t\t<span class="ui-search__item-text">\n' +
-                        '' + response[i]['name'] + '' +
-                        '\t\t\t\t\t\t\t\t\t\t\t\t\t</span>\n' +
-                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
-                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</li>')
+                    for (let i in response) {
+                        if (i == maxResponce)
+                            return false
+                        $('.search-failed').remove()
+                        let result = $('<li data-id="' + response[i]['id'] + '" data-num="' + i + '">\n' +
+                            '<div class="ui-search__item">\n' +
+                            '<span class="ui-search__item-text">\n' +
+                            '' + response[i]['name'] + '' +
+                            '</span>\n' +
+                            '</div>\n' +
+                            '</li>')
+                        searchList.append(result)
+                    }
+                },
+                error: function () {
+                    let result = $('<li class="search-failed">\n' +
+                        '<div class="ui-search__item">\n' +
+                        '<span class="ui-search__item-text">\n' +
+                        'Ничего не найдено' +
+                        '</span>\n' +
+                        '</div>\n' +
+                        '</li>')
                     searchList.append(result)
+                    searchProgress.addClass('hidden')
                 }
-                searchProgress.addClass('hidden')
-            },
-            error:function () {
-                searchList.empty()
-                let result = $('<li class="search-failed">\n' +
-                    '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-search__item">\n' +
-                    '\t\t\t\t\t\t\t\t\t\t\t\t\t<span class="ui-search__item-text">\n' +
-                    'Ничего не найдено' +
-                    '\t\t\t\t\t\t\t\t\t\t\t\t\t</span>\n' +
-                    '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
-                    '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</li>')
-                searchList.append(result)
-                searchProgress.addClass('hidden')
-            }
 
-        })
+            })
 
-     }}
+        }
+    }
 
-    jdoc.on('keyup', '.search-categories__search', function () {
+    jdoc.on('keyup', '.search-categories__search', function (e) {
+        if (e.key == 'ArrowDown' || e.key == 'ArrowUp') {
+            return false
+        }
         if ($(this).val().length >= 2) {
             searchProgress.removeClass('hidden')
-            clearTimeout(search);
-            var search = setTimeout(searchCategories, 100);
+            if (jhtml.hasClass('is-search-open') == false) {
+                searchList.empty()
+            }
+            if (e.key == 'Enter') {
+                $('.search-categories__list .selected').addClass('seleсted-by-click')
+                $(this).val($('.search-categories__list .selected .ui-search__item-text').text()).trigger('change')
+                searchList.empty()
+                $(this).focusout()
+            } else {
+                    searchList.empty()
+                    clearTimeout(search);
+                    clearTimeout(searchCategories);
+                    var search = setTimeout(searchCategories, 100);
+            }
+
+
         }
     })
     jdoc.on('click', '.search-categories__list li', function () {
@@ -804,7 +830,11 @@ $(document).ready(function () {
         $(this).addClass('seleсted-by-click');
         $('.search-categories__search').val($(this).find('.ui-search__item-text').text()).trigger('change');
     })
-    jdoc.on('change', '.search-categories__search', function () {
+        $('.search-categories__search').click(function () {
+            searchList.empty()
+        })
+    jdoc.on('change', '.search-categories__search', function (e) {
+        var selected_suggest_num=0
             if (maxCategories !== 1) {
                 if ($('.search-categories__categories').find('.btn--selected').length >= maxCategories) {
                     alert('Можно добавить не более ' + maxCategories + ' шт.')
@@ -848,6 +878,8 @@ $(document).ready(function () {
                 }
             }
 
+
+
     })
     jdoc.on('click', '.search-categories__categories .btn--selected', function (e) {
         $(this).parents('.col-auto').remove()
@@ -858,7 +890,6 @@ $(document).ready(function () {
         $('.js-select__b-office option').removeClass('selected')
         $(this).addClass('selected')
     })
-
 
 
     jdoc.on('focusin', '#update-address', function (e) {
@@ -892,7 +923,7 @@ $(document).ready(function () {
             if ($(this).is(":checked") == true) {
                 var msg = msg_1
                 $('.ui-worktime__period-btn[data-target="#' + $(elem).attr('id') + '"]').text(msg);
-            }else{
+            } else {
                 let from = $(elem).find('.js-select').first().val();
                 let to = $(elem).find('.js-select').last().val();
                 var msg = msg_2 + from + ' -- ' + to;
@@ -900,6 +931,7 @@ $(document).ready(function () {
             }
         })
     }
+
     $('.ui-worktime__period [id *= "time"]').each(function (index, elem) {
         SetWorkHours(elem, 'Круглосуточно', 'c ')
     })
@@ -941,7 +973,7 @@ $(document).ready(function () {
     })
 //Сериализация формы
     $('.btn--submit').click(function (e) {
-        if (CategoriesBlock.find('.btn').length === 0){
+        if (CategoriesBlock.find('.btn').length === 0) {
             alert('Необходимо добавить категорию')
             $('#search').focus().scrollTo(100)
             return false
@@ -1011,7 +1043,7 @@ $(document).ready(function () {
             data['socials']['' + this.id + ''] = $(this).val()
         })
         data['deleted'] = deleted
-        data['backOffices']=backOffices
+        data['backOffices'] = backOffices
         console.log(data)
     })
     $('.is-acceptence').change(function () {
@@ -1023,13 +1055,11 @@ $(document).ready(function () {
     })
 
 
-    jdoc.on('click', '.js-tabsid-btn', function(e)
-    {
+    jdoc.on('click', '.js-tabsid-btn', function (e) {
 
-        if($(this).hasClass('premium-tab')){
+        if ($(this).hasClass('premium-tab')) {
             $('.premium-submit').show()
-        }
-        else {
+        } else {
             $('.premium-submit').hide()
         }
         e.preventDefault();
@@ -1039,12 +1069,9 @@ $(document).ready(function () {
             tabsid = tab.closest('.js-tabsid'),
             tabsid_btn = tabsid.find('.js-tabsid-btn'),
             tabsid_content = tabsid.find('.js-tabsid-content');
-        if ( tab.is('.is-active') )
-        {
-           return false
-        }
-        else
-        {
+        if (tab.is('.is-active')) {
+            return false
+        } else {
             tabsid_btn.removeClass('is-active');
             tabsid_content.removeClass('is-active');
 
@@ -1054,7 +1081,7 @@ $(document).ready(function () {
 
 
     });
-    jdoc.on('focus','#update-price-list .ui-input',function (e) {
+    jdoc.on('focus', '#update-price-list .ui-input', function (e) {
         e.preventDefault()
     })
 

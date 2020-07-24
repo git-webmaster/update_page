@@ -1223,6 +1223,7 @@ function loadEvents() {
 			li_total = all_li.length;
 
 		// up
+		//TODO сейчас первый элемент проскакивается,так и задумано? пока исправил код, могу свой поменять если такое поведение необходимо сохранить
 		if (e.which === 38) {
 
 			if (selected_suggest_num === 0)
@@ -1234,13 +1235,22 @@ function loadEvents() {
 			if (selected_suggest_num === 1)
 			{
 				selected_suggest_num--;
-				t.setCursorPosition(user_text.length);
-				all_li.removeClass('selected');
+                var this_li = $('.ui-search__list > li[data-num=' + selected_suggest_num + ']');
+
+                if (selected_suggest_num <= 0) selected_suggest_num = li_total+1;
+                selected_suggest_text = $.trim(this_li.find('.ui-search__item-text').html());
+
+                all_li.removeClass('selected');
+                this_li.addClass('selected');
+
+                // t.val(selected_suggest_text);
+                t.setCursorPosition(selected_suggest_text.length);
+
 				// t.val(user_text);
 			}
 			else
 			{
-				selected_suggest_num--;
+                selected_suggest_num--;
 				var this_li = $('.ui-search__list > li[data-num=' + selected_suggest_num + ']');
 
 				if (selected_suggest_num <= 0) selected_suggest_num = li_total+1;
@@ -1251,6 +1261,7 @@ function loadEvents() {
 
 				// t.val(selected_suggest_text);
 				t.setCursorPosition(selected_suggest_text.length);
+
 			}
 
 			return false;
@@ -1258,7 +1269,6 @@ function loadEvents() {
 
 		// down
 		if (e.which === 40) {
-
 			if (selected_suggest_num === li_total)
 			{
 				selected_suggest_num = 0;
@@ -1269,9 +1279,7 @@ function loadEvents() {
 			}
 			else
 			{
-				selected_suggest_num++;
-				var this_li = $('.ui-search__list > li[data-num=' + selected_suggest_num + ']');
-
+				var this_li = $('.ui-search__list  li[data-num=' + selected_suggest_num + ']');
 				selected_suggest_text = $.trim(this_li.find('.ui-search__item-text').html());
 
 				all_li.removeClass('selected');
@@ -1279,6 +1287,7 @@ function loadEvents() {
 
 				t.val(selected_suggest_text);
 				t.setCursorPosition(selected_suggest_text.length);
+                selected_suggest_num+=1;
 			}
 
 			return false;
