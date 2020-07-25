@@ -592,7 +592,7 @@ $(document).ready(function () {
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="row">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="col-md-6">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label class="ui-label is-md-hidden " for="update-email">Email</label>\n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input" type="email" placeholder="name@mail.ru" id="update-email" name="email" value="raduga@mail.ru" data-id="123">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input" type="email" placeholder="name@mail.ru" id="update-email" name="email" value="" data-id="123">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="col-md-6">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label class="ui-label is-md-hidden ">Комментарий к email</label>\n' +
