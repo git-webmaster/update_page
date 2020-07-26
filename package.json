@@ -105,6 +105,7 @@
     "svg4everybody": "^2.0.0",
     "sweetalert2": "^9.7.2",
     "tooltipster": "^4.2.7",
+    "typeahead": "^0.2.2",
     "ua-parser-js": "^0.7.21",
     "ymaps": "^0.2.1"
   }

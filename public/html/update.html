@@ -422,12 +422,12 @@
 													</div>
 												</div>
 											</div>
-											<div class="panel__settings-group panel__settings-group--grey">
+											<div class="panel__settings-group panel__settings-group--grey panel_one-label">
 												<div class="panel__settings-row">
 													<div class="ui-input-group">
 														<div class="row">
 															<div class="col-md-6">
-																<label class="ui-label" for="update-email">Телефон</label>
+																<label class="ui-label" for="update-tel">Телефон</label>
 																<input class="ui-input progress-input" type="tel" name="telephone" placeholder="+7 999 12 34 567" id="update-tel" value="+79991234567" data-id="123">
 															</div>
 															<div class="col-md-6">
@@ -450,11 +450,11 @@
 													<div class="ui-input-group">
 														<div class="row">
 															<div class="col-md-6">
-																<label class="ui-label is-md-hidden">Телефон</label>
+																<label class="ui-label">Телефон</label>
 																<input class="ui-input" type="tel"  name="telephone" placeholder="+7 999 12 34 567" id="update-tel2" data-id="123">
 															</div>
 															<div class="col-md-6">
-																<label class="ui-label is-md-hidden">Комментарий к телефону</label>
+																<label class="ui-label">Комментарий к телефону</label>
 																<div class="ui-input-group">
 																	<input class="ui-input"  name="telephone-name" type="text" placeholder="отдел продаж">
 																	<div class="ui-input-append">
@@ -477,7 +477,7 @@
 													</button>
 												</div>
 											</div>
-											<div class="panel__settings-group">
+											<div class="panel__settings-group panel_one-label">
 												<div class="panel__settings-row">
 													<div class="ui-input-group">
 														<div class="row">
@@ -509,8 +509,8 @@
 													</button>
 												</div>
 											</div>
-											<div class="panel__settings-group panel__settings-group--grey">
-												<div class="panel__settings-row panel__site">
+											<div class="panel__settings-group panel__settings-group--grey panel_one-label">
+												<div class="panel__settings-row panel__new">
 													<label class="ui-label" for="update-website">Сайт</label>
 													<div class="ui-input-group">
 														<input class="ui-input progress-input" type="text" name="site" placeholder="http://www.renins.com" id="update-website" data-id="123" value="">
@@ -530,7 +530,7 @@
 														</svg>Добавить сайт
 													</button>
 												</div>
-												<div class="panel__settings-row">
+												<div class="panel__settings-row panel_show-labels">
 													<div class="ui-input-group">
 														<div class="row">
 															<div class="col-md-6">
@@ -591,7 +591,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="panel__settings-group">
+											<div class="panel__settings-group panel_one-label">
 												<div class="panel__settings-row panel__video">
 													<label class="ui-label">Видео (только YouTube)</label>
 													<div class="ui-input-group">
@@ -643,7 +643,7 @@
 													</button>
 												</div>
 											</div>
-											<div class="panel__settings-group panel__settings-group--grey" data-id="123">
+											<div class="panel__settings-group panel__settings-group--grey " data-id="123">
 												<div class="panel__settings-row">
 													<div class="row">
 														<div class="col-sm">
@@ -2132,7 +2132,7 @@
 	<script defer src="../js/app.full.min.js"></script>
 <script defer src="../../resources/js/all_pages.js"></script>
 <script defer src="../js/update.js"></script>
-<script  src="https://api-maps.yandex.ru/2.1/?lang=ru-RU" type="text/javascript"></script>
+<script  src="https://api-maps.yandex.ru/2.1/?apikey=d12adf55-06c9-4814-831d-b981e06d0f99&lang=ru-RU" type="text/javascript"></script>
 </body>
 <style>
 	.ui-input{
@@ -2205,6 +2205,130 @@
 	.ui-input-price{
 		width: 100%;
 		max-width: 842px;
+	}
+	.panel_one-label .panel__settings-row:not(:first-of-type) .ui-label{
+		display: none;
+	}
+	@media (max-width: 768px) {
+		.panel_one-label .panel__settings-row:not(:first-child) .ui-label{
+			display: initial;
+		}
+	}
+	.panel_show-labels .ui-label{
+		display: initial!important;
+	}
+
+	.panel__settings-map-container{
+		height: 200px;
+	}
+
+
+	.typeahead,
+	.tt-query,
+	.tt-hint {
+		height: 30px;
+		padding: 8px 12px;
+		font-size: 24px;
+		line-height: 30px;
+		border: 2px solid #ccc;
+		-webkit-border-radius: 8px;
+		-moz-border-radius: 8px;
+		border-radius: 8px;
+		outline: none;
+	}
+	.tt-query {
+		-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	}
+
+	.tt-hint {
+		color: #999
+	}
+
+	.tt-dropdown-menu {
+		width: 422px;
+		margin-top: 3px;
+		padding: 8px 0;
+		background-color: #fff;
+		border: 1px solid #ccc;
+		border: 1px solid rgba(0, 0, 0, 0.2);
+		-webkit-border-radius: 8px;
+		-moz-border-radius: 8px;
+		border-radius: 8px;
+		-webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+		-moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+		box-shadow: 0 5px 10px rgba(0,0,0,.2);
+	}
+
+	.tt-suggestion {
+		padding: 3px 20px;
+		font-size: 18px;
+		line-height: 24px;
+		color: black;
+	}
+
+	.tt-suggestion.tt-cursor {
+		background: #f0f0f0;
+	}
+	.twitter-typeahead {
+		width: 100%;
+	}
+	.tt-query,
+	.tt-hint {
+		width: 396px;
+		height: 30px;
+		padding: 8px 12px;
+		font-size: 24px;
+		line-height: 30px;
+		border: 2px solid #ccc;
+		border-radius: 8px;
+		outline: none;
+	}
+
+	.tt-query {
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	}
+
+	.tt-hint {
+		color: #999;
+	}
+
+	.tt-menu {
+		width: 100%;
+		list-style: none;
+		padding: 8px 0;
+		background-color: #fff;
+		border: 1px solid #ccc;
+		box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.11);
+		border-radius: 0 0 2px 2px;
+		z-index: 1100;
+		margin: -1px 0 0;
+	}
+
+	.tt-suggestion {
+		font-size: 18px;
+		line-height: 24px;
+		cursor: pointer;
+		padding: 10px 15px 10px 47px;
+	}
+	.tt-suggestion:hover {
+		background: #f0f0f0;
+
+	}
+	.tt-suggestion.tt-is-under-cursor { /* UPDATE: newer versions use .tt-suggestion.tt-cursor */
+		background: #f0f0f0;
+
+	}
+
+	.tt-suggestion p {
+		margin: 0;
+	}
+	.search-failed {
+		font-size: 18px;
+		line-height: 24px;
+		cursor: pointer;
+		padding: 10px 15px 10px 47px;
 	}
 </style>
 </html>

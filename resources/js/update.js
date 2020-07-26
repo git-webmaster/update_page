@@ -25,6 +25,7 @@ function init() {
     var officeMap = new ymaps.Map("mapDrag", {
         center: [55.76, 37.64],
         zoom: 10,
+        controls:['zoomControl','fullscreenControl']
     }, {
         searchControlProvider: 'yandex#search'
     })
@@ -122,16 +123,6 @@ function init() {
 
     addSchedule()
     //заполняю остальнын поля по событию change
-    $('#update-address').change(function () {
-        let office = $('.js-select__b-office').val()
-        for (let i in backOffices) {
-            if (backOffices[i]['name'] == office) {
-                backOffices[i]['address'] = $(this).val()
-            }
-        }
-
-
-    })
     $('#update-address-floor').change(function () {
         let office = $('.js-select__b-office').val()
         for (let i in backOffices) {
@@ -183,6 +174,7 @@ function init() {
                     });
                     myPlacemark.events.add('dragend', function (e) {
                         function SetByCoord(result) {
+                            console.log(result)
                             result = JSON.parse(result)
                             if (result["suggestions"][0]["value"]) {
                                 backOffices[office]['coords']['latitude'] = cord[0];
@@ -197,21 +189,24 @@ function init() {
                             backOffices[office]['coords']['latitude'] = 'not_found';
                             backOffices[office]['coords']['longitude'] = 'not_found';
                         }
-
                         var cord = e.get('target').geometry.getCoordinates();
-                        var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/geolocate/address";
+
+                        ymaps.geocode(cord).then(function (res) {
+                            console.log(res)
+                        });
+                        var url = "https://geocode-maps.yandex.ru/1.x/?apikey=d12adf55-06c9-4814-831d-b981e06d0f99&format=json&geocode=Тверская+6";
                         //TODO токен дадаты
                         var token = "e42b1ce121984f1fba3256837f67e961b2982b05";
                         var query = {lat: cord[0], lon: cord[1]};
                         var options = {
-                            method: "POST",
+                            method: "GET",
                             mode: "cors",
                             headers: {
                                 "Content-Type": "application/json",
                                 "Accept": "application/json",
                                 "Authorization": "Token " + token
                             },
-                            body: JSON.stringify(query)
+                            // body: JSON.stringify(query)
                         }
                         fetch(url, options)
                             .then(response => response.text())
@@ -298,7 +293,22 @@ function init() {
         newOfficeIndex += 1
     })
     //Удаление офиса
+    // window.Swal = swal;
     $('.btn__delete-office').click(function () {
+        // const alrt = new  swal.fire({
+        //     title: 'Удалить этот филал?',
+        //     showCancelButton: true,
+        //     confirmButtonText: 'Удалить',
+        //     cancelButtonText: 'Отмена'
+        // })
+        //     .then((result) => {
+        //         console.log(result.value)
+        //         if (result.value)
+        //         {
+        //             //
+        //         }
+        //     });
+
         let officeSelect = $('.js-select__b-office');
         if ($('.js-select__b-office option').length > 1) {
             let deletedOffice = officeSelect.val()
@@ -374,9 +384,16 @@ function init() {
         var search = setTimeout(getAddressSuggestions, 100)
     })
     jdoc.on('change', '#update-address', function (e) {
+        let office = $('.js-select__b-office').val()
         let address = $('.search__address').find('.selected')
-        let lon = address.data('lon')
-        let lat = address.data('lat')
+        for (let i in backOffices) {
+            if (backOffices[i]['name'] == office) {
+                var lon = backOffices[i]['coords']['latitude']
+                var lat = backOffices[i]['coords']['longitude']
+                backOffices[i]['address'] = $(this).val()
+                console.log(lon,lat)
+            }
+        }
         let val = address.find('.ui-search__item-text').text();
         $(this).val('' + val + '')
         officeMap.geoObjects.removeAll()
@@ -392,6 +409,7 @@ function init() {
             }
 
             var cord = e.get('target').geometry.getCoordinates();
+            console.log(cord,'COORDS')
             var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/geolocate/address";
             var token = "e42b1ce121984f1fba3256837f67e961b2982b05";
             var query = {lat: cord[0], lon: cord[1]};
@@ -586,16 +604,16 @@ $(document).ready(function () {
     // либо смотреть на вышестоящий элемент , забирать его html и генерировать новый элемент
     jdoc.on('click', '.btn-add-email', function (e) {
         e.preventDefault()
-        if ($(this).parent('.panel__settings-group').find('.panel__settings-row').length < 10) {
+        if ($(this).parents('.panel__settings-group').find('.panel__settings-row').length < 11) {
             let emailRow = $('<div class="panel__settings-row">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-group">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="row">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="col-md-6">\n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label class="ui-label is-md-hidden " for="update-email">Email</label>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label class="ui-label  " for="update-email">Email</label>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input" type="email" placeholder="name@mail.ru" id="update-email" name="email" value="" data-id="123">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="col-md-6">\n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label class="ui-label is-md-hidden ">Комментарий к email</label>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label class="ui-label  ">Комментарий к email</label>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-group">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input" name="email-comment" type="text" placeholder="отдел продаж">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-append">\n' +
@@ -609,22 +627,24 @@ $(document).ready(function () {
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t</div>').insertBefore($('.btn-add-email__row'))
+                '\t\t\t\t\t\t\t\t\t\t\t\t</div>').insertBefore($('.btn-add-email__row')).find(".ui-input").first().focus();
+
+
 
         }
     })
     jdoc.on('click', '.btn-add-tel', function (e) {
         e.preventDefault()
-        if ($(this).parent('.panel__settings-group').find('.panel__settings-row').length < 10) {
+        if ($(this).parents('.panel__settings-group').find('.panel__settings-row').length < 11) {
             let telephoneRow = $('<div class="panel__settings-row">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-group">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="row">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="col-md-6">\n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label class="ui-label is-md-hidden">Телефон</label>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label class="ui-label ">Телефон</label>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input" type="tel" name="telephone" placeholder="+7 999 12 34 567" id="update-tel2" data-id="123">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="col-md-6">\n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label class="ui-label is-md-hidden">Комментарий к телефону</label>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label class="ui-label ">Комментарий к телефону</label>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-group">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input" name="telephone-name" type="text" placeholder="отдел продаж">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-append">\n' +
@@ -638,7 +658,7 @@ $(document).ready(function () {
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t</div>').insertBefore($('.btn-add-tel__row'))
+                '\t\t\t\t\t\t\t\t\t\t\t\t</div>').insertBefore($('.btn-add-tel__row')).find(".ui-input").first().focus();
         }
     })
 
@@ -664,12 +684,12 @@ $(document).ready(function () {
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
             '\t\t\t\t\t\t\t\t\t\t\t\t\t</li>')
-        $(".panel__sortable").append(priceRow)
+        $(".panel__sortable").append(priceRow).find(".ui-input").first().focus();
     })
 
     jdoc.on('click', '.btn-add-site', function (e) {
         e.preventDefault();
-        if ($(this).parent('.panel__settings-group').find('.panel__settings-row').length < 10) {
+        if ($(this).parents('.panel__settings-group').find('.panel__new').length <= 9) {
             let siteRow = $('\t<div class="panel__settings-row panel__new">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-group">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input progress-input" type="text" name="site" placeholder="http://www.renins.com" id="update-website" data-id="123" value="">\n' +
@@ -681,13 +701,13 @@ $(document).ready(function () {
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t</div>').insertBefore($(".btn-add-site__row"))
+                '\t\t\t\t\t\t\t\t\t\t\t\t</div>').insertBefore($(".btn-add-site__row")).find(".ui-input").first().focus();
         }
     })
     jdoc.on('click', '.btn-add-video', function (e) {
         e.preventDefault();
 
-        if ($(this).parent('.panel__settings-group').find('.panel__settings-row').length < 10) {
+        if ($(this).parents('.panel__settings-group').find('.panel__settings-row').length < 11) {
             let videoRow = $('\t<div class="panel__settings-row panel__new">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-group">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="row">\n' +
@@ -708,7 +728,7 @@ $(document).ready(function () {
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t</div>').insertBefore($(".btn-add-video__row"))
+                '\t\t\t\t\t\t\t\t\t\t\t\t</div>').insertBefore($(".btn-add-video__row")).find(".ui-input").first().focus();
 
         }
 
@@ -746,106 +766,94 @@ $(document).ready(function () {
     const sortable = new Sortable.default(
         document.querySelector('ol.panel__sortable'), {
             draggable: 'li.ui-input-price',
+            handle:'.btn-move'
         }
     )
-    // делаю поиск с задержкой к обращению к апи в 100 мс, если неактуально в данном конкретном случае то нужно убрать setTimeout в ивентлисенере ниже
-    var searchList = $('.search-categories__list');
+
     var searchProgress = $('.search-categories__progress');
     var CategoriesBlock = $('.search-categories__categories')
     const maxCategories = $('.search-categories__search').data('maxCategories')
-    var maxResponce = 5
+    var maxResponce = 20
+    var categories = new Bloodhound({
+        datumTokenizer: function(categories) {
+            return Bloodhound.tokenizers.whitespace();
+        },
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+            url: 'https://rubrikator.local/api/search?type=categories&query='+ $('#search').val(),
+            replace: function(url, uriEncodedQuery) {
+                return 'https://rubrikator.local/api/search?type=categories&query='+ $('#search').val()
+            },
+            filter: function(response) {
+               if(response.status=="nothing_found"){
+                    return false
+                }else{
+                   searchProgress.addClass('hidden')
+                    return response.info
+                }
 
-    function searchCategories() {
-        if (jhtml.hasClass('is-search-open') == false) {
-            searchList.empty()
+
+            }
         }
-        if ($('.ui-search__list' + ':hover').length == 0) {
-            let val = $('#search').val()
-            searchProgress.removeClass('hidden')
-            $.ajax({
-                type: 'GET',
-                url: 'https://api.github.com/users/' + val + '/starred',
-                dataType: "json",
-                success: function (response) {
-                    searchProgress.addClass('hidden')
-                    $('.search-failed').remove()
-                    for (let i in response) {
-                        if (i == maxResponce)
-                            return false
-                        $('.search-failed').remove()
-                        let result = $('<li data-id="' + response[i]['id'] + '" data-num="' + i + '">\n' +
-                            '<div class="ui-search__item">\n' +
-                            '<span class="ui-search__item-text">\n' +
-                            '' + response[i]['name'] + '' +
-                            '</span>\n' +
-                            '</div>\n' +
-                            '</li>')
-                        searchList.append(result)
-                    }
-                },
-                error: function () {
-                    let result = $('<li class="search-failed">\n' +
+    });
+
+
+    categories.initialize();
+
+    $('.search-categories__search').typeahead({
+            hint: true,
+            highlight: true,
+            minLength: 2
+        },
+        {
+            name: 'categories',
+            displayKey: function(categories) {
+                return categories.name
+            },
+            source: categories.ttAdapter(),
+            templates: {
+                empty: [
+                    '<li class="search-failed">\n' +
                         '<div class="ui-search__item">\n' +
                         '<span class="ui-search__item-text">\n' +
                         'Ничего не найдено' +
                         '</span>\n' +
                         '</div>\n' +
-                        '</li>')
-                    searchList.append(result)
-                    searchProgress.addClass('hidden')
+                        '</li>'
+                ],
+                suggestion: function(data) {
+                    return '<li data-id="' + data['id'] +'">' +
+                        '<div class="ui-search__item">' +
+                        '<span class="ui-search__item-text">' +
+                        '' + data['name'] + '' +
+                        '</span>' +
+                        '</div>' +
+                        '</li>'
                 }
-
-            })
-
-        }
-    }
-
-    jdoc.on('keyup', '.search-categories__search', function (e) {
-        if (e.key == 'ArrowDown' || e.key == 'ArrowUp') {
-            return false
-        }
-        if ($(this).val().length >= 2) {
-            searchProgress.removeClass('hidden')
-            if (jhtml.hasClass('is-search-open') == false) {
-                searchList.empty()
             }
-            if (e.key == 'Enter') {
-                $('.search-categories__list .selected').addClass('seleсted-by-click')
-                $(this).val($('.search-categories__list .selected .ui-search__item-text').text()).trigger('change')
-                searchList.empty()
-                $(this).focusout()
+        }).on('typeahead:selected', function(event, data){
+        if (maxCategories !== 1) {
+            if ($('.search-categories__categories').find('.btn--selected').length >= maxCategories) {
+                alert('Можно добавить не более ' + maxCategories + ' шт.')
+                return false
             } else {
-                    searchList.empty()
-                    clearTimeout(search);
-                    clearTimeout(searchCategories);
-                    var search = setTimeout(searchCategories, 100);
-            }
-
-
-        }
-    })
-    jdoc.on('click', '.search-categories__list li', function () {
-        $('.search-categories__list li').removeClass('selected');
-        $('.search-categories__list li').removeClass('seleсted-by-click');
-        $(this).addClass('seleсted-by-click');
-        $('.search-categories__search').val($(this).find('.ui-search__item-text').text()).trigger('change');
-    })
-        $('.search-categories__search').click(function () {
-            searchList.empty()
-        })
-    jdoc.on('change', '.search-categories__search', function (e) {
-        var selected_suggest_num=0
-            if (maxCategories !== 1) {
-                if ($('.search-categories__categories').find('.btn--selected').length >= maxCategories) {
-                    alert('Можно добавить не более ' + maxCategories + ' шт.')
-                    return false
-                } else {
-                    if ($('.search-categories__list li.seleсted-by-click').length == 0) {
-                        return false
+                    let id =data.id
+                    let val = data.name
+                    if ($('.search-categories__categories').find('.btn[data-id="' + id + '"]').length === 0) {
+                        let category = $('<div class="col-auto">\n' +
+                            '<button  type="button" class ="btn btn--selected" data-id="' + id + '">' + val + '\n' +
+                            '<span class="btn__delete">\n' +
+                            '<svg class="icon-delete" aria-hidden="true">\n' +
+                            '<use xlink:href="/sprites/sprite.svg#icon-delete"></use>\n' +
+                            '</svg>\n' +
+                            '</span>\n' +
+                            '</button>\n' +
+                            '</div>')
+                        CategoriesBlock.append(category)
                     } else {
-                        let id = $('.search-categories__list li.seleсted-by-click').data('id')
+                        CategoriesBlock.empty()
                         if ($('.search-categories__categories').find('.btn[data-id="' + id + '"]').length === 0) {
-                            let val = $('.search-categories__list li.seleсted-by-click').text()
+                            let val = $('.search-categories__list li.selected').text()
                             let category = $('<div class="col-auto">\n' +
                                 '<button  type="button" class ="btn btn--selected" data-id="' + id + '">' + val + '\n' +
                                 '<span class="btn__delete">\n' +
@@ -856,35 +864,21 @@ $(document).ready(function () {
                                 '</button>\n' +
                                 '</div>')
                             CategoriesBlock.append(category)
-                        } else {
-                            CategoriesBlock.empty()
-                            let id = $('.search-categories__list li.selected').data('id')
-                            if ($('.search-categories__categories').find('.btn[data-id="' + id + '"]').length === 0) {
-                                let val = $('.search-categories__list li.selected').text()
-                                let category = $('<div class="col-auto">\n' +
-                                    '<button  type="button" class ="btn btn--selected" data-id="' + id + '">' + val + '\n' +
-                                    '<span class="btn__delete">\n' +
-                                    '<svg class="icon-delete" aria-hidden="true">\n' +
-                                    '<use xlink:href="/sprites/sprite.svg#icon-delete"></use>\n' +
-                                    '</svg>\n' +
-                                    '</span>\n' +
-                                    '</button>\n' +
-                                    '</div>')
-                                CategoriesBlock.append(category)
-                            }
                         }
                     }
-                    $(this).val('')
-                }
+
+                $(this).val('')
             }
-
-
-
+        }
+    }).on('typeahead:asyncrequest', function() {
+        searchProgress.removeClass('hidden')
     })
+        .on('typeahead:asynccancel typeahead:asyncreceive', function() {
+            searchProgress.addClass('hidden')
+        });
     jdoc.on('click', '.search-categories__categories .btn--selected', function (e) {
+        deleted['categories'].push($(this).data('id'))
         $(this).parents('.col-auto').remove()
-
-        deleted['categories'].push($(this).parents('.btn--selected').data('id'))
     })
     jdoc.on('click', '.js-select__b-office option', function (e) {
         $('.js-select__b-office option').removeClass('selected')
@@ -987,7 +981,7 @@ $(document).ready(function () {
         data['video'] = []
         //не уверен что именно ид такое нужно подставлять в этом поле
         data['type-of-issue'] = $('.panel__tabs-btn.js-tabsid-btn.is-active').data('tabsBtn')
-
+        data['fullness'] = $('.ui-progress-bar').text()
         for (var i in array) {
             switch (array[i]['name']) {
                 case "telephone":
@@ -1000,19 +994,21 @@ $(document).ready(function () {
                     data['email'].push({'email': array[i]['value'], 'comment': array[(parseInt(i) + 1)]['value']})
                     break
                 case "site":
-                    data['site'].push({'email': array[i]['value'], 'comment': array[(parseInt(i) + 1)]['value']})
+                    data['site'].push({'email': array[i]['value']})
                     break
                 case "video-link":
                     data['video'].push({'video': array[i]['value'], 'name': array[(parseInt(i) + 1)]['value']})
                     break
                 default:
-                    if (array[i]['name'] !== "telephone-name" || array[i]['name'] !== "email-comment" || array[i]['name'] !== "video-name") {
+                    console.log(array[i]['name']=="email-comment")
+                    if (array[i]['name'] != "telephone-name" && array[i]['name'] != "email-comment" && array[i]['name'] != "video-name") {
                         data[array[i]['name']] = array[i]['value']
                     }
 
 
             }
         }
+        console.log(data)
         data['pricelist'] = {
             "value": []
         }
@@ -1044,7 +1040,7 @@ $(document).ready(function () {
         })
         data['deleted'] = deleted
         data['backOffices'] = backOffices
-        console.log(data)
+
     })
     $('.is-acceptence').change(function () {
         if ($(this).is(':checked')) {
