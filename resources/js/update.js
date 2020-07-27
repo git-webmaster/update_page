@@ -50,6 +50,7 @@ function init() {
         'floor': '3',
         'office': '206',
         'additional': 'Дополнительный комментарий',
+        'id':'125',
         'coords': {
             'longitude': 55.763761,
             'latitude': 37.621732
@@ -70,6 +71,7 @@ function init() {
         'floor': '34',
         'office': '26',
         'additional': 'Дополнительный второй комментарий',
+        'id':'125',
         'coords': {
             'longitude': 51.763761,
             'latitude': 40.621732
@@ -130,8 +132,6 @@ function init() {
                 backOffices[i]['floor'] = $(this).val()
             }
         }
-
-
     })
     $('#update-address-office').change(function () {
         let office = $('.js-select__b-office').val()
@@ -261,7 +261,11 @@ function init() {
         }
     }
 
-    //расставляю значения прешедшие из апи по форме адреса
+  $('.change_address').change(function (){
+
+  })
+
+
     var newOfficeIndex = 1
     showSelectedAddress()
     //Добавление нового офиса
@@ -272,6 +276,7 @@ function init() {
             'floor': '',
             'office': '',
             'additional': '',
+            'id':'0',
             'coords': {
                 'longitude': 55.763761,
                 'latitude': 37.621732
@@ -321,7 +326,8 @@ function init() {
             if ($('.js-select__b-office .selected').data('id') != '') {
                 for (let i in backOffices) {
                     if (backOffices[i]['name'] == deletedOffice) {
-                        backOffices[i] = 'deleted'
+                        deleted['backOffices'].push(backOffices[i])
+                        delete backOffices[i]
                     }
                 }
             } else {
