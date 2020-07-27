@@ -300,45 +300,43 @@ function init() {
     //Удаление офиса
     // window.Swal = swal;
     $('.btn__delete-office').click(function () {
-        // const alrt = new  swal.fire({
-        //     title: 'Удалить этот филал?',
-        //     showCancelButton: true,
-        //     confirmButtonText: 'Удалить',
-        //     cancelButtonText: 'Отмена'
-        // })
-        //     .then((result) => {
-        //         console.log(result.value)
-        //         if (result.value)
-        //         {
-        //             //
-        //         }
-        //     });
+        Swal.fire({
+            title: 'Удалить этот филал?',
+            showCancelButton: true,
+            confirmButtonText: 'Удалить',
+            cancelButtonText: 'Отмена'
+        })
+            .then((result) => {
+                if (result['value'])
+                {
+                    let officeSelect = $('.js-select__b-office');
+                    //TODO можно убрать условие если хотите разрешить удалять все филиалы
+                    if ($('.js-select__b-office option').length > 1) {
+                        let deletedOffice = officeSelect.val()
+                        $(".js-select__b-office option").each(function () {
+                            if ($(this).val() == deletedOffice) {
+                                $(this).remove();
+                            }
+                        })
+                        officeSelect.val($('.js-select__b-office option').val()).trigger('change').selectric('refresh')
+                        if ($('.js-select__b-office .selected').data('id') != '') {
+                            for (let i in backOffices) {
+                                if (backOffices[i]['name'] == deletedOffice) {
+                                    deleted['backOffices'].push(backOffices[i])
+                                    delete backOffices[i]
+                                }
+                            }
+                        } else {
+                            for (let i in backOffices) {
+                                if (backOffices[i]['name'] == deletedOffice) {
+                                    delete backOffices[i]
+                                }
+                            }
 
-        let officeSelect = $('.js-select__b-office');
-        if ($('.js-select__b-office option').length > 1) {
-            let deletedOffice = officeSelect.val()
-            $(".js-select__b-office option").each(function () {
-                if ($(this).val() == deletedOffice) {
-                    $(this).remove();
-                }
-            })
-            officeSelect.val($('.js-select__b-office option').val()).trigger('change').selectric('refresh')
-            if ($('.js-select__b-office .selected').data('id') != '') {
-                for (let i in backOffices) {
-                    if (backOffices[i]['name'] == deletedOffice) {
-                        deleted['backOffices'].push(backOffices[i])
-                        delete backOffices[i]
+                        }
                     }
                 }
-            } else {
-                for (let i in backOffices) {
-                    if (backOffices[i]['name'] == deletedOffice) {
-                        delete backOffices[i]
-                    }
-                }
-
-            }
-        }
+            });
     })
     //Выбор офиса
     jdoc.on('change', '.js-select__b-office', function (index, elem) {
@@ -346,49 +344,69 @@ function init() {
     })
 
     //Автозаполнение адреса
-    var searchAddress = $('.search__address')
-
-    function showSuggest(response) {
-        response = JSON.parse(response)
-        for (i in response["suggestions"]) {
-            searchAddress.empty()
-            let result = $('<li data-lat="' + response["suggestions"][i]['data']['geo_lat'] + '" data-lon="' + response["suggestions"][i]['data']['geo_lon'] + '" >\n' +
-                '<div class="ui-search__item">\n' +
-                '<span class="ui-search__item-text">\n' + response["suggestions"][i]['value'] + ' \n' +
-                '</span>\n' +
-                '</div>\n' +
-                '</li>')
-            searchAddress.append(result)
-        }
-    }
-
-    function getAddressSuggestions() {
-        searchAddress.empty()
-        var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
-        var token = "e42b1ce121984f1fba3256837f67e961b2982b05";
-        var query = $('#update-address').val();
-
-        var options = {
-            method: "POST",
-            mode: "cors",
-            headers: {
+    let token = "e42b1ce121984f1fba3256837f67e961b2982b05";
+    var addresses = new Bloodhound({
+        datumTokenizer: function(addresses) {
+            return Bloodhound.tokenizers.whitespace('value');
+        },
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+            headers:{
                 "Accept": "application/json",
                 "Content-Type": "application/json",
                 "Authorization": "Token " + token,
-
             },
-            body: JSON.stringify({query: query, count: 5, language: 'ru',})
-        }
-        fetch(url, options)
-            .then(response => response.text())
-            .then(response => showSuggest(response))
-            .catch(error => console.log("error", error));
-    }
+            body: JSON.stringify({query: $('#update-address').val(), count: 5, language: 'ru',}),
+            url: 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address',
+                replace: function(url, uriEncodedQuery) {
+                return 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address?token='+token+'&query='+$('#update-address').val()
+            },
+            filter: function(response) {
+                $('.search-address__progress').addClass('hidden')
+                return response.suggestions
+            }
+        }})
+    addresses.initialize();
 
-    jdoc.on('keyup', '#update-address', function (e) {
-        clearTimeout(search);
-        var search = setTimeout(getAddressSuggestions, 100)
-    })
+    $('#update-address').typeahead({
+            hint: true,
+            highlight: true,
+            minLength: 2
+        },
+        {
+            name: 'addresses',
+            displayKey: function(value) {
+                return value.value
+            },
+            source: addresses.ttAdapter(),
+            templates: {
+                empty: [
+                    '<li class="search-failed">\n' +
+                    '<div class="ui-search__item">\n' +
+                    '<span class="ui-search__item-text">\n' +
+                    'Ничего не найдено' +
+                    '</span>\n' +
+                    '</div>\n' +
+                    '</li>'
+                ],
+                suggestion: function(data) {
+                    return '<li>' +
+                        '<div class="ui-search__item">' +
+                        '<span class="ui-search__item-text">' +
+                        '' + data['value'] + '' +
+                        '</span>' +
+                        '</div>' +
+                        '</li>'
+                }
+            }
+        }).on('typeahead:asyncrequest', function() {
+        $('.search-address__progress').removeClass('hidden')
+        })
+        .on('typeahead:asynccancel typeahead:asyncreceive', function() {
+            $('.search-address__progress').addClass('hidden')
+        })
+        .on('typeahead:selected', function(event, data){
+        })
     jdoc.on('change', '#update-address', function (e) {
         let office = $('.js-select__b-office').val()
         let address = $('.search__address').find('.selected')
