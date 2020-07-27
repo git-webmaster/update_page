@@ -163,6 +163,7 @@ function init() {
                 $('#update-address-floor').val(backOffices[office]['floor']);
                 $('#update-address-office').val(backOffices[office]['office']);
                 $('#update-address-additional').val(backOffices[office]['additional']);
+                $('.backoffice-label').html($('.js-select__b-office').val())
                 officeMap.geoObjects.removeAll();
                 if (backOffices[office]['coords']['latitude'] !== null && backOffices[office]['coords']['longitude'] !== null) {
                     let lat = backOffices[office]['coords']['latitude']
@@ -174,7 +175,6 @@ function init() {
                     });
                     myPlacemark.events.add('dragend', function (e) {
                         function SetByCoord(result) {
-                            console.log(result)
                             result = JSON.parse(result)
                             if (result["suggestions"][0]["value"]) {
                                 backOffices[office]['coords']['latitude'] = cord[0];
@@ -194,6 +194,14 @@ function init() {
                         ymaps.geocode(cord).then(function (res) {
                             console.log(res)
                         });
+                        $.ajax({
+                            type: 'GET',
+                            url: "https://search-maps.yandex.ru/v1?format=json&apikey=d12adf55-06c9-4814-831d-b981e06d0f99&lang=ru-RU&text="+cord[0]+','+cord[1],
+                            dataType: "json",
+                            success: function (response) {
+                                console.log(response,'ff')
+                            }
+                        })
                         var url = "https://geocode-maps.yandex.ru/1.x/?apikey=d12adf55-06c9-4814-831d-b981e06d0f99&format=json&geocode=Тверская+6";
                         //TODO токен дадаты
                         var token = "e42b1ce121984f1fba3256837f67e961b2982b05";
@@ -206,7 +214,7 @@ function init() {
                                 "Accept": "application/json",
                                 "Authorization": "Token " + token
                             },
-                            // body: JSON.stringify(query)
+                            body: JSON.stringify(query)
                         }
                         fetch(url, options)
                             .then(response => response.text())
@@ -216,7 +224,7 @@ function init() {
                     });
                     officeMap.geoObjects.add(myPlacemark);
                     // Слушаем событие окончания перетаскивания на метке.
-                    officeMap.setCenter([lon, lat], 10)
+                    officeMap.setCenter([lon, lat], 16)
                     backOffices[office]['coords']['latitude'] = lat;
                     backOffices[office]['coords']['longitude'] = lon;
                 }
@@ -271,7 +279,7 @@ function init() {
     //Добавление нового офиса
     $('.btn__add-office').click(function () {
         let newOffice = {
-            'name': 'Новый филиал #1',
+            'name': 'Новый филиал #'+newOfficeIndex,
             'address': '',
             'floor': '',
             'office': '',
@@ -292,6 +300,7 @@ function init() {
             }
         }
         backOffices.push(newOffice)
+        console.log(backOffices)
         $('.js-select__b-office').append('<option data-id="">Новый филиал #' + newOfficeIndex + '</option>').val('Новый филиал #' + newOfficeIndex + '').selectric('refresh');
         $('.update-address').focus()
         showSelectedAddress()
@@ -340,7 +349,7 @@ function init() {
     })
     //Выбор офиса
     jdoc.on('change', '.js-select__b-office', function (index, elem) {
-        showSelectedAddress(elem)
+        showSelectedAddress()
     })
 
     //Автозаполнение адреса
@@ -428,33 +437,27 @@ function init() {
         myPlacemark.events.add('dragend', function (e) {
             function SetByCoord(result) {
                 result = JSON.parse(result)
+                console.log(result)
                 if (result["suggestions"][0]["value"])
                     $('#update-address').val(result["suggestions"][0]["value"])
             }
 
             var cord = e.get('target').geometry.getCoordinates();
-            console.log(cord,'COORDS')
-            var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/geolocate/address";
-            var token = "e42b1ce121984f1fba3256837f67e961b2982b05";
-            var query = {lat: cord[0], lon: cord[1]};
-            var options = {
-                method: "POST",
-                mode: "cors",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                    "Authorization": "Token " + token
-                },
-                body: JSON.stringify(query)
-            }
+            $.ajax({
+                type: 'GET',
+                url: "https://search-maps.yandex.ru/v1?format=json&apikey=d12adf55-06c9-4814-831d-b981e06d0f99&lang=ru-RU&text="+cord[0]+','+cord[1],
+                dataType: "json",
+                success: function (response) {
+               console.log(response,'dd')
+                }
+            })
             fetch(url, options)
-                .then(response => response.text())
                 .then(result => SetByCoord(result))
                 .catch(error => console.log("error", error));
         });
         officeMap.geoObjects.add(myPlacemark);
         // Слушаем событие окончания перетаскивания на метке.
-        officeMap.setCenter([lat, lon], 10)
+        officeMap.setCenter([lat, lon], 16)
         $('.address-coords').val([lon, lat])
     });
     $('.select-form').change(function () {
