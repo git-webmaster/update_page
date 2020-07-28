@@ -33,6 +33,8 @@ function init() {
 
 //Пока оставил отправку по дата-атрибуту селекта как было ранее в тз, но можно и одним запросом отправлять если вам удобней так будет
 
+    // TODO эндпоинты информации о филиалах сюда
+
     $('.js-select__b-office .ui-selectric-scroll option').each(function (index, elem) {
         let officeId = $(elem).data('index');
         //Здесь должен быть метод который отдает инфу о филиалах по id
@@ -915,6 +917,7 @@ $(document).ready(function () {
 //    переключение вида формы
     $('.ui-check__input[name="update-status"]').change(function () {
         let val = $(this).val()
+        $(this).addClass('btn is-loading-right')
         switch (val) {
             case "update":
                 $('.ui-taglist').show()
@@ -941,7 +944,7 @@ $(document).ready(function () {
                 $(".l__sticky.js-sticky").hide();
                 break
         }
-
+        $(this).removeClass('btn is-loading-right')
     })
 //Сериализация формы
     $('.btn--submit').click(function (e) {

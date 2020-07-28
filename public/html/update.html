@@ -67,6 +67,22 @@
 
 </head>
 <body>
+<!--TODO перенести в critical css-->
+<style>
+	.loader{
+		display: block;
+		position: absolute;
+		left: 35%;
+		margin: 0 auto;
+		width: 50px;
+		height: 50px;
+		border: 1px solid green;
+		border-right-color: transparent;
+		border-radius: 50%;
+		z-index: 100;
+		animation: spinLoading .5s linear infinite;
+	}
+</style>
 <div class="app">
 
 <!-- Header :: Start-->
@@ -309,6 +325,7 @@
 						</div>
 
 						<div class="l__wrapper js-sticky-container hidden" id="update-container">
+							<div class="loader"></div>
 							<div class="l__content">
 								<!-- Panel :: Start-->
 								<div class="panel">
@@ -2131,6 +2148,7 @@
 <!-- Footer :: End-->	</div>
 	<script defer src="../js/app.full.min.js"></script>
 <script defer src="../../resources/js/all_pages.js"></script>
+
 <script defer src="../js/update.js"></script>
 <script  src="https://api-maps.yandex.ru/2.1/?apikey=d12adf55-06c9-4814-831d-b981e06d0f99&lang=ru-RU" type="text/javascript"></script>
 </body>
