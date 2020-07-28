@@ -6827,8 +6827,10 @@ function init() {
         ymaps.geocode(address, {
             results: 1
         }).then(function (res) {
+            if(res.geoObjects.get(0)!=undefined){
             var GeoObject = res.geoObjects.get(0)
             var coords = GeoObject.geometry.getCoordinates()
+
             var myPlacemark = new ymaps.Placemark([coords[0],coords[1]], null, {
                 preset: 'islands#blueDotIcon',
                 draggable: true
@@ -6838,9 +6840,16 @@ function init() {
                 ymaps.geocode(newCords, {
                     results: 1
                 }).then(function (res) {
-                    var newGeoObject = res.geoObjects.get(0)
-                    var newAddress = newGeoObject.getAddressLine()
-                    $('#update-address').val(newAddress)
+                    var geoObject = res.geoObjects.get(0)
+                    var address = geoObject.getAddressLine()
+                    $('#update-address').val(address)
+                    for (let i in backOffices) {
+                        if (backOffices[i]['name'] == office) {
+                            backOffices[i]['coords']['latitude']= coords[0]
+                            backOffices[i]['coords']['longitude']= coords[1]
+                            backOffices[i]['address'] = address
+                        }
+                    }
                 })
 
             });
@@ -6853,7 +6862,16 @@ function init() {
                         backOffices[i]['address'] = address
                     }
                 }
-        })
+        }else{
+                let office = $('.js-select__b-office').val()
+                for (let i in backOffices) {
+                    if (backOffices[i]['name'] == office) {
+                        backOffices[i]['coords']['latitude']= 'not_found'
+                        backOffices[i]['coords']['longitude']= 'not_found'
+                        backOffices[i]['address'] = $('#update-address').val()
+                    }
+                }
+            }})
     }
 
     //Автозаполнение адреса
@@ -6922,15 +6940,7 @@ function init() {
         })
     //если пользователь захочет ввести адрес который не найдется в дадате и в яндексе
     $('#update-address').change(function () {
-        let office = $('.js-select__b-office').val()
-        for (let i in backOffices) {
-            if (backOffices[i]['name'] == office) {
-                backOffices[i]['coords']['latitude']= 'not_found'
-                backOffices[i]['coords']['longitude']= 'not_found'
-                backOffices[i]['address'] = $(this).val()
-                officeMap.geoObjects.removeAll()
-            }
-        }
+        setCoords()
     })
     //заполняю поля времени работы в массиве с филиалами по событию change
     function addSchedule() {
