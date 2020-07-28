@@ -30,17 +30,20 @@ function init() {
         searchControlProvider: 'yandex#search'
     })
 
+
 //Пока оставил отправку по дата-атрибуту селекта как было ранее в тз, но можно и одним запросом отправлять если вам удобней так будет
 
     $('.js-select__b-office .ui-selectric-scroll option').each(function (index, elem) {
         let officeId = $(elem).data('index');
+        //Здесь должен быть метод который отдает инфу о филиалах по id
         // $.ajax({
         //     type: 'GET',
         //     url: 'https://api.github.com/users/starred',
         //     dataType: "json",
         //     data: officeId,
         //     success: function (response) {
-        //      backOffices.push(response)
+        //     let data = repsonse.text()
+        //      backOffices.push(data)
         //     }
         // })
     })
@@ -52,8 +55,8 @@ function init() {
         'additional': 'Дополнительный комментарий',
         'id':'125',
         'coords': {
-            'longitude': 55.763761,
-            'latitude': 37.621732
+            'longitude': 0,
+            'latitude': 0
         },
         "schedule": {
             'monday': {'not_working': true},
@@ -73,8 +76,8 @@ function init() {
         'additional': 'Дополнительный второй комментарий',
         'id':'125',
         'coords': {
-            'longitude': 51.763761,
-            'latitude': 40.621732
+            'longitude': 0,
+            'latitude': 0
         },
         "schedule": {
             'tuesday': {'not_working': true},
@@ -88,6 +91,121 @@ function init() {
     }
     backOffices.push(answer_1, answer_2)
 
+
+    //функция связывания инпута адрес и точки на карте
+    function setCoords(){
+        if($('#update-address').length>0){
+        let office = $('.js-select__b-office').val()
+        officeMap.geoObjects.removeAll()
+        let address=''+ $('#update-address').val()+''
+        ymaps.geocode(address, {
+            results: 1
+        }).then(function (res) {
+            var GeoObject = res.geoObjects.get(0)
+            var coords = GeoObject.geometry.getCoordinates()
+            var myPlacemark = new ymaps.Placemark([coords[0],coords[1]], null, {
+                preset: 'islands#blueDotIcon',
+                draggable: true
+            });
+            myPlacemark.events.add('dragend', function (e) {
+                var newCords = e.get('target').geometry.getCoordinates();
+                ymaps.geocode(newCords, {
+                    results: 1
+                }).then(function (res) {
+                    var newGeoObject = res.geoObjects.get(0)
+                    var newAddress = newGeoObject.getAddressLine()
+                    $('#update-address').val(newAddress)
+                })
+
+            });
+            officeMap.geoObjects.add(myPlacemark);
+            officeMap.setCenter(coords, 16)
+            for (let i in backOffices) {
+                    if (backOffices[i]['name'] == office) {
+                        backOffices[i]['coords']['latitude']= coords[0]
+                        backOffices[i]['coords']['longitude']= coords[1]
+                        backOffices[i]['address'] = address
+                    }
+                }
+        })
+    }}
+
+    //Автозаполнение адреса
+    let token = "e42b1ce121984f1fba3256837f67e961b2982b05";
+    var addresses = new Bloodhound({
+        datumTokenizer: function(addresses) {
+            return Bloodhound.tokenizers.whitespace('value');
+        },
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+            headers:{
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": "Token " + token,
+            },
+            body: JSON.stringify({query: $('#update-address').val(), count: 5, language: 'ru',}),
+            url: 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address',
+            replace: function(url, uriEncodedQuery) {
+                return 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address?token='+token+'&query='+$('#update-address').val()
+            },
+            filter: function(response) {
+                $('.search-address__progress').addClass('hidden')
+                return response.suggestions
+            }
+        }})
+    addresses.initialize();
+    $('#update-address').typeahead({
+            hint: true,
+            highlight: true,
+            minLength: 2
+        },
+        {
+            name: 'addresses',
+            displayKey: function(value) {
+                return value.value
+            },
+            source: addresses.ttAdapter(),
+            templates: {
+                empty: [
+                    '<li class="search-failed">\n' +
+                    '<div class="ui-search__item">\n' +
+                    '<span class="ui-search__item-text">\n' +
+                    'Ничего не найдено' +
+                    '</span>\n' +
+                    '</div>\n' +
+                    '</li>'
+                ],
+                suggestion: function(data) {
+                    return '<li>' +
+                        '<div class="ui-search__item">' +
+                        '<span class="ui-search__item-text">' +
+                        '' + data['value'] + '' +
+                        '</span>' +
+                        '</div>' +
+                        '</li>'
+                }
+            }
+        }).on('typeahead:asyncrequest', function() {
+        $('.search-address__progress').removeClass('hidden')
+    })
+        .on('typeahead:asynccancel typeahead:asyncreceive', function() {
+            $('.search-address__progress').addClass('hidden')
+        })
+        .on('typeahead:selected', function(event, data){
+            setCoords()
+        })
+    //если пользователь захочет ввести адрес который не найдется в дадате и в яндексе
+    $('#update-address').change(function () {
+        let office = $('.js-select__b-office').val()
+        for (let i in backOffices) {
+            if (backOffices[i]['name'] == office) {
+                backOffices[i]['coords']['latitude']= 'not_found'
+                backOffices[i]['coords']['longitude']= 'not_found'
+                backOffices[i]['address'] = $(this).val()
+                officeMap.geoObjects.removeAll()
+            }
+        }
+    })
     //заполняю поля времени работы в массиве с филиалами по событию change
     function addSchedule() {
         $('.ui-worktime__row').each(function (index, elem) {
@@ -165,69 +283,6 @@ function init() {
                 $('#update-address-additional').val(backOffices[office]['additional']);
                 $('.backoffice-label').html($('.js-select__b-office').val())
                 officeMap.geoObjects.removeAll();
-                if (backOffices[office]['coords']['latitude'] !== null && backOffices[office]['coords']['longitude'] !== null) {
-                    let lat = backOffices[office]['coords']['latitude']
-                    let lon = backOffices[office]['coords']['longitude']
-                    officeMap.geoObjects.removeAll()
-                    var myPlacemark = new ymaps.Placemark([lon, lat], null, {
-                        preset: 'islands#blueDotIcon',
-                        draggable: true
-                    });
-                    myPlacemark.events.add('dragend', function (e) {
-                        function SetByCoord(result) {
-                            result = JSON.parse(result)
-                            if (result["suggestions"][0]["value"]) {
-                                backOffices[office]['coords']['latitude'] = cord[0];
-                                backOffices[office]['coords']['longitude'] = cord[1];
-                                console.log(cord)
-                                $('#update-address').val(result["suggestions"][0]["value"]);
-                                $('#update-address').trigger('change')
-                            }
-                        }
-
-                        function notFound() {
-                            backOffices[office]['coords']['latitude'] = 'not_found';
-                            backOffices[office]['coords']['longitude'] = 'not_found';
-                        }
-                        var cord = e.get('target').geometry.getCoordinates();
-
-                        ymaps.geocode(cord).then(function (res) {
-                            console.log(res)
-                        });
-                        $.ajax({
-                            type: 'GET',
-                            url: "https://search-maps.yandex.ru/v1?format=json&apikey=d12adf55-06c9-4814-831d-b981e06d0f99&lang=ru-RU&text="+cord[0]+','+cord[1],
-                            dataType: "json",
-                            success: function (response) {
-                                console.log(response,'ff')
-                            }
-                        })
-                        var url = "https://geocode-maps.yandex.ru/1.x/?apikey=d12adf55-06c9-4814-831d-b981e06d0f99&format=json&geocode=Тверская+6";
-                        //TODO токен дадаты
-                        var token = "e42b1ce121984f1fba3256837f67e961b2982b05";
-                        var query = {lat: cord[0], lon: cord[1]};
-                        var options = {
-                            method: "GET",
-                            mode: "cors",
-                            headers: {
-                                "Content-Type": "application/json",
-                                "Accept": "application/json",
-                                "Authorization": "Token " + token
-                            },
-                            body: JSON.stringify(query)
-                        }
-                        fetch(url, options)
-                            .then(response => response.text())
-                            .then(result => SetByCoord(result, cord))
-                            .catch(error => notFound());
-
-                    });
-                    officeMap.geoObjects.add(myPlacemark);
-                    // Слушаем событие окончания перетаскивания на метке.
-                    officeMap.setCenter([lon, lat], 16)
-                    backOffices[office]['coords']['latitude'] = lat;
-                    backOffices[office]['coords']['longitude'] = lon;
-                }
                 for (var day in days) {
                     if (backOffices[office]['schedule'][days[day]]['not_working'] == false || backOffices[office]['schedule'][days[day]]['not_working'] == undefined) {
                         let input = $('.js-worktime-checkbox').eq(+day)
@@ -265,15 +320,10 @@ function init() {
                             input.trigger('click')
                     }
                 }
+                setCoords()
             }
         }
     }
-
-  $('.change_address').change(function (){
-
-  })
-
-
     var newOfficeIndex = 1
     showSelectedAddress()
     //Добавление нового офиса
@@ -300,11 +350,11 @@ function init() {
             }
         }
         backOffices.push(newOffice)
-        console.log(backOffices)
         $('.js-select__b-office').append('<option data-id="">Новый филиал #' + newOfficeIndex + '</option>').val('Новый филиал #' + newOfficeIndex + '').selectric('refresh');
         $('.update-address').focus()
         showSelectedAddress()
         newOfficeIndex += 1
+        officeMap.setCenter([55.763761,37.621732], 16)
     })
     //Удаление офиса
     // window.Swal = swal;
@@ -351,115 +401,7 @@ function init() {
     jdoc.on('change', '.js-select__b-office', function (index, elem) {
         showSelectedAddress()
     })
-
-    //Автозаполнение адреса
-    let token = "e42b1ce121984f1fba3256837f67e961b2982b05";
-    var addresses = new Bloodhound({
-        datumTokenizer: function(addresses) {
-            return Bloodhound.tokenizers.whitespace('value');
-        },
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        remote: {
-            headers:{
-                "Accept": "application/json",
-                "Content-Type": "application/json",
-                "Authorization": "Token " + token,
-            },
-            body: JSON.stringify({query: $('#update-address').val(), count: 5, language: 'ru',}),
-            url: 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address',
-                replace: function(url, uriEncodedQuery) {
-                return 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address?token='+token+'&query='+$('#update-address').val()
-            },
-            filter: function(response) {
-                $('.search-address__progress').addClass('hidden')
-                return response.suggestions
-            }
-        }})
-    addresses.initialize();
-
-    $('#update-address').typeahead({
-            hint: true,
-            highlight: true,
-            minLength: 2
-        },
-        {
-            name: 'addresses',
-            displayKey: function(value) {
-                return value.value
-            },
-            source: addresses.ttAdapter(),
-            templates: {
-                empty: [
-                    '<li class="search-failed">\n' +
-                    '<div class="ui-search__item">\n' +
-                    '<span class="ui-search__item-text">\n' +
-                    'Ничего не найдено' +
-                    '</span>\n' +
-                    '</div>\n' +
-                    '</li>'
-                ],
-                suggestion: function(data) {
-                    return '<li>' +
-                        '<div class="ui-search__item">' +
-                        '<span class="ui-search__item-text">' +
-                        '' + data['value'] + '' +
-                        '</span>' +
-                        '</div>' +
-                        '</li>'
-                }
-            }
-        }).on('typeahead:asyncrequest', function() {
-        $('.search-address__progress').removeClass('hidden')
-        })
-        .on('typeahead:asynccancel typeahead:asyncreceive', function() {
-            $('.search-address__progress').addClass('hidden')
-        })
-        .on('typeahead:selected', function(event, data){
-        })
-    jdoc.on('change', '#update-address', function (e) {
-        let office = $('.js-select__b-office').val()
-        let address = $('.search__address').find('.selected')
-        for (let i in backOffices) {
-            if (backOffices[i]['name'] == office) {
-                var lon = backOffices[i]['coords']['latitude']
-                var lat = backOffices[i]['coords']['longitude']
-                backOffices[i]['address'] = $(this).val()
-                console.log(lon,lat)
-            }
-        }
-        let val = address.find('.ui-search__item-text').text();
-        $(this).val('' + val + '')
-        officeMap.geoObjects.removeAll()
-        var myPlacemark = new ymaps.Placemark([lat, lon], null, {
-            preset: 'islands#blueDotIcon',
-            draggable: true
-        });
-        myPlacemark.events.add('dragend', function (e) {
-            function SetByCoord(result) {
-                result = JSON.parse(result)
-                console.log(result)
-                if (result["suggestions"][0]["value"])
-                    $('#update-address').val(result["suggestions"][0]["value"])
-            }
-
-            var cord = e.get('target').geometry.getCoordinates();
-            $.ajax({
-                type: 'GET',
-                url: "https://search-maps.yandex.ru/v1?format=json&apikey=d12adf55-06c9-4814-831d-b981e06d0f99&lang=ru-RU&text="+cord[0]+','+cord[1],
-                dataType: "json",
-                success: function (response) {
-               console.log(response,'dd')
-                }
-            })
-            fetch(url, options)
-                .then(result => SetByCoord(result))
-                .catch(error => console.log("error", error));
-        });
-        officeMap.geoObjects.add(myPlacemark);
-        // Слушаем событие окончания перетаскивания на метке.
-        officeMap.setCenter([lat, lon], 16)
-        $('.address-coords').val([lon, lat])
-    });
+    //перестраиваю размер карты при скрытии/показе этого блока
     $('.select-form').change(function () {
         officeMap.container.fitToViewport()
     })
@@ -828,7 +770,7 @@ $(document).ready(function () {
     categories.initialize();
 
     $('.search-categories__search').typeahead({
-            hint: true,
+
             highlight: true,
             minLength: 2
         },
@@ -1027,7 +969,6 @@ $(document).ready(function () {
                     data['video'].push({'video': array[i]['value'], 'name': array[(parseInt(i) + 1)]['value']})
                     break
                 default:
-                    console.log(array[i]['name']=="email-comment")
                     if (array[i]['name'] != "telephone-name" && array[i]['name'] != "email-comment" && array[i]['name'] != "video-name") {
                         data[array[i]['name']] = array[i]['value']
                     }
@@ -1035,7 +976,6 @@ $(document).ready(function () {
 
             }
         }
-        console.log(data)
         data['pricelist'] = {
             "value": []
         }
@@ -1067,7 +1007,7 @@ $(document).ready(function () {
         })
         data['deleted'] = deleted
         data['backOffices'] = backOffices
-
+        console.log(data)
     })
     $('.is-acceptence').change(function () {
         if ($(this).is(':checked')) {
