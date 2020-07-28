@@ -94,7 +94,6 @@ function init() {
 
     //функция связывания инпута адрес и точки на карте
     function setCoords(){
-        if($('#update-address').length>0){
         let office = $('.js-select__b-office').val()
         officeMap.geoObjects.removeAll()
         let address=''+ $('#update-address').val()+''
@@ -128,7 +127,7 @@ function init() {
                     }
                 }
         })
-    }}
+    }
 
     //Автозаполнение адреса
     let token = "e42b1ce121984f1fba3256837f67e961b2982b05";
@@ -354,7 +353,7 @@ function init() {
         $('.update-address').focus()
         showSelectedAddress()
         newOfficeIndex += 1
-        officeMap.setCenter([55.763761,37.621732], 16)
+        officeMap.setCenter([55.763761,37.621732], 10)
     })
     //Удаление офиса
     // window.Swal = swal;
