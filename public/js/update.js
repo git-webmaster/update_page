@@ -6844,6 +6844,7 @@ function init() {
                 }).then(function (res) {
                     var geoObject = res.geoObjects.get(0)
                     var address = geoObject.getAddressLine()
+                    var coords = geoObject.geometry.getCoordinates()
                     $('#update-address').val(address)
                     for (let i in backOffices) {
                         if (backOffices[i]['name'] == office) {
@@ -7480,11 +7481,12 @@ $(document).ready(function () {
     var searchProgress = $('.search-categories__progress');
     var CategoriesBlock = $('.search-categories__categories')
     const maxCategories = $('.search-categories__search').data('maxCategories')
-    var maxResponce = 20
+
     var categories = new Bloodhound({
         datumTokenizer: function(categories) {
             return Bloodhound.tokenizers.whitespace();
         },
+        limit: 20,
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         remote: {
             url: 'https://rubrikator.local/api/search?type=categories&query='+ $('#search').val(),
@@ -7508,11 +7510,11 @@ $(document).ready(function () {
     categories.initialize();
 
     $('.search-categories__search').typeahead({
-
+            limit: 20,
             highlight: true,
             minLength: 2
         },
-        {
+        {     limit: 19,
             name: 'categories',
             displayKey: function(categories) {
                 return categories.name
@@ -7539,14 +7541,15 @@ $(document).ready(function () {
                 }
             }
         }).on('typeahead:selected', function(event, data){
-        if (maxCategories !== 1) {
-            if ($('.search-categories__categories').find('.btn--selected').length >= maxCategories) {
+        let selected =$('.search-categories__categories').find('.btn--selected').length
+        let id =data.id
+        let val = data.name
+        if (maxCategories != 1) {
+            if (selected >= maxCategories) {
                 alert('Можно добавить не более ' + maxCategories + ' шт.')
                 return false
             } else {
-                    let id =data.id
-                    let val = data.name
-                    if ($('.search-categories__categories').find('.btn[data-id="' + id + '"]').length === 0) {
+                    if ($('.search-categories__categories').find('.btn[data-id="' + id + '"]').length == 0) {
                         let category = $('<div class="col-auto">\n' +
                             '<button  type="button" class ="btn btn--selected" data-id="' + id + '">' + val + '\n' +
                             '<span class="btn__delete">\n' +
@@ -7558,9 +7561,7 @@ $(document).ready(function () {
                             '</div>')
                         CategoriesBlock.append(category)
                     } else {
-                        CategoriesBlock.empty()
-                        if ($('.search-categories__categories').find('.btn[data-id="' + id + '"]').length === 0) {
-                            let val = $('.search-categories__list li.selected').text()
+                        CategoriesBlock.find('.btn[data-id="' + id + '"]').parents('.col-auto').remove()
                             let category = $('<div class="col-auto">\n' +
                                 '<button  type="button" class ="btn btn--selected" data-id="' + id + '">' + val + '\n' +
                                 '<span class="btn__delete">\n' +
@@ -7571,11 +7572,23 @@ $(document).ready(function () {
                                 '</button>\n' +
                                 '</div>')
                             CategoriesBlock.append(category)
-                        }
+
                     }
 
                 $(this).val('')
             }
+        }else{
+            CategoriesBlock.empty()
+            let category = $('<div class="col-auto">\n' +
+                '<button  type="button" class ="btn btn--selected" data-id="' + id + '">' + val + '\n' +
+                '<span class="btn__delete">\n' +
+                '<svg class="icon-delete" aria-hidden="true">\n' +
+                '<use xlink:href="/sprites/sprite.svg#icon-delete"></use>\n' +
+                '</svg>\n' +
+                '</span>\n' +
+                '</button>\n' +
+                '</div>')
+            CategoriesBlock.append(category)
         }
     }).on('typeahead:asyncrequest', function() {
         searchProgress.removeClass('hidden')
