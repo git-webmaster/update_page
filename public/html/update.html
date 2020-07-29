@@ -69,22 +69,46 @@
 <body>
 <!--TODO перенести в critical css-->
 <style>
+	.loader__wrapper{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		width: 100%;
+		z-index: 5200;
+		height: 100%;
+		margin: 40px 0;
+	}
+	.loader__wrapper.hide{
+		display: none;
+	}
+	.loader__wrapper::after{
+		content: '';
+		width: 100%;
+		height: 100%;
+		z-index: 5100;
+		position: absolute;
+		background-color: #FFFFFF;
+		opacity: 0.4;
+	}
 	.loader{
 		display: block;
-		position: absolute;
-		left: 35%;
-		margin: 0 auto;
 		width: 50px;
 		height: 50px;
 		border: 1px solid green;
 		border-right-color: transparent;
 		border-radius: 50%;
-		z-index: 100;
+		z-index: 5101;
 		animation: spinLoading .5s linear infinite;
 	}
-</style>
-<div class="app">
 
+	.loader__text{
+		z-index: 5101;
+		font-size: 20px;
+	}
+</style>
+
+<div class="app">
 <!-- Header :: Start-->
 <header class="header">
 
@@ -201,7 +225,8 @@
 		<!-- Main :: Start-->
 	<main class="main">
 		<!-- Update :: Start-->
-		<div class="l">
+
+		<div class="l l_loading">
 
 			<!-- Scrolltop :: Start-->
 <button type="button"   class="scrolltop js-scrolltop no-show bottom0" id="scrolltop" aria-label="Прокрутить вверх">
@@ -264,7 +289,21 @@
 									</div>
 								</div>
 								<!-- Panel :: End-->
+<!--								TODO лоадер, также есть вариант создавать его js-ом, но все равно для такого отображения как сейчас нужно будет добавлять к определенномк диву,а он может не успеть загрузится-->
+								<div class="loader__wrapper hide">
+									<div class="loader__text">Идет загрузка</div>
+									<div class="loader"></div>
+								</div>
+								<script>
+									var stateSelectors = document.querySelectorAll(".select-form")
+									function showLoader() {
+										document.querySelector(".loader__wrapper").classList.remove("hide");
+									}
+									for (var i = 0, element; element = stateSelectors[i]; i++) {
 
+										element.addEventListener("click",showLoader);
+									}
+								</script>
 								<!-- Panel :: Start-->
 								<div class="panel hidden" id="fast-menu">
 									<div class="ui-taglist" role="navigation">
@@ -325,7 +364,6 @@
 						</div>
 
 						<div class="l__wrapper js-sticky-container hidden" id="update-container">
-							<div class="loader"></div>
 							<div class="l__content">
 								<!-- Panel :: Start-->
 								<div class="panel">
@@ -440,6 +478,10 @@
 												</div>
 											</div>
 											<div class="panel__settings-group panel__settings-group--grey panel_one-label">
+												<div class="first-labels">
+													<div class="ui-label" >Телефон</div>
+													<div class="ui-label">Комментарий к телефону</div>
+												</div>
 												<div class="panel__settings-row">
 													<div class="ui-input-group">
 														<div class="row">
@@ -495,6 +537,10 @@
 												</div>
 											</div>
 											<div class="panel__settings-group panel_one-label">
+												<div class="first-labels">
+													<div class="ui-label" >Email</div>
+													<div class="ui-label">Комментарий к email</div>
+												</div>
 												<div class="panel__settings-row">
 													<div class="ui-input-group">
 														<div class="row">
@@ -527,6 +573,9 @@
 												</div>
 											</div>
 											<div class="panel__settings-group panel__settings-group--grey panel_one-label">
+												<div class="first-labels">
+													<div class="ui-label" >Сайт</div>
+												</div>
 												<div class="panel__settings-row panel__new">
 													<label class="ui-label" for="update-website">Сайт</label>
 													<div class="ui-input-group">
@@ -609,6 +658,9 @@
 												</div>
 											</div>
 											<div class="panel__settings-group panel_one-label">
+												<div class="first-labels">
+													<div class="ui-label" >Видео (только YouTube)</div>
+												</div>
 												<div class="panel__settings-row panel__video">
 													<label class="ui-label">Видео (только YouTube)</label>
 													<div class="ui-input-group">
@@ -632,6 +684,7 @@
 													</div>
 												</div>
 												<div class="panel__settings-row">
+													<label class="ui-label">Видео (только YouTube)</label>
 													<div class="ui-input-group">
 														<div class="row">
 															<div class="col-sm-6">
@@ -2227,13 +2280,39 @@
 	.panel_one-label .panel__settings-row:not(:first-of-type) .ui-label{
 		display: none;
 	}
+
+	.first-labels{
+		display: flex;
+		justify-content: space-between;
+
+	}
+	.first-labels .ui-label{
+		width: 100%;
+	}
+	.first-labels .ui-label + .ui-label{
+		margin-left: 24px;
+	}
+	@media (min-width: 768px) {
+		.panel__settings-row:first-of-type .ui-label{
+			display: none;
+		}
+	}
 	@media (max-width: 768px) {
+		.show-labels {
+			display: flex!important;
+		}
 		.panel_one-label .panel__settings-row:not(:first-child) .ui-label{
 			display: initial;
 		}
+		.first-labels{
+			display: none;
+		}
+		.first-labels .ui-label + .ui-label{
+			display: none;
+		}
 	}
 	.panel_show-labels .ui-label{
-		display: initial!important;
+		display: inline-flex!important;
 	}
 
 	.panel__settings-map-container{
@@ -2323,7 +2402,7 @@
 		border: 1px solid #ccc;
 		box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.11);
 		border-radius: 0 0 2px 2px;
-		z-index: 1100;
+		z-index: 5100;
 		margin: -1px 0 0;
 	}
 
@@ -2337,7 +2416,7 @@
 		background: #f0f0f0;
 
 	}
-	.tt-suggestion.tt-is-under-cursor { /* UPDATE: newer versions use .tt-suggestion.tt-cursor */
+	.tt-suggestion.tt-is-under-cursor {
 		background: #f0f0f0;
 
 	}
@@ -2350,6 +2429,16 @@
 		line-height: 24px;
 		cursor: pointer;
 		padding: 10px 15px 10px 47px;
+	}
+	.search-categories__search{
+		border-color: rgb(204, 204, 204)!important;
+		box-shadow: none!important;
+	}
+	.twitter-typeahead + .ui-search__dropdown{
+		border-top: 0;
+	}
+	 .panel__settings-row.first-label{
+		margin-bottom: 0;
 	}
 
 </style>

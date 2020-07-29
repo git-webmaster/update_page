@@ -497,7 +497,11 @@ $('.panel__bookmark-link , .ui-taglist__link').each(function () {
 
 
 $(document).ready(function () {
-
+    var stateSelectors = document.querySelectorAll(".select-form")
+    for (var i = 0, element; element = stateSelectors[i]; i++) {
+        element.removeEventListener('click', showLoader,false);
+    }
+    $('.loader__wrapper').remove()
     $('.js-select__b-office').trigger('change')
     //выбор заявки
     $('.select-form').change(function () {
@@ -525,7 +529,8 @@ $(document).ready(function () {
         }
 
     })
-
+    //если пользователь нажал на радиобатон выбора типа заявки то загрузки скриптов
+    $('.select-form').trigger('change');
 
     //Стайлинг списка над прогресс баром  и его самого в зависимости от заполнения полей
     // связано по дата-атрибуту, но можно и вручную выбирать по  id так будет чуточку быстрей но менее универсально
@@ -563,13 +568,20 @@ $(document).ready(function () {
     //удаление инпутов по клику на крестик
     jdoc.on('click', '.ui-input-delete', function (e) {
         e.preventDefault()
+        let btnAdd = $(this).parents('.panel__settings-group').find('.btn.btn--36')
+        let firstLabels=$(this).parents('.panel__settings-group').find('.first-labels')
+        btnAdd.show()
         let parent = $(this).parents('.panel__settings-row')
         let parentInput = parent.find('.ui-input')
         deleted['' + parentInput.attr("name") + ''].push(parentInput.data('id'))
-        if (parent.hasClass('panel__video') || parent.hasClass('panel__site')) {
-            parent.find('.ui-input-group').remove()
-            parent.css('margin-bottom', '0')
+
+        if ($(this).parents('.panel__settings-group').find('.panel__settings-row').length<=2 ||
+            $(this).parents('.panel__settings-group').find('.panel__settings-row.panel__new').length==1
+        ) {
+            firstLabels.addClass('show-labels')
+            parent.remove()
         } else {
+
             parent.remove()
         }
         $(this).remove()
@@ -585,7 +597,10 @@ $(document).ready(function () {
     // либо смотреть на вышестоящий элемент , забирать его html и генерировать новый элемент
     jdoc.on('click', '.btn-add-email', function (e) {
         e.preventDefault()
-        if ($(this).parents('.panel__settings-group').find('.panel__settings-row').length < 11) {
+        let rowsLength = $(this).parents('.panel__settings-group').find('.panel__settings-row').length
+        let firstLabels=$(this).parents('.panel__settings-group').find('.first-labels')
+        firstLabels.removeClass('show-labels')
+        if (rowsLength < 11) {
             let emailRow = $('<div class="panel__settings-row">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-group">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="row">\n' +
@@ -609,14 +624,17 @@ $(document).ready(function () {
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t</div>').insertBefore($('.btn-add-email__row')).find(".ui-input").first().focus();
-
-
-
+            if(rowsLength+1==11){
+                $(this).hide()
+            }
         }
     })
     jdoc.on('click', '.btn-add-tel', function (e) {
         e.preventDefault()
-        if ($(this).parents('.panel__settings-group').find('.panel__settings-row').length < 11) {
+        let rowsLength = $(this).parents('.panel__settings-group').find('.panel__settings-row').length
+        let firstLabels=$(this).parents('.panel__settings-group').find('.first-labels')
+        firstLabels.removeClass('show-labels')
+        if (rowsLength < 11) {
             let telephoneRow = $('<div class="panel__settings-row">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-group">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="row">\n' +
@@ -640,6 +658,9 @@ $(document).ready(function () {
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t</div>').insertBefore($('.btn-add-tel__row')).find(".ui-input").first().focus();
+            if(rowsLength+1==11){
+                $(this).hide()
+            }
         }
     })
 
@@ -665,13 +686,17 @@ $(document).ready(function () {
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
             '\t\t\t\t\t\t\t\t\t\t\t\t\t</li>')
-        $(".panel__sortable").append(priceRow).find(".ui-input").first().focus();
+        $(".panel__sortable").append(priceRow).find(".ui-input").last().focus();
     })
 
     jdoc.on('click', '.btn-add-site', function (e) {
         e.preventDefault();
-        if ($(this).parents('.panel__settings-group').find('.panel__new').length <= 9) {
+        let rowsLength = $(this).parents('.panel__settings-group').find('.panel__new').length
+        let firstLabels=$(this).parents('.panel__settings-group').find('.first-labels')
+        firstLabels.removeClass('show-labels')
+        if (rowsLength < 10) {
             let siteRow = $('\t<div class="panel__settings-row panel__new">\n' +
+                '<label class="ui-label" for="update-website">Сайт</label>'+
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-group">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input progress-input" type="text" name="site" placeholder="http://www.renins.com" id="update-website" data-id="123" value="">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-append">\n' +
@@ -683,13 +708,20 @@ $(document).ready(function () {
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t</div>').insertBefore($(".btn-add-site__row")).find(".ui-input").first().focus();
+            if(rowsLength+1 ==10){
+                $(this).hide()
+            }
         }
     })
     jdoc.on('click', '.btn-add-video', function (e) {
         e.preventDefault();
+            let rowsLength = $(this).parents('.panel__settings-group').find('.panel__settings-row').length
+            let firstLabels=$(this).parents('.panel__settings-group').find('.first-labels')
+            firstLabels.addClass('show-labels')
+            if (rowsLength < 11) {
 
-        if ($(this).parents('.panel__settings-group').find('.panel__settings-row').length < 11) {
             let videoRow = $('\t<div class="panel__settings-row panel__new">\n' +
+                '<label class="ui-label">Видео (только YouTube)</label>'+
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="ui-input-group">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="row">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="col-sm-6">\n' +
@@ -710,7 +742,9 @@ $(document).ready(function () {
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t</div>').insertBefore($(".btn-add-video__row")).find(".ui-input").first().focus();
-
+                if(rowsLength+1==11){
+                    $(this).hide()
+                }
         }
 
     })
@@ -741,7 +775,7 @@ $(document).ready(function () {
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
             '\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
             '\t\t\t\t\t\t\t\t\t\t\t\t\t</li>');
-        $(".panel__sortable").append(priceTitle)
+        $(".panel__sortable").append(priceTitle).find(".ui-input").last().focus();
     })
     // Сортировка полей прайслиста по drag ивенту
     const sortable = new Sortable.default(
