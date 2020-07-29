@@ -359,7 +359,7 @@
 								<div class="panel">
 									<div class="panel__container">
 										<div class="panel__settings">
-											<div class="panel__settings-group">
+											<div class="panel__settings-group panel_all-labels">
 												<div class="panel__settings-row">
 													<label class="ui-label" for="update-name">Название</label>
 													<div class="ui-input-group">
@@ -396,7 +396,7 @@
 												</div>
 											</div>
 
-											<div class="panel__settings-group panel__settings-group--grey">
+											<div class="panel__settings-group panel__settings-group--grey panel_all-labels">
 												<div class="panel__settings-row">
 													<label class="ui-label" for="update-category">Категории</label>
 														<div class="ui-search__field">
@@ -703,7 +703,7 @@
 													</button>
 												</div>
 											</div>
-											<div class="panel__settings-group panel__settings-group--grey " data-id="123">
+											<div class="panel__settings-group panel__settings-group--grey panel_all-labels" data-id="123">
 												<div class="panel__settings-row">
 													<div class="row">
 														<div class="col-sm">
@@ -820,17 +820,17 @@
 													</div>
 												</div>
 											</div>
-											<div class="panel__settings-group">
+											<div class="panel__settings-group panel_all-labels">
 												<label class="ui-label">Описание</label>
 												<textarea name="company-long-desc" id="company-desc" class="ui-textarea progress-input"></textarea>
 											</div>
 
-											<div class="panel__settings-group panel__settings-group--grey change_address">
+											<div class="panel__settings-group panel__settings-group--grey panel_all-labels change_address">
 												<div class="panel__settings-row">
 													<label class="ui-label" for="update-category">Филиал</label>
 													<div class="ui-input-group">
 														<div class="ui-select">
-															<select class="js-select js-select__b-office js-select__b-office--changed">
+															<select class="js-select js-select__b-office">
 																<option data-id="123">Москва, Дзержинского проспект, 211а</option>
 																<option data-id="125">Новороссийск, Хворостянского, 13б</option>
 															</select>
@@ -2283,7 +2283,7 @@
 		margin-left: 24px;
 	}
 	@media (min-width: 768px) {
-		.panel__settings-row:first-of-type .ui-label{
+		.panel__settings-group:not(.panel_all-labels) .panel__settings-row:first-of-type .ui-label{
 			display: none;
 		}
 	}
@@ -2430,17 +2430,17 @@
 	 .panel__settings-row.first-label{
 		margin-bottom: 0;
 	}
-	.js-select__b-office--changed:before{
-		content: '(изменено)';
-		font-size: 14px;
-		width: 20px;
-		height: 20px;
-		display: inline-block;
-		position: absolute;
-	}
-	.js-select__b-office{
-		position: relative;
-	}
+	/*.ui-select_changed:before{*/
+	/*	content: '(изменено)';*/
+	/*	font-size: 14px;*/
+	/*	width: 20px;*/
+	/*	height: 20px;*/
+	/*	display: inline-block;*/
+	/*	position: absolute;*/
+	/*}*/
+	/*.ui-select_changed{*/
+	/*	position: relative;*/
+	/*}*/
 </style>
 
 </html>
