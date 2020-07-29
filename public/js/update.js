@@ -7216,9 +7216,16 @@ jdoc.on('click', '.js-worktime-comment-btn, .js-worktime-comment-cancel', functi
 // функция для добавления оффсета в 150 якорным ссылкам в плавающем блоке с прогресс баром
 $('.panel__bookmark-link , .ui-taglist__link').each(function () {
     $(this).click(function () {
+        if($($(this).attr('href')).length==0){
+
+            $('html, body').animate({
+                scrollTop: $('.first-labels_'+$(this).attr('href').split('#')[1]).offset().top - 150
+            }, 200);
+        }else{
         $('html, body').animate({
             scrollTop: $($(this).attr('href')).offset().top - 150
         }, 200);
+        }
     })
 })
 
@@ -7257,7 +7264,6 @@ $(document).ready(function () {
 
     })
     //если пользователь нажал на радиобатон выбора типа заявки то загрузки скриптов
-    $('.select-form').trigger('change');
 
     //Стайлинг списка над прогресс баром  и его самого в зависимости от заполнения полей
     // связано по дата-атрибуту, но можно и вручную выбирать по  id так будет чуточку быстрей но менее универсально
@@ -7832,6 +7838,11 @@ $(document).ready(function () {
     });
     jdoc.on('focus', '#update-price-list .ui-input', function (e) {
         e.preventDefault()
+    })
+    $('.select-form').each(function () {
+        if($(this).is(':checked')){
+            $(this).trigger('change');
+        }
     })
 
 })

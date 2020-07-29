@@ -76,20 +76,10 @@
 		position: relative;
 		width: 100%;
 		z-index: 5200;
-		height: 100%;
 		margin: 40px 0;
 	}
 	.loader__wrapper.hide{
 		display: none;
-	}
-	.loader__wrapper::after{
-		content: '';
-		width: 100%;
-		height: 100%;
-		z-index: 5100;
-		position: absolute;
-		background-color: #FFFFFF;
-		opacity: 0.4;
 	}
 	.loader{
 		display: block;
@@ -478,7 +468,7 @@
 												</div>
 											</div>
 											<div class="panel__settings-group panel__settings-group--grey panel_one-label">
-												<div class="first-labels">
+												<div class="first-labels first-labels_update-tel">
 													<div class="ui-label" >Телефон</div>
 													<div class="ui-label">Комментарий к телефону</div>
 												</div>
@@ -537,7 +527,7 @@
 												</div>
 											</div>
 											<div class="panel__settings-group panel_one-label">
-												<div class="first-labels">
+												<div class="first-labels first-labels_update-email">
 													<div class="ui-label" >Email</div>
 													<div class="ui-label">Комментарий к email</div>
 												</div>
@@ -573,7 +563,7 @@
 												</div>
 											</div>
 											<div class="panel__settings-group panel__settings-group--grey panel_one-label">
-												<div class="first-labels">
+												<div class="first-labels first-labels_update-website">
 													<div class="ui-label" >Сайт</div>
 												</div>
 												<div class="panel__settings-row panel__new">
@@ -658,7 +648,7 @@
 												</div>
 											</div>
 											<div class="panel__settings-group panel_one-label">
-												<div class="first-labels">
+												<div class="first-labels first-labels_video-link">
 													<div class="ui-label" >Видео (только YouTube)</div>
 												</div>
 												<div class="panel__settings-row panel__video">
@@ -840,7 +830,7 @@
 													<label class="ui-label" for="update-category">Филиал</label>
 													<div class="ui-input-group">
 														<div class="ui-select">
-															<select class="js-select js-select__b-office ">
+															<select class="js-select js-select__b-office js-select__b-office--changed">
 																<option data-id="123">Москва, Дзержинского проспект, 211а</option>
 																<option data-id="125">Новороссийск, Хворостянского, 13б</option>
 															</select>
@@ -2440,7 +2430,17 @@
 	 .panel__settings-row.first-label{
 		margin-bottom: 0;
 	}
-
+	.js-select__b-office--changed:before{
+		content: '(изменено)';
+		font-size: 14px;
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		position: absolute;
+	}
+	.js-select__b-office{
+		position: relative;
+	}
 </style>
 
 </html>
