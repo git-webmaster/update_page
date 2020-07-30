@@ -901,7 +901,7 @@
 													<div class="panel__settings-map-container" id="mapDrag"></div>
 												</div>
 											</div>
-											<div class="panel__settings-group panel__settings-group--grey change-watch">
+											<div class="panel__settings-group panel__settings-group--grey">
 												<label class="ui-label">Режим работы (<span class="backoffice-label">Дзержинского проспект, 211а</span>)</label>
 												<div class="ui-worktime">
 													<input type="text"  class="progress-input worktime-input"  name="worktime" id="update-worktime" value="yes">
@@ -2395,7 +2395,10 @@
 		z-index: 5100;
 		margin: -1px 0 0;
 	}
-
+	.tt-open{
+		border-top: 0;
+		z-index: 5600;
+	}
 	.tt-suggestion {
 		font-size: 18px;
 		line-height: 24px;
@@ -2408,7 +2411,6 @@
 	}
 	.tt-suggestion.tt-is-under-cursor {
 		background: #f0f0f0;
-
 	}
 
 	.tt-suggestion p {
@@ -2421,15 +2423,27 @@
 		padding: 10px 15px 10px 47px;
 	}
 	.search-categories__search{
-		border-color: rgb(204, 204, 204)!important;
-		box-shadow: none!important;
+		border-color: rgb(204, 204, 204);
+		box-shadow: none;
+	}
+	.tt-menu{
+		z-index: 5600!important;
+		border-color: #299ae0;
+		box-shadow: 1px 2px rgba(41, 154, 224, 0.3);
 	}
 	.twitter-typeahead + .ui-search__dropdown{
 		border-top: 0;
+		z-index: 5100;
+	}
+	.tt-input:focus{
+		border-bottom: 0;
 	}
 	 .panel__settings-row.first-label{
 		margin-bottom: 0;
 	}
+	 .twitter-typeahead{
+		 background: #FFFFFF;
+	 }
 	/*.ui-select_changed:before{*/
 	/*	content: '(изменено)';*/
 	/*	font-size: 14px;*/
