@@ -6928,6 +6928,7 @@ function init() {
                     preset: 'islands#blueDotIcon',
                     draggable: true
                 });
+
                 myPlacemark.events.add('dragend', function (e) {
                     var newCords = e.get('target').geometry.getCoordinates();
                     ymaps.geocode(newCords, {
@@ -6947,6 +6948,7 @@ function init() {
                     })
 
                 });
+                officeMap.geoObjects.removeAll()
                 officeMap.geoObjects.add(myPlacemark);
                 officeMap.setCenter(coords, 16)
                 for (let i in backOffices) {
@@ -7034,10 +7036,7 @@ function init() {
         .on('typeahead:selected', function (event, data) {
             setCoords()
         })
-    //если пользователь захочет ввести адрес который не найдется в дадате и в яндексе
-    $('#update-address').change(function () {
-        setCoords()
-    })
+
 
     //подставляю данные из выбранного филиала в селекты
     function showSelectedAddress() {
@@ -7093,6 +7092,10 @@ function init() {
     }
 
     showSelectedAddress()
+    //если пользователь захочет ввести адрес который не найдется в дадате и в яндексе
+    $('#update-address').change(function () {
+        setCoords()
+    })
     //    сравниваю хеш изначального обьекта с текущим
     $('.change-watch').on('change', function () {
         let office = $('.js-select__b-office').val()

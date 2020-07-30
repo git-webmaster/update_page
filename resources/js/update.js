@@ -200,6 +200,7 @@ function init() {
                     preset: 'islands#blueDotIcon',
                     draggable: true
                 });
+
                 myPlacemark.events.add('dragend', function (e) {
                     var newCords = e.get('target').geometry.getCoordinates();
                     ymaps.geocode(newCords, {
@@ -219,6 +220,7 @@ function init() {
                     })
 
                 });
+                officeMap.geoObjects.removeAll()
                 officeMap.geoObjects.add(myPlacemark);
                 officeMap.setCenter(coords, 16)
                 for (let i in backOffices) {
