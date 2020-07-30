@@ -16,61 +16,49 @@ var days = [
 ]
 // первый блок radio click
 //Карта
-var backOffices = []
+
 var schedule = {}
-
-ymaps.load(init);
-
-function init() {
-    var officeMap = new ymaps.Map("mapDrag", {
-        center: [55.76, 37.64],
-        zoom: 10,
-        controls:['zoomControl','fullscreenControl']
-    }, {
-        searchControlProvider: 'yandex#search'
-    })
-
-
 //Пока оставил отправку по дата-атрибуту селекта как было ранее в тз, но можно и одним запросом отправлять если вам удобней так будет
 
-    // TODO эндпоинты информации о филиалах сюда
+// TODO эндпоинты информации о филиалах сюда
 
-    $('.js-select__b-office .ui-selectric-scroll option').each(function (index, elem) {
-        let officeId = $(elem).data('index');
-        //Здесь должен быть метод который отдает инфу о филиалах по id
-        // $.ajax({
-        //     type: 'GET',
-        //     url: 'https://api.github.com/users/starred',
-        //     dataType: "json",
-        //     data: officeId,
-        //     success: function (response) {
-        //     let data = repsonse.text()
-        //      backOffices.push(data)
-        //     }
-        // })
-    })
-    let answer_1 = {
-        'name': 'Москва, Дзержинского проспект, 211а',
-        'address': 'Пример адреса',
-        'floor': '3',
-        'office': '206',
-        'additional': 'Дополнительный комментарий',
-        'id':'125',
-        'coords': {
-            'longitude': 0,
-            'latitude': 0
-        },
-        "schedule": {
-            'monday': {'not_working': true},
-            'tuesday': {'from': '08:00', 'to': '21:00', 'break_from': '11:00', 'break_to': '15:00'},
-            'wednesday': {'from': '08:00', 'to': '16:00', 'break_from': '11:00', 'break_to': '12:00'},
-            'thursday': {'from': '08:00', 'to': '09:00', 'no_break': true},
-            'friday': {'aroundClock': true, 'break_from': '15:00', 'break_to': '20:00'},
-            'saturday': {'aroundClock': true, 'break_from': '11:00', 'break_to': '12:00'},
-            'sunday': {'not_working': true},
-        }
+$('.js-select__b-office .ui-selectric-scroll option').each(function (index, elem) {
+    let officeId = $(elem).data('index');
+    //Здесь должен быть метод который отдает инфу о филиалах по id
+    // $.ajax({
+    //     type: 'GET',
+    //     url: 'https://api.github.com/users/starred',
+    //     dataType: "json",
+    //     data: officeId,
+    //     success: function (response) {
+    //     let data = repsonse.text()
+    //      backOffices.push(data)
+    //     }
+    // })
+})
+//только не надо делать initialBackOffices= backOffices , будут ссылаться на один обьект
+const  initialBackOffices=[{
+    'name': 'Москва, Дзержинского проспект, 211а',
+    'address': 'Пример адреса',
+    'floor': '3',
+    'office': '206',
+    'additional': 'Дополнительный комментарий',
+    'id':'125',
+    'coords': {
+        'longitude': 0,
+        'latitude': 0
+    },
+    "schedule": {
+        'monday': {'not_working': true},
+        'tuesday': {'from': '08:00', 'to': '21:00', 'break_from': '11:00', 'break_to': '15:00'},
+        'wednesday': {'from': '08:00', 'to': '16:00', 'break_from': '11:00', 'break_to': '12:00'},
+        'thursday': {'from': '08:00', 'to': '09:00', 'no_break': true},
+        'friday': {'aroundClock': true, 'break_from': '15:00', 'break_to': '20:00'},
+        'saturday': {'aroundClock': true, 'break_from': '11:00', 'break_to': '12:00'},
+        'sunday': {'not_working': true},
     }
-    let answer_2 = {
+},
+    {
         'name': 'Новороссийск, Хворостянского, 13б',
         'address': 'Пример второго адреса',
         'floor': '34',
@@ -90,10 +78,128 @@ function init() {
             'saturday': {'not_working': true},
             'sunday': {'not_working': true},
         }
+    }]
+const backOffices=[{
+    'name': 'Москва, Дзержинского проспект, 211а',
+    'address': 'Пример адреса',
+    'floor': '3',
+    'office': '206',
+    'additional': 'Дополнительный комментарий',
+    'id':'125',
+    'coords': {
+        'longitude': 0,
+        'latitude': 0
+    },
+    "schedule": {
+        'monday': {'not_working': true},
+        'tuesday': {'from': '08:00', 'to': '21:00', 'break_from': '11:00', 'break_to': '15:00'},
+        'wednesday': {'from': '08:00', 'to': '16:00', 'break_from': '11:00', 'break_to': '12:00'},
+        'thursday': {'from': '08:00', 'to': '09:00', 'no_break': true},
+        'friday': {'aroundClock': true, 'break_from': '15:00', 'break_to': '20:00'},
+        'saturday': {'aroundClock': true, 'break_from': '11:00', 'break_to': '12:00'},
+        'sunday': {'not_working': true},
     }
-    backOffices.push(answer_1, answer_2)
+},
+    {
+        'name': 'Новороссийск, Хворостянского, 13б',
+        'address': 'Пример второго адреса',
+        'floor': '34',
+        'office': '26',
+        'additional': 'Дополнительный второй комментарий',
+        'id':'125',
+        'coords': {
+            'longitude': 0,
+            'latitude': 0
+        },
+        "schedule": {
+            'tuesday': {'not_working': true},
+            'monday': {'from': '08:00', 'to': '21:00', 'break_from': '11:00', 'break_to': '12:00'},
+            'thursday': {'from': '08:00', 'to': '16:00', 'break_from': '11:00', 'break_to': '12:00'},
+            'wednesday': {'from': '08:00', 'to': '09:00', 'no_break': true},
+            'friday': {'aroundClock': true, 'no_break': true},
+            'saturday': {'not_working': true},
+            'sunday': {'not_working': true},
+        }
+    }]
 
+//список офисов которые изменены,нужно для проставления этой инфы в селекте при рефреше его
+const changedOffice=[{
+    'name': 'Москва, Дзержинского проспект, 211а',
+    'address': 'Пример адреса',
+    'floor': '3',
+    'office': '206',
+    'additional': 'Дополнительный комментарий',
+    'id':'125',
+    'coords': {
+        'longitude': 0,
+        'latitude': 0
+    },
+    "schedule": {
+        'monday': {'not_working': true},
+        'tuesday': {'from': '08:00', 'to': '21:00', 'break_from': '11:00', 'break_to': '15:00'},
+        'wednesday': {'from': '08:00', 'to': '16:00', 'break_from': '11:00', 'break_to': '12:00'},
+        'thursday': {'from': '08:00', 'to': '09:00', 'no_break': true},
+        'friday': {'aroundClock': true, 'break_from': '15:00', 'break_to': '20:00'},
+        'saturday': {'aroundClock': true, 'break_from': '11:00', 'break_to': '12:00'},
+        'sunday': {'not_working': true},
+    }
+},
+    {
+        'name': 'Новороссийск, Хворостянского, 13б',
+        'address': 'Пример второго адреса',
+        'floor': '34',
+        'office': '26',
+        'additional': 'Дополнительный второй комментарий',
+        'id':'125',
+        'coords': {
+            'longitude': 0,
+            'latitude': 0
+        },
+        "schedule": {
+            'tuesday': {'not_working': true},
+            'monday': {'from': '08:00', 'to': '21:00', 'break_from': '11:00', 'break_to': '12:00'},
+            'thursday': {'from': '08:00', 'to': '16:00', 'break_from': '11:00', 'break_to': '12:00'},
+            'wednesday': {'from': '08:00', 'to': '09:00', 'no_break': true},
+            'friday': {'aroundClock': true, 'no_break': true},
+            'saturday': {'not_working': true},
+            'sunday': {'not_working': true},
+        }
+    }]
+const initialHash=[]
+for(i in initialBackOffices){
+    let hash = objectHash.sha1(initialBackOffices[i]);
+    initialHash.push(hash)
+}
+//    сравниваю хеш изначального обьекта с текущим
+$('.change-watch').on('change',function () {
+    let office = $('.js-select__b-office').val()
+    for(let i in backOffices){
+        if(backOffices[i]['name']==office && initialHash[i]){
+            let hash = objectHash.sha1(backOffices[i]);
+            let selectDropdown=$('.ui-selectric-js-select__b-office .ui-selectric-scroll .selected')
+           if(hash!=initialHash[i]){
+               changedOffice[i]['changed']=true
+               if(selectDropdown.find('.changed-address').length==0){
+                   let changeNotif=$('<span class="changed-address"> (изменено)</span>')
+                   selectDropdown.append(changeNotif)
+               }
+            }else{
+               changedOffice[i]['changed']=false
+               selectDropdown.find('.changed-address').remove()
+           }
+        }
+    }
+})
+ymaps.load(init);
 
+function init() {
+    var officeMap = new ymaps.Map("mapDrag", {
+        center: [55.76, 37.64],
+        zoom: 10,
+        controls:['zoomControl','fullscreenControl']
+    }, {
+        searchControlProvider: 'yandex#search'
+    })
     //функция связывания инпута адрес и точки на карте
     function setCoords(){
         let office = $('.js-select__b-office').val()
@@ -218,10 +324,15 @@ function init() {
     $('#update-address').change(function () {
         setCoords()
     })
+
     //заполняю поля времени работы в массиве с филиалами по событию change
     function addSchedule() {
         $('.ui-worktime__row').each(function (index, elem) {
             $(this).change(function () {
+                // let addressSelect=$('.ui-selectric-js-select__b-office .ui-selectric-scroll ul li.selected')
+                // if(addressSelect.find('.changed-address').length==0){
+                //     addressSelect.append('<span class="changed-address">(изменено)</span>')
+                // }
                 let backOfficeName = $('.js-select__b-office').val()
                 for (let i in backOffices) {
                     if (backOffices[i]['name'] == backOfficeName) {
@@ -249,6 +360,7 @@ function init() {
                         }
                     }
                 }
+
             })
         })
     }
@@ -289,6 +401,11 @@ function init() {
         let officeAddress = $('.js-select__b-office').val();
         for (let office in backOffices) {
             if (backOffices[office]['name'] == officeAddress) {
+                if(backOffices[i]['changed']==true){
+
+                }else{
+
+                }
                 $('#update-address').val(backOffices[office]['address']);
                 $('#update-address-floor').val(backOffices[office]['floor']);
                 $('#update-address-office').val(backOffices[office]['office']);
@@ -336,6 +453,7 @@ function init() {
             }
         }
     }
+    //показываю что инпут
     var newOfficeIndex = 1
     showSelectedAddress()
     //Добавление нового офиса
@@ -363,6 +481,14 @@ function init() {
         }
         backOffices.push(newOffice)
         $('.js-select__b-office').append('<option data-id="">Новый филиал #' + newOfficeIndex + '</option>').val('Новый филиал #' + newOfficeIndex + '').selectric('refresh');
+        $('.ui-selectric-js-select__b-office .ui-selectric-scroll ul li').each(function () {
+            for(i in backOffices){
+                if($(this).text()==backOffices[i]['name'] && changedOffice[i]!==undefined &&  changedOffice[i]['changed']==true){
+                    let changeNotif=$('<span class="changed-address"> (изменено)</span>')
+                    $(this).append(changeNotif)
+                }
+            }
+        })
         $('.update-address').focus()
         showSelectedAddress()
         newOfficeIndex += 1
@@ -390,6 +516,14 @@ function init() {
                             }
                         })
                         officeSelect.val($('.js-select__b-office option').val()).trigger('change').selectric('refresh')
+                        $('.ui-selectric-js-select__b-office .ui-selectric-scroll ul li').each(function () {
+                            for(i in backOffices){
+                                if($(this).text()==backOffices[i]['name']&& changedOffice[i]['changed']==true ){
+                                    let changeNotif=$('<span class="changed-address"> (изменено)</span>')
+                                    $(this).append(changeNotif)
+                                }
+                            }
+                        })
                         if ($('.js-select__b-office .selected').data('id') != '') {
                             for (let i in backOffices) {
                                 if (backOffices[i]['name'] == deletedOffice) {
@@ -418,6 +552,9 @@ function init() {
         officeMap.container.fitToViewport()
     })
 }
+
+
+
 
 jdoc.on('click', '.ui-check', function (e) {
 
@@ -999,6 +1136,7 @@ $(document).ready(function () {
         }
         $(this).removeClass('btn is-loading-right')
     })
+
 //Сериализация формы
     $('.btn--submit').click(function (e) {
         if (CategoriesBlock.find('.btn').length === 0) {
@@ -1117,7 +1255,6 @@ $(document).ready(function () {
             $(this).trigger('change');
         }
     })
-
 })
 
 //Заполняю селекты по нажатию на кнопке, не удалил тк было в изначальном тз

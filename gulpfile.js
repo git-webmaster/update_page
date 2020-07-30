@@ -682,6 +682,7 @@ gulp.task('update-js', function() {
 		'node_modules/@shopify/draggable/lib/sortable.js',
 		'resources/js/typeahead.bundle.min.js',
 		'node_modules/sweetalert2/dist/sweetalert2.min.js',
+		'node_modules/object-hash/dist/object_hash.js',
 		'resources/js/update.js',
 	])
 		.pipe(concat('update.js'))
