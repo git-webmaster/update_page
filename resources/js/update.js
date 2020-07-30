@@ -513,7 +513,7 @@ function init() {
                         officeSelect.val($('.js-select__b-office option').val()).trigger('change').selectric('refresh')
                         $('.ui-selectric-js-select__b-office .ui-selectric-scroll ul li').each(function () {
                             for (i in backOffices) {
-                                if ($(this).text() == backOffices[i]['name'] && changedOffice[i]['changed'] == true) {
+                                if ($(this).text() == backOffices[i]['name'] && changedOffice[i] !== undefined && changedOffice[i]['changed'] == true) {
                                     let changeNotif = $('<span class="changed-address"> (изменено)</span>')
                                     $(this).append(changeNotif)
                                 }
