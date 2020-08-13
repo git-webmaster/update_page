@@ -22,161 +22,62 @@ var schedule = {}
 
 // TODO эндпоинты информации о филиалах сюда
 
-var backOffices = []
-ymaps.load(init);
+var initialBackOffices = [], backOffices = [], changedOffice = [];
+ymaps.load(function () {
+    let initialOptionsLength=$('.js-select__b-office option').length
+    $('.js-select__b-office option').each(function (index, elem) {
+        let officeId = $(elem).data('id');
+
+        //Здесь должен быть метод который отдает инфу о филиалах по id
+        $.ajax({
+            type     : "GET",
+            cache    : false,
+            url      : 'https://rubrikator.local/api/ajax_get/load_filials?token=tk&page_type=company&owner_id=449800&id=125733',
+            data     : {
+                token: 'tk',
+                page_type: window.page.type,
+                owner_id: window.page.id,
+                id: officeId
+            },
+        })
+            .done(function(data)
+            {
+                var result = String(data).match(/({"status".*"})/gm);
+
+
+
+                if (isJSON(result))
+                {
+                    var r = JSON.parse(result);
+
+                    if (r.status === 'error')
+                    {
+                        console.log('error');
+                    }
+
+                    if (r.status === 'success')
+                    {
+                        let info =  JSON.parse(r.info);
+                        initialBackOffices.push(info);
+                        backOffices.push(info);
+                        changedOffice.push(info);
+                    }
+                }
+
+                if( initialOptionsLength == index+1){
+                    init()
+                }
+            });
+    });
+});
+
 
 function init() {
-    $('.js-select__b-office .ui-selectric-scroll option').each(function (index, elem) {
-        let officeId = $(elem).data('index');
-        //Здесь должен быть метод который отдает инфу о филиалах по id
-        // $.ajax({
-        //     type: 'GET',
-        //     url: 'https://api.github.com/users/starred',
-        //     dataType: "json",
-        //     data: officeId,
-        //     success: function (response) {
-        //     let data = repsonse.text()
-        //      backOffices.push(data)
-        //     }
-        // })
-    })
-//только не надо делать initialBackOffices= backOffices , будут ссылаться на один обьект
-    const initialBackOffices = [{
-        'name': 'Москва, Дзержинского проспект, 211а',
-        'address': 'Пример адреса',
-        'floor': '3',
-        'office': '206',
-        'additional': 'Дополнительный комментарий',
-        'id': '125',
-        'coords': {
-            'latitude':51.783519,
-            'longitude':   53.613013
-        },
-        "schedule": {
-            'monday': {'not_working': true},
-            'tuesday': {'from': '08:00', 'to': '21:00', 'break_from': '11:00', 'break_to': '15:00'},
-            'wednesday': {'from': '08:00', 'to': '16:00', 'break_from': '11:00', 'break_to': '12:00'},
-            'thursday': {'from': '08:00', 'to': '09:00', 'no_break': true},
-            'friday': {'aroundClock': true, 'break_from': '15:00', 'break_to': '20:00'},
-            'saturday': {'aroundClock': true, 'break_from': '11:00', 'break_to': '12:00'},
-            'sunday': {'not_working': true},
-        }
-    },
-        {
-            'name': 'Новороссийск, Хворостянского, 13б',
-            'address': 'Пример второго адреса',
-            'floor': '34',
-            'office': '26',
-            'additional': 'Дополнительный второй комментарий',
-            'id': '125',
-            'coords': {
-                'latitude': 42.610352,
-                'longitude':  1.718109
-            },
-            "schedule": {
-                'tuesday': {'not_working': true},
-                'monday': {'from': '08:00', 'to': '21:00', 'break_from': '11:00', 'break_to': '12:00'},
-                'thursday': {'from': '08:00', 'to': '16:00', 'break_from': '11:00', 'break_to': '12:00'},
-                'wednesday': {'from': '08:00', 'to': '09:00', 'no_break': true},
-                'friday': {'aroundClock': true, 'no_break': true},
-                'saturday': {'not_working': true},
-                'sunday': {'not_working': true},
-            }
-        }]
-    backOffices = [{
-        'name': 'Москва, Дзержинского проспект, 211а',
-        'address': 'Пример адреса',
-        'floor': '3',
-        'office': '206',
-        'additional': 'Дополнительный комментарий',
-        'id': '125',
-        'coords': {
-            'latitude':51.783519,
-            'longitude':   53.613013
-        },
-        "schedule": {
-            'monday': {'not_working': true},
-            'tuesday': {'from': '08:00', 'to': '21:00', 'break_from': '11:00', 'break_to': '15:00'},
-            'wednesday': {'from': '08:00', 'to': '16:00', 'break_from': '11:00', 'break_to': '12:00'},
-            'thursday': {'from': '08:00', 'to': '09:00', 'no_break': true},
-            'friday': {'aroundClock': true, 'break_from': '15:00', 'break_to': '20:00'},
-            'saturday': {'aroundClock': true, 'break_from': '11:00', 'break_to': '12:00'},
-            'sunday': {'not_working': true},
-        }
-    },
-        {
-            'name': 'Новороссийск, Хворостянского, 13б',
-            'address': 'Пример второго адреса',
-            'floor': '34',
-            'office': '26',
-            'additional': 'Дополнительный второй комментарий',
-            'id': '125',
-            'coords': {
-                'latitude': 42.610352,
-                'longitude':  1.718109
-            },
-            "schedule": {
-                'tuesday': {'not_working': true},
-                'monday': {'from': '08:00', 'to': '21:00', 'break_from': '11:00', 'break_to': '12:00'},
-                'thursday': {'from': '08:00', 'to': '16:00', 'break_from': '11:00', 'break_to': '12:00'},
-                'wednesday': {'from': '08:00', 'to': '09:00', 'no_break': true},
-                'friday': {'aroundClock': true, 'no_break': true},
-                'saturday': {'not_working': true},
-                'sunday': {'not_working': true},
-            }
-        }]
-
-//список офисов которые изменены,(массив, в них словарь с ключом name)нужно для проставления этой инфы в селекте при рефреше его
-    const changedOffice = [{
-        'name': 'Москва, Дзержинского проспект, 211а',
-        'address': 'Пример адреса',
-        'floor': '3',
-        'office': '206',
-        'additional': 'Дополнительный комментарий',
-        'id': '125',
-        'coords': {
-            'longitude': 0,
-            'latitude': 0
-        },
-        "schedule": {
-            'monday': {'not_working': true},
-            'tuesday': {'from': '08:00', 'to': '21:00', 'break_from': '11:00', 'break_to': '15:00'},
-            'wednesday': {'from': '08:00', 'to': '16:00', 'break_from': '11:00', 'break_to': '12:00'},
-            'thursday': {'from': '08:00', 'to': '09:00', 'no_break': true},
-            'friday': {'aroundClock': true, 'break_from': '15:00', 'break_to': '20:00'},
-            'saturday': {'aroundClock': true, 'break_from': '11:00', 'break_to': '12:00'},
-            'sunday': {'not_working': true},
-        }
-    },
-        {
-            'name': 'Новороссийск, Хворостянского, 13б',
-            'address': 'Пример второго адреса',
-            'floor': '34',
-            'office': '26',
-            'additional': 'Дополнительный второй комментарий',
-            'id': '125',
-            'coords': {
-                'longitude': 0,
-                'latitude': 0
-            },
-            "schedule": {
-                'tuesday': {'not_working': true},
-                'monday': {'from': '08:00', 'to': '21:00', 'break_from': '11:00', 'break_to': '12:00'},
-                'thursday': {'from': '08:00', 'to': '16:00', 'break_from': '11:00', 'break_to': '12:00'},
-                'wednesday': {'from': '08:00', 'to': '09:00', 'no_break': true},
-                'friday': {'aroundClock': true, 'no_break': true},
-                'saturday': {'not_working': true},
-                'sunday': {'not_working': true},
-            }
-        }]
-
-
     const initialHash = []
     for (i in initialBackOffices) {
         let hash = objectHash(Object.values(initialBackOffices[i]));
         initialHash.push(hash)
     }
-
     var officeMap = new ymaps.Map("mapDrag", {
         center: [55.76, 37.64],
         zoom: 10,
@@ -187,60 +88,95 @@ function init() {
 
     //функция связывания инпута адрес и точки на карте
     function setCoords() {
-        let office = $('.js-select__b-office').val()
-        officeMap.geoObjects.removeAll()
-        let address = '' + $('#update-address').val() + ''
+
+        let address_input = $('#update-address');
+        let office = $('.js-select__b-office').val();
+        let address = '' + address_input.val() + '';
+
+        var mapCaption = $('.panel__settings-map-caption'),
+            mapCaptionOldVal = mapCaption.html();
+
+        mapCaption.html('Обновляется <div class="loader"></div>');
+        officeMap.geoObjects.removeAll();
+
         ymaps.geocode(address, {
             results: 1
-        }).then(function (res) {
-            if (res.geoObjects.get(0) != undefined) {
-                var GeoObject = res.geoObjects.get(0)
-                var coords = GeoObject.geometry.getCoordinates()
-                var myPlacemark = new ymaps.Placemark(coords, null, {
-                    preset: 'islands#blueDotIcon',
-                    draggable: true
-                });
-
-                myPlacemark.events.add('dragend', function (e) {
-                    var newCords = e.get('target').geometry.getCoordinates();
-                    ymaps.geocode(newCords, {
-                        results: 1
-                    }).then(function (res) {
-                        var geoObject = res.geoObjects.get(0)
-                        var address = geoObject.getAddressLine()
-                        var coords = geoObject.geometry.getCoordinates()
-                        $('#update-address').typeahead('val', address);
-                        for (let i in backOffices) {
-                            if (backOffices[i]['name'] == office) {
-                                backOffices[i]['coords']['latitude'] = coords[1]
-                                backOffices[i]['coords']['longitude'] =  coords[0]
-                                backOffices[i]['address'] = address
-                            }
-                        }
-                    })
-
-                });
-                officeMap.geoObjects.removeAll()
-                officeMap.geoObjects.add(myPlacemark);
-                officeMap.setCenter(coords, 16)
-                for (let i in backOffices) {
-                    if (backOffices[i]['name'] == office) {
-                        backOffices[i]['coords']['latitude'] =  coords[1]
-                        backOffices[i]['coords']['longitude'] =  coords[0]
-                        backOffices[i]['address'] = address
-                    }
-                }
-            } else {
-                let office = $('.js-select__b-office').val()
-                for (let i in backOffices) {
-                    if (backOffices[i]['name'] == office) {
-                        backOffices[i]['coords']['latitude'] = 'not_found'
-                        backOffices[i]['coords']['longitude'] = 'not_found'
-                        backOffices[i]['address'] = $('#update-address').val()
-                    }
-                }
-            }
         })
+            .then(function (res)
+            {
+
+                mapCaption.html(mapCaptionOldVal);
+
+                if (res.geoObjects.get(0) != undefined) {
+                    var GeoObject = res.geoObjects.get(0)
+                    var coords = GeoObject.geometry.getCoordinates()
+                    var myPlacemark = new ymaps.Placemark(coords, null, {
+                        preset: 'islands#redDotIcon',
+                        draggable: true
+                    });
+
+                    myPlacemark.events.add('dragend', function (e) {
+
+                        address_input.attr('disabled', true);
+                        address_input.addClass('is-loading');
+                        address_input.val('Определяю новый адрес..');
+                        mapCaption.html('Обновляется <div class="loader"></div>');
+
+                        var newCords = e.get('target').geometry.getCoordinates();
+                        ymaps.geocode(newCords, {
+                            results: 1
+                        }).then(function (res) {
+                            var geoObject = res.geoObjects.get(0)
+                            var address = geoObject.getAddressLine()
+                            var coords = geoObject.geometry.getCoordinates()
+
+                            mapCaption.html(mapCaptionOldVal);
+                            address_input.attr('disabled', false);
+                            address_input.removeClass('is-loading');
+                            address_input.data('ttTypeahead').input.setQuery(address, true);
+                            address_input.fadeOut(150).fadeIn(150);
+
+                            for (let i in backOffices) {
+                                if (backOffices[i]['name'] == office) {
+                                    backOffices[i]['coords']['latitude'] = coords[1]
+                                    backOffices[i]['coords']['longitude'] =  coords[0]
+                                    backOffices[i]['address'] = address
+                                }
+                            }
+                        })
+                            .fail(function () {
+                                address_input.attr('disabled', false);
+                                address_input.removeClass('is-loading');
+                                address_input.data('ttTypeahead').input.setQuery('Не удалось определить адрес', true);
+                                address_input.fadeOut(150).fadeIn(150);
+                            })
+
+                    });
+
+                    officeMap.geoObjects.removeAll()
+                    officeMap.geoObjects.add(myPlacemark);
+                    officeMap.setCenter(coords, 16)
+                    for (let i in backOffices) {
+                        if (backOffices[i]['name'] == office) {
+                            backOffices[i]['coords']['latitude'] =  coords[1]
+                            backOffices[i]['coords']['longitude'] =  coords[0]
+                            backOffices[i]['address'] = address
+                        }
+                    }
+                } else {
+                    let office = $('.js-select__b-office').val()
+                    for (let i in backOffices) {
+                        if (backOffices[i]['name'] == office) {
+                            backOffices[i]['coords']['latitude'] = 'not_found'
+                            backOffices[i]['coords']['longitude'] = 'not_found'
+                            backOffices[i]['address'] = address_input.val()
+                        }
+                    }
+                }
+            })
+            .fail(function(){
+                mapCaption.html(mapCaptionOldVal);
+            });
     }
 
     //Автозаполнение адреса
@@ -259,19 +195,19 @@ function init() {
             body: JSON.stringify({query: $('#update-address').val(), count: 5, language: 'ru',}),
             url: 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address',
             replace: function (url, uriEncodedQuery) {
-                return 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address?token=' + token + '&query=' + $('#update-address').val()
+                return 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address?token=' + token + '&query=' + 	$('#update-address').val()
             },
             filter: function (response) {
-                $('.search-address__progress').addClass('hidden')
                 return response.suggestions
             }
         }
     })
     addresses.initialize();
+
     $('#update-address').typeahead({
             hint: true,
             highlight: true,
-            minLength: 2
+            minLength: 1
         },
         {
             name: 'addresses',
@@ -299,15 +235,17 @@ function init() {
                         '</li>'
                 }
             }
-        }).on('typeahead:asyncrequest', function () {
-        $('.search-address__progress').removeClass('hidden')
-    })
-        .on('typeahead:asynccancel typeahead:asyncreceive', function () {
-            $('.search-address__progress').addClass('hidden')
         })
         .on('typeahead:selected', function (event, data) {
             setCoords()
         })
+        .on('typeahead:asyncrequest', function () {
+            $('#search-loader-2').removeClass('hidden').css('opacity', 1).css('visibility', 'visible');
+        })
+        .on('typeahead:asynccancel typeahead:asyncreceive', function () {
+            $('#search-loader-2').addClass('hidden').css('opacity', 0).css('visibility', 'hidden');
+        });
+
     //если пользователь захочет ввести адрес который не найдется в дадате и в яндексе
     $('#update-address').change(function () {
         setCoords()
@@ -318,7 +256,7 @@ function init() {
         let officeAddress = $('.js-select__b-office').val();
         for (let office in backOffices) {
             if (backOffices[office]['name'] == officeAddress) {
-                $('#update-address').typeahead('val', backOffices[office]['address']);
+                $('#update-address').data('ttTypeahead').input.setQuery(backOffices[office]['address'], true);
                 $('#update-address-floor').val(backOffices[office]['floor']);
                 $('#update-address-office').val(backOffices[office]['office']);
                 $('#update-address-additional').val(backOffices[office]['additional']);
@@ -362,11 +300,101 @@ function init() {
                     }
                 }
                 setCoords()
+
+                // blink
+                $('#update-address, #update-address-floor, #update-address-office, #update-address-additional, .backoffice-label').fadeOut(150).fadeIn(150);
+
             }
         }
     }
 
     showSelectedAddress()
+
+    // Автозаполнение для поля поиска организации
+    var firm_search = new Bloodhound({
+        datumTokenizer: function () {
+            return Bloodhound.tokenizers.whitespace('value');
+        },
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": "Token " + token,
+            },
+            body: JSON.stringify({query: $('#update-person').val(), count: 20, language: 'ru',}),
+            url: 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/party',
+            replace: function (url, uriEncodedQuery) {
+                return 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/party?token=' + token + '&query=' + 	$('#update-person').val() + '&count=20'
+            },
+            filter: function (response) {
+                return response.suggestions
+            }
+        }
+    })
+
+    firm_search.initialize();
+
+    $('#update-person').typeahead({
+            limit: 20,
+            hint: true,
+            highlight: true,
+            minLength: 1
+        },
+        {
+            limit: 19,
+            name: 'firm_search',
+            displayKey: function (value) {
+                return value.value
+            },
+            source: firm_search.ttAdapter(),
+            templates: {
+                empty: [
+                    '<li class="search-failed">\n' +
+                    '<div class="ui-search__item">\n' +
+                    '<span class="ui-search__item-text">\n' +
+                    'Ничего не найдено' +
+                    '</span>\n' +
+                    '</div>\n' +
+                    '</li>'
+                ],
+                suggestion: function (data) {
+                    return '<li>' +
+                        '<div class="ui-search__item">' +
+                        '<span class="ui-search__item-text">' +
+                        '' + data['value'] + ' (' + data['data']['address']['value'] + ') ' +
+                        '</span>' +
+                        '</div>' +
+                        '</li>'
+                }
+            }
+        })
+        .on('typeahead:selected', function (event, data) {
+
+            var ogrn_input = $('#update-ogrn'),
+                inn_input = $('#update-inn');
+
+            ogrn_input.val(data['data']['ogrn']);
+            inn_input.val(data['data']['inn']);
+
+            ogrn_input.fadeOut(150).fadeIn(150);
+            inn_input.fadeOut(150).fadeIn(150);
+
+            // заполним поле "адрес" если оно пустое
+            if ($('#update-address').val().length < 1)
+            {
+                $('#update-address').data('ttTypeahead').input.setQuery(data['data']['address']['value'], true);
+                setCoords()
+            }
+        })
+        .on('typeahead:asyncrequest', function () {
+            $('#search-loader-3').removeClass('hidden').css('opacity', 1).css('visibility', 'visible');
+        })
+        .on('typeahead:asynccancel typeahead:asyncreceive', function () {
+            $('#search-loader-3').addClass('hidden').css('opacity', 0).css('visibility', 'hidden');
+        });
+
+
     //    сравниваю хеш изначального обьекта с текущим
     $('.change-watch').on('change', function () {
         let office = $('.js-select__b-office').val()
@@ -387,6 +415,8 @@ function init() {
             }
         }
     })
+
+
     //заполняю поля времени работы в массиве с филиалами по событию change
     $('.ui-worktime__row').each(function (index, elem) {
         $(this).change(function () {
@@ -550,7 +580,6 @@ function init() {
     })
 }
 
-
 jdoc.on('click', '.ui-check', function (e) {
 
     var t = $(this), val = t.find('.ui-check__input').val();
@@ -694,18 +723,19 @@ $(document).ready(function () {
 
         })
     }
-
-    $('.progress-input').on('keyup', function () {
+    jdoc.on('change', '.progress-input', function () {
         updateBar()
-    })
-    $('.progress-input').on('change', function () {
-        updateBar()
-    })
-    $('.progress-input').trigger('change')
 
+    })
+    jdoc.on('keyup', '.progress-input', function () {
+        updateBar()
+
+    })
+    updateBar()
     //удаление инпутов по клику на крестик
     jdoc.on('click', '.ui-input-delete', function (e) {
         e.preventDefault()
+        updateBar()
         let btnAdd = $(this).parents('.panel__settings-group').find('.btn.btn--36')
         let firstLabels = $(this).parents('.panel__settings-group').find('.first-labels')
         btnAdd.show()
@@ -722,8 +752,14 @@ $(document).ready(function () {
 
             parent.remove()
         }
-        $(this).remove()
-
+        if( parentInput.hasClass('progress-input') ){
+            $(this).parents('.panel__settings-group').find('.ui-input').first().addClass('progress-input')
+            $(this).remove()
+            updateBar()
+        }else{
+            updateBar()
+            $(this).remove()
+        }
     })
     jdoc.on('click', '.ui-input-price .btn--remove', function (e) {
         e.preventDefault()
@@ -778,7 +814,7 @@ $(document).ready(function () {
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="row">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="col-md-6">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label class="ui-label ">Телефон</label>\n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input" type="tel" name="telephone" placeholder="+7 999 12 34 567" id="update-tel2" data-id="123">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class="ui-input" type="tel" name="telephone" placeholder="+7 999 12 34 567" id="update-tel" data-id="123" value="">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="col-md-6">\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label class="ui-label ">Комментарий к телефону</label>\n' +
@@ -1206,7 +1242,7 @@ $(document).ready(function () {
         })
         data['deleted'] = deleted
         data['backOffices'] = backOffices
-        console.log(data)
+
     })
     $('.is-acceptence').change(function () {
         if ($(this).is(':checked')) {
