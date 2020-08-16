@@ -6760,7 +6760,7 @@ ymaps.load(function () {
         $.ajax({
             type     : "GET",
             cache    : false,
-            url      : 'https://rubrikator.local/api/ajax_get/load_filials?token=tk&page_type=company&owner_id=449800&id=125733',
+            url      : 'https://rubrikator.local/api/ajax_get/load_filials',
             data     : {
                 token: 'tk',
                 page_type: window.page.type,
@@ -6785,7 +6785,9 @@ ymaps.load(function () {
 
                     if (r.status === 'success')
                     {
+
                         let info =  JSON.parse(r.info);
+                        console.log(info)
                         initialBackOffices.push(info);
                         backOffices.push(info);
                         changedOffice.push(info);
@@ -6794,6 +6796,7 @@ ymaps.load(function () {
 
                 if( initialOptionsLength == index+1){
                     init()
+
                 }
             });
     });
@@ -7306,6 +7309,30 @@ function init() {
     $('.select-form').change(function () {
         officeMap.container.fitToViewport()
     })
+    function updateBar() {
+        var currentStep = 0;
+        var fillingStep = Math.ceil((100 / $('.panel__bookmark-link').length));
+        const progressBar = $('.ui-progress-bar');
+        $('.progress-input').each(function () {
+            if ($(this).val() !== '') {
+                $('.panel__bookmark-link[href="#' + $(this).attr('id') + '"]').css('color', 'green');
+                if (currentStep >= 100 || Math.ceil(currentStep + fillingStep) >= 100) {
+                    currentStep = 100
+                } else {
+                    currentStep += fillingStep
+                }
+                progressBar.css('width', '' + currentStep + '%');
+                progressBar.html(currentStep + '%')
+            } else {
+                $('.panel__bookmark-link[href="#' + $(this).attr('id') + '"]').css('color', 'grey');
+            }
+        })
+    }
+    jdoc.ready(function() {
+        updateBar()
+    });
+
+
 }
 
 jdoc.on('click', '.ui-check', function (e) {
@@ -7393,6 +7420,7 @@ $('.panel__bookmark-link , .ui-taglist__link').each(function () {
 
 
 $(document).ready(function () {
+
     var stateSelectors = document.querySelectorAll(".select-form")
     for (var i = 0, element; element = stateSelectors[i]; i++) {
         element.removeEventListener('click', showLoader, false);
@@ -7431,12 +7459,13 @@ $(document).ready(function () {
     // связано по дата-атрибуту, но можно и вручную выбирать по  id так будет чуточку быстрей но менее универсально
     $('.company-info').validate()
     const progressBar = $('.ui-progress-bar');
-    let fillingStep = Math.ceil((100 / $('.panel__bookmark-link').length));
-
+    var fillingStep = Math.ceil((100 / $('.panel__bookmark-link').length));
     function updateBar() {
-        let currentStep = 0;
+        var currentStep = 0;
         $('.progress-input').each(function () {
+
             if ($(this).val() !== '') {
+                console.log($(this))
                 $('.panel__bookmark-link[href="#' + $(this).attr('id') + '"]').css('color', 'green');
                 if (currentStep >= 100 || Math.ceil(currentStep + fillingStep) >= 100) {
                     currentStep = 100
@@ -7448,22 +7477,19 @@ $(document).ready(function () {
             } else {
                 $('.panel__bookmark-link[href="#' + $(this).attr('id') + '"]').css('color', 'grey');
             }
-
         })
     }
+
     jdoc.on('change', '.progress-input', function () {
         updateBar()
-
     })
     jdoc.on('keyup', '.progress-input', function () {
         updateBar()
-
     })
-    updateBar()
+
     //удаление инпутов по клику на крестик
     jdoc.on('click', '.ui-input-delete', function (e) {
         e.preventDefault()
-        updateBar()
         let btnAdd = $(this).parents('.panel__settings-group').find('.btn.btn--36')
         let firstLabels = $(this).parents('.panel__settings-group').find('.first-labels')
         btnAdd.show()
@@ -7471,23 +7497,19 @@ $(document).ready(function () {
         let parentInput = parent.find('.ui-input')
         deleted['' + parentInput.attr("name") + ''].push(parentInput.data('id'))
 
+
+        if( parentInput.hasClass('progress-input') ){
+            $(this).parents('.panel__settings-group').find('.panel__settings-row').next().find('.ui-input').first().addClass('progress-input')
+        }
         if ($(this).parents('.panel__settings-group').find('.panel__settings-row').length <= 2 ||
             $(this).parents('.panel__settings-group').find('.panel__settings-row.panel__new').length == 1
         ) {
             firstLabels.addClass('show-labels')
             parent.remove()
         } else {
-
             parent.remove()
         }
-        if( parentInput.hasClass('progress-input') ){
-            $(this).parents('.panel__settings-group').find('.ui-input').first().addClass('progress-input')
-            $(this).remove()
-            updateBar()
-        }else{
-            updateBar()
-            $(this).remove()
-        }
+        updateBar()
     })
     jdoc.on('click', '.ui-input-price .btn--remove', function (e) {
         e.preventDefault()
@@ -8015,6 +8037,7 @@ $(document).ready(function () {
             $(this).trigger('change');
         }
     })
+
 })
 
 //Заполняю селекты по нажатию на кнопке, не удалил тк было в изначальном тз
