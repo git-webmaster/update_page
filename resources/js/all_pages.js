@@ -1188,7 +1188,7 @@ function loadEvents() {
 	//
 	// Search field
 	//
-
+/*
 	// focus empty search field
 	var search_input = $('#search'),
 		user_text = search_input.val(),
@@ -1355,6 +1355,8 @@ function loadEvents() {
 
 		selected_suggest_num = 0;
 	});
+
+ */
 }
 
 loadEvents();

@@ -10,13 +10,13 @@
   "license": "ISC",
   "babel": {
     "presets": [
-      "env"
+      "babel/preset-env"
     ]
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
     "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "babelify": "^8.0.0",
     "browser-sync": "^2.26.7",
     "browserify": "^16.5.0",
@@ -70,9 +70,11 @@
   },
   "dependencies": {
     "@claviska/jquery-minicolors": "^2.3.4",
+    "@shopify/draggable": "^1.0.0-beta.8",
     "@turf/bbox-polygon": "^6.0.1",
     "@turf/boolean-contains": "^6.0.1",
     "@turf/union": "^6.0.3",
+    "@types/jquery.validation": "^1.16.6",
     "@uppy/core": "^1.7.1",
     "@uppy/file-input": "^1.4.2",
     "@uppy/locales": "^1.11.2",
@@ -84,22 +86,30 @@
     "garlicjs": "https://github.com/guillaumepotier/garlic.js",
     "inputmask": "^3.3.11",
     "jquery": "3.4.1",
+    "jquery-sortable": "^0.9.13",
     "jquery-touchswipe": "^1.6.19",
+    "jquery-validate": "^2.0.0",
+    "jquery-validation": "^1.19.2",
     "js-base64": "^2.5.2",
     "leaflet-plugins": "https://github.com/shramov/leaflet-plugins",
     "leaflet.markercluster": "^1.4.1",
     "match-media": "^0.2.0",
     "medium-zoom": "^1.0.5",
+    "object-hash": "^2.0.3",
     "owl.carousel": "^2.3.4",
     "photoswipe": "^4.1.3",
     "priority-nav": "^1.0.13",
+    "quicklink": "^2.0.0",
     "readmore-js": "^2.2.1",
     "selectric": "^1.13.0",
-    "smooth-scrollbar": "^8.5.1",
+    "smooth-scrollbar": "^8.5.2",
     "sticky-kit": "^1.1.3",
-    "svg4everybody": "^2.0.0",
-    "sweetalert2": "^9.7.2",
+    "suggestions-jquery": "^20.1.1",
+    "svgxuse": "^1.2.6",
+    "sweetalert2": "^9.17.0",
     "tooltipster": "^4.2.7",
-    "ua-parser-js": "^0.7.21"
+    "typeahead": "^0.2.2",
+    "ua-parser-js": "^0.7.21",
+    "ymaps": "^0.2.1"
   }
 }

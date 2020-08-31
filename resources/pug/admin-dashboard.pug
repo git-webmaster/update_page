@@ -1,0 +1,694 @@
+---
+title: Дашборд / Админ - Рубрикатор
+bodyClass: is-page-admin
+---
+extends includes/_app-admin
+
+block main
+
+    // Dashboard :: Start
+    .l.l--admin
+        
+        // Scrolltop :: Start
+        button.scrolltop.js-scrolltop(aria-label="Прокрутить вверх")
+            +sprite('icon-scrolltop')
+        // Scrolltop :: End
+
+
+        .l__head(role="banner")
+            .container-fluid
+
+                nav.l__nav.js-priority
+                    ul.l__nav-menu.js-priority-menu
+                        li
+                            a(href="#").l__nav-link.is-active
+                                +sprite('icon-portfolio')
+                                u Дашборд
+                        li
+                            a(href="#").l__nav-link
+                                +sprite('icon-refresh')
+                                u Заявки на обновление (2/1160)
+                        li
+                            a(href="#").l__nav-link
+                                +sprite('icon-comments')
+                                u Новые отзывы
+                        li
+                            a(href="#").l__nav-link
+                                +sprite('icon-photos')
+                                u Новые фото
+                        li
+                            a(href="#").l__nav-link
+                                +sprite('icon-interlocking')
+                                u Блокировочная
+                        li
+                            a(href="#").l__nav-link
+                                +sprite('icon-settings')
+                                u Настройки
+                        li
+                            a(href="#").l__nav-link
+                                +sprite('icon-mysql')
+                                u MySQL adminer
+
+
+        .l__body
+
+            .container-fluid
+
+                
+    
+
+                .panel
+                    .panel__systems
+                        +sprite('icon-dots')
+                        ul.panel__systems-menu
+                            li
+                                a(href="#").panel__systems-link
+                                    img(src="images/icon-yandex.svg", alt="")
+                                    | Яндекс. Метрика
+                            li
+                                a(href="#").panel__systems-link
+                                    img(src="images/icon-yandex.svg", alt="")
+                                    | Яндекс. Вебмастер
+                            li
+                                a(href="#").panel__systems-link
+                                    img(src="images/icon-google.svg", alt="")
+                                    | Google. Analitycs
+                            li
+                                a(href="#").panel__systems-link
+                                    img(src="images/icon-google.svg", alt="")
+                                    | Google. Search Console
+
+
+                // Panel :: Start
+                .panel
+                    span.panel__heading Сегодня
+
+                // Panel :: End
+
+
+                // Panel Sorting :: Start
+                .panel
+                    .panel__sorting
+                        form(action="#")
+
+                            .ui-input-group
+                                .row.row-gutter-10
+                                    .col-xs-auto
+
+                                        .ui-select.ui-select--46
+                                            select.js-select
+                                                option Новые сначала
+                                                option Новые вконце
+
+                                    .col-xs-auto
+
+                                        .ui-input-group
+                                            .ui-select.ui-select--46
+                                                select.js-select
+                                                    option За все время
+                                                    option За все время 1
+                                                    option За все время 2
+                                                    option За все время 3
+
+                                            .ui-input-append
+                                                .ui-help.js-tooltip(title="Это подсказка...")
+                                                    +sprite('icon-help')
+
+                // Panel Sorting :: End
+                
+
+                // Panel Indicators :: Start
+                .panel
+
+
+                    .panel__indicators-wrapper
+
+                        .panel__grid
+                            .row
+                                .col-xs-6.col-md-4.col-lg-3
+
+                                    .panel__indicators
+                                        .panel__indicators-group
+                                            figure.panel__indicators-icon
+                                                +sprite('icon-indicators-comments')
+                                            span.panel__indicators-number 480
+                                            span.panel__indicators-text новых отзывов
+                                            span.panel__indicators-percent.text-green +12%
+                                      
+
+                                .col-xs-6.col-md-4.col-lg-3
+
+                                    .panel__indicators
+                                        .panel__indicators-group
+                                            figure.panel__indicators-icon
+                                                +sprite('icon-indicators-new')
+                                            span.panel__indicators-number 112
+                                            span.panel__indicators-text новых заявок
+                                            span.panel__indicators-percent.text-red -15%
+            
+
+                                .col-xs-6.col-md-4.col-lg-3
+
+                                    .panel__indicators
+                                        .panel__indicators-group
+                                            figure.panel__indicators-icon
+                                                +sprite('icon-indicators-photos')
+                                            span.panel__indicators-number 224
+                                            span.panel__indicators-text новых фото
+                                            span.panel__indicators-percent.text-green +34%
+                                       
+
+                                .col-xs-6.col-md-4.col-lg-3
+
+                                    .panel__indicators
+                                        .panel__indicators-group
+                                            figure.panel__indicators-icon
+                                                +sprite('icon-indicators-appeals')
+                                            span.panel__indicators-number 16
+                                            span.panel__indicators-text новых обращений
+                                            span.panel__indicators-percent.text-green +84%
+                                       
+
+                                .col-xs-6.col-md-4.col-lg-3
+
+                                    .panel__indicators
+                                        .panel__indicators-group
+                                            figure.panel__indicators-icon
+                                                +sprite('icon-indicators-star')
+                                            span.panel__indicators-number 4
+                                            span.panel__indicators-text премиум
+                                            span.panel__indicators-percent.text-green +12%
+                                        .panel__indicators-total
+                                            span.panel__indicators-total-text Всего: #[b 1024]
+                                            span.panel__indicators-total-percent.text-red -11%
+
+                                .col-xs-6.col-md-4.col-lg-3
+
+                                    .panel__indicators
+                                        .panel__indicators-group
+                                            figure.panel__indicators-icon
+                                                +sprite('icon-indicators-pin')
+                                            span.panel__indicators-number 56
+                                            span.panel__indicators-text отзывов закреплено
+                                            span.panel__indicators-percent.text-green +8%
+                                        .panel__indicators-total
+                                            span.panel__indicators-total-text Всего: #[b 3018]
+                                            span.panel__indicators-total-percent.text-red -11%
+
+                                .col-xs-6.col-md-4.col-lg-3
+
+                                    .panel__indicators
+                                        .panel__indicators-group
+                                            figure.panel__indicators-icon
+                                                +sprite('icon-indicators-wallet')
+                                            span.panel__indicators-number 18 598 р.
+                                            span.panel__indicators-text пополнения баланса
+                                            span.panel__indicators-percent.text-green +23%
+                                        .panel__indicators-total
+                                            span.panel__indicators-total-text Всего: #[b ~235к]
+                                            span.panel__indicators-total-percent.text-green +7%
+
+                                .col-xs-6.col-md-4.col-lg-3
+
+                                    .panel__indicators
+                                        .panel__indicators-group
+                                            figure.panel__indicators-icon
+                                                +sprite('icon-indicators-promo')
+                                            span.panel__indicators-number 18
+                                            span.panel__indicators-text рекламных блоков
+                                            span.panel__indicators-percent.text-green +12%
+                                        .panel__indicators-total
+                                            span.panel__indicators-total-text Всего: #[b 234]
+                                            span.panel__indicators-total-percent.text-red -13%
+
+                // Panel Indicators :: End
+
+
+                // Panel Top :: Start
+                .panel.panel--grey
+                    span.panel__heading.panel__heading--24 TOP страниц
+                    .panel__grid
+                        .row
+                            .col-xl-6
+
+                                .panel__container
+                                    .panel__head
+                                        span.panel__title.panel__title--20 Top по количеству отзывов
+                                    .panel__body
+
+                                        .panel__details
+                                            ul.panel__details-menu
+                                                li
+                                                    button.panel__details-btn.is-active  За сегодня
+                                                li
+                                                    button.panel__details-btn За вчера 
+                                                li
+                                                    button.panel__details-btn За месяц
+                                                li
+                                                    button.panel__details-btn За всё время
+
+                                            table.panel__details-table
+                                                tr
+                                                    td
+                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue http://rubrikator.org/russia/saint-petersburg/fokus-4
+                                                    td.text-right 118
+                                                tr
+                                                    td
+                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue http://rubrikator.org/russia/saint-petersburg/fokus-534
+                                                    td.text-right 16
+                                                tr
+                                                    td
+                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue http://rubrikator.org/russia/saint-petersburg/fokus-212
+                                                    td.text-right 14
+                                                tr
+                                                    td
+                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue http://rubrikator.org/russia/saint-petersburg/fokus-2
+                                                    td.text-right 9
+                                                tr
+                                                    td
+                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue http://rubrikator.org/russia/saint-petersburg/fokus-11
+                                                    td.text-right 4
+
+
+                                            .panel__details-control
+                                                button.btn.btn--52.btn--whitelight
+                                                    +sprite('icon-loadmore')
+                                                    | Загрузить ещё
+
+
+                            .col-xl-6
+
+                                .panel__container
+                                    .panel__head
+                                        span.panel__title.panel__title--20 Top по количеству просмотров
+                                    .panel__body
+
+                                        .panel__details
+                                            ul.panel__details-menu
+                                                li
+                                                    button.panel__details-btn.is-active  За сегодня
+                                                li
+                                                    button.panel__details-btn За вчера 
+                                                li
+                                                    button.panel__details-btn За месяц
+                                                li
+                                                    button.panel__details-btn За всё время
+
+                                            table.panel__details-table
+                                                tr
+                                                    td
+                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue http://rubrikator.org/russia/saint-petersburg/fokus-4
+                                                    td.text-right 118
+                                                tr
+                                                    td
+                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue http://rubrikator.org/russia/saint-petersburg/fokus-534
+                                                    td.text-right 16
+                                                tr
+                                                    td
+                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue http://rubrikator.org/russia/saint-petersburg/fokus-212
+                                                    td.text-right 14
+                                                tr
+                                                    td
+                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue http://rubrikator.org/russia/saint-petersburg/fokus-2
+                                                    td.text-right 9
+                                                tr
+                                                    td
+                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue http://rubrikator.org/russia/saint-petersburg/fokus-11
+                                                    td.text-right 4
+
+
+                                            .panel__details-control
+                                                button.btn.btn--52.btn--whitelight
+                                                    +sprite('icon-loadmore')
+                                                    | Загрузить ещё
+
+
+                // Panel Top :: End
+
+
+                // Panel Term :: Start
+                .panel.panel--grey
+                    span.panel__heading.panel__heading--24 Истекший срок
+                    .panel__container
+                        .panel__head
+                            span.panel__title.panel__title--20 Заканчивается PREMIUM
+                        .panel__body
+
+                            .panel__details
+                                ul.panel__details-menu
+                                    li
+                                        button.panel__details-btn.is-active Завтра
+                                    li
+                                        button.panel__details-btn Через неделю
+                                    li
+                                        button.panel__details-btn Через месяц
+
+                                table.panel__details-table.panel__details-table--responsive
+                                    thead
+                                        tr
+                                            th URL
+                                            th.text-right Тип
+                                            th.text-right Сумма
+                                            th.text-right Пользователь
+                                            th.text-right Дней до конца
+
+                                    tbody
+
+                                        tr
+                                            td(data-th="URL")
+                                                a(href="#").ui-link.ui-link--underline.ui-link--blue hhttp://rubrikator.org/russia/saint-petersburg/fokus-4
+                                            td(data-th="Тип").text-right Год
+                                            td(data-th="Сумма").text-right 40582
+                                            td(data-th="Пользователь").text-right
+                                                a(href="#").ui-link.ui-link--underline.ui-link--blue user123
+                                            td(data-th="Дней до конца").text-right 118
+
+                                        tr
+                                            td(data-th="URL")
+                                                a(href="#").ui-link.ui-link--underline.ui-link--blue http://rubrikator.org/russia/saint-petersburg/fokus-534
+                                            td(data-th="Тип").text-right Год
+                                            td(data-th="Сумма").text-right 13900
+                                            td(data-th="Пользователь").text-right
+                                                a(href="#").ui-link.ui-link--underline.ui-link--blue user123454
+                                            td(data-th="Дней до конца").text-right 16
+
+                                        tr
+                                            td(data-th="URL")
+                                                a(href="#").ui-link.ui-link--underline.ui-link--blue http://rubrikator.org/russia/saint-petersburg/fokus-212
+                                            td(data-th="Тип").text-right Месяц
+                                            td(data-th="Сумма").text-right 18700
+                                            td(data-th="Пользователь").text-right
+                                                a(href="#").ui-link.ui-link--underline.ui-link--blue user12345
+                                            td(data-th="Дней до конца").text-right 14
+
+                                        tr
+                                            td(data-th="URL")
+                                                a(href="#").ui-link.ui-link--underline.ui-link--blue http://rubrikator.org/russia/saint-petersburg/fokus-2
+                                            td(data-th="Тип").text-right Год
+                                            td(data-th="Сумма").text-right 92600
+                                            td(data-th="Пользователь").text-right
+                                                a(href="#").ui-link.ui-link--underline.ui-link--blue user123
+                                            td(data-th="Дней до конца").text-right 9
+
+                                        tr
+                                            td(data-th="URL")
+                                                a(href="#").ui-link.ui-link--underline.ui-link--blue http://rubrikator.org/russia/saint-petersburg/fokus-11
+                                            td(data-th="Тип").text-right 3 месяца
+                                            td(data-th="Сумма").text-right 3200
+                                            td(data-th="Пользователь").text-right
+                                                a(href="#").ui-link.ui-link--underline.ui-link--blue user12324
+                                            td(data-th="Дней до конца").text-right 4
+                                        
+
+
+                                .panel__details-control
+                                    button.btn.btn--52.btn--whitelight
+                                        +sprite('icon-loadmore')
+                                        | Загрузить ещё
+
+
+                // Panel Term :: End
+
+
+                // Panel Chart :: Start
+                .panel.panel--grey
+                    .panel__container
+                        .panel__head
+                            span.panel__title.panel__title--20 Посещаемость
+
+                        .panel__body
+
+                            .panel__chart
+                                .panel__chart-control
+
+                                    .panel__chart-select
+
+                                        .ui-input-group
+                                            .ui-select.ui-select--46
+                                                select.js-select
+                                                    option За все время
+                                                    option За все время 1
+                                                    option За все время 2
+                                                    option За все время 3
+
+                                            .ui-input-append
+                                                .ui-help.js-tooltip(title="Это подсказка...")
+                                                    +sprite('icon-help')
+
+
+
+                                    .panel__chart-legends#chart-legends
+
+                                    
+    
+                                .panel__chart-canvas
+                                    .chartjs-tooltip#chartjs-tooltip
+                                    canvas#chartjs
+
+                                    
+
+                // Panel Chart :: End
+
+
+                // Panel Cache :: Start
+                .panel
+                    span.panel__heading.panel__heading--24 Cache
+                        
+                    .panel__container.panel__cache
+                        .panel__cache-check
+                            label.ui-check.ui-check--dark
+                                input(type="checkbox" name="" checked).ui-check__input
+                                span.ui-check__switch
+                        p.panel__cache-text КЕШ ВКЛЮЧЁН
+
+
+                // Panel Cache :: End
+
+
+                // Panel Cache :: Start
+                .panel
+
+                    .panel__container.panel__statistic
+
+                        ul.panel__statistic-list
+                            li
+                                p.panel__statistic-item
+                                    span.ui-help.js-tooltip(title="Это подсказка...")
+                                        +sprite('icon-help')
+                                    | Статистика
+                            li
+                                p.panel__statistic-item Объектов в кеше: #[b 130578]
+                            li
+                                p.panel__statistic-item Суммарный объём: #[b 13 GB]
+                            li
+                                p.panel__statistic-item Среднее время доступа: #[b 110 мс]
+
+
+                // Panel Cache :: End
+
+
+                // Panel clear :: Start
+                .panel.panel--grey
+
+                    .panel__grid
+                        .row
+                            .col-xl-6
+
+                                .panel__container
+                                    .panel__head
+                                        span.panel__title Очистить кеш по ТЕГУ
+                                    .panel__body
+
+                                        .panel__clear
+                                            ul.panel__clear-menu
+                                                li
+                                                    button.btn.btn--46.btn--white Удалить все с тегом CATEGORY
+                                                li
+                                                    button.btn.btn--46.btn--white Удалить все с тегом CITY
+                                                li
+                                                    button.btn.btn--46.btn--white Удалить все с тегом OR
+                                                li
+                                                    button.btn.btn--46.btn--white Удалить все с тегом RE
+                                            
+                                            button.btn.btn--46.btn--yellow Очистить кеш полностью
+
+
+                            .col-xl-6
+
+                                .panel__container
+                                    .panel__head
+                                        span.panel__title Очистить кеш по URL
+                                    .panel__body
+
+                                        .panel__clear
+
+                                            .panel__clear-row
+                                                label.ui-label Page (index, city, category, org)
+                                                .ui-input-group
+                                                    .ui-input-clear
+                                                        button.btn.btn--36.btn--dark Очистить
+                                                    input(type="text" placeholder="http://rubrikator.org/russia/saint-petersburg/fokus-4").ui-input.ui-input--44
+
+                                            .panel__clear-row
+                                                label.ui-label Reviews
+                                                .ui-input-group
+                                                    .ui-input-clear
+                                                        button.btn.btn--36.btn--dark Очистить
+                                                    input(type="text" placeholder="http://rubrikator.org/russia/saint-petersburg/fokus-4").ui-input.ui-input--44
+
+                                            .panel__clear-row
+                                                label.ui-label Geodata
+                                                .ui-input-group
+                                                    .ui-input-clear
+                                                        button.btn.btn--36.btn--dark Очистить
+                                                    input(type="text" placeholder="http://rubrikator.org/russia/saint-petersburg/fokus-4").ui-input.ui-input--44
+
+                                            .panel__clear-row
+                                                label.ui-label Proximity
+                                                .ui-input-group
+                                                    .ui-input-clear
+                                                        button.btn.btn--36.btn--dark Очистить
+                                                    input(type="text" placeholder="http://rubrikator.org/russia/saint-petersburg/fokus-4").ui-input.ui-input--44
+                                            
+
+
+
+                // Panel clear :: End
+
+
+                // Panel Settings :: Start
+                .panel
+                    span.panel__heading.panel__heading--24 Настройки страниц
+                    .panel__grid
+                        .row
+                            .col-xl-6
+                                .panel__container
+
+
+                                    .panel__settings
+                                        
+                                        .panel__settings-group
+
+                                            span.panel__settings-title ORG
+
+                                            .ui-switch-group
+                                                label.ui-check.ui-check--dark
+                                                    input(type="checkbox" name="").ui-check__input
+                                                    span.ui-check__switch
+                                                    span.ui-check__text Загружать описание по клику
+                                                label.ui-check.ui-check--dark
+                                                    input(type="checkbox" name="").ui-check__input
+                                                    span.ui-check__switch
+                                                    span.ui-check__text Lazy Load картинки
+                                                label.ui-check.ui-check--dark
+                                                    input(type="checkbox" name="").ui-check__input
+                                                    span.ui-check__switch
+                                                    span.ui-check__text Выводить только 300 отзывов
+
+                            .col-xl-6
+                                .panel__container
+
+
+                                    .panel__settings
+                                        
+                                        .panel__settings-group
+
+                                            span.panel__settings-title CAT
+
+                                            .ui-switch-group
+                                                label.ui-check.ui-check--dark
+                                                    input(type="checkbox" name="").ui-check__input
+                                                    span.ui-check__switch
+                                                    span.ui-check__text Загружать описание по клику
+                                                label.ui-check.ui-check--dark
+                                                    input(type="checkbox" name="").ui-check__input
+                                                    span.ui-check__switch
+                                                    span.ui-check__text Lazy Load картинки
+                                                label.ui-check.ui-check--dark
+                                                    input(type="checkbox" name="").ui-check__input
+                                                    span.ui-check__switch
+                                                    span.ui-check__text Выводить только 300 отзывов
+
+                        
+
+
+                // Panel Settings :: End
+
+
+                // Panel Lock :: Start
+                .panel
+                    span.panel__heading.panel__heading--24 Блокировки
+
+                    .panel__lock
+                        .panel__lock-filter
+                            .row
+                                .col-12.col-xs-5.col-md-3.col-xl-2
+
+                                    label.ui-label.ui-label--15.ui-label--grey Тип
+                                    .ui-select.ui-select--46
+                                        select.js-select
+                                            option IP for page
+                                            option IP for page 1
+                                            option IP for page 2
+                                            option IP for page 3
+                                            option IP for page 4
+
+                                .col-12.col-xs-7.col-md-3.col-xl-2
+
+                                    label.ui-label.ui-label--15.ui-label--grey IP / Fingerpint
+                                    input(type="text" value="192.168.1.111").ui-input.ui-input--46
+
+                                .col-12.col-md-6.col-xl
+
+                                    label.ui-label.ui-label--15.ui-label--grey URL
+                                    input(type="text" value="http://rubrikator.org/russia/sa").ui-input.ui-input--46
+
+                                .col-12.col-md.col-xl-2
+
+                                    label.ui-label.ui-label--15.ui-label--grey Комментарий
+                                    input(type="text" placeholder="спам на странице").ui-input.ui-input--46
+
+                                .col-12.col-md-auto.col-xl-auto
+
+                                    button.btn.btn--46.btn--dark.btn--fullwidth Блокировать
+
+                        .panel__lock-content
+
+                            table.panel__lock-table
+                                thead
+                                    tr
+                                        th IP / Fingerpint
+                                        th Тип
+                                        th URL
+                                        th Комментарий
+                                        th Дата
+                                        th
+                                tbody
+                                    tr
+                                        td(data-th="IP / Fingerpint") 192.168.1.111
+                                        td(data-th="Тип") IP sitewide
+                                        td(data-th="URL") *
+                                        td(data-th="Комментарий") спам на странице
+                                        td(data-th="Дата") 21/08/2018 19:07
+                                        td
+                                            .panel__lock-delete
+                                                button.btn.btn--whitelight
+                                                    +sprite('icon-delete')
+                                    tr
+                                        td(data-th="IP / Fingerpint") 192.168.1.156
+                                        td(data-th="Тип") IP sitewide
+                                        td(data-th="URL")
+                                            a(href="#").ui-link.ui-link--dark http://rubrikator.org/russi…
+                                        td(data-th="Комментарий") спам на странице
+                                        td(data-th="Дата") 21/08/2018 11:03
+                                        td
+                                            .panel__lock-delete
+                                                button.btn.btn--whitelight
+                                                    +sprite('icon-delete')
+
+                            .panel__lock-control
+                                button.btn.btn--52.btn--whitelight
+                                    +sprite('icon-loadmore')
+                                    | Загрузить ещё
+
+                // Panel Lock :: End

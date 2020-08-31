@@ -1,0 +1,349 @@
+---
+title: Фото - Рубрикатор
+bodyClass: is-page-photo
+---
+extends includes/_app
+
+block main
+
+    // Photo :: Start
+    .l.l--photo
+
+        // Scrolltop :: Start
+        button.scrolltop.js-scrolltop
+            +sprite('icon-scrolltop')
+        // Scrolltop :: End
+
+        .container-fluid
+
+            .l__head(role="banner")
+                
+
+                    h1.l__heading Фото: Ренессанс Страхование
+
+                    p.l__text Страховая компания №1 в Российской Федерации
+                    
+                    a(href="#").l__back
+                        +sprite('icon-back')
+                        u Назад
+
+            .l__body
+        
+
+                .panel
+                    .panel__container
+
+                        .panel__body
+
+                            p.panel__counter Все фото со страницы #[mark (18)]
+
+                            .panel__sorting
+
+                                .ui-sorting
+                                    form(action="#")
+                                        .ui-sorting__wrapper.js-sorting
+                                            ul.ui-sorting__list.js-sorting-list
+                                                li
+                                                    .ui-select.ui-select--40
+                                                        select.js-select
+                                                            option Новые отзывы сверху
+                                                            option Новые отзывы снизу
+
+                                                li
+                                                    .ui-select.ui-select--40
+                                                        select.js-select
+                                                            option За все время
+                                                            option За все время 1
+                                                            option За все время 2
+                                                            option За все время 3
+
+                                                    .ui-help.js-tooltip(title="Это подсказка...")
+                                                        +sprite('icon-help')
+
+                            .panel__photos
+                                ul.panel__photos-grid
+                                    li
+                                        .panel__photo
+                                            .panel__photo-control
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-hidden')
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-lock')
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-delete')
+                                            figure.panel__photo-image
+                                                a(href="#" data-photoswipe data-photoswipe-array="photos" data-photoswipe-id="0")
+                                                    img(src="images/img-photo-page-01.jpg" alt="")
+                                            h2.panel__photo-title
+                                                a(href="#").ui-link.ui-link--dark Анонимно
+                                            .panel__photo-info
+                                                p.panel__photo-date 06.06.2018
+                                                button.panel__photo-like
+                                                    +sprite('icon-photo-like')
+
+                                    li
+                                        .panel__photo
+                                            .panel__photo-control
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-hidden')
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-lock')
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-delete')
+                                            figure.panel__photo-image
+                                                a(href="#" data-photoswipe data-photoswipe-array="photos" data-photoswipe-id="1")
+                                                    img(src="images/img-photo-page-02.jpg" alt="")
+                                            h2.panel__photo-title
+                                                a(href="#").ui-link.ui-link--dark Вот так выглядит обещанный номер люкс!!
+                                            .panel__photo-info
+                                                p.panel__photo-date 06.06.2018
+                                                button.panel__photo-like
+                                                    span.panel__photo-like-counter 456
+                                                    +sprite('icon-photo-like')
+
+                                    li
+                                        .panel__photo.panel__photo--hidden
+                                            .panel__photo-control
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-hidden')
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-lock')
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-delete')
+                                            figure.panel__photo-image
+                                                img(src="images/img-photo-page-09.jpg" alt="")
+                                                .panel__photo-hidden
+                                                    figure.panel__photo-hidden-icon
+                                                        +sprite('icon-photo-hidden')
+                                                    p.panel__photo-hidden-text Скрытое фото
+                                                    button.btn.btn--36.btn--whitelight Показать
+                                            h2.panel__photo-title
+                                                a(href="#").ui-link.ui-link--dark Кабинет Ногтевых Процедур в салоне…
+                                            .panel__photo-info
+                                                p.panel__photo-date 06.06.2018
+                                                button.panel__photo-like
+                                                    span.panel__photo-like-counter 456
+                                                    +sprite('icon-photo-like')
+
+                                    li
+                                        .panel__photo
+                                            .panel__photo-control
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-hidden')
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-lock')
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-delete')
+                                            figure.panel__photo-image
+                                                a(href="#" data-photoswipe data-photoswipe-array="photos" data-photoswipe-id="2")
+                                                    img(src="images/img-photo-page-03.jpg" alt="")
+                                            h2.panel__photo-title
+                                                a(href="#").ui-link.ui-link--dark площадь Восстания, вид сверху
+                                            .panel__photo-info
+                                                p.panel__photo-date 06.06.2018
+                                                button.panel__photo-like
+                                                    span.panel__photo-like-counter 456
+                                                    +sprite('icon-photo-like')
+
+
+                                    li
+                                        .panel__photo
+                                            .panel__photo-control
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-hidden')
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-lock')
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-delete')
+                                            figure.panel__photo-image
+                                                a(href="#" data-photoswipe data-photoswipe-array="photos" data-photoswipe-id="3")
+                                                    img(src="images/img-photo-page-04.jpg" alt="")
+                                            h2.panel__photo-title
+                                                a(href="#").ui-link.ui-link--dark Смотрите сами
+                                            .panel__photo-info
+                                                p.panel__photo-date 06.06.2018
+                                                button.panel__photo-like
+                                                    span.panel__photo-like-counter 456
+                                                    +sprite('icon-photo-like')
+
+
+                                    li
+                                        .panel__photo
+                                            .panel__photo-control
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-hidden')
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-lock')
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-delete')
+                                            figure.panel__photo-image
+                                                a(href="#" data-photoswipe data-photoswipe-array="photos" data-photoswipe-id="4")
+                                                    img(src="images/img-photo-page-05.jpg" alt="")
+                                            h2.panel__photo-title
+                                                a(href="#").ui-link.ui-link--dark Далеко-далеко за словесными горами в стране гласных...
+                                            .panel__photo-info
+                                                p.panel__photo-date 06.06.2018
+                                                button.panel__photo-like
+                                                    +sprite('icon-photo-like')
+
+                                    li
+                                        .panel__photo
+                                            .panel__photo-control
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-hidden')
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-lock')
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-delete')
+                                            figure.panel__photo-image
+                                                a(href="#" data-photoswipe data-photoswipe-array="photos" data-photoswipe-id="5")
+                                                    img(src="images/img-photo-page-06.jpg" alt="")
+                                            h2.panel__photo-title
+                                                a(href="#").ui-link.ui-link--dark Анонимно
+                                            .panel__photo-info
+                                                p.panel__photo-date 06.06.2018
+                                                button.panel__photo-like
+                                                    +sprite('icon-photo-like')
+
+                                    li
+                                        .panel__photo
+                                            .panel__photo-control
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-hidden')
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-lock')
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-delete')
+                                            figure.panel__photo-image
+                                                a(href="#" data-photoswipe data-photoswipe-array="photos" data-photoswipe-id="6")
+                                                    img(src="images/img-photo-page-07.jpg" alt="")
+                                            h2.panel__photo-title
+                                                a(href="#").ui-link.ui-link--dark Анонимно
+                                            .panel__photo-info
+                                                p.panel__photo-date 06.06.2018
+                                                button.panel__photo-like
+                                                    +sprite('icon-photo-like')
+
+                                    li
+                                        .panel__photo
+                                            .panel__photo-control
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-hidden')
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-lock')
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-delete')
+                                            figure.panel__photo-image
+                                                a(href="#" data-photoswipe data-photoswipe-array="photos" data-photoswipe-id="7")
+                                                    img(src="images/img-photo-page-08.jpg" alt="")
+                                            h2.panel__photo-title
+                                                a(href="#").ui-link.ui-link--dark Анонимно
+                                            .panel__photo-info
+                                                p.panel__photo-date 06.06.2018
+                                                button.panel__photo-like
+                                                    +sprite('icon-photo-like')
+
+                                    li
+                                        .panel__photo
+                                            .panel__photo-control
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-hidden')
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-lock')
+                                                button.panel__photo-btn
+                                                    +sprite('icon-photo-delete')
+                                            figure.panel__photo-image
+                                                a(href="#" data-photoswipe data-photoswipe-array="photos" data-photoswipe-id="8")
+                                                    img(src="images/img-photo-page-09.jpg" alt="")
+                                            h2.panel__photo-title
+                                                a(href="#").ui-link.ui-link--dark Анонимно
+                                            .panel__photo-info
+                                                p.panel__photo-date 06.06.2018
+                                                button.panel__photo-like
+                                                    +sprite('icon-photo-like')
+                        
+
+                            .panel__pagination
+
+                                .panel__pagination-container
+
+                                    a(href="#").panel__pagination-link.panel__pagination-link--prev
+                                        +sprite('icon-pagination-prev')
+                                        | Предыдущая
+
+                                    ul.panel__pagination-menu
+                                        li
+                                            a(href="#").panel__pagination-link.is-active 1
+                                        li
+                                            a(href="#").panel__pagination-link 2
+                                        li
+                                            a(href="#").panel__pagination-link 3
+                                        li
+                                            a(href="#").panel__pagination-link 4
+                                        li
+                                            a(href="#").panel__pagination-link 5
+                                        li
+                                            a(href="#").panel__pagination-link 6
+                                        li
+                                            a(href="#").panel__pagination-link 7
+                                        li
+                                            a(href="#").panel__pagination-link 8
+                                        li
+                                            a(href="#").panel__pagination-link 9
+                                        li
+                                            a(href="#").panel__pagination-link 10
+                                        li
+                                            a(href="#").panel__pagination-link 11
+                                        li
+                                            a(href="#").panel__pagination-link 12
+                                        li
+                                            a(href="#").panel__pagination-link ...
+                                        li
+                                            a(href="#").panel__pagination-link 234
+
+                                    a(href="#").panel__pagination-link.panel__pagination-link--next
+                                        | Следующая
+                                        +sprite('icon-pagination-next')
+
+
+
+
+                .ui-notice.ui-notice--violet
+                    figure.ui-notice__icon
+                        +sprite('icon-notice-warning')
+                    .ui-notice__text
+                        p <b>Внимание!</b> Вы только что прочитали информационное уведомление
+                    .ui-notice__control
+                        a(href="#").btn.btn--36.btn--whitedark Ок
+
+
+                .ui-notice.ui-notice--green
+                    figure.ui-notice__icon
+                        +sprite('icon-notice-warning')
+                    .ui-notice__text
+                        p <b>Внимание!</b> Вы только что прочитали информационное уведомление. Оно может быть довольно длинным, например на две строки.
+                    .ui-notice__control
+                        a(href="#").btn.btn--36.btn--whitedark Ок
+                        a(href="#").btn.btn--36.btn--whitedark Отмена
+
+                
+                .ui-notice.ui-notice--red
+                    figure.ui-notice__icon
+                        +sprite('icon-notice-warning')
+                    .ui-notice__text
+                        p <b>Внимание!</b> Вы только что прочитали информационное уведомление. Оно может быть довольно длинным, например на две строки.
+                    .ui-notice__control
+                        a(href="#").btn.btn--36.btn--whitedark Ок
+
+
+                .ui-notice.ui-notice--orange
+                    figure.ui-notice__icon
+                        +sprite('icon-notice-warning')
+                    .ui-notice__text
+                        p <b>Внимание!</b> Вы только что прочитали информационное уведомление. Оно может быть довольно длинным, например на две строки.
+                    .ui-notice__control
+                        a(href="#").btn.btn--36.btn--whitedark Ок
+                        a(href="#").btn.btn--36.btn--whitedark Отмена
+
+
+    // Photo :: Start

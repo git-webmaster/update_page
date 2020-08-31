@@ -18,12 +18,14 @@ var gulp         = require('gulp'),
 	cached       = require('gulp-cached'),
 	changed      = require('gulp-changed'),
 	minify       = require('gulp-minifier'),
+	minifyStream = require('minify-stream'),
 	sass 		 = require('gulp-sass'),
 	autoprefixer = require('gulp-autoprefixer'),
 	minify_css   = require('gulp-minify-css'),
 	cleanCSS     = require('gulp-clean-css'),
 	pxtorem      = require('gulp-pxtorem'),
 	uglify 		 = require('gulp-uglify'),
+	uglify_es 	 = require('gulp-uglify-es').default,
 	spritesmith  = require('gulp.spritesmith'),
 	cheerio 	 = require('gulp-cheerio'),
 	svgmin       = require('gulp-svgmin'),
@@ -40,7 +42,29 @@ var gulp         = require('gulp'),
 	tap          = require('gulp-tap'),
 	source       = require('vinyl-source-stream'),
 	terser       = require('gulp-terser'),
-	svgo         = require('gulp-svgo');
+	svgo         = require('gulp-svgo'),
+	glob		 = require('glob');
+
+// --------------------------------------------------------------------------
+// Functions [v]
+// --------------------------------------------------------------------------
+
+function gulp_check_src(paths) {
+	paths = (paths instanceof Array) ? paths : [paths];
+
+	var existingPaths = paths.filter(function(path) {
+
+		if (glob.sync(path).length === 0) {
+			console.log("\x1b[31m", 'ERROR: "' + path + '" does NOT exist');
+
+			return false;
+		}
+
+		return true;
+	});
+
+	return gulp.src((paths.length === existingPaths.length) ? paths : false);
+}
 
 // --------------------------------------------------------------------------
 // Settings [v]
@@ -190,7 +214,7 @@ gulp.task('spriteStandalone', function() {
 // --------------------------------------------------------------------------
 // Critical [v]
 // --------------------------------------------------------------------------
-/*
+
 gulp.task('critical', function () {
 
 	return gulp
@@ -219,11 +243,11 @@ gulp.task('critical', function () {
 
 		}));
 });
-*/
+
 // --------------------------------------------------------------------------
 // Html or Pug [v]
 // --------------------------------------------------------------------------
-/*
+
 gulp.task('html', function() {
 
 	return gulp.src(src.html)
@@ -238,7 +262,7 @@ gulp.task('html', function() {
 		.pipe(gulp.dest(dist.html))
 
 });
-*/
+
 // --------------------------------------------------------------------------
 // Images [v]
 // --------------------------------------------------------------------------
@@ -343,9 +367,9 @@ gulp.task('uppy_js', function() {
 		entries: ['resources/js/uppy.js']
 	})
 	.bundle()
+	.pipe(gulpif(release_mode, minifyStream({sourceMap: false})))
 	.pipe(source('uppy.js'))
 	.pipe(buffer())
-	.pipe(gulpif(release_mode, terser()))
 	.pipe(gulp.dest(dist.js));
 });
 
@@ -354,14 +378,14 @@ gulp.task('uppy_js', function() {
 // --------------------------------------------------------------------------
 
 gulp.task('turf_js', function() {
-	browserify({
-		insertGlobals : true,
-		entries: ['resources/js/turf.js'],
+		browserify({
+			insertGlobals : true,
+			entries: ['resources/js/turf.js'],
 		})
 		.bundle()
 		.pipe(source('turf.js'))
 		.pipe(buffer())
-		.pipe(gulpif(release_mode, terser()))
+		.pipe(gulpif(release_mode, uglify_es()))
 		.pipe(gulp.dest(dist.js));
 });
 
@@ -385,7 +409,7 @@ gulp.task('js:leaflet_plugins', function() {
 			errorHandler: notify.onError("Error: <%= error.message %>")
 		}))
 		.pipe(concat('leaflet.plugins.min.js'))
-		.pipe(gulpif(release_mode, terser()))
+		.pipe(gulpif(release_mode, uglify_es()))
 		.pipe(gulp.dest(dist.js))
 });
 
@@ -419,7 +443,6 @@ var ClientFullModules = [
 	path.resolve('node_modules', 'quicklink/dist/quicklink.umd.js'),
 	path.resolve('node_modules', 'jquery/dist/jquery.js'),
 	'resources/js/jquery.passive_events.js',
-	//path.resolve('node_modules', '@tarekraafat/autocomplete.js/dist/js/autoComplete.min.js'),
 	path.resolve('node_modules', 'readmore-js/readmore.js'),
 	path.resolve('node_modules', 'jquery-touchswipe/jquery.touchSwipe.js'),
 	path.resolve('node_modules', 'selectric/public/jquery.selectric.js'),
@@ -434,10 +457,11 @@ var ClientFullModules = [
 	path.resolve('node_modules', 'chart.js/dist/Chart.js'),
 	path.resolve('node_modules', 'autosize/dist/autosize.js'),
 	path.resolve('node_modules', 'sweetalert2/dist/sweetalert2.min.js'),
-	path.resolve('node_modules', 'js-base64/base64.min.js'),
+	path.resolve('node_modules', 'js-base64/base64.js'),
 	path.resolve('node_modules', 'ua-parser-js/dist/ua-parser.min.js'),
 	path.resolve('node_modules', 'fingerprintjs2/fingerprint2.js'),
 	path.resolve('node_modules', 'garlicjs/dist/garlic.min.js'),
+	'resources/js/typeahead.bundle.min.js',
 	'resources/js/all_pages.js',
 ];
 
@@ -448,11 +472,10 @@ var ClientStandartModules = [
 	path.resolve('node_modules', 'quicklink/dist/quicklink.umd.js'),
 	path.resolve('node_modules', 'jquery/dist/jquery.js'),
 	'resources/js/jquery.passive_events.js',
-	//path.resolve('node_modules', '@tarekraafat/autocomplete.js/dist/js/autoComplete.min.js'),
 	path.resolve('node_modules', 'readmore-js/readmore.js'),
 	path.resolve('node_modules', 'sticky-kit/dist/sticky-kit.js'),
 	path.resolve('node_modules', 'jquery-touchswipe/jquery.touchSwipe.js'),
-	//path.resolve('node_modules', 'selectric/public/jquery.selectric.js'),
+	path.resolve('node_modules', 'selectric/public/jquery.selectric.js'),
 	path.resolve('node_modules', 'owl.carousel/dist/owl.carousel.min.js'),
 	path.resolve('node_modules', 'smooth-scrollbar/dist/smooth-scrollbar.js'),
 	path.resolve('node_modules', 'priority-nav/dist/priority-nav.js'),
@@ -462,10 +485,11 @@ var ClientStandartModules = [
 	path.resolve('node_modules', 'tooltipster/dist/js/tooltipster.bundle.min.js'),
 	path.resolve('node_modules', 'autosize/dist/autosize.js'),
 	path.resolve('node_modules', 'sweetalert2/dist/sweetalert2.min.js'),
-	path.resolve('node_modules', 'js-base64/base64.min.js'),
+	path.resolve('node_modules', 'js-base64/base64.js'),
 	path.resolve('node_modules', 'ua-parser-js/dist/ua-parser.min.js'),
 	path.resolve('node_modules', 'fingerprintjs2/fingerprint2.js'),
 	path.resolve('node_modules', 'garlicjs/dist/garlic.min.js'),
+	'resources/js/typeahead.bundle.min.js',
 	'resources/js/all_pages.js',
 ];
 
@@ -486,9 +510,10 @@ var ClientShortModules = [
 	path.resolve('node_modules', 'tooltipster/dist/js/tooltipster.bundle.min.js'),
 	//path.resolve('node_modules', 'autosize/dist/autosize.js'),
 	path.resolve('node_modules', 'sweetalert2/dist/sweetalert2.min.js'),
-	//path.resolve('node_modules', 'js-base64/base64.min.js'),
+	//path.resolve('node_modules', 'js-base64/base64.js'),
 	//path.resolve('node_modules', 'ua-parser-js/dist/ua-parser.min.js'),
 	//path.resolve('node_modules', 'fingerprintjs2/fingerprint2.js'),
+	'resources/js/typeahead.bundle.min.js',
 	'resources/js/all_pages.js',
 ];
 
@@ -497,7 +522,7 @@ gulp.task('js:pages', function() {
     .pipe(plumber({
 		errorHandler: notify.onError("Error: <%= error.message %>")
 	}))
-	.pipe(gulpif(release_mode, terser()))
+	.pipe(gulpif(release_mode, uglify_es()))
 	.pipe(gulp.dest(dist.js));
 
 // to concat each page file with all_pages.js :
@@ -516,45 +541,75 @@ gulp.task('js:pages', function() {
 });
 
 gulp.task('js:full_lib', function() {
-	return gulp.src(ClientFullModules)
+	return gulp_check_src(ClientFullModules)
     .pipe(plumber({
 		errorHandler: notify.onError("Error: <%= error.message %>")
 	}))
     .pipe(concat('app.full.min.js'))
-    .pipe(gulpif(release_mode, terser()))
+    .pipe(gulpif(release_mode, uglify_es()))
     .pipe(gulp.dest(dist.js))
 });
 
 gulp.task('js:standart_lib', function() {
-	return gulp.src(ClientStandartModules)
+	return gulp_check_src(ClientStandartModules)
 		.pipe(plumber({
 			errorHandler: notify.onError("Error: <%= error.message %>")
 		}))
 		.pipe(concat('app.standart.min.js'))
-		.pipe(gulpif(release_mode, terser()))
+		.pipe(gulpif(release_mode, uglify_es()))
 		.pipe(gulp.dest(dist.js))
 });
 
 gulp.task('js:short_lib', function() {
-	return gulp.src(ClientShortModules)
+	return gulp_check_src(ClientShortModules)
 		.pipe(plumber({
 			errorHandler: notify.onError("Error: <%= error.message %>")
 		}))
 		.pipe(concat('app.short.min.js'))
-		.pipe(gulpif(release_mode, terser()))
+		.pipe(gulpif(release_mode, uglify_es()))
 		.pipe(gulp.dest(dist.js))
 });
 
 gulp.task('js:plugins', function() {
-	return gulp.src([
+	return gulp_check_src([
 		//src.jsPlugins,
 		path.resolve('node_modules', 'suggestions-jquery/dist/js/jquery.suggestions.min.js')
+		])
+		.pipe(plumber({
+			errorHandler: notify.onError("Error: <%= error.message %>")
+		}))
+		.pipe(gulpif(release_mode, uglify_es()))
+		.pipe(gulp.dest(dist.js));
+});
+
+gulp.task('update-page-js', function() {
+	return gulp_check_src([
+		path.resolve('node_modules', 'jquery-validation/dist/jquery.validate.js'),
+		path.resolve('node_modules', '@shopify/draggable/lib/sortable.js'),
+		path.resolve('node_modules', 'object-hash/dist/object_hash.js'),
+		'resources/js/update.js'
+		])
+		.pipe(plumber({
+			errorHandler: notify.onError("Error: <%= error.message %>")
+		}))
+		.pipe(concat('update.js'))
+		.pipe(gulpif(release_mode, uglify_es()))
+		.pipe(gulp.dest(dist.js))
+});
+
+gulp.task('new-page-js', function() {
+	return gulp_check_src([
+		path.resolve('node_modules', 'jquery-validation/dist/jquery.validate.js'),
+		path.resolve('node_modules', '@shopify/draggable/lib/sortable.js'),
+		path.resolve('node_modules', 'object-hash/dist/object_hash.js'),
+		'resources/js/new.js'
 	])
 		.pipe(plumber({
 			errorHandler: notify.onError("Error: <%= error.message %>")
 		}))
-		.pipe(gulpif(release_mode, terser()))
-		.pipe(gulp.dest(dist.js));
+		.pipe(concat('new.js'))
+		.pipe(gulpif(release_mode, uglify_es()))
+		.pipe(gulp.dest(dist.js))
 });
 
 gulp.task('js', [
@@ -607,33 +662,34 @@ gulp.task('minify:html', function() {
 });
 */
 
-//gulp.task('minify:critical', function() {
-// return gulp.src(dist.css + 'critical/**/*.css')
-//		.pipe(minify_css())
-//   	.pipe(gulp.dest(dist.css + 'critical'))
-//	
-//});
+gulp.task('minify:critical', function() {
+
+    return gulp.src(dist.css + 'critical/**/*.css')
+		.pipe(minify_css())
+    	.pipe(gulp.dest(dist.css + 'critical'))
+
+});
 
 gulp.task('minify:css', function() {
-	
+
     return gulp.src(dist.css + '**/*.css')
 		.pipe(minify_css())
     	.pipe(gulp.dest(dist.css))
-	
+
 });
 
 gulp.task('minify:js', function() {
-	
+
 	return gulp.src(dist.js + '**/*.js')
-		.pipe(terser())
+		.pipe(uglify_es())
     	.pipe(gulp.dest(dist.js))
 	
 });
 
 gulp.task('minify', [
-	//'minify:html',
+	'minify:html',
 	'minify:css',
-	//'minify:critical',
+	'minify:critical',
 	'minify:js'
 ]);
 
@@ -652,8 +708,8 @@ gulp.task('watch', [], () => {
 	gulp.watch(src.spriteSvgInline, ['default']);
 	gulp.watch(src.spriteStandalone, ['default']);
 
-	//gulp.watch(src.html, ['html']);
-	//gulp.watch(['resources/pug/**/_*.pug', 'resources/pug/**/[^_]*.pug'], ['html']);
+	gulp.watch(src.html, ['html']);
+	gulp.watch(['resources/pug/**/_*.pug', 'resources/pug/**/[^_]*.pug'], ['html']);
 
 	gulp.watch(src.images, ['default']);
 	gulp.watch(src.scssWatch, ['default']);
@@ -663,16 +719,18 @@ gulp.task('watch', [], () => {
 
 });
 
+
+
 // Gulp
 gulp.task('default', function() {
 	
 	if (release_mode)
 	{
-		runSequence('clean', 'spriteImages', 'spriteSvg', 'spriteSvgInline', 'spriteStandalone', 'js', 'css', 'images', 'release');
+		runSequence('clean', 'spriteImages', 'spriteSvg', 'spriteSvgInline', 'spriteStandalone', 'js', 'css', 'images', 'update-page-js', 'new-page-js', 'release');
 	}
 	else
 	{
-		runSequence('clean', 'spriteImages', 'spriteSvg', 'spriteSvgInline', 'spriteStandalone',  'js', 'css', 'images');
+		runSequence('clean', 'spriteImages', 'spriteSvg', 'spriteSvgInline', 'spriteStandalone',  'js', 'css', 'images', 'update-page-js', 'new-page-js');
 	}
 	
 });

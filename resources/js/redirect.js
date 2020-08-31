@@ -1,0 +1,1 @@
+window.location.href = Base64.decode(window.page.redirect_url);

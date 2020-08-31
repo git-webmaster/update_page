@@ -1,0 +1,301 @@
+---
+title: Избранное / Клиент - Рубрикатор
+bodyClass: is-page-client
+---
+extends includes/_app-client
+
+block main
+
+    // Update :: Start
+    .l
+
+        .l__head(role="banner")
+
+            .container-fluid
+                
+                nav.l__nav.js-priority
+                    ul.l__nav-menu.js-priority-menu
+                        li
+                            a(href="#").l__nav-link.is-active
+                                +sprite('icon-portfolio')
+                                u Мои компании
+                        li
+                            a(href="#").l__nav-link
+                                +sprite('icon-comments')
+                                u Отзывы
+                        li
+                            a(href="#").l__nav-link
+                                +sprite('icon-messages')
+                                u Личные сообщения
+                        li
+                            a(href="#").l__nav-link
+                                +sprite('icon-photo')
+                                u Фотографии
+
+
+        .l__body
+            .container-fluid
+
+                // Scrolltop :: Start
+                button.scrolltop.js-scrolltop(aria-label="Прокрутить вверх")
+                    +sprite('icon-scrolltop')
+                // Scrolltop :: End
+
+                .l__wrapper
+                    .l__content
+
+
+                        // Panel :: Start
+                        .panel
+                            span.panel__heading Избранные компании
+
+                        // Panel :: End
+
+
+                        // Panel Sorting :: Start
+                        .panel
+                            .panel__sorting
+                                form(action="#")
+
+                                    .ui-input-group
+                                        .row.row-gutter-10
+                                            .col-xs-auto
+                                        
+                                                .ui-select.ui-select--46
+                                                    select.js-select
+                                                        option Новые сначала
+                                                        option Новые вконце
+
+                                            .col-xs-auto
+
+                                                .ui-input-group
+                                                    .ui-select.ui-select--46
+                                                        select.js-select
+                                                            option За все время
+                                                            option За все время 1
+                                                            option За все время 2
+                                                            option За все время 3
+
+                                                    .ui-input-append
+                                                        .ui-help.js-tooltip(title="Это подсказка...")
+                                                            +sprite('icon-help')
+
+                        // Panel Sorting :: End
+
+                .l__wrapper.js-sticky-container
+
+                    .l__content
+
+
+                        // Panel :: Start
+                        .panel.panel--delete
+                            .panel__comment
+                                .panel__comment-container
+                                    .panel__comment-sidebar
+
+                                        figure.panel__comment-picture
+                                           img(src="images/img-comment-01.png", alt="")
+
+
+                                    .panel__comment-content
+
+                                        .panel__write
+                                            .ui-edit
+                                                figure.ui-edit__icon
+                                                    +sprite('icon-edit-notice')
+                                                input(type="text" placeholder="Написать заметку (её увидите только вы)").ui-edit__input
+
+                                        .panel__company
+
+                                            p.panel__company-title
+                                                a(href="#").ui-link.ui-link--underline.ui-link--blue Ренессанс страхование
+
+                                            ul.panel__company-list
+                                                li
+                                                    +sprite('icon-comments')
+                                                    | 18 отзывов
+                                                li
+                                                    +sprite('icon-phone')
+                                                    | +7 (921) 19-15-105<br>+7 (953) 20-11-155  
+                                                li
+                                                    +sprite('icon-time')
+                                                    | Работает сегодня: 09:00 - 18:30
+                                                li
+                                                    +sprite('icon-location')
+                                                    | Санкт-Петербург, Зелёный проспект, 20
+
+                                    
+                                    button.panel__delete
+                                        +sprite('icon-delete')
+                        // Panel :: End
+
+
+                        // Panel :: Start
+                        .panel.panel--delete
+
+                            .panel__topbar
+                                figure.panel__topbar-icon
+                                    +sprite('icon-feedback')
+                                span.panel__topbar-title
+                                    a(href="#").ui-link.ui-link--underline.ui-link--blue Ренессанс страхование
+
+                            .panel__comment
+
+                                .panel__comment-container
+                                    .panel__comment-sidebar
+
+                                        .panel__comment-user
+                                            p.panel__comment-user-name
+                                                a(href="#") Назарий О.
+
+                                        p.panel__comment-date 16 дек. 2018 #[span.is-md-visible в 15:04]
+
+                                        ul.panel__comment-list
+                                            li
+                                                img(src="images/img-location-ru.png" alt="" aria-hidden="true")
+                                                span.is-md-visible Санкт-Петербург
+                                            li
+                                                span.icon-mark.icon-mark--green 4
+                                                span.is-md-visible оценка
+                                            li
+                                                span.icon-circle.icon-circle--green
+                                                span.is-md-visible Положительный
+
+
+                                    .panel__comment-content
+
+                                        .panel__write
+                                            .ui-edit
+                                                figure.ui-edit__icon
+                                                    +sprite('icon-edit-notice')
+                                                input(type="text" placeholder="Написать заметку (её увидите только вы)").ui-edit__input
+
+                                        .panel__comment-message
+                                            p Был смят бок, въехали на парковке. Расчет сделали быстро, предложили несколько вариантов СТО на выбор – что-то подальше, что-то поближе. Выбрали наиболее комфортный вариант для нас, сотрудники страховой все время на связи были, подсказывали что и как. Сам ремонт довольно качественный, довольны.
+
+                                    button.panel__delete
+                                        +sprite('icon-delete')
+
+                                
+                        // Panel :: End
+
+
+                        // Panel :: Start
+                        .panel.panel--delete
+
+                            blockquote.panel__message
+
+                                .panel__message-head
+                                    span.panel__message-name Активный_Автор
+                                    span.panel__message-time 13.12.17 в 22:34
+                                
+                         
+                                .panel__message-body
+                                    p Привет. Могу забрать на этой неделе в пятницу. Набор точно новый не вскрытый?
+                                    button.panel__delete
+                                        +sprite('icon-delete')
+
+
+                        // Panel :: End
+
+
+                        // Panel :: Start
+                        .panel
+                            .panel__photos
+
+                                .panel__photos-carousel.owl-carousel.owl-photos.js-owl-photos
+                                    
+                                    .panel__photo
+                                        figure.panel__photo-image
+                                            img(src="images/img-photo-favorites-01.png" alt="")
+                                        h2.panel__photo-title
+                                            a(href="#").ui-link.ui-link--dark Анонимно
+                                        .panel__photo-info
+                                            p.panel__photo-date 06.06.2018
+                                            button.panel__photo-like
+                                                +sprite('icon-photo-like')
+
+                                    .panel__photo
+                                        figure.panel__photo-image
+                                            img(src="images/img-photo-favorites-02.png" alt="")
+                                        h2.panel__photo-title
+                                            a(href="#").ui-link.ui-link--dark Вот так выглядит обещанный номер 
+                                        .panel__photo-info
+                                            p.panel__photo-date 06.06.2018
+                                            button.panel__photo-like
+                                                +sprite('icon-photo-like')
+
+                                    .panel__photo
+                                        figure.panel__photo-image
+                                            img(src="images/img-photo-favorites-03.png" alt="")
+                                        h2.panel__photo-title
+                                            a(href="#").ui-link.ui-link--dark Анонимно
+                                        .panel__photo-info
+                                            p.panel__photo-date 06.06.2018
+                                            button.panel__photo-like
+                                                +sprite('icon-photo-like')
+
+                                    .panel__photo
+                                        figure.panel__photo-image
+                                            img(src="images/img-photo-favorites-04.png" alt="")
+                                        h2.panel__photo-title
+                                            a(href="#").ui-link.ui-link--dark Анонимно
+                                        .panel__photo-info
+                                            p.panel__photo-date 06.06.2018
+                                            button.panel__photo-like
+                                                +sprite('icon-photo-like')
+
+                        // Panel :: End
+
+                        // Panel Pagination :: Start
+                        .panel
+                            .panel__pagination
+
+                                .panel__pagination-container
+
+                                    a(href="#").panel__pagination-link.panel__pagination-link--prev
+                                        +sprite('icon-pagination-prev')
+                                        | Предыдущая
+                                    
+                                    ul.panel__pagination-menu
+                                        li
+                                            a(href="#").panel__pagination-link.is-active 1
+                                        li
+                                            a(href="#").panel__pagination-link 2
+                                        li
+                                            a(href="#").panel__pagination-link 3
+                                        li
+                                            a(href="#").panel__pagination-link 4
+                                        li
+                                            a(href="#").panel__pagination-link 5
+                                        li
+                                            a(href="#").panel__pagination-link 6
+                                        li
+                                            a(href="#").panel__pagination-link 7
+                                        li
+                                            a(href="#").panel__pagination-link 8
+                                        li
+                                            a(href="#").panel__pagination-link 9
+                                        li
+                                            a(href="#").panel__pagination-link ...
+                                        li
+                                            a(href="#").panel__pagination-link 234
+
+                                    a(href="#").panel__pagination-link.panel__pagination-link--next
+                                        | Следующая
+                                        +sprite('icon-pagination-next')
+
+
+                        // Panel Pagination :: End
+
+
+                    .l__sidebar
+
+                        // Panel Banner :: Start
+                        .panel.js-sticky
+                            .panel__container.is-xl-visible
+
+                                .panel__banner.panel__banner-336x280
+                                    img(src="images/banner-336x280.jpg" alt="" aria-hidden="true")
+
+                        // Panel Banner :: End

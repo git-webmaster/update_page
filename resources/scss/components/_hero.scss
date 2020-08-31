@@ -21,14 +21,6 @@
     bottom: 0;
     z-index: -1;
 
-    background: repeating-linear-gradient(
-      45deg,
-      rgba(#606dbc,0.1),
-      rgba(#606dbc,0.1) 10px,
-      rgba(#465298, 0.1) 10px,
-      rgba(#465298, 0.1) 20px
-    );
-
     img {
         display: block;
         position: absolute;
@@ -38,6 +30,20 @@
         height: 100%;
         object-fit: cover;
     }
+}
+
+.hero__main {
+    background: url("/images/main.svg") repeat-x;
+    background-size: cover;
+    opacity: 0.7;
+    border-bottom: 1px solid #ccc;
+}
+
+.hero__city {
+    background: url("/images/city.svg") repeat-x;
+    background-size: cover;
+    opacity: 0.6;
+    border-bottom: 1px solid #ccc;
 }
 
 .hero__logo {
@@ -52,7 +58,18 @@
     }
 }
 
+.hero__bg--pink {
+    background: #ffe0d940 !important;
+}
 
+.hero__bg--pink-head {
+    background: rgb(255,224,217);
+    background: linear-gradient(0deg, rgba(255,224,217,0.4) 0%, rgba(245,245,245,1) 90%);
+}
+
+.hero__bg--gray {
+    background: #fafafa !important;
+}
 
 .hero__countries {
     @include list-style-none;
@@ -62,15 +79,32 @@
     justify-content: space-evenly;
     font-size: 18px;
     line-height: 20px;
-    padding: 20px 0 0;
+    //padding: 20px 0 0;
     margin: 0 -16px;
     & > li {
-        padding: 0 16px;
+        padding: 0 30px;
         margin: 0 0 20px;
     }
 
+
+    @include breakpointMax(md) {
+        & > li {
+            margin: 0;
+        }
+    }
+
+
+    @include breakpointMax(xs) {
+        & > li {
+            margin-bottom: 20px;
+        }
+        & > li:last-child {
+            margin: 0;
+        }
+    }
+
     @include breakpoint(md) {
-        margin-bottom: -40px;
+        //margin-bottom: -40px;
         justify-content: center;
         & > li {
             margin: 0;
@@ -91,13 +125,23 @@
 }
 
 .hero__heading {
-    font-size: 24px;
+
+    font-size: 26px;
     line-height: 1.2;
     font-weight: 400;
     text-align: center;
-    margin: 0 0 30px;
+
+    margin: 0 auto;
+    margin-bottom: 30px;
+    padding: 5px;
+    background: #f6e3d9dd;
+    width: fit-content;
+
+    border-radius: 5px;
+
     @include breakpoint(lg) {
         font-size: 30px;
+        padding: 8px;
     }
 }
 

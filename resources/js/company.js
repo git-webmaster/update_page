@@ -354,6 +354,18 @@
 		$('.swal2-confirm').html('Оплатить ' + window.page.prices.reviews[days_number] + ' руб.');
 	});
 
+	jdoc.on('click', '.report-error-link', function(e) {
+		e.preventDefault();
+		if (window.page.type === 'company')
+		{
+			window.open('/update/' + window.page.id,"_blank");
+		}
+		else
+		{
+			//todo: добавить тут окно общего рапорта об ошибке
+		}
+	});
+
 	jdoc.on('click', '.nsfw-disabled', function(e) {
 		e.preventDefault();
 		toast('Отзывы с неприемлемым контентом на этой странице запрещены', 'info');
@@ -1145,7 +1157,7 @@
 						id: window.page.id,
 						value: window.page.reviews_offset + window.page.reviews_limit,
 					},
-				})
+					})
 					.done(function(data)
 					{
 						var result = String(data).match(/({"status".*"})/gm);
@@ -1822,6 +1834,7 @@
 	// --------------------------------------------------------------------------
 
 	var uppy, uppy_init = false, uppy_locale_ru = {}, success_uploads = 0;
+
 	var thumb_template =
 		'<figure class="ui-upload__image">' +
 		'    <img alt="" aria-hidden="true" src="%url%">' +
@@ -3138,6 +3151,7 @@
 			e.preventDefault();
 			window.open(window.page.b_link,"_blank");
 		});
+
 	}
 
 	// end hotel

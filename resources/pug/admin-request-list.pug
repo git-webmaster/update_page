@@ -1,0 +1,1194 @@
+---
+title: Заявки на обновление / Админ - Рубрикатор
+bodyClass: is-page-admin
+---
+extends includes/_app-admin
+
+block main
+
+    // Request list :: Start
+    .l.l--admin
+
+        // Scrolltop :: Start
+        button.scrolltop.js-scrolltop(aria-label="Прокрутить вверх")
+            +sprite('icon-scrolltop')
+        // Scrolltop :: End
+
+        .l__head(role="banner")
+
+            .container-fluid
+
+                nav.l__nav.js-priority
+                    ul.l__nav-menu.js-priority-menu
+                        li
+                            a(href="#").l__nav-link
+                                +sprite('icon-portfolio')
+                                u Дашборд
+                        li
+                            a(href="#").l__nav-link.is-active
+                                +sprite('icon-refresh')
+                                u Заявки на обновление (2/1160)
+                        li
+                            a(href="#").l__nav-link
+                                +sprite('icon-comments')
+                                u Новые отзывы
+                        li
+                            a(href="#").l__nav-link
+                                +sprite('icon-photos')
+                                u Новые фото
+                        li
+                            a(href="#").l__nav-link
+                                +sprite('icon-interlocking')
+                                u Блокировочная
+                        li
+                            a(href="#").l__nav-link
+                                +sprite('icon-settings')
+                                u Настройки
+                        li
+                            a(href="#").l__nav-link
+                                +sprite('icon-mysql')
+                                u MySQL adminer
+
+
+        .l__body
+
+            .container-fluid
+
+            
+                // Panel heading, period, sorting :: Start
+                .panel
+
+                    span.panel__heading
+                        span.panel__heading-text Заявки на обновление
+                        span.panel__heading-count 0-10 из 1027 открытых
+
+                    nav.panel__period
+                        ul.panel__period-menu
+                            li
+                                button.panel__period-btn.is-active Все
+                            li
+                                button.panel__period-btn Сегодня
+                            li
+                                button.panel__period-btn Вчера
+                            li
+                                button.panel__period-btn Неделя
+                            li
+                                button.panel__period-btn Месяц
+
+                    .panel__sorting
+
+                        .panel__sorting-grid
+
+                            .panel__sorting-type
+
+                                .ui-select.ui-select--46
+                                    select.js-select
+                                        option Fingerprint
+                                        option Fingerprint 1
+                                        option Fingerprint 2
+                                        option Fingerprint 3
+                                        option Fingerprint 4
+                                        option Fingerprint 5
+
+                            .panel__sorting-search
+                                .row
+                                    .col
+                                        input(type="search" placeholder="Поиск").ui-input.ui-input--46
+                                    .col-auto
+                                        button.btn.btn--46.btn--darklight Искать
+                                    .col-12.col-xs-auto
+                                        button.btn.btn--46.btn--w155.btn--darklight Выбрать все
+
+                            .panel__sorting-visibility
+
+                                .row.row-gutter-10
+                                    .col-xs
+
+                                        .ui-group
+                                            label.ui-check
+                                                input(type="radio" name="open_close" checked).ui-check__input
+                                                span.ui-check__btn.ui-check__btn--46 Открытые
+                                            label.ui-check
+                                                input(type="radio" name="open_close").ui-check__input
+                                                span.ui-check__btn.ui-check__btn--46 Закрытые
+
+                                    .col-xs-auto
+
+                                        .ui-select.ui-select--46.ui-select--w155
+                                            select.js-select
+                                                option по 10
+                                                option по 20
+                                                option по 30
+                                                option по 40
+                                                option по 50
+
+
+                // Panel heading, period, sorting :: End
+
+                // Panel Requests :: Start
+                .panel
+                   
+                    // Request :: Start
+                    .panel__renewal.panel__renewal--premium
+
+                        
+
+                        .panel__renewal-wrapper
+                            .panel__renewal-sidebar
+
+                                p.panel__renewal-percent 72%
+
+                            .panel__renewal-content
+
+                                .panel__renewal-details
+
+                                    .panel__renewal-badges
+                                        span.ui-badge.ui-badge--greenlight 4.8
+                                        span.ui-badge.ui-badge--grey 64 отзыва
+                                        span.ui-badge.ui-badge--premium Premium
+
+                                    span.panel__renewal-title Ягурар, Служба проката автомобилей
+
+                                    span.panel__renewal-url
+                                        a(href="#").ui-link.ui-link--green http://rubrikator.org/russia/anapa/yaguar
+
+                                .panel__renewal-group
+
+                                    .panel__renewal-user
+                                        p.panel__renewal-user-name Аноним
+
+                                    .panel__renewal-action
+                                        button.panel__renewal-action-btn
+                                            +sprite('icon-target-blank')
+                                        button.panel__renewal-action-btn
+                                            +sprite('icon-delete')
+
+
+                        .panel__renewal-wrapper
+                            .panel__renewal-sidebar
+
+                                .panel__renewal-check
+
+                                    label.ui-check.ui-check--dark
+                                        input(type="checkbox" name="").ui-check__input.js-flag
+                                        span.ui-check__checkbox
+                                            +sprite('icon-checked')
+
+                            .panel__renewal-content
+                                ul.panel__renewal-info
+                                    li.panel__renewal-info-city Анапа
+                                    li.panel__renewal-info-count 12 заявок
+                                p.panel__renewal-date 26.07.2018 19:17
+
+
+                    // Request :: End
+
+                    // Request :: Start
+                    .panel__renewal.panel__renewal--red
+
+                        .panel__renewal-wrapper
+                            .panel__renewal-sidebar
+
+                                p.panel__renewal-percent 21%
+
+                            .panel__renewal-content
+
+                                .panel__renewal-details
+
+                                    .panel__renewal-badges
+                                        span.ui-badge.ui-badge--red 3
+                                        span.ui-badge.ui-badge--grey 21 отзыв
+
+                                    span.panel__renewal-title Равис, Салон мебели
+
+                                    span.panel__renewal-url
+                                        a(href="#").ui-link.ui-link--green http://rubrikator.org/russia/saint-petersburg/tatius
+
+                                .panel__renewal-group
+
+                                    .panel__renewal-user
+                                        p.panel__renewal-user-name
+                                            a(href="#").ui-link.ui-link--underline.ui-link--blue Петр Петров
+
+                                    .panel__renewal-action
+                                        button.panel__renewal-action-btn
+                                            +sprite('icon-target-blank')
+                                        button.panel__renewal-action-btn
+                                            +sprite('icon-delete')
+
+
+                        .panel__renewal-wrapper
+                            .panel__renewal-sidebar
+
+                                .panel__renewal-check
+
+                                    label.ui-check.ui-check--dark
+                                        input(type="checkbox" name="").ui-check__input.js-flag
+                                        span.ui-check__checkbox
+                                            +sprite('icon-checked')
+
+                            .panel__renewal-content
+                                ul.panel__renewal-info
+                                    li.panel__renewal-info-city Анапа
+                                    li.panel__renewal-info-count 2 заявки
+                                p.panel__renewal-date 26.07.2018 19:17
+
+
+                    // Request :: End
+
+                    
+                    // Request :: Start
+                    .panel__renewal.panel__renewal--green
+
+
+                        .panel__renewal-wrapper
+                            .panel__renewal-sidebar
+
+                                p.panel__renewal-percent 81%
+
+                            .panel__renewal-content
+
+                                .panel__renewal-details
+
+                                    .panel__renewal-badges
+                                        span.ui-badge.ui-badge--greenlight 4.4
+                                        span.ui-badge.ui-badge--grey 21 отзыв
+
+                                    span.panel__renewal-title Tatius, Салон мебели
+
+                                    span.panel__renewal-url
+                                        a(href="#").ui-link.ui-link--green http://rubrikator.org/russia/saint-petersburg/tatius
+
+                                
+                                .panel__renewal-group
+
+                                    .panel__renewal-user
+                                        p.panel__renewal-user-name
+                                            a(href="#").ui-link.ui-link--underline.ui-link--blue username
+
+                                    .panel__renewal-action
+                                        button.panel__renewal-action-btn
+                                            +sprite('icon-target-blank')
+                                        button.panel__renewal-action-btn
+                                            +sprite('icon-delete')
+
+
+                        .panel__renewal-wrapper
+                            .panel__renewal-sidebar
+
+                                .panel__renewal-check
+
+                                    label.ui-check.ui-check--dark
+                                        input(type="checkbox" name="").ui-check__input.js-flag
+                                        span.ui-check__checkbox
+                                            +sprite('icon-checked')
+
+                            .panel__renewal-content
+                                ul.panel__renewal-info
+                                    li.panel__renewal-info-city Анапа
+                                    li.panel__renewal-info-count 2 заявки
+                                p.panel__renewal-date 26.07.2018 19:17
+
+
+                    // Request :: End
+
+
+                    // Request :: Start
+                    .panel__renewal.panel__renewal--orange
+
+
+                        .panel__renewal-wrapper
+                            .panel__renewal-sidebar
+
+                                p.panel__renewal-percent 47%
+
+                            .panel__renewal-content
+
+                                .panel__renewal-details
+
+                                    .panel__renewal-badges
+                                        span.ui-badge.ui-badge--greenlight 4
+                                        span.ui-badge.ui-badge--grey 21 отзыв
+
+                                    span.panel__renewal-title Равис, Салон мебели
+
+                                    span.panel__renewal-url
+                                        a(href="#").ui-link.ui-link--green http://rubrikator.org/russia/saint-petersburg/tatius
+
+
+                                .panel__renewal-group
+
+                                    .panel__renewal-user
+                                        p.panel__renewal-user-name
+                                            a(href="#").ui-link.ui-link--underline.ui-link--blue username
+                                        blockquote.panel__renewal-user-comment Прошу обновить информацию так как у нас поменялись телефоны и адреса, и появился новый филиал. Алексей 
+
+                                    .panel__renewal-action
+                                        button.panel__renewal-action-btn
+                                            +sprite('icon-target-blank')
+                                        button.panel__renewal-action-btn
+                                            +sprite('icon-delete')
+
+
+
+
+                        .panel__renewal-wrapper
+                            .panel__renewal-sidebar
+
+                                .panel__renewal-check
+
+                                    label.ui-check.ui-check--dark
+                                        input(type="checkbox" name="").ui-check__input.js-flag
+                                        span.ui-check__checkbox
+                                            +sprite('icon-checked')
+
+                            .panel__renewal-content
+                                ul.panel__renewal-info
+                                    li.panel__renewal-info-city Анапа
+                                    li.panel__renewal-info-count 2 заявки
+                                p.panel__renewal-date 26.07.2018 19:17
+
+        
+                    // Request :: End
+
+                // Panel Requests :: End
+
+
+                // Panel Flag :: Start
+                .panel
+                    .panel__flag
+                        .row
+                            .col-xs-auto
+                                label.ui-label Отмеченные
+
+                            .col.col-xs-auto
+                                .ui-select.ui-select--46
+                                    select.js-select
+                                        option Fingerprint
+                                        option Fingerprint 1
+                                        option Fingerprint 2
+                                        option Fingerprint 3
+                                        option Fingerprint 4
+                                        option Fingerprint 5
+
+                            .col-auto.col-xs-auto
+                                button.btn.btn--46.btn--dark Выполнить
+                // Panel Flag :: End
+
+                
+                // Panel Line :: Start
+                .panel
+                    .panel__line
+                
+                // Panel line :: End
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                // Panel heading, period, sorting :: Start
+                .panel
+
+                    span.panel__heading
+                        span.panel__heading-text Отзывы
+                        span.panel__heading-count 0-10 из 1027 открытых
+
+                    nav.panel__period
+                        ul.panel__period-menu
+                            li
+                                button.panel__period-btn.is-active Все
+                            li
+                                button.panel__period-btn Сегодня
+                            li
+                                button.panel__period-btn Вчера
+                            li
+                                button.panel__period-btn Неделя
+                            li
+                                button.panel__period-btn Месяц
+
+                    .panel__sorting
+
+                        .panel__sorting-grid
+
+
+                            .panel__sorting-typeof
+
+                                .ui-group
+                                    label.ui-check
+                                        input(type="radio" name="display").ui-check__input
+                                        span.ui-check__display.ui-check__display--46
+                                            +sprite('icon-display-grid')
+                                    label.ui-check
+                                        input(type="radio" name="display").ui-check__input
+                                        span.ui-check__display.ui-check__display--46
+                                            +sprite('icon-display-list')
+
+                            .panel__sorting-type
+
+                                .ui-select.ui-select--46
+                                    select.js-select
+                                        option Fingerprint
+                                        option Fingerprint 1
+                                        option Fingerprint 2
+                                        option Fingerprint 3
+                                        option Fingerprint 4
+                                        option Fingerprint 5
+
+                            .panel__sorting-search
+                                .row
+                                    .col
+                                        input(type="search" placeholder="Поиск").ui-input.ui-input--46
+                                    .col-auto
+                                        button.btn.btn--46.btn--darklight Искать
+                                    .col-12.col-xs-auto
+                                        button.btn.btn--46.btn--w155.btn--darklight Выбрать все
+
+                            .panel__sorting-visibility
+
+                                .row.row-gutter-10
+                                    .col-xs
+
+                                        .ui-group
+                                            label.ui-check
+                                                input(type="radio" name="open_close" checked).ui-check__input
+                                                span.ui-check__btn.ui-check__btn--46 Открытые
+                                            label.ui-check
+                                                input(type="radio" name="open_close").ui-check__input
+                                                span.ui-check__btn.ui-check__btn--46 Закрытые
+
+                                    .col-xs-auto
+
+                                        .ui-select.ui-select--46.ui-select--w155
+                                            select.js-select
+                                                option по 10
+                                                option по 20
+                                                option по 30
+                                                option по 40
+                                                option по 50
+
+
+                // Panel heading, period, sorting :: End
+
+
+                
+                // Panel Comments :: Start
+                .panel
+
+                    // Comment :: Start
+                    .panel__comment
+
+                        .panel__comment-flag
+                            
+                            .panel__comment-check
+                                label.ui-check
+                                    input(type="checkbox" name="").ui-check__input.js-flag
+                                    span.ui-check__checkbox
+                                        +sprite('icon-checked')
+
+                            .panel__comment-url
+                                a(href="#").ui-link.ui-link--underline.ui-link--blue Tatius, Салон мебели и интерьерная мастерская
+
+                            .panel__comment-badges
+                                span.ui-badge.ui-badge--greenlight 4.8
+                                span.ui-badge.ui-badge--grey 64 отзыва
+                                span.ui-badge.ui-badge--grey Москва
+
+
+
+                        .panel__comment-container
+                            .panel__comment-sidebar
+
+                                .panel__comment-user
+                                    p.panel__comment-user-name
+                                        a(href="#") Петр Е
+
+                                p.panel__comment-date 14 дек. 2018 #[span.is-md-visible в 15:04]
+
+                                ul.panel__comment-list
+                                    li
+                                        img(src="images/img-location-ru.png" alt="" aria-hidden="true")
+                                        span.is-md-visible Санкт-Петербург
+                                    li
+                                        span.icon-mark.icon-mark--red 3
+                                        span.is-md-visible оценка
+                                    li
+                                        span.icon-circle.icon-circle--red
+                                        span.is-md-visible Отрицательный
+
+
+                            .panel__comment-content
+
+                                .ui-toggle.js-toggle
+                                    button.ui-toggle__btn.js-toggle-btn(aria-expanded="true" aria-controls="toggle-08")
+                                        +sprite('icon-dots')
+                                    .ui-toggle__dropdown.js-toggle-dropdown#toggle-08
+                                        ul.ui-toggle__menu
+                                            li
+                                                a(href="#").ui-toggle__link Пометить все отзывы
+                                            li
+                                                a(href="#").ui-toggle__link Контакты пользователя
+                                            li
+                                                a(href="#").ui-toggle__link Закрепить отзыв
+                                            li
+                                                a(href="#").ui-toggle__link Пожаловаться
+
+
+                                .panel__comment-message
+                                    p Ходим всей семьей. Очень нравятся мужские и детские стрижки. Четкие линии, Аккуратные и главное быстро. Мастер универсал - Ирина работает профессионально. Спасибо Вам  
+
+
+                                .panel__comment-control
+                                    .panel__comment-voice
+
+                                        .ui-voice.ui-voice--red
+                                            button.ui-voice__btn.ui-voice__btn--like
+                                                span.is-visible-default
+                                                    +sprite('icon-like')
+                                                span.is-visible-blind
+                                                    span.is-xs-visible Голосовать за
+                                                    span.is-xs-hidden За
+                                            p.ui-voice__number 10
+                                            button.ui-voice__btn.ui-voice__btn--dislike
+                                                span.is-visible-default
+                                                    +sprite('icon-dislike')
+                                                span.is-visible-blind
+                                                    span.is-xs-visible Голосовать против
+                                                    span.is-xs-hidden Против
+
+                                    .panel__comment-buttons
+                                        button.btn.btn--36.btn--whitedark Ответить
+
+                            .panel__comment-settings
+                                
+                                .panel__comment-info.js-collapse
+                                    button.panel__comment-info-btn.js-collapse-btn
+                                        +sprite('icon-view')
+                                        | Показать инфо
+                                    .panel__comment-info-content.js-collapse-content
+                                        ul.panel__comment-info-list
+                                            li ID: #[mark 2345789]
+                                            li IP: #[mark 46.676.767.866]
+                                            li FP: #[mark 787654687]
+                                            li DT: #[mark 16-10-2018  16:34:43]
+                                            li DV: #[mark PC]
+                                            li PL: #[mark Windows]
+                                            li BR: #[mark Chrome 66.0.3356.170]
+                                            li SD: #[mark 1920x1080]
+                                            li BD: #[mark 1827x1014]
+                                            li TW: #[mark 1]
+                                            li UA: #[mark hover]
+                                            li RF: #[mark hover]
+
+
+                                .panel__comment-action
+
+                                    .panel__comment-action-left
+
+                                        .panel__comment-action-group
+                                            button.btn.btn--34.btn--whitedark.btn--outline-red Отриц
+                                            button.btn.btn--34.btn--whitedark Нейтр
+                                            button.btn.btn--34.btn--whitedark.btn--outline-green Полож
+
+                                        button.btn.btn--34.btn--whitedark Метка
+                                        button.btn.btn--34.btn--whitedark Сбросить
+                                        button.btn.btn--34.btn--whitedark Скрыть
+
+                                    .panel__comment-action-right
+                                        button.btn.btn--34.btn--whitedark.btn--outline-dark Бан
+                                        button.btn.btn--34.btn--whitedark.btn--outline-green Обновить
+                                        button.btn.btn--34.btn--whitedark.btn--outline-orange Редактировать
+                                        button.btn.btn--34.btn--whitedark.btn--outline-red Удалить
+
+
+                    // Comment :: End
+
+
+                    // Comment :: Start
+                    .panel__comment.panel__comment--tagged
+
+                        .panel__comment-flag
+                            
+                            .panel__comment-check
+                                label.ui-check
+                                    input(type="checkbox" name="").ui-check__input.js-flag
+                                    span.ui-check__checkbox
+                                        +sprite('icon-checked')
+
+                            .panel__comment-url
+                                a(href="#").ui-link.ui-link--underline.ui-link--blue Магазин парфюмерии на Дзержинского 31
+
+                            .panel__comment-badges
+                                span.ui-badge.ui-badge--red 3.8
+                                span.ui-badge.ui-badge--grey 64 отзыва
+                                span.ui-badge.ui-badge--grey Москва
+
+
+                            .panel__comment-tagged
+                                | Меченый ip
+                                span.ui-help.js-tooltip(title="Это подсказка...")
+                                     +sprite('icon-help')
+
+
+                        .panel__comment-container
+                            .panel__comment-sidebar
+
+                                .panel__comment-user
+                                    p.panel__comment-user-name
+                                        a(href="#") Петр Е
+
+                                p.panel__comment-date 14 дек. 2018 #[span.is-md-visible в 15:04]
+
+                                ul.panel__comment-list
+                                    li
+                                        img(src="images/img-location-ru.png" alt="" aria-hidden="true")
+                                        span.is-md-visible Санкт-Петербург
+                                    li
+                                        span.icon-mark.icon-mark--red 3
+                                        span.is-md-visible оценка
+                                    li
+                                        span.icon-circle.icon-circle--red
+                                        span.is-md-visible Отрицательный
+
+
+                            .panel__comment-content
+
+                                .ui-toggle.js-toggle
+                                    button.ui-toggle__btn.js-toggle-btn(aria-expanded="true" aria-controls="toggle-08")
+                                        +sprite('icon-dots')
+                                    .ui-toggle__dropdown.js-toggle-dropdown#toggle-08
+                                        ul.ui-toggle__menu
+                                            li
+                                                a(href="#").ui-toggle__link Пометить все отзывы
+                                            li
+                                                a(href="#").ui-toggle__link Контакты пользователя
+                                            li
+                                                a(href="#").ui-toggle__link Закрепить отзыв
+                                            li
+                                                a(href="#").ui-toggle__link Пожаловаться
+
+
+                                .panel__comment-message
+                                    p Ходим всей семьей. Очень нравятся мужские и детские стрижки. Четкие линии, Аккуратные и главное быстро. Мастер универсал - Ирина работает профессионально. Спасибо Вам  
+
+
+                                .panel__comment-control
+                                    .panel__comment-voice
+
+                                        .ui-voice.ui-voice--red
+                                            button.ui-voice__btn.ui-voice__btn--like
+                                                span.is-visible-default
+                                                    +sprite('icon-like')
+                                                span.is-visible-blind
+                                                    span.is-xs-visible Голосовать за
+                                                    span.is-xs-hidden За
+                                            p.ui-voice__number 10
+                                            button.ui-voice__btn.ui-voice__btn--dislike
+                                                span.is-visible-default
+                                                    +sprite('icon-dislike')
+                                                span.is-visible-blind
+                                                    span.is-xs-visible Голосовать против
+                                                    span.is-xs-hidden Против
+
+                                    .panel__comment-buttons
+                                        button.btn.btn--36.btn--whitedark Ответить
+
+                            .panel__comment-settings
+                                
+                                .panel__comment-info.js-collapse
+                                    button.panel__comment-info-btn.js-collapse-btn
+                                        +sprite('icon-view')
+                                        | Показать инфо
+                                    .panel__comment-info-content.js-collapse-content
+                                        ul.panel__comment-info-list
+                                            li ID: #[mark 2345789]
+                                            li IP: #[mark 46.676.767.866]
+                                            li FP: #[mark 787654687]
+                                            li DT: #[mark 16-10-2018  16:34:43]
+                                            li DV: #[mark PC]
+                                            li PL: #[mark Windows]
+                                            li BR: #[mark Chrome 66.0.3356.170]
+                                            li SD: #[mark 1920x1080]
+                                            li BD: #[mark 1827x1014]
+                                            li TW: #[mark 1]
+                                            li UA: #[mark hover]
+                                            li RF: #[mark hover]
+
+
+                                .panel__comment-action
+
+                                    .panel__comment-action-left
+
+                                        .panel__comment-action-group
+                                            button.btn.btn--34.btn--whitedark.btn--outline-red Отриц
+                                            button.btn.btn--34.btn--whitedark Нейтр
+                                            button.btn.btn--34.btn--whitedark.btn--outline-green Полож
+
+                                        button.btn.btn--34.btn--whitedark Метка
+                                        button.btn.btn--34.btn--whitedark Сбросить
+                                        button.btn.btn--34.btn--whitedark Скрыть
+
+                                    .panel__comment-action-right
+                                        button.btn.btn--34.btn--whitedark.btn--outline-dark Бан
+                                        button.btn.btn--34.btn--whitedark.btn--outline-green Обновить
+                                        button.btn.btn--34.btn--whitedark.btn--outline-orange Редактировать
+                                        button.btn.btn--34.btn--whitedark.btn--outline-red Удалить
+
+
+                    // Comment :: End
+
+                // Panel Comments :: End
+
+
+
+                // Panel Flag :: Start
+                .panel
+                    .panel__flag
+                        .row
+                            .col-xs-auto
+                                label.ui-label Отмеченные
+
+                            .col.col-xs-auto
+                                .ui-select.ui-select--46
+                                    select.js-select
+                                        option Fingerprint
+                                        option Fingerprint 1
+                                        option Fingerprint 2
+                                        option Fingerprint 3
+                                        option Fingerprint 4
+                                        option Fingerprint 5
+
+                            .col-auto.col-xs-auto
+                                button.btn.btn--46.btn--dark Выполнить
+                // Panel Flag :: End
+
+                
+                // Panel Line :: Start
+                .panel
+                    .panel__line
+                
+                // Panel line :: End
+
+
+
+                
+
+
+
+
+
+
+
+
+
+                // Panel heading, period, sorting :: Start
+                .panel
+
+                    span.panel__heading
+                        span.panel__heading-text Фотографии
+                        span.panel__heading-count 0-10 из 1027 открытых
+
+                    nav.panel__period
+                        ul.panel__period-menu
+                            li
+                                button.panel__period-btn.is-active Все
+                            li
+                                button.panel__period-btn Сегодня
+                            li
+                                button.panel__period-btn Вчера
+                            li
+                                button.panel__period-btn Неделя
+                            li
+                                button.panel__period-btn Месяц
+
+                    .panel__sorting
+
+                        .panel__sorting-grid
+
+
+                            .panel__sorting-typeof
+
+                                .ui-group
+                                    label.ui-check
+                                        input(type="radio" name="display").ui-check__input
+                                        span.ui-check__display.ui-check__display--46
+                                            +sprite('icon-display-grid')
+                                    label.ui-check
+                                        input(type="radio" name="display").ui-check__input
+                                        span.ui-check__display.ui-check__display--46
+                                            +sprite('icon-display-list')
+
+
+                            .panel__sorting-type
+
+                                .ui-select.ui-select--46
+                                    select.js-select
+                                        option Fingerprint
+                                        option Fingerprint 1
+                                        option Fingerprint 2
+                                        option Fingerprint 3
+                                        option Fingerprint 4
+                                        option Fingerprint 5
+
+                            .panel__sorting-search
+                                .row
+                                    .col
+                                        input(type="search" placeholder="Поиск").ui-input.ui-input--46
+                                    .col-auto
+                                        button.btn.btn--46.btn--darklight Искать
+                                    .col-12.col-xs-auto
+                                        button.btn.btn--46.btn--w155.btn--darklight Выбрать все
+
+                            .panel__sorting-visibility
+
+                                .row.row-gutter-10
+                                    .col-xs
+
+                                        .ui-group
+                                            label.ui-check
+                                                input(type="radio" name="open_close" checked).ui-check__input
+                                                span.ui-check__btn.ui-check__btn--46 Открытые
+                                            label.ui-check
+                                                input(type="radio" name="open_close").ui-check__input
+                                                span.ui-check__btn.ui-check__btn--46 Закрытые
+
+                                    .col-xs-auto
+
+                                        .ui-select.ui-select--46.ui-select--w155
+                                            select.js-select
+                                                option по 10
+                                                option по 20
+                                                option по 30
+                                                option по 40
+                                                option по 50
+
+
+                // Panel heading, period, sorting :: End
+
+
+        
+
+
+                // Panel Photos :: Start
+                .panel
+                    .panel__photos
+
+                        .panel__photos-carousel.owl-carousel.owl-photos.js-owl-photos_5
+                            
+                            .panel__photo.panel__photo--admin
+
+                                .panel__photo-control
+                                    button.panel__photo-btn
+                                        +sprite('icon-photo-hidden')
+                                    button.panel__photo-btn
+                                        +sprite('icon-photo-lock')
+                                    button.panel__photo-btn
+                                        +sprite('icon-photo-delete')
+
+                                figure.panel__photo-image
+                                    img(src="images/img-photo-favorites-01.png" alt="")
+
+                                span.panel__photo-title
+                                    a(href="#").ui-link.ui-link--dark Анонимно
+
+                                .panel__photo-content
+
+                                    .panel__photo-badges
+                                        span.ui-badge.ui-badge--26.ui-badge--red 3
+                                        span.ui-badge.ui-badge--26.ui-badge--grey 22 отзыва
+
+                                    p.panel__photo-url
+                                        a(href="#").ui-link.ui-link--underline.ui-link--blue Магазин парфюмерии на Дзержинского 31
+
+                                    .panel__photo-user
+                                        p.panel__photo-user-name
+                                            a(href="#").ui-link.ui-link--underline.ui-link--blue Петр Боширов
+                                        p.panel__photo-user-ip 192.168.1.112
+
+                                .panel__photo-info
+                                    .panel__photo-check
+
+                                        label.ui-check
+                                            input(type="checkbox" name="").ui-check__input.js-flag
+                                            span.ui-check__checkbox
+                                                +sprite('icon-checked')
+
+                                    p.panel__photo-date 06.06.2018
+                                    button.panel__photo-like
+                                        | 456
+                                        +sprite('icon-photo-like')
+
+                            .panel__photo.panel__photo--admin.panel__photo--tagged
+
+                                .panel__photo-control
+                                    button.panel__photo-btn
+                                        +sprite('icon-photo-hidden')
+                                    button.panel__photo-btn
+                                        +sprite('icon-photo-lock')
+                                    button.panel__photo-btn
+                                        +sprite('icon-photo-delete')
+
+                                figure.panel__photo-image
+                                    img(src="images/img-photo-favorites-02.png" alt="")
+
+                                span.panel__photo-title
+                                    a(href="#").ui-link.ui-link--dark Вот так выглядит обещанный номе
+
+                                .panel__photo-content
+
+                                    .panel__photo-badges
+                                        span.ui-badge.ui-badge--26.ui-badge--greenlight 4.8
+                                        span.ui-badge.ui-badge--26.ui-badge--grey 64 отзыва
+
+                                    p.panel__photo-url
+                                        a(href="#").ui-link.ui-link--underline.ui-link--blue Магазин парфюмерии на Дзержинского 31
+
+                                    .panel__photo-user
+                                        p.panel__photo-user-name
+                                            a(href="#").ui-link.ui-link--underline.ui-link--blue Петр Боширов
+                                        p.panel__photo-user-ip.text-red
+                                            | 192.168.1.112
+                                            span.ui-help.js-tooltip(title="Это подсказка...")
+                                                +sprite('icon-help')
+                                        
+                                .panel__photo-info
+                                    .panel__photo-check
+
+                                        label.ui-check
+                                            input(type="checkbox" name="").ui-check__input.js-flag
+                                            span.ui-check__checkbox
+                                                +sprite('icon-checked')
+
+                                    p.panel__photo-date 06.06.2018
+                                    button.panel__photo-like
+                                        | 456
+                                        +sprite('icon-photo-like')
+
+                            .panel__photo.panel__photo--admin
+
+                                .panel__photo-control
+                                    button.panel__photo-btn
+                                        +sprite('icon-photo-hidden')
+                                    button.panel__photo-btn
+                                        +sprite('icon-photo-lock')
+                                    button.panel__photo-btn
+                                        +sprite('icon-photo-delete')
+
+                                figure.panel__photo-image
+                                    img(src="images/img-photo-favorites-03.png" alt="")
+
+                                span.panel__photo-title
+                                    a(href="#").ui-link.ui-link--dark Анонимно
+
+                                .panel__photo-content
+
+                                    .panel__photo-badges
+                                        span.ui-badge.ui-badge--26.ui-badge--red 3
+                                        span.ui-badge.ui-badge--26.ui-badge--grey 22 отзыва
+
+                                    p.panel__photo-url
+                                        a(href="#").ui-link.ui-link--underline.ui-link--blue Магазин парфюмерии на Дзержинского 31
+
+                                    .panel__photo-user
+                                        p.panel__photo-user-name
+                                            a(href="#").ui-link.ui-link--underline.ui-link--blue Петр Боширов
+                                        p.panel__photo-user-ip
+                                            | 192.168.1.112
+                                    
+                                .panel__photo-info
+                                    .panel__photo-check
+
+                                        label.ui-check
+                                            input(type="checkbox" name="").ui-check__input.js-flag
+                                            span.ui-check__checkbox
+                                                +sprite('icon-checked')
+
+                                    p.panel__photo-date 06.06.2018
+                                    button.panel__photo-like
+                                        | 456
+                                        +sprite('icon-photo-like')
+
+                            .panel__photo.panel__photo--admin
+
+                                .panel__photo-control
+                                    button.panel__photo-btn
+                                        +sprite('icon-photo-hidden')
+                                    button.panel__photo-btn
+                                        +sprite('icon-photo-lock')
+                                    button.panel__photo-btn
+                                        +sprite('icon-photo-delete')
+
+                                figure.panel__photo-image
+                                    img(src="images/img-photo-favorites-04.png" alt="")
+
+                                span.panel__photo-title
+                                    a(href="#").ui-link.ui-link--dark Из отзыва <u>#458125</u>
+
+                                .panel__photo-content
+                                    
+                                    .panel__photo-badges
+                                        span.ui-badge.ui-badge--26.ui-badge--greenlight 4.8
+                                        span.ui-badge.ui-badge--26.ui-badge--grey 64 отзыва
+
+                                    p.panel__photo-url
+                                        a(href="#").ui-link.ui-link--underline.ui-link--blue Магазин парфюмерии на Дзержинского 31
+
+                                    .panel__photo-user
+                                        p.panel__photo-user-name аноним
+                                        p.panel__photo-user-ip.text-red
+                                            | 192.168.1.112
+                                            span.ui-help.js-tooltip(title="Это подсказка...")
+                                                +sprite('icon-help')
+                                        
+                                .panel__photo-info
+                                    .panel__photo-check
+
+                                        label.ui-check
+                                            input(type="checkbox" name="").ui-check__input.js-flag
+                                            span.ui-check__checkbox
+                                                +sprite('icon-checked')
+
+                                    p.panel__photo-date 06.06.2018
+                                    button.panel__photo-like
+                                        | 456
+                                        +sprite('icon-photo-like')
+
+
+                            .panel__photo.panel__photo--admin
+
+                                .panel__photo-control
+                                    button.panel__photo-btn
+                                        +sprite('icon-photo-hidden')
+                                    button.panel__photo-btn
+                                        +sprite('icon-photo-lock')
+                                    button.panel__photo-btn
+                                        +sprite('icon-photo-delete')
+
+                                figure.panel__photo-image
+                                    img(src="images/img-photo-favorites-04.png" alt="")
+
+                                span.panel__photo-title
+                                    a(href="#").ui-link.ui-link--dark Анонимно
+
+                                .panel__photo-content
+                                
+                                    .panel__photo-badges
+                                        span.ui-badge.ui-badge--26.ui-badge--red 3
+                                        span.ui-badge.ui-badge--26.ui-badge--grey 22 отзыва
+
+                                    p.panel__photo-url
+                                        a(href="#").ui-link.ui-link--underline.ui-link--blue Магазин парфюмерии на Дзержинского 31
+
+                                    .panel__photo-user
+                                        p.panel__photo-user-name аноним
+                                        p.panel__photo-user-ip.text-red
+                                            | 192.168.1.112
+                                            span.ui-help.js-tooltip(title="Это подсказка...")
+                                                +sprite('icon-help')
+                                        
+                                .panel__photo-info
+                                    .panel__photo-check
+
+                                        label.ui-check
+                                            input(type="checkbox" name="").ui-check__input.js-flag
+                                            span.ui-check__checkbox
+                                                +sprite('icon-checked')
+
+                                    p.panel__photo-date 06.06.2018
+                                    button.panel__photo-like
+                                        | 456
+                                        +sprite('icon-photo-like')
+
+
+                // Panel Photos :: End
+
+
+
+                // Panel Flag :: Start
+                .panel
+                    .panel__flag
+                        .row
+                            .col-xs-auto
+                                label.ui-label Отмеченные
+
+                            .col.col-xs-auto
+                                .ui-select.ui-select--46
+                                    select.js-select
+                                        option Fingerprint
+                                        option Fingerprint 1
+                                        option Fingerprint 2
+                                        option Fingerprint 3
+                                        option Fingerprint 4
+                                        option Fingerprint 5
+
+                            .col-auto.col-xs-auto
+                                button.btn.btn--46.btn--dark Выполнить
+                // Panel Flag :: End
+
+
+
+
+                // Panel Pagination :: Start
+                .panel
+                    .panel__pagination
+
+                        .panel__pagination-container
+
+                            a(href="#").panel__pagination-link.panel__pagination-link--prev
+                                +sprite('icon-pagination-prev')
+                                | Предыдущая
+                            
+                            ul.panel__pagination-menu
+                                li
+                                    a(href="#").panel__pagination-link.is-active 1
+                                li
+                                    a(href="#").panel__pagination-link 2
+                                li
+                                    a(href="#").panel__pagination-link 3
+                                li
+                                    a(href="#").panel__pagination-link 4
+                                li
+                                    a(href="#").panel__pagination-link 5
+                                li
+                                    a(href="#").panel__pagination-link 6
+                                li
+                                    a(href="#").panel__pagination-link 7
+                                li
+                                    a(href="#").panel__pagination-link 8
+                                li
+                                    a(href="#").panel__pagination-link 9
+                                li
+                                    a(href="#").panel__pagination-link 10
+                                li
+                                    a(href="#").panel__pagination-link 11
+                                li
+                                    a(href="#").panel__pagination-link 12
+                                li
+                                    a(href="#").panel__pagination-link ...
+                                li
+                                    a(href="#").panel__pagination-link 234
+
+                            a(href="#").panel__pagination-link.panel__pagination-link--next
+                                | Следующая
+                                +sprite('icon-pagination-next')
+
+
+                // Panel Pagination :: End
+
+
+
+
+
+
+
+
+    // Request list :: End

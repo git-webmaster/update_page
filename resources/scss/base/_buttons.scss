@@ -1,4 +1,263 @@
 //- --------------------------------------------------------------------------
+//- Update page addon
+//- --------------------------------------------------------------------------
+
+.ui-input{
+	box-sizing: border-box;
+}
+.ui-link.hidden{
+	display: none;
+}
+.panel__sortable{
+	list-style: none;
+	padding: 0;
+}
+ol.panel__sortable li{
+	color:#FFFFFF;
+}
+body.dragging, body.dragging * {
+	cursor: move !important;
+}
+
+.dragged {
+	position: absolute!important;
+	opacity: 0.5;
+	z-index: 2000;
+}
+.ui-search__progress .hidden{
+	display: none;
+}
+.search-categories__list{
+	cursor: pointer;
+}
+.panel__settings-m-comment.hidden{
+	display: none!important;
+}
+.panel__settings-m-comment:before{
+	display: none;
+}
+.panel__settings-m-comment{
+	padding: 20px 0;
+}
+.ui-worktime__row.is-active .ui-worktime__period--off {
+	display: none;
+}
+.ui-worktime__row:not(.is-active) .ui-worktime__period {
+	display: none;
+}
+.ui-worktime__row:not(.is-active) .ui-worktime__comment {
+	display: none;
+}
+.ui-worktime__row:not(.is-active) .ui-worktime__period--off {
+	display: table-cell;
+}
+.worktime-input{
+	position: absolute;
+	opacity: 0;
+	visibility: hidden;
+}
+.js-tabsid-content +.panel__request-control{
+	margin: 0;
+}
+.no-after:after{
+	display: none!important;
+}
+.no-before:before{
+	display: none!important;
+}
+.pl0 {
+	padding-left: 0!important;
+}
+.search-failed{
+	pointer-events: none;
+	cursor: default;
+}
+.draggable-source--is-dragging {
+	filter: brightness(0.5);
+}
+.ui-input-price{
+	width: 100%;
+	max-width: 842px;
+}
+.panel_one-label .panel__settings-row:not(:first-of-type) .ui-label{
+	display: none;
+}
+
+.first-labels{
+	display: flex;
+	justify-content: space-between;
+
+}
+.first-labels .ui-label{
+	width: 100%;
+}
+.first-labels .ui-label + .ui-label{
+	margin-left: 24px;
+}
+@media (min-width: 768px) {
+	.panel__settings-group:not(.panel_all-labels) .panel__settings-row:first-of-type .ui-label{
+		display: none;
+	}
+}
+@media (max-width: 768px) {
+	.show-labels {
+		display: flex!important;
+	}
+	.panel_one-label .panel__settings-row:not(:first-child) .ui-label{
+		display: initial;
+	}
+	.first-labels{
+		display: none;
+	}
+	.first-labels .ui-label + .ui-label{
+		display: none;
+	}
+}
+.panel_show-labels .ui-label{
+	display: inline-flex!important;
+}
+
+.typeahead,
+.tt-query,
+.tt-hint {
+	height: 30px;
+	padding: 8px 12px;
+	font-size: 24px;
+	line-height: 30px;
+	border: 2px solid #ccc;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	outline: none;
+}
+.tt-query {
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.tt-hint {
+	color: #999;
+	display:none;
+}
+
+.tt-dropdown-menu {
+	width: 422px;
+	margin-top: 3px;
+	padding: 8px 0;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	-webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+	box-shadow: 0 5px 10px rgba(0,0,0,.2);
+	z-index: 999;
+}
+
+.tt-suggestion {
+	padding: 3px 20px;
+	font-size: 18px;
+	line-height: 24px;
+	color: black;
+	z-index: 999;
+}
+
+.tt-suggestion.tt-cursor {
+	background: #f0f0f0;
+}
+.twitter-typeahead {
+	width: 100%;
+}
+.tt-query,
+.tt-hint {
+	width: 396px;
+	height: 30px;
+	padding: 8px 12px;
+	font-size: 24px;
+	line-height: 30px;
+	border: 2px solid #ccc;
+	border-radius: 8px;
+	outline: none;
+	z-index: 999;
+}
+
+.tt-query {
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.tt-hint {
+	color: #999;
+}
+
+.tt-menu {
+	max-height: 250px;
+	overflow-y: auto;
+	width: 100%;
+	list-style: none;
+	padding: 0;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.11);
+	border-radius: 0 0 2px 2px;
+	z-index: 5100;
+	margin: -1px 0 0;
+}
+.tt-open{
+	border-top: 0;
+	z-index: 5600;
+}
+.tt-suggestion {
+	font-size: 18px;
+	line-height: 24px;
+	cursor: pointer;
+	padding: 10px 15px 10px 47px;
+	z-index: 999;
+}
+.tt-suggestion:hover {
+	background: #f0f0f0;
+
+}
+.tt-suggestion.tt-is-under-cursor {
+	background: #f0f0f0;
+}
+
+.tt-suggestion p {
+	margin: 0;
+}
+.search-failed {
+	font-size: 18px;
+	line-height: 24px;
+	cursor: pointer;
+	padding: 10px 15px 10px 47px;
+}
+.search-categories__search{
+	border-color: rgb(204, 204, 204);
+	box-shadow: none;
+}
+.tt-menu{
+	z-index: 5600!important;
+	border-top: 0;
+	border-color: #299ae0;
+	box-shadow: 0px 2px 0px 2px rgba(41, 154, 224, 0.3);
+}
+.twitter-typeahead + .ui-search__dropdown{
+	z-index: 5100;
+	border: 1px solid #299ae0;
+	border-top: 0;
+	box-shadow: 0px 2px 0px 2px rgba(41, 154, 224, 0.3);
+}
+
+.panel__settings-row.first-label{
+	margin-bottom: 0;
+}
+.twitter-typeahead{
+	background: #FFFFFF;
+}
+
+// - --------------------------------------------------------------------------
 //- Buttons
 //- --------------------------------------------------------------------------
 
@@ -71,6 +330,11 @@
 	border: 1px solid #e7e7e7;
 }
 
+.countries-line {
+	border: 0!important;
+	border-bottom: 1px solid #e7e7e7!important;
+}
+
 .dark-text
 {
 	color: #131313;
@@ -93,6 +357,12 @@
 
 .search-panel {
 	min-height: 50vh;
+}
+
+#search_status {
+	margin-bottom: 20px;
+	font-size: 17px;
+	color: #555;
 }
 
 ///// uk
@@ -258,6 +528,10 @@
 	border: 0!important;
 }
 
+.top-border-0 {
+	border-top: 0!important;
+}
+
 .border-abuse {
 	border: 1px solid #ff0000!important;
 }
@@ -392,11 +666,26 @@
 	cursor: pointer;
 }
 
+.ic-link {
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+	top: 2px;
+}
+
+.ic-font-size {
+	font-size: 17px!important;
+}
+
 .bottom0
 {
 	@include breakpoint(hd) {
 		bottom: 0 !important;
 	}
+}
+
+.bt0 {
+	border-top: 0!important;
 }
 
 .padding0 {
@@ -447,6 +736,10 @@
 	margin-left: 7px!important;
 }
 
+.ml3 {
+	margin-left: 3px!important;
+}
+
 .margin15 {
 	margin: 15px!important;
 }
@@ -457,6 +750,10 @@
 
 .top-2 {
 	top: -2px;
+}
+
+.top-3 {
+	top: -3px;
 }
 
 .left-5 {

@@ -16,19 +16,26 @@ if (js_owl_reviews.length > 0)
 		nav: true,
 		dots: false,
 		loop: false,
-		autoplay: true,
-		autoplayTimeout: 2000,
-		autoplayHoverPause: true,
+		autoplay: false,
+		//autoplayTimeout: 2000,
+		//autoplayHoverPause: true,
+		autoWidth: true,
 		navText: [owlPrev, owlNext],
 		responsive: {
-			768: {
+			480: {
 				items: 2
 			},
+			768: {
+				items: 2,
+				autoWidth: false
+			},
 			992: {
-				items: 3
+				items: 3,
+				autoWidth: false
 			},
 			1200: {
-				items: 4
+				items: 4,
+				autoWidth: false
 			}
 		}
 	});
@@ -43,9 +50,9 @@ if (js_owl_hotels.length > 0)
 		nav: true,
 		dots: false,
 		loop: false,
-		autoplay: true,
-		autoplayTimeout: 2500,
-		autoplayHoverPause: true,
+		autoplay: false,
+		//autoplayTimeout: 2500,
+		//autoplayHoverPause: true,
 		autoWidth: true,
 		navText: [owlPrev, owlNext],
 		responsive: {
@@ -80,3 +87,72 @@ jdoc.on('click', '.hotels__item-image', function(e){
 
 	if (typeof href !== "undefined" && href.length) window.open(href);
 });
+
+
+
+/////////////////////////
+
+var categories = new Bloodhound({
+	datumTokenizer: function (categories) {
+		return Bloodhound.tokenizers.whitespace();
+	},
+	limit: 20,
+	queryTokenizer: Bloodhound.tokenizers.whitespace,
+	remote: {
+		url: 'https://rubrikator.local/api/search?type=categories&query=' + $('#search').val(),
+		replace: function (url, uriEncodedQuery) {
+			return 'https://rubrikator.local/api/search?type=categories&query=' + $('#search').val()
+		},
+		filter: function (response) {
+			if (response.status == "nothing_found") {
+				return false
+			} else {
+				return response.info
+			}
+		}
+	}
+});
+
+categories.initialize();
+
+$('#search').typeahead({
+		limit: 20,
+		highlight: true,
+		minLength: 1
+	},
+	{
+		limit: 19,
+		name: 'categories',
+		displayKey: function (categories) {
+			return categories.name
+		},
+		source: categories.ttAdapter(),
+		templates: {
+			empty: [
+				'<li class="search-failed">\n' +
+				'<div class="ui-search__item">\n' +
+				'<span class="ui-search__item-text">\n' +
+				'Ничего не найдено' +
+				'</span>\n' +
+				'</div>\n' +
+				'</li>'
+			],
+			suggestion: function (data) {
+				return '<li data-id="' + data['id'] + '">' +
+					'<div class="ui-search__item">' +
+					'<span class="ui-search__item-text">' +
+					'' + data['name'] + '' +
+					'</span>' +
+					'</div>' +
+					'</li>'
+			}
+		}
+	}).on('typeahead:selected', function (event, data) {
+		alrt(data);
+	})
+	.on('typeahead:asyncrequest', function () {
+		$('#search-loader-1').removeClass('hidden').css('opacity', 1).css('visibility', 'visible');
+	})
+	.on('typeahead:asynccancel typeahead:asyncreceive', function () {
+		$('#search-loader-1').addClass('hidden').css('opacity', 0).css('visibility', 'hidden');
+	});

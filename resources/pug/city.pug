@@ -1,0 +1,818 @@
+---
+title: Город - Рубрикатор
+bodyClass: is-page-city
+---
+extends includes/_app-primary
+
+block main
+
+    // Hero :: Start
+    section.section.hero
+        .container-fluid
+            form(action="#")
+
+                .hero__bg
+
+                h1.hero__heading Санкт-Петербург
+
+                .hero__search
+
+                    .hero__search-primary
+
+                        .ui-search
+                            .ui-search__field
+                                figure.ui-search__icon
+                                    +sprite('icon-search')
+                                input(type="search" placeholder="Поиск по городу").ui-search__input
+                        
+                    .hero__search-secondary
+                        .row
+                            .col
+
+                                .ui-search
+                                    .ui-search__field
+                                        figure.ui-search__icon
+                                            +sprite('icon-location')
+                                        input(type="search" placeholder="Санкт-Петербург").ui-search__input
+
+                            .col-auto
+
+                                button.btn.btn--42.btn--red Поиск
+
+                            
+
+    
+    // Hero :: End
+
+    // Categories :: Start
+    section.section.categories
+        .container-fluid
+
+            h2.categories__heading Что ищете?
+
+            ul.categories__grid
+
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+
+                    a(href="#").categories__card
+                        figure.categories__card-icon
+                            +sprite('icon-categories-avto')
+                        h3.categories__card-title Автомобили
+                
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+
+                    a(href="#").categories__card
+                        figure.categories__card-icon
+                            +sprite('icon-categories-chef')
+                        h3.categories__card-title Рестораны
+
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+
+                    a(href="#").categories__card
+                        figure.categories__card-icon
+                            +sprite('icon-categories-lips')
+                        h3.categories__card-title Салоны красоты
+
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+
+                    a(href="#").categories__card
+                        figure.categories__card-icon
+                            +sprite('icon-categories-sport')
+                        h3.categories__card-title Спорт
+                
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+
+                    a(href="#").categories__card
+                        figure.categories__card-icon
+                            +sprite('icon-categories-shop')
+                        h3.categories__card-title Магазины
+
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+
+                    a(href="#").categories__card
+                        figure.categories__card-icon
+                            +sprite('icon-categories-polish')
+                        h3.categories__card-title Салоны
+
+                
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+
+                    a(href="#").categories__card
+                        figure.categories__card-icon
+                            +sprite('icon-categories-carwash')
+                        h3.categories__card-title Автомойки
+
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+
+                    a(href="#").categories__card
+                        figure.categories__card-icon
+                            +sprite('icon-categories-club')
+                        h3.categories__card-title Клубы
+
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+
+                    a(href="#").categories__card
+                        figure.categories__card-icon
+                            +sprite('icon-categories-office')
+                        h3.categories__card-title Офисы
+
+                li.col-12.col-md-4.col-lg-3.col-xl-20
+
+                    a(href="#").categories__card.categories__card--more
+                        figure.categories__card-icon
+                            <svg class="icon-categories-more" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 52 12">
+                                <path fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="50" d="M6,11c-2.8,0-5-2.2-5-5s2.2-5,5-5s5,2.2,5,5S8.8,11,6,11z M26,11c-2.8,0-5-2.2-5-5s2.2-5,5-5s5,2.2,5,5S28.8,11,26,11z M46,11c-2.8,0-5-2.2-5-5s2.2-5,5-5s5,2.2,5,5S48.8,11,46,11z"/>
+                            </svg>
+                        p.categories__card-text Ещё категории
+
+                    
+
+            ul.categories__grid
+                li.col-xs-6.col-lg-3
+                
+                    a(href="#").categories__link
+                        span.categories__link-icon
+                            +sprite('icon-categories-coffee')
+                        span.categories__link-text
+                            u Кофе и Чай
+                
+                li.col-xs-6.col-lg-3
+                
+                    a(href="#").categories__link
+                        span.categories__link-icon
+                            +sprite('icon-categories-apple')
+                        span.categories__link-text
+                            u Еда
+                
+                li.col-xs-6.col-lg-3
+                
+                    a(href="#").categories__link
+                        span.categories__link-icon
+                            +sprite('icon-categories-paint')
+                        span.categories__link-text
+                            u Искусство и развлечения
+
+                li.col-xs-6.col-lg-3
+                
+                    a(href="#").categories__link
+                        span.categories__link-icon
+                            +sprite('icon-categories-pets')
+                        span.categories__link-text
+                            u Домашние животные
+
+                li.col-xs-6.col-lg-3
+                
+                    a(href="#").categories__link
+                        span.categories__link-icon
+                            +sprite('icon-categories-life')
+                        span.categories__link-text
+                            u Здоровье и Медицина
+                
+                li.col-xs-6.col-lg-3
+                
+                    a(href="#").categories__link
+                        span.categories__link-icon
+                            +sprite('icon-categories-briefcase')
+                        span.categories__link-text
+                            u Профессиональные сервисы
+                
+                li.col-xs-6.col-lg-3
+                
+                    a(href="#").categories__link
+                        span.categories__link-icon
+                            +sprite('icon-categories-house')
+                        span.categories__link-text
+                            u Недвижимость
+
+                li.col-xs-6.col-lg-3
+                
+                    a(href="#").categories__link
+                        span.categories__link-icon
+                            +sprite('icon-categories-roomkey')
+                        span.categories__link-text
+                            u Отели и путешествия
+                li.col-xs-6.col-lg-3
+                
+                    a(href="#").categories__link
+                        span.categories__link-icon
+                            +sprite('icon-categories-coffee')
+                        span.categories__link-text
+                            u Кофе и Чай
+                
+                li.col-xs-6.col-lg-3
+                
+                    a(href="#").categories__link
+                        span.categories__link-icon
+                            +sprite('icon-categories-apple')
+                        span.categories__link-text
+                            u Еда
+                
+                li.col-xs-6.col-lg-3
+                
+                    a(href="#").categories__link
+                        span.categories__link-icon
+                            +sprite('icon-categories-paint')
+                        span.categories__link-text
+                            u Искусство и развлечения
+
+                li.col-xs-6.col-lg-3
+                
+                    a(href="#").categories__link
+                        span.categories__link-icon
+                            +sprite('icon-categories-pets')
+                        span.categories__link-text
+                            u Домашние животные
+
+                li.col-xs-6.col-lg-3
+                
+                    a(href="#").categories__link
+                        span.categories__link-icon
+                            +sprite('icon-categories-life')
+                        span.categories__link-text
+                            u Здоровье и Медицина
+                
+                li.col-xs-6.col-lg-3
+                
+                    a(href="#").categories__link
+                        span.categories__link-icon
+                            +sprite('icon-categories-briefcase')
+                        span.categories__link-text
+                            u Профессиональные сервисы
+                
+                li.col-xs-6.col-lg-3
+                
+                    a(href="#").categories__link
+                        span.categories__link-icon
+                            +sprite('icon-categories-house')
+                        span.categories__link-text
+                            u Недвижимость
+
+                li.col-xs-6.col-lg-3
+                
+                    a(href="#").categories__link
+                        span.categories__link-icon
+                            +sprite('icon-categories-roomkey')
+                        span.categories__link-text
+                            u Отели и путешествия
+
+       
+          
+
+    
+    // Categories :: End
+
+
+    // Reviews :: Start
+    section.section.reviews
+        .container-fluid
+
+            h2.reviews__heading Новые отзывы о местах в Санкт-Петербурге
+
+            .reviews__carousel.owl-carousel.owl-reviews-primary.js-owl-reviews-primary
+
+                .reviews__item
+                    .reviews__item-body
+                        p.reviews__item-text Еле доехал, ДПС останавливали 9 раз! Когда приехал в Москву, сразу поехал в страховую. На удивление прониклись моей проблемой, менеджер даже посочувствовал.
+                    .reviews__item-foot
+                        .reviews__item-group
+                            p.reviews__item-rating
+                                span.ui-rating(data-rating="3")
+                                    +sprite('icon-rating')
+                                    +sprite('icon-rating')
+                                    +sprite('icon-rating')
+                                    +sprite('icon-rating')
+                                    +sprite('icon-rating')
+                            span.reviews__item-name Петр Шаповалов
+                        strong.reviews__item-title
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Школа результативных языков
+
+                .reviews__item
+                    .reviews__item-body
+                        p.reviews__item-text Еле доехал, ДПС останавливали 9 раз! Когда приехал в Москву, сразу поехал в страховую. На удивление прониклись моей проблемой, менеджер даже посочувствовал.
+                    .reviews__item-foot
+                        .reviews__item-group
+                            p.reviews__item-rating
+                                span.ui-rating(data-rating="3")
+                                    +sprite('icon-rating')
+                                    +sprite('icon-rating')
+                                    +sprite('icon-rating')
+                                    +sprite('icon-rating')
+                                    +sprite('icon-rating')
+                            span.reviews__item-name Аноним
+                        strong.reviews__item-title
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Школа результативных языков
+
+
+                .reviews__item
+                    .reviews__item-body
+                        p.reviews__item-text Еле доехал, ДПС останавливали 9 раз! Когда приехал в Москву, сразу поехал в страховую. На удивление прониклись моей проблемой, менеджер даже посочувствовал.
+                    .reviews__item-foot
+                        .reviews__item-group
+                            p.reviews__item-rating
+                                span.ui-rating(data-rating="3")
+                                    +sprite('icon-rating')
+                                    +sprite('icon-rating')
+                                    +sprite('icon-rating')
+                                    +sprite('icon-rating')
+                                    +sprite('icon-rating')
+                            span.reviews__item-name Аноним
+                        strong.reviews__item-title
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Школа результативных языков
+
+                
+                .reviews__item
+                    .reviews__item-body
+                        p.reviews__item-text Еле доехал, ДПС останавливали 9 раз! Когда приехал в Москву, сразу поехал в страховую. На удивление прониклись моей проблемой, менеджер даже посочувствовал.
+                    .reviews__item-foot
+                        .reviews__item-group
+                            p.reviews__item-rating
+                                span.ui-rating(data-rating="3")
+                                    +sprite('icon-rating')
+                                    +sprite('icon-rating')
+                                    +sprite('icon-rating')
+                                    +sprite('icon-rating')
+                                    +sprite('icon-rating')
+                            span.reviews__item-name Аноним
+                        strong.reviews__item-title
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Школа результативных языков
+
+                .reviews__item
+                    .reviews__item-body
+                        p.reviews__item-text Еле доехал, ДПС останавливали 9 раз! Когда приехал в Москву, сразу поехал в страховую. На удивление прониклись моей проблемой, менеджер даже посочувствовал.
+                    .reviews__item-foot
+                        .reviews__item-group
+                            p.reviews__item-rating
+                                span.ui-rating(data-rating="3")
+                                    +sprite('icon-rating')
+                                    +sprite('icon-rating')
+                                    +sprite('icon-rating')
+                                    +sprite('icon-rating')
+                                    +sprite('icon-rating')
+                            span.reviews__item-name Аноним
+                        strong.reviews__item-title
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Школа результативных языков
+
+    // Reviews :: End
+
+
+    // Stations :: Start
+    section.section.stations
+        .container-fluid
+
+            h2.stations__heading Станции метро
+
+            ul.stations__grid
+                li.col-xs-6.col-lg-3
+
+                    ul.stations__list
+                        li
+                            span.icon-circle.icon-circle--red
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Девяткино
+                        li
+                            span.icon-circle.icon-circle--red
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Гражданский проспект
+                        li
+                            span.icon-circle.icon-circle--red
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Академическая
+                        li
+                            span.icon-circle.icon-circle--red
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Политехническая
+                        li
+                            span.icon-circle.icon-circle--red
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Площадь Мужества
+                        li
+                            span.icon-circle.icon-circle--red
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Лесная
+                        li
+                            span.icon-circle.icon-circle--red
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Выборгская
+                        li
+                            span.icon-circle.icon-circle--red
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Площадь Ленина
+                        li
+                            span.icon-circle.icon-circle--red
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Чернышевская
+                        li
+                            span.icon-circle.icon-circle--red
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Площадь Восстания
+                        li
+                            span.icon-circle.icon-circle--red
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Владимирская
+                
+                li.col-xs-6.col-lg-3
+
+                    ul.stations__list
+                        li
+                            span.icon-circle.icon-circle--purple
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Комендантский проспект
+                        li
+                            span.icon-circle.icon-circle--purple
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Старая Деревня
+                        li
+                            span.icon-circle.icon-circle--purple
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Крестовский остров
+                        li
+                            span.icon-circle.icon-circle--purple
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Чкаловская
+                        li
+                            span.icon-circle.icon-circle--purple
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Спортивная
+                        li
+                            span.icon-circle.icon-circle--purple
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Адмиралтейская
+                        li
+                            span.icon-circle.icon-circle--purple
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Садовая
+                        li
+                            span.icon-circle.icon-circle--purple
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Звенигородская
+                        li
+                            span.icon-circle.icon-circle--purple
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Обводный канал
+
+                li.col-xs-6.col-lg-3
+
+                    ul.stations__list
+                        li
+                            span.icon-circle.icon-circle--orange
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Горный институт
+                        li
+                            span.icon-circle.icon-circle--orange
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Театральная
+                        li
+                            span.icon-circle.icon-circle--orange
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Спасская
+                        li
+                            span.icon-circle.icon-circle--orange
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Достоевская
+                        li
+                            span.icon-circle.icon-circle--orange
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Лиговский проспект
+                        li
+                            span.icon-circle.icon-circle--orange
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Площадь Александра 
+                        li
+                            span.icon-circle.icon-circle--orange
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Невского
+                        li
+                            span.icon-circle.icon-circle--orange
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Новочеркасская
+                        li
+                            span.icon-circle.icon-circle--orange
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Ладожская
+                        li
+                            span.icon-circle.icon-circle--orange
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Проспект Большевиков
+                        li
+                            span.icon-circle.icon-circle--orange
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Улица Дыбенко
+
+                li.col-xs-6.col-lg-3
+
+                    ul.stations__list
+                        li
+                            span.icon-circle.icon-circle--green
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Беговая
+                        li
+                            span.icon-circle.icon-circle--green
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Новокрестовская
+                        li
+                            span.icon-circle.icon-circle--green
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Приморская
+                        li
+                            span.icon-circle.icon-circle--green
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Василеостровская
+                        li
+                            span.icon-circle.icon-circle--green
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Гостиный двор
+                        li
+                            span.icon-circle.icon-circle--green
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Маяковская
+                        li
+                            span.icon-circle.icon-circle--green
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Елизаровская
+                        li
+                            span.icon-circle.icon-circle--green
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Ломоносовская
+                        li
+                            span.icon-circle.icon-circle--green
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Пролетарская
+                        li
+                            span.icon-circle.icon-circle--green
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Обухово
+                        li
+                            span.icon-circle.icon-circle--green
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Рыбацкое
+
+            
+            .stations__more
+                button.btn.btn--52.btn--whitelight
+                    | Показать все станции
+                    +sprite('icon-arrow-down')
+
+    // Stations :: End
+
+
+    // Districts :: Start
+    section.section.districts
+        .container-fluid
+
+            h2.districts__heading Районы
+
+            ul.districts__grid
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+                    a(href="#").districts__link Калининский
+
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+                    a(href="#").districts__link Выборгский
+
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+                    a(href="#").districts__link Кронштадтский
+
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+                    a(href="#").districts__link Петроградский
+
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+                    a(href="#").districts__link Фрунзенский
+
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+                    a(href="#").districts__link Василеостровский
+                    
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+                    a(href="#").districts__link Кировский
+
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+                    a(href="#").districts__link Курортный
+
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+                    a(href="#").districts__link Петродворцовый
+
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+                    a(href="#").districts__link Курортный
+
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+                    a(href="#").districts__link Адмиралтейский
+
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+                    a(href="#").districts__link Колпинский
+
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+                    a(href="#").districts__link Московский
+
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+                    a(href="#").districts__link Приморский
+
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+                    a(href="#").districts__link Невский
+
+    // Districts :: End
+
+
+    // Hotels :: Start
+    section.section.hotels
+        .container-fluid
+
+            h2.hotels__heading Отели
+
+            .hotels__carousel.owl-carousel.owl-hotels-primary.js-owl-hotels-primary
+                
+                .hotels__item
+                    figure.hotels__item-image
+                        img(src="images/img-hotels-01.jpg", alt="")
+                    h2.hotels__item-title
+                        a(href="#").ui-link.ui-link--dark Thracian Cliffs Golf & Beach Resort
+                    .hotels__item-info
+
+                        span.ui-rating(data-rating="5")
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+
+                        span.ui-mark.ui-mark--green 5
+
+                .hotels__item
+                    figure.hotels__item-image
+                        img(src="images/img-hotels-02.jpg", alt="")
+                    h2.hotels__item-title
+                        a(href="#").ui-link.ui-link--dark Thracian Cliffs Golf & Beach Resort
+                    .hotels__item-info
+                        
+                        span.ui-rating(data-rating="4")
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+
+                        span.ui-mark.ui-mark--green 4
+
+                
+                .hotels__item
+                    figure.hotels__item-image
+                        img(src="images/img-hotels-03.jpg", alt="")
+                    h2.hotels__item-title
+                        a(href="#").ui-link.ui-link--dark Thracian Cliffs Golf & Beach Resort
+                    .hotels__item-info
+
+                        span.ui-rating(data-rating="3")
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+
+
+                        span.ui-mark.ui-mark--orange 3
+
+                
+                .hotels__item
+                    figure.hotels__item-image
+                        img(src="images/img-hotels-04.jpg", alt="")
+                    h2.hotels__item-title
+                        a(href="#").ui-link.ui-link--dark Thracian Cliffs Golf...
+                    .hotels__item-info
+                        
+                        span.ui-rating(data-rating="2")
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+
+                        span.ui-mark.ui-mark--red 2
+
+                
+                .hotels__item
+                    figure.hotels__item-image
+                        img(src="images/img-hotels-05.jpg", alt="")
+                    h2.hotels__item-title
+                        a(href="#").ui-link.ui-link--dark Thracian Cliffs Golf & Beach Resort
+                    .hotels__item-info
+
+                        span.ui-rating(data-rating="5")
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+
+                        span.ui-mark.ui-mark--green 5.5
+
+                .hotels__item
+                    figure.hotels__item-image
+                        img(src="images/img-hotels-05.jpg", alt="")
+                    h2.hotels__item-title
+                        a(href="#").ui-link.ui-link--dark Thracian Cliffs Golf & Beach Resort
+                    .hotels__item-info
+
+                        span.ui-rating(data-rating="5")
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+                            +sprite('icon-rating')
+
+                        span.ui-mark.ui-mark--green 5.5
+
+            .hotels__more
+                a(href="#").ui-link.ui-link--grey
+                    +sprite('icon-reception')
+                    u Показать отели в Санкт-Петербурге
+
+    // Hotels :: End
+
+    // Quick :: Start
+    section.section.quick
+        .container-fluid
+
+            h2.quick__heading Краткая справка
+
+            ul.quick__grid
+                li.col-xs-4.col-md-auto
+                    .quick__card
+                        b.quick__card-title 5.3 млн.
+                        p.quick__card-text население
+                li.col-xs-4.col-md-auto
+                    .quick__card
+                        b.quick__card-title 18
+                        p.quick__card-text районов
+                li.col-xs-4.col-md-auto
+                    .quick__card
+                        b.quick__card-title 1703
+                        p.quick__card-text год основания
+
+            .quick__desc
+                p Назван в честь Святого Петра, небесного покровителя царя-основателя, но со временем стал всё больше ассоциироваться с именем самого Петра I. Город исторически и культурно связан с рождением Российской империи и вхождением России в современную историю в роли европейской сверхдержавы, является символом императорской власти и военной славы.  
+
+        
+            ul.quick__grid
+                li.col-md-4
+                    .quick__info
+                        figure.quick__info-image
+                            img(src="images/img-quick-wiki.png" width="80" height="51" alt="")
+                        .quick__info-desc
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Санкт-Петербург на Wikipedia
+
+                li.col-md-4
+                    .quick__info
+                        figure.quick__info-image
+                            img(src="images/img-quick-youtube.png" width="80" height="56" alt="")
+                        .quick__info-desc
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Официальный канал на YouTube
+
+                li.col-md-4
+                    .quick__info
+                        figure.quick__info-image
+                            img(src="images/img-quick-administration.png" width="59" height="70" alt="")
+                        .quick__info-desc
+                            a(href="#").ui-link.ui-link--underline.ui-link--blue Официальный сайт администрации
+
+
+    // Quick :: End
+
+
+    
+    // Mail :: Start
+    section.section.mail
+        .container-fluid
+
+            h2.mail__heading Почтовые отделения
+
+            ul.mail__grid
+                li.col-md-6.col-lg-4
+
+                    .mail__item
+                        figure.mail__item-image
+                            img(src="images/img-gerb.png" width="96" height="80" alt="")
+                        .mail__item-desc
+                            h3.mail__item-title
+                                a(href="#").ui-link.ui-link--underline.ui-link--blue Санкт-Петербург 5
+                            p.mail__item-index Индекс 190005
+                            address.mail__item-address Санкт-петербург, ул. Восстания, 55
+
+                li.col-md-6.col-lg-4
+
+                    .mail__item
+                        figure.mail__item-image
+                            img(src="images/img-gerb.png" width="96" height="80" alt="")
+                        .mail__item-desc
+                            h3.mail__item-title
+                                a(href="#").ui-link.ui-link--underline.ui-link--blue Санкт-Петербург 30
+                            p.mail__item-index Индекс 190013
+                            address.mail__item-address Санкт-петербург, Зелёный проспект, 20
+
+                li.col-md-6.col-lg-4
+
+                    .mail__item
+                        figure.mail__item-image
+                            img(src="images/img-gerb.png" width="96" height="80" alt="")
+                        .mail__item-desc
+                            h3.mail__item-title
+                                a(href="#").ui-link.ui-link--underline.ui-link--blue Санкт-Петербург 13
+                            p.mail__item-index Индекс 190012
+                            address.mail__item-address Санкт-петербург, Кондратьевский пр. 192
+
+
+
+
+            .mail__more
+                a(href="#").ui-link.ui-link--grey
+                    +sprite('icon-reception')
+                    u Показать почтовые отделения Санкт-Петербурга
+
+
+    // Mail :: End
+
+
+
+    // Cities :: Start
+    section.section.cities
+        .container-fluid
+
+            h2.cities__heading Города поблизости
+
+            ul.cities__grid
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+                    a(href="#").cities__link
+                        +sprite('icon-location')
+                        u Всеволожск
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+                    a(href="#").cities__link
+                        +sprite('icon-location')
+                        u Сосновый Бор
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+                    a(href="#").cities__link
+                        +sprite('icon-location')
+                        u Токсово
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+                    a(href="#").cities__link
+                        +sprite('icon-location')
+                        u Кипень
+                li.col-xs-6.col-md-4.col-lg-3.col-xl-20
+                    a(href="#").cities__link
+                        +sprite('icon-location')
+                        u Ульяновка
+
+    // Cities :: End

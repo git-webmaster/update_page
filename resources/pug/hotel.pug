@@ -1,0 +1,679 @@
+---
+title: Отель - Рубрикатор
+bodyClass: is-page-hotel
+---
+extends includes/_app
+
+block main
+
+    // Hotel :: Start
+    .l.l--hotel
+
+        // Scrolltop :: Start
+        button.scrolltop.js-scrolltop
+            +sprite('icon-scrolltop')
+        // Scrolltop :: End
+
+
+        .l__head(role="banner")
+            .container-fluid
+
+                .l__rating
+                    .ui-rating.ui-rating--22(data-rating="4")
+                        +sprite('icon-rating')
+                        +sprite('icon-rating')
+                        +sprite('icon-rating')
+                        +sprite('icon-rating')
+                        +sprite('icon-rating')
+
+                h1.l__heading Promenáda Romantic & Wellness Hotel
+                p.l__text Карловы Вары, Чехия
+
+                .l__taglist(role="navigation")
+
+                    .ui-taglist
+                        ul.ui-taglist__menu
+                            li
+                                a(href="#").ui-taglist__link
+                                    | Карточка отеля
+                                    span.ui-taglist__arrow
+                                        +sprite('icon-nav-arrow')
+                            li
+                                a(href="#").ui-taglist__link
+                                    | Отзывы #[mark (13)]
+                                    span.ui-taglist__arrow
+                                        +sprite('icon-nav-arrow')
+                            li
+                                a(href="#").ui-taglist__link
+                                    | Фото #[mark (30)]
+                                    span.ui-taglist__arrow
+                                        +sprite('icon-nav-arrow')
+                            li
+                                a(href="#").ui-taglist__link
+                                    | Как доехать?
+                                    span.ui-taglist__arrow
+                                        +sprite('icon-nav-arrow')
+                            li
+                                a(href="#").ui-taglist__link
+                                    | Отели рядом
+                                    span.ui-taglist__arrow
+                                        +sprite('icon-nav-arrow')
+
+
+        .l__body
+            .container-fluid
+
+                
+
+
+                .l__wrapper
+
+                    .l__sidebar
+
+                        // Panel Pictures :: Start
+                        .panel
+                            .panel__pictures
+                                ul.panel__pictures-list
+                                    li
+                                        a(href="#" data-photoswipe data-photoswipe-array="hotels" data-photoswipe-id="0").panel__pictures-item
+                                            img(src="images/img-hotel-01.jpg" alt="")
+                                    li
+                                        a(href="#" data-photoswipe data-photoswipe-array="hotels" data-photoswipe-id="1").panel__pictures-item
+                                            img(src="images/img-hotel-02.jpg" alt="")
+                                    li
+                                        a(href="#" data-photoswipe data-photoswipe-array="hotels" data-photoswipe-id="2").panel__pictures-item
+                                            img(src="images/img-hotel-03.jpg" alt="")
+                                    li
+                                        a(href="#" data-photoswipe data-photoswipe-array="hotels" data-photoswipe-id="3").panel__pictures-item
+                                            img(src="images/img-hotel-04.jpg" alt="")
+                                    li
+                                        a(href="#" data-photoswipe data-photoswipe-array="hotels" data-photoswipe-id="4").panel__pictures-item
+                                            img(src="images/img-hotel-05.jpg" alt="")
+
+                                .panel__pictures-control
+                                    button.panel__pictures-btn
+                                        span.panel__pictures-btn-text Показать ещё фотографии
+                                        span.panel__pictures-btn-count 29
+                                        +sprite('icon-arrow-down')
+
+                    .l__content
+
+                        // Panel Info :: Start
+                        .panel
+                            .panel__container
+                                .panel__body
+                                    .panel__info
+
+                                        ul.panel__info-list
+                                            li
+
+                                                dl.panel__info-dl
+                                                    dt Оценка по отзывам
+                                                    dd
+                                                        .panel__mark.panel__mark--green
+                                                            span.panel__mark-badge 8.2
+                                                            .panel__mark-content
+                                                                p.panel__mark-text Очень хорошо
+                                                                a(href="#").panel__mark-link на основе 103 отзывов
+                                                    dt Особенности отеля
+                                                    dd
+                                                        .panel__badges
+                                                            span.ui-badge.ui-badge--34.ui-badge--wifi
+                                                                +sprite('icon-badge-wifi')
+                                                                | Бесплатный WiFi
+                                                            span.ui-badge.ui-badge--34.ui-badge--parking
+                                                                +sprite('icon-badge-parking')
+                                                                | Доступна бесплатно
+                                                            span.ui-badge.ui-badge--34.ui-badge--fitness
+                                                                +sprite('icon-badge-fitness')
+                                                                | Фитнес-центр
+                                                            span.ui-badge.ui-badge--34.ui-badge--air
+                                                                +sprite('icon-badge-air')
+                                                                | Трансфер от/до аэропорта
+                                                            span.ui-badge.ui-badge--34.ui-badge--beach
+                                                                +sprite('icon-badge-beach')
+                                                                | Частная пляжная зона
+
+                                            li
+
+                                                dl.panel__info-dl
+                                                    dt Адрес #[mark.text-green Отличное расположение]
+                                                    dd
+                                                        address.panel__address
+                                                            p.panel__address-district
+                                                                +sprite('icon-district')
+                                                                a(href="#").ui-link.ui-link--underline.ui-link--grey Калининский район
+                                                                span.ui-help.js-tooltip(title="Это подсказка...")
+                                                                    +sprite('icon-help')
+                                                                    
+                                                            p.panel__address-location
+                                                                a(href="#").ui-link.ui-link--dotted.ui-link--dark Tržiště 31, Карловы Вары, 360 01, Чехия
+                                                            p.panel__address-text Вход со двора, пиво бесплатно
+
+
+                                                        
+                                                        .panel__map.panel__map--collapsed.panel__map--h230
+                                                            button.panel__map-btn
+                                                                +sprite('icon-hand')
+                                                                | Показать на карте
+                                                            .panel__map-container#map
+
+
+                                            li
+
+                                                dl.panel__info-dl
+                                                    dt Метро
+                                                    dd
+
+                                                        .panel__transport
+                                                            ul.panel__transport-list
+                                                                li
+                                                                    .panel__transport-item
+                                                                        figure.panel__transport-item-icon
+                                                                            span.icon-circle.icon-circle--red
+                                                                        p.panel__transport-item-location
+                                                                            a(href="#").ui-link.ui-link--underline.ui-link--grey Площадь Ленина
+                                                                        p.panel__transport-item-distance 600 м
+                                                                li
+                                                                    .panel__transport-item
+                                                                        figure.panel__transport-item-icon
+                                                                            span.icon-circle.icon-circle--green
+                                                                        p.panel__transport-item-location
+                                                                            a(href="#").ui-link.ui-link--underline.ui-link--grey Звенигородская
+                                                                        p.panel__transport-item-distance 1.5 км
+
+                                            li
+
+                                                dl.panel__info-dl
+                                                    dt Остановки
+                                                    dd 
+                                                        .panel__transport
+                                                            ul.panel__transport-list
+                                                                li
+                                                                    .panel__transport-item
+                                                                        figure.panel__transport-item-icon
+                                                                            +sprite('icon-bus')
+                                                                        p.panel__transport-item-location
+                                                                            a(href="#").ui-link.ui-link--underline.ui-link--grey ул. Боткинская
+                                                                        p.panel__transport-item-distance 800 м
+                                                                li
+                                                                    .panel__transport-item
+                                                                        figure.panel__transport-item-icon
+                                                                            +sprite('icon-bus')
+                                                                        p.panel__transport-item-location
+                                                                            a(href="#").ui-link.ui-link--underline.ui-link--grey Медицинский институт
+                                                                        p.panel__transport-item-distance 1.2 км
+
+                                            li
+
+                                                dl.panel__info-dl
+                                                    dt Забронировать
+                                                    dd
+                                                        .panel__site
+                                                            a(href="#").ui-link.ui-link--blue
+                                                                img(src="images/img-booking.png" alt="")
+                                                                u Booking.com
+
+
+                        // Panel Info :: End
+
+                        // Panel Buttons :: Start
+                        .panel
+                            .panel__buttons
+                                .row
+                                    .col-auto
+                                        button.btn.btn--46.btn--whitedark
+                                            +sprite('icon-camera')
+                                            | Добавить фото
+                                    .col-auto
+                                        button.btn.btn--46.btn--whitedark
+                                            +sprite('icon-save')
+                                            | Сохранить контакт
+                                    .col-auto
+                                        button.btn.btn--46.btn--whitedark
+                                            +sprite('icon-edit')
+                                            | Редактировать стр.
+                                
+                                .row
+
+                                    .col-12.col-md-6
+
+                                        button.btn.btn--50.btn--green 
+                                            +sprite('icon-plus')
+                                            | Добавить отзыв
+                                    .col-12.col-md-6
+
+                                        button.btn.btn--50.btn--blue 
+                                            +sprite('icon-arrow-price')
+                                            span.is-xl-visible Узнать стоимость номера
+                                            span.is-xl-hidden Узнать цену отеля
+
+                        // Panel Buttons :: End
+
+
+                        // Panel Services :: Start
+                        .panel
+                            h2.panel__title-outer Услуги в отеле
+                            .panel__container
+                                .panel__body
+
+                                    .ui-accordion.ui-accordion--border.js-accordion
+
+                                        .ui-accordion__item.js-accordion-item
+                                            button.ui-accordion__btn.js-accordion-btn
+                                                span.ui-accordion__icon
+                                                    +sprite('icon-services-comfort')
+                                                span.ui-accordion__arrow
+                                                    +sprite('icon-accordion-arrow')
+                                                | Удобства в номере
+                                            .ui-accordion__content.js-accordion-content
+                                                .ui-accordion__content-in
+
+                                                    .panel__services
+                                                        ul.panel__services-list
+                                                            li
+                                                                span.panel__services-text Гладильные принадлежности
+                                                            li
+                                                                span.panel__services-text Отопление
+                                                            li
+                                                                span.panel__services-text Плиточный/Мраморный пол
+                                                            li
+                                                                span.panel__services-text Вешалка для одежды
+                                                                span.panel__services-free Бесплатно
+                                                            li
+                                                                span.panel__services-text Утюг
+
+                                        .ui-accordion__item.js-accordion-item
+                                            button.ui-accordion__btn.js-accordion-btn
+                                                span.ui-accordion__icon
+                                                    +sprite('icon-services-bathroom')
+                                                span.ui-accordion__arrow
+                                                    +sprite('icon-accordion-arrow')
+                                                | Ванная комната
+                                            .ui-accordion__content.js-accordion-content
+                                                .ui-accordion__content-in
+
+                                                    p Далеко-далеко, за словесными горами в стране гласных и согласных живут рыбные тексты. Рукопись своего вдали грамматики, взгляд составитель, необходимыми всеми, имеет моей ipsum раз он! Деревни оксмокс моей злых. Рот, снова там.
+
+                                        .ui-accordion__item.js-accordion-item
+                                            button.ui-accordion__btn.js-accordion-btn
+                                                span.ui-accordion__icon
+                                                    +sprite('icon-services-outside')
+                                                span.ui-accordion__arrow
+                                                    +sprite('icon-accordion-arrow')
+                                                | Снаружи
+                                            .ui-accordion__content.js-accordion-content
+                                                .ui-accordion__content-in
+
+                                                    p Далеко-далеко, за словесными горами в стране гласных и согласных живут рыбные тексты. Рукопись своего вдали грамматики, взгляд составитель, необходимыми всеми, имеет моей ipsum раз он! Деревни оксмокс моей злых. Рот, снова там.
+
+
+                                        .ui-accordion__item.js-accordion-item
+                                            button.ui-accordion__btn.js-accordion-btn
+                                                span.ui-accordion__icon
+                                                    +sprite('icon-services-guest')
+                                                span.ui-accordion__arrow
+                                                    +sprite('icon-accordion-arrow')
+                                                | Гостиная зона
+                                            .ui-accordion__content.js-accordion-content
+                                                .ui-accordion__content-in
+
+                                                    p Далеко-далеко, за словесными горами в стране гласных и согласных живут рыбные тексты. Рукопись своего вдали грамматики, взгляд составитель, необходимыми всеми, имеет моей ipsum раз он! Деревни оксмокс моей злых. Рот, снова там.
+
+
+                        // Panel Services :: End
+
+
+
+                        // Panel Rooms :: Start
+                        .panel
+                            h2.panel__title-outer Номера
+                            .panel__container
+                                .panel__body
+
+                                    .ui-accordion.ui-accordion--wrap.ui-accordion--border.js-accordion
+
+                                        .ui-accordion__item.js-accordion-item
+                                            button.ui-accordion__btn.js-accordion-btn
+                                                span.ui-accordion__people
+                                                    | 6 x 
+                                                    +sprite('icon-men')
+                                                span.ui-accordion__arrow
+                                                    +sprite('icon-accordion-arrow')
+                                                span.ui-accordion__room Номер Penn 5000 с кроватью размера «king-size»
+
+                                            .ui-accordion__content.js-accordion-content
+                                                .ui-accordion__content-in
+
+                                                    .panel__room
+                                                        .panel__room-desc
+
+                                                            table
+                                                                tr
+                                                                    th Вмещает
+                                                                    td
+                                                                        span.panel__room-badge
+                                                                            +sprite('icon-people')
+                                                                            | 6 человек
+                                                                tr
+                                                                    th Площадь номера
+                                                                    td
+                                                                        span.panel__room-badge
+                                                                            +sprite('icon-people')
+                                                                            | 35 м2
+                                                                tr
+                                                                    th Спальня 1
+                                                                    td
+                                                                        span.panel__room-badge
+                                                                            +sprite('icon-people')
+                                                                            | 1 большая двуспальная кровать
+                                                                tr
+                                                                    th Гостиная
+                                                                    td
+                                                                        span.panel__room-badge
+                                                                            +sprite('icon-people')
+                                                                            | 1 диван-кровать
+
+                                                            p Полулюкс располагает телевизором с плоским экраном и холодильником. В ванной комнате предоставляются бесплатные туалетно-косметические принадлежности. В номере, который является более просторным, к вашим услугам гостиный уголок.
+
+                                                            strong Услуги и удобства:
+
+                                                            ul
+                                                                li Ванна
+                                                                li Телефон 
+                                                                li Холодильник 
+                                                                li Рабочий стол 
+                                                                li Бесплатные туалетные принадлежности 
+                                                                li Вентилятор 
+                                                                li Туалет 
+                                                                li Ванная комната 
+                                                                li Отопление 
+                                                                li Тапочки 
+                                                                li Кабельные каналы 
+                                                                li Ковровое покрытие 
+                                                                li Телевизор с плоским экраном 
+                                                                li Диван 
+                                                                li Шкаф/гардероб 
+                                                                li Полотенца 
+                                                                li Белье
+                                                        
+                                                        .panel__room-gallery
+
+                                                            .gallery.js-gallery
+                                                                .gallery__slides.owl-carousel.owl-gallery.js-gallery-slides
+                                                                    span.gallery__slides-item
+                                                                        img(src="images/img-gallery-01.jpg" alt="")
+                                                                    span.gallery__slides-item
+                                                                        img(src="images/img-gallery-01.jpg" alt="")
+                                                                    span.gallery__slides-item
+                                                                        img(src="images/img-gallery-01.jpg" alt="")
+                                                                    span.gallery__slides-item
+                                                                        img(src="images/img-gallery-01.jpg" alt="")
+                                                                    span.gallery__slides-item
+                                                                        img(src="images/img-gallery-01.jpg" alt="")
+                                                                    span.gallery__slides-item
+                                                                        img(src="images/img-gallery-01.jpg" alt="")
+                                                                .gallery__thumbs.js-gallery-thumbs
+                                                                    span.gallery__thumbs-item
+                                                                        img(src="images/img-gallery-01.jpg" alt="")
+                                                                    span.gallery__thumbs-item
+                                                                        img(src="images/img-gallery-01.jpg" alt="")
+                                                                    span.gallery__thumbs-item
+                                                                        img(src="images/img-gallery-01.jpg" alt="")
+                                                                    span.gallery__thumbs-item
+                                                                        img(src="images/img-gallery-01.jpg" alt="")
+                                                                    span.gallery__thumbs-item
+                                                                        img(src="images/img-gallery-01.jpg" alt="")
+                                                                    span.gallery__thumbs-item
+                                                                        img(src="images/img-gallery-01.jpg" alt="")
+
+                                                        .panel__room-control
+                                                            a(href="#").btn.btn--50.btn--blue Узнать стоимость номера
+
+
+
+                                        .ui-accordion__item.js-accordion-item
+                                            button.ui-accordion__btn.js-accordion-btn
+                                                span.ui-accordion__people
+                                                    | 1 x 
+                                                    +sprite('icon-men')
+                                                span.ui-accordion__arrow
+                                                    +sprite('icon-accordion-arrow')
+                                                span.ui-accordion__room Классический люкс с 1 спальней — Просторнее большинства других номеров — Нью-Йорк
+
+                                            .ui-accordion__content.js-accordion-content
+                                                .ui-accordion__content-in
+
+                                                    p Далеко-далеко за словесными горами в стране гласных и согласных живут, рыбные тексты. Рукописи власти имени запятой но она текстов эта. Возвращайся языкового все инициал своего рот осталось его они грамматики сбить о?
+
+                                        .ui-accordion__item.js-accordion-item
+                                            button.ui-accordion__btn.js-accordion-btn
+                                                span.ui-accordion__people
+                                                    | 2 x 
+                                                    +sprite('icon-men')
+                                                span.ui-accordion__arrow
+                                                    +sprite('icon-accordion-arrow')
+                                                span.ui-accordion__room Классический номер с 2 отдельными кроватям
+
+                                            .ui-accordion__content.js-accordion-content
+                                                .ui-accordion__content-in
+
+                                                    p Далеко-далеко за словесными горами в стране гласных, и согласных живут рыбные тексты. Снова послушавшись рукопись над бросил свою алфавит рот дорогу страну, речью страна буквоград, предложения выйти коварных даже необходимыми маленькая реторический.
+
+
+
+                        // Panel Rooms :: End
+
+
+                        // Panel Nears :: Start
+
+                        .panel
+                            h2.panel__title-outer Ближайшие достопримечательности
+                            .panel__container
+                                .panel__body
+
+                                    .panel__nears
+                                        ul.panel__nears-list
+                                            li
+                                                a(href="#").panel__nears-item
+                                                    span.panel__nears-title Чкаловский рынок
+                                                    span.panel__nears-distance 200 м
+                                            li
+                                                a(href="#").panel__nears-item
+                                                    span.panel__nears-title Станция метро Ботаническая
+                                                    span.panel__nears-distance 200 м
+                                            li
+                                                a(href="#").panel__nears-item
+                                                    span.panel__nears-title Культурно-развлекательный комплекс Уралец
+                                                    span.panel__nears-distance 200 м
+                                            li
+                                                a(href="#").panel__nears-item
+                                                    span.panel__nears-type Супермаркет
+                                                    span.panel__nears-title Пятерочка
+                                                    span.panel__nears-distance 100 м
+                                            li
+                                                a(href="#").panel__nears-item
+                                                    span.panel__nears-type Рынок
+                                                    span.panel__nears-title D' Talipapa marketplace
+                                                    span.panel__nears-distance 5 м
+
+                        // Panel Nears :: End
+
+
+
+                        // Panel Air & Train stations :: Start
+                        section.panel
+                            h2.panel__title-outer Аэропорты и вокзалы рядом
+                            .panel__container
+                                .panel__body
+
+                                    .ui-accordion.ui-accordion--border.js-accordion
+
+                                        .ui-accordion__item.js-accordion-item
+                                            button.ui-accordion__btn.js-accordion-btn
+                                                span.ui-accordion__icon
+                                                    +sprite('icon-airports')
+                                                span.ui-accordion__arrow
+                                                    +sprite('icon-accordion-arrow')
+                                                | Международный аэропорт
+
+                                            .ui-accordion__content.js-accordion-content
+                                                .ui-accordion__content-in
+
+                                                    .panel__route
+
+                                                        table.panel__route-table
+                                                            tr
+                                                                td
+                                                                    span.panel__route-variable
+                                                                        span.panel__route-variable-in Частный трансфер
+                                                                td
+                                                                    span.panel__route-time 45 минут
+                                                            tr
+                                                                td
+                                                                    span.panel__route-variable
+                                                                        span.panel__route-variable-in Такси
+                                                                td
+                                                                    span.panel__route-time 30 минут
+                                                            tr
+                                                                td
+                                                                    span.panel__route-variable
+                                                                        span.panel__route-variable-in Общественный транспорт
+                                                                td
+                                                                    span.panel__route-time 60 минут
+                                                        
+                                                        .panel__route-badges
+                                                            span.ui-badge.ui-badge--32.ui-badge--parking
+                                                                +sprite('icon-badge-parking')
+                                                                | Доступна бесплатно
+
+                                                        .panel__route-taxi
+
+                                                            a(href="#").btn.btn--50.btn--orange
+                                                                +sprite('icon-taxi')
+                                                                span.is-xs-visible Узнать стоимость такси
+                                                                span.is-xs-hidden Узнать стоимость
+
+                                        .ui-accordion__item.js-accordion-item
+                                            button.ui-accordion__btn.js-accordion-btn
+                                                span.ui-accordion__icon
+                                                    +sprite('icon-airports')
+                                                span.ui-accordion__arrow
+                                                    +sprite('icon-accordion-arrow')
+                                                | Аэропорт Схипхол
+
+                                            .ui-accordion__content.js-accordion-content
+                                                .ui-accordion__content-in
+
+                                                    p Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Меня даль реторический гор, рукописи маленькая домах даже живет снова, агенство вопрос путь повстречался всеми жаренные буквоград буквенных. Они, составитель.
+
+                        // Panel Air & Train stations :: End
+
+
+                        // Panel Text :: Start
+                        .panel
+                            .panel__container
+
+                                .panel__edit
+
+                                    .panel__edit-content
+                                        p Отель Vistana Kuala Lumpur Titiwangsa расположен между станцией легкорельсового транспорта Titiwangsa и станцией монорельсовой дороги KL. К услугам гостей номера с телевизором с плоским экраном и кабельными каналами. К услугам гостей открытый бассейн и фитнес-центр.Поездка по монорельсовой дороге до торгового района Букит Бинтанг занимает 15 минут, а до торгового центра Midvalley Megamall и башен-близнецов Петронас - примерно 30 минут.Современные номера отеля Vistana располагают бесплатным Wi-Fi, гладильными принадлежностями, сейфом, принадлежностями для чая/кофе, а также ванной комнатой с тапочками и бесплатными туалетно-косметическими принадлежностями.В коммуникационном центре работают коммуникационные службы. В отеле работает пункт обмена валюты и прачечная. Приветливый персонал свободно говорит на английском, малайском и китайском языках.В течение всего дня в кафе-баре Barista подают блюда местной и интернациональной кухни.
+                                    .panel__edit-control
+                                        a(href="#").btn.btn--38.btn--whitedark
+                                            +sprite('icon-edit')
+                                            | Редактировать стр.
+
+                        // Panel Text :: End
+
+                        // Panel Description :: Start
+                        .panel
+                            .panel__description
+                                +sprite('icon-description')
+                                button.btn.btn--46.btn--whitedark
+                                    +sprite('icon-plus-small')
+                                    | Добавить описание
+
+                        // Panel Description :: End
+
+
+                        // Panel Hotels :: Start
+                        section.panel
+                            h2.panel__title-outer Отели рядом
+                            .panel__container
+                                .panel__body
+                        
+                                    .panel__hotels
+
+                                        .panel__hotel.panel__hotel--orange
+                                            figure.panel__hotel-image
+                                                img(src="images/img-hotel-min-01.jpg", alt="")
+                                            .panel__hotel-desc
+                                                h3.panel__hotel-title
+                                                    a(href="#").ui-link.ui-link--underline.ui-link--blue Row NYC at Times Square
+                                                .panel__hotel-rating
+                                                    .ui-rating(data-rating="4")
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                p.panel__hotel-text Lawrence, США
+
+                                            mark.panel__hotel-mark 4.8
+
+                                        
+                                        .panel__hotel.panel__hotel--red
+                                            figure.panel__hotel-image
+                                                img(src="images/img-hotel-min-02.jpg", alt="")
+                                            .panel__hotel-desc
+                                                h3.panel__hotel-title
+                                                    a(href="#").ui-link.ui-link--underline.ui-link--blue Hotel Edison Times Square near Times Square 5
+                                                .panel__hotel-rating
+                                                    .ui-rating(data-rating="5")
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                p.panel__hotel-text Lawrence, США
+
+                                            mark.panel__hotel-mark 5.4
+
+
+                                        .panel__hotel.panel__hotel--green
+                                            figure.panel__hotel-image
+                                                img(src="images/img-hotel-min-01.jpg", alt="")
+                                            .panel__hotel-desc
+                                                h3.panel__hotel-title
+                                                    a(href="#").ui-link.ui-link--underline.ui-link--blue Hotel Edison Times Square near Times Square 5
+                                                .panel__hotel-rating
+                                                    .ui-rating(data-rating="5")
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                p.panel__hotel-text Lawrence, США
+
+                                            mark.panel__hotel-mark 5.4
+
+
+                        // Panel Hotels :: End
+
+                        // Panel Booking :: Start
+                        .panel
+                            .panel__booking
+                                a(href="#").btn.btn--64.btn--blue
+                                    +sprite('icon-booking')
+                                    | Забронировать этот отель
+                        // Panel Booking :: End
+                            
+
+
+
+                    
+
+
+
+
+    // Hotel :: End

@@ -106,8 +106,8 @@
     border: 1px solid #ccc;
     z-index: 1100;
     margin: -1px 0 0;
-    opacity: 0;
-    visibility: hidden;
+//    opacity: 0;
+//    visibility: hidden;
 }
 
 .ui-search__progress {
@@ -116,6 +116,8 @@
     font-size: 16px;
     line-height: 1.2;
     padding: 10px;
+
+
     .icon-reload {
         margin: 0 10px 0 0;
         top: -2px;

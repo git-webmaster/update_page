@@ -9,6 +9,14 @@
     // background-color: #ffffff;
 }
 
+.countries {
+    padding: 20px 0;
+    // box-shadow: 0 6px 6px rgba(0, 0, 0, 0.01);
+    border: 0;
+    border-bottom: 1px solid #ebebeb;
+    // background-color: #ffffff;
+}
+
 .cities__heading {
     display: block;
     font-size: 24px;
@@ -42,11 +50,11 @@
 }
 
 .cities__card {
-    background: #fff;
-    border: 1px solid #ebebeb;
+    background: #ffe0d955;
+    border: 1px solid #ffe0d9;
     border-radius: 5px;
-    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.01);
-    padding: 19px 20px 19px 48px;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.01);
+    padding: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,17 +71,19 @@
         color: #131313;
 
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        border-color: #299ae0;
+        border: 1px solid #299ae0;
     }
 
     @include breakpoint(xs) {
-        padding: 20px;
         text-align: center;
     }
 
     @include breakpoint(md) {
-        padding: 33px 20px;
+        padding: 25px;
     }
+
+
+
 
 }
 
@@ -100,19 +110,73 @@
 }
 
 .cities__card-title {
-    font-size: 16px;
+    font-size: 20px;
     line-height: 20px;
     font-weight: 400;
+    color: #131313;
     display: block;
     margin: 0;
-   
+    //text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+
+    padding: 9px;
+    background: #ffe0d955;
+    border-radius: 5px;
+
     @include breakpoint(md) {
-        font-size: 18px;
+        font-size: 20px;
     }
-    
 }
 
+.cities__card-title_bg {
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #fff;
+    display: block;
+    margin: 0;
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
 
+    padding: 9px;
+    background: #333333AA;
+    border-radius: 2px;
+
+    @include breakpoint(md) {
+        font-size: 20px;
+    }
+
+}
+
+.dimmed {
+    position: relative;
+}
+
+.dimmed:after {
+    content: " ";
+    z-index: 10;
+    display: block;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.dimmed-pink {
+    position: relative;
+}
+
+.dimmed-pink:after {
+    content: " ";
+    z-index: 10;
+    display: block;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #ffe0d940;
+}
 
 .cities__link {
     @extend .ui-link;

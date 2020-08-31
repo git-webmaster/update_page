@@ -4,7 +4,7 @@
 
 
 .categories {
-    padding: 30px 0 10px;
+    padding: 25px 0 10px;
     // background: #fafafa;
 }
 
@@ -14,7 +14,7 @@
     line-height: 1.25;
     font-weight: 400;
     color: #808080;
-    margin: 0 0 30px;
+    margin: 0 0 25px;
     text-align: center;
 }
 
@@ -166,6 +166,25 @@
 
 .categories__card-text {
     color: #808080;
+}
+
+.category__button {
+
+    font-size: 17px;
+
+    @include breakpointMax(md) {
+        font-size: 15px;
+    }
+}
+
+.category__button-icon-delete {
+    width: 14px!important;
+    height: 14px!important;
+    top: -2px;
+
+    @include breakpointMax(md) {
+        top: -1px!important;
+    }
 }
 
 .category__image {

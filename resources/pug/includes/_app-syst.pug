@@ -1,0 +1,27 @@
+include _mixins
+doctype html
+html(lang="ru" class=bodyClass)
+    head
+        meta(charset="utf-8")
+        
+        meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+        meta(name="theme-color" content="#000")
+        meta(name="format-detection" content="telephone=no")
+        meta(http-equiv="X-UA-Compatible" content="IE=Edge")
+
+        title= title || 'Page name'
+
+        <!-- Critical CSS -->
+
+        include _loaderCss
+        include _loaderCssThemes
+
+        include _loaderJs
+        
+
+    body
+    
+
+        .app
+
+            block main

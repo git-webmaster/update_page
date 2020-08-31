@@ -1,0 +1,3022 @@
+---
+title: Компания брендирование - Рубрикатор
+bodyClass: is-page-company is-theme-brand
+---
+extends includes/_app-brand
+
+block main
+
+
+    // Company :: Start
+    .company
+
+        .company__head(role="banner")
+
+            .container-fluid
+
+                figure.company__image
+                    img(src="images/img-company-brand.jpg", alt="")
+
+                h1.company__heading Ренессанс Страхование
+
+                p.company__text Страховая компания №1 в Российской Федерации
+
+                p.company__caption Мы в Ренессанс страховании с 1997 года помогаем нашим клиентам — таким же людям, как и мы сами — в сложных ситуациях. И накопили огромное количество информации: что и почему случается с человеком на протяжении его жизни.
+
+                .company__taglist(role="navigation")
+                    ul.company__taglist-menu
+                        li
+                            a(href="#").company__taglist-link
+                                span.company__taglist-icon
+                                    +sprite('icon-nav-call')
+                                | Звонить
+                                span.company__taglist-arrow
+                                    +sprite('icon-nav-arrow')
+                        li
+                            a(href="#").company__taglist-link
+                                span.company__taglist-icon
+                                    +sprite('icon-nav-checked')
+                                | Осаго
+                                span.company__taglist-arrow
+                                    +sprite('icon-nav-arrow')
+                        li
+                            a(href="#").company__taglist-link
+                                span.company__taglist-icon
+                                    +sprite('icon-nav-checked')
+                                | Каско
+                                span.company__taglist-arrow
+                                    +sprite('icon-nav-arrow')
+                        li
+                            a(href="#").company__taglist-link
+                                | О компании
+                                span.company__taglist-arrow
+                                    +sprite('icon-nav-arrow')
+                        li
+                            a(href="#").company__taglist-link
+                                | Конструктор
+                                span.company__taglist-arrow
+                                    +sprite('icon-nav-arrow')
+
+        .company__body
+            .container-fluid
+
+                // Scrolltop :: Start
+                button.company__scrolltop.js-scrolltop
+                    +sprite('icon-scrolltop')
+                // Scrolltop :: End
+
+
+                .company__container.js-sticky-container
+
+                    .company__row
+                        .company__content
+                    
+
+                            // Panel Contacts :: Start
+                            section.panel
+                                .panel__tabs.js-tabs
+
+                                    ul.panel__tabs-control(role="tablist")
+                                        li
+                                            h2.panel__tabs-btn.js-tabs-btn.is-active(role="tab")
+                                                span.panel__tabs-icon
+                                                    +sprite('icon-panel-contacts')
+                                                | Контакты
+                                        li
+                                            h2.panel__tabs-btn.js-tabs-btn(role="tab")
+                                                span.panel__tabs-icon
+                                                    +sprite('icon-panel-contacts-more')
+                                                | Еще контакты
+
+                                    .panel__tabs-container
+                                        .panel__tabs-content.js-tabs-content.is-active
+
+                                            .panel__notice.panel__notice--red
+                                                figure.panel__notice-icon
+                                                    +sprite('icon-locked')
+                                                p.panel__notice-text
+                                                    | #[a(href="#") 5 человек] сообщили, что компания закрыта
+                                                    +sprite('icon-arrow-down')
+                                                .panel__notice-control
+                                                    button.btn.btn--white.btn--like
+                                                        +sprite('icon-like')
+                                                        | Правда
+                                                        mark 10
+                                                    button.btn.btn--white.btn--dislike
+                                                        +sprite('icon-dislike')
+                                                        | Неправда
+                                                        mark 4
+
+                                            .panel__contacts
+                                                table.panel__contacts-table
+                                                    tbody
+                                                        tr
+                                                            td
+                                                                h3 Телефоны
+                                                            td
+
+                                                                .panel__definition.js-more
+
+                                                                    table.panel__definition-table.js-more-table
+                                                                        tbody
+                                                                            tr
+                                                                                th
+                                                                                    a(href="tel:+7(921)19-15-105") +7 (921) 19-15-105
+                                                                                td
+                                                                                    small Отдел финансирования, звонить с 10 до 12 по будням, с 9 до 11 по выходным
+                                                                            tr
+                                                                                th
+                                                                                    a(href="tel:+7(953)20-11-155") +7 (953) 20-11-155
+                                                                                td
+                                                                                    small Многоканальный
+
+                                                                    .panel__definition-control
+                                                                        button.btn.btn--36.btn--whitelight.js-more-btn
+                                                                            | Показать еще
+                                                                            +sprite('icon-arrow-down')
+                                                        tr
+                                                            td
+                                                                h3 E-mail
+                                                            td
+                                                                .panel__definition
+                                                                    table.panel__definition-table.js-more-table
+                                                                        tbody
+                                                                            tr
+                                                                                th
+                                                                                    a(href="mailto:renessansvz51@gmail.com") renessansvz51@gmail.com
+                                                                                td
+                                                                                    small Возмещение ущерба
+                                                        tr
+                                                            td
+                                                                h3 Сайт
+                                                            td
+                                                                .panel__site
+                                                                    a(href="#").ui-link.ui-link--blue
+                                                                        +sprite('icon-target')
+                                                                        | renessans.ru
+                                                        tr
+                                                            td
+                                                                h3 Адрес
+                                                            td
+                                                                address.panel__address
+                                                                    span.panel__address-badge Калининский район
+                                                                    p.panel__address-location
+                                                                        a(href="#").ui-link.ui-link--dotted.ui-link--dark Санкт-Петербург, Яхтенный проезд, 9к1, оф. 127
+                                                                    p.panel__address-text Вход со двора, подъезд №2
+                                                                    .panel__address-control
+                                                                        button.btn.btn--36.btn--whitelight
+                                                                            +sprite('icon-cursor')
+                                                                            | Все адреса
+
+                                                        tr
+                                                            td
+                                                                h3 Транспорт
+                                                            td
+                                                                .panel__transport
+                                                                    mark.panel__transport-badge Метро
+                                                                    ul.panel__transport-list
+                                                                        li
+                                                                            .panel__transport-item
+                                                                                figure.panel__transport-item-icon
+                                                                                    span.icon-circle.icon-circle--red
+                                                                                p.panel__transport-item-location
+                                                                                    a(href="#").ui-link.ui-link--underline.ui-link--grey Площадь Ленина
+                                                                                p.panel__transport-item-distance 600 м
+                                                                        li
+                                                                            .panel__transport-item
+                                                                                figure.panel__transport-item-icon
+                                                                                    span.icon-circle.icon-circle--green
+                                                                                p.panel__transport-item-location
+                                                                                    a(href="#").ui-link.ui-link--underline.ui-link--grey Звенигородская
+                                                                                p.panel__transport-item-distance 1.5 км
+
+                                                                    mark.panel__transport-badge Остановки
+                                                                    ul.panel__transport-list
+                                                                        li
+                                                                            .panel__transport-item
+                                                                                figure.panel__transport-item-icon
+                                                                                    +sprite('icon-bus')
+                                                                                p.panel__transport-item-location
+                                                                                    a(href="#").ui-link.ui-link--underline.ui-link--grey ул. Боткинская
+                                                                                p.panel__transport-item-distance 800 м
+                                                                        li
+                                                                            .panel__transport-item
+                                                                                figure.panel__transport-item-icon
+                                                                                    +sprite('icon-bus')
+                                                                                p.panel__transport-item-location
+                                                                                    a(href="#").ui-link.ui-link--underline.ui-link--grey Медицинский институт
+                                                                                p.panel__transport-item-distance 1.2 км
+
+                                                        tr
+                                                            td
+                                                                h3 Район
+                                                            td
+                                                                .panel__region
+                                                                    a(href="#").ui-link.ui-link--underline.ui-link--grey Калининский
+                                                                    .ui-help.js-tooltip(title="Это подсказка...")
+                                                                        +sprite('icon-help')
+                                                        tr
+                                                            td
+                                                                h3 Категория
+                                                            td
+                                                                .panel__category
+                                                                    ul.panel__category-list
+                                                                        li
+                                                                            a(href="#").ui-link.ui-link--underline.ui-link--blue Страховые компании в Санкт-Петербурге
+                                                                        li
+                                                                            a(href="#").ui-link.ui-link--underline.ui-link--blue ОСАГО в Санкт-Петербурге
+
+
+                                            .panel__banner.panel__banner-768x90
+                                                img(src="images/banner-768x90.jpg" alt="" aria-hidden="true")
+
+                                        .panel__tabs-content.js-tabs-content
+                                            
+                                            p.panel__provided
+                                                span.panel__provided-in
+                                                    +sprite('icon-provided')
+                                                    | Даннее предоставлены посетителями 19 раз
+
+                                            .panel__cards
+
+                                                ul.panel__cards-list
+                                                    li
+
+                                                        .panel__card.panel__card--green
+                                                            .panel__card-body
+
+                                                                ul.panel__card-list
+                                                                    li
+                                                                        a(href="tel:+7(953)20-11-567") +7 (953) 20-11-567
+                                                                        small Многоканальный
+                                                                    li
+                                                                        a(href="tel:+7(953)20-11-133") +7 (953) 20-11-133
+                                                                    li Санкт-Петербург, Яхтенный проезд, 7к1, оф. 345
+
+                                                                .panel__card-control
+                                                                    a(href="#").ui-link.ui-link--dashed.ui-link--grey Еще 2 изменения
+
+                                                            .panel__card-foot
+                                                                p.panel__card-text Контакты верны?
+                                                                .panel__card-voice
+                                                                    .ui-voice.ui-voice--green
+                                                                        button.ui-voice__btn.ui-voice__btn--like
+                                                                            span.is-visible-default
+                                                                                +sprite('icon-like')
+                                                                            span.is-visible-blind
+                                                                                | Да
+                                                                        p.ui-voice__number 10
+                                                                        button.ui-voice__btn.ui-voice__btn--dislike
+                                                                            span.is-visible-default
+                                                                                +sprite('icon-dislike')
+                                                                            span.is-visible-blind
+                                                                                | Нет
+                                                                        
+                                                                p.panel__card-date 08.09.2018
+
+                                                    li
+                                                
+                                                        .panel__card.panel__card--red
+                                                            .panel__card-body
+
+                                                                ul.panel__card-list
+                                                                    li
+                                                                        a(href="tel:+7(953)20-11-567") +7 (953) 20-11-567
+                                                                        small Многоканальный
+                                                                    li
+                                                                        a(href="#").ui-link.ui-link--dashed.ui-link--dark Новый режим работы
+
+                                                                .panel__card-control
+                                                                    a(href="#").ui-link.ui-link--dashed.ui-link--grey Показать полностью
+
+                                                            .panel__card-foot
+                                                                p.panel__card-text Контакты верны?
+                                                                .panel__card-voice
+                                                                    .ui-voice.ui-voice--red
+                                                                        button.ui-voice__btn.ui-voice__btn--like
+                                                                            span.is-visible-default
+                                                                                +sprite('icon-like')
+                                                                            span.is-visible-blind
+                                                                                | Да
+                                                                        p.ui-voice__number 10
+                                                                        button.ui-voice__btn.ui-voice__btn--dislike
+                                                                            span.is-visible-default
+                                                                                +sprite('icon-dislike')
+                                                                            span.is-visible-blind
+                                                                                | Нет
+
+                                                                p.panel__card-date 08.09.2018
+
+
+                                                .panel__cards-loadmore
+                                                    button.btn.btn--loadmore
+                                                        +sprite('icon-loadmore')
+                                                        | Показать еще
+
+                                                
+
+                            // Panel Contacts :: End
+
+
+                            // Panel Buttons :: Start
+                            .panel
+                                .panel__buttons
+                                    .row
+                                        .col-6.col-md-auto
+                                            button.btn.btn--50.btn--green 
+                                                +sprite('icon-plus')
+                                                | Добавить отзыв
+                                        .col-6.col-md-auto
+                                            button.btn.btn--46.btn--whitedark
+                                                +sprite('icon-camera')
+                                                | Добавить фото
+                                        .col-6.col-md-auto
+                                            button.btn.btn--46.btn--whitedark
+                                                +sprite('icon-save')
+                                                | Сохранить контакт
+                                        .col-6.col-md-auto
+                                            button.btn.btn--46.btn--whitedark
+                                                +sprite('icon-edit')
+                                                | Редактировать стр.
+
+                            // Panel Buttons :: End
+
+
+                            // Panel Contacts More :: Start
+                            section.panel
+                                .panel__container
+
+                                    .panel__head
+
+                                        figure.panel__icon
+                                            +sprite('icon-panel-contacts-more')
+
+                                        h2.panel__title Еще контакты
+
+                                    .panel__body
+
+                                    
+
+                                        .panel__cards
+
+                                            p.panel__provided
+                                                span.panel__provided-in
+                                                    +sprite('icon-provided')
+                                                    | Даннее предоставлены посетителями 19 раз
+
+                                        
+                                            .panel__cards-carousel.owl-carousel.owl-cards.js-owl-cards
+
+                                                .panel__card
+                                                    .panel__card-body
+
+                                                        ul.panel__card-list
+                                                            li
+                                                                a(href="tel:+7(953)20-11-567") +7 (953) 20-11-567
+                                                                small Многоканальный
+                                                            li
+                                                                a(href="tel:+7(953)20-11-133") +7 (953) 20-11-133
+                                                            li Санкт-Петербург, Яхтенный проезд, 7к1, оф. 345
+
+                                                        .panel__card-control
+                                                            a(href="#").ui-link.ui-link--dashed.ui-link--grey Показать полностью
+
+                                                    .panel__card-foot
+                                                        p.panel__card-text Контакты верны?
+                                                        .panel__card-voice
+                                                            .ui-voice.ui-voice--green
+                                                                button.ui-voice__btn.ui-voice__btn--like
+                                                                    span.is-visible-default
+                                                                        +sprite('icon-like')
+                                                                    span.is-visible-blind
+                                                                        | Да
+                                                                p.ui-voice__number 10
+                                                                button.ui-voice__btn.ui-voice__btn--dislike
+                                                                    span.is-visible-default
+                                                                        +sprite('icon-dislike')
+                                                                    span.is-visible-blind
+                                                                        | Нет
+
+
+                                                .panel__card
+                                                    .panel__card-body
+
+                                                        ul.panel__card-list
+                                                            li
+                                                                a(href="tel:+7(953)20-11-567") +7 (953) 20-11-567
+                                                                small Многоканальный
+                                                            li
+                                                                a(href="#").ui-link.ui-link--dashed.ui-link--dark Новый режим работы
+
+                                                        .panel__card-control
+                                                            a(href="#").ui-link.ui-link--dashed.ui-link--grey Показать полностью
+
+                                                    .panel__card-foot
+                                                        p.panel__card-text Контакты верны?
+                                                        .panel__card-voice
+                                                            .ui-voice.ui-voice--red
+                                                                button.ui-voice__btn.ui-voice__btn--like
+                                                                    span.is-visible-default
+                                                                        +sprite('icon-like')
+                                                                    span.is-visible-blind
+                                                                        | Да
+                                                                p.ui-voice__number 10
+                                                                button.ui-voice__btn.ui-voice__btn--dislike
+                                                                    span.is-visible-default
+                                                                        +sprite('icon-dislike')
+                                                                    span.is-visible-blind
+                                                                        | Нет
+
+                                                .panel__card
+                                                    .panel__card-body
+
+                                                        ul.panel__card-list
+                                                            li
+                                                                a(href="tel:+7(953)20-11-567") +7 (953) 20-11-567
+                                                                small Многоканальный
+                                                            li
+                                                                a(href="tel:+7(953)20-11-133") +7 (953) 20-11-133
+                                                            li Санкт-Петербург, Яхтенный проезд, 7к1, оф. 345
+
+                                                        .panel__card-control
+                                                            a(href="#").ui-link.ui-link--dashed.ui-link--grey Показать полностью
+
+                                                    .panel__card-foot
+                                                        p.panel__card-text Контакты верны?
+                                                        .panel__card-voice
+                                                            .ui-voice.ui-voice--green
+                                                                button.ui-voice__btn.ui-voice__btn--like
+                                                                    span.is-visible-default
+                                                                        +sprite('icon-like')
+                                                                    span.is-visible-blind
+                                                                        | Да
+                                                                p.ui-voice__number 10
+                                                                button.ui-voice__btn.ui-voice__btn--dislike
+                                                                    span.is-visible-default
+                                                                        +sprite('icon-dislike')
+                                                                    span.is-visible-blind
+                                                                        | Нет
+
+
+                                                .panel__card
+                                                    .panel__card-body
+
+                                                        ul.panel__card-list
+                                                            li
+                                                                a(href="tel:+7(953)20-11-567") +7 (953) 20-11-567
+                                                                small Многоканальный
+                                                            li
+                                                                a(href="#").ui-link.ui-link--dashed.ui-link--dark Новый режим работы
+
+                                                        .panel__card-control
+                                                            a(href="#").ui-link.ui-link--dashed.ui-link--grey Показать полностью
+
+                                                    .panel__card-foot
+                                                        p.panel__card-text Контакты верны?
+                                                        .panel__card-voice
+                                                            .ui-voice.ui-voice--red
+                                                                button.ui-voice__btn.ui-voice__btn--like
+                                                                    span.is-visible-default
+                                                                        +sprite('icon-like')
+                                                                    span.is-visible-blind
+                                                                        | Да
+                                                                p.ui-voice__number 10
+                                                                button.ui-voice__btn.ui-voice__btn--dislike
+                                                                    span.is-visible-default
+                                                                        +sprite('icon-dislike')
+                                                                    span.is-visible-blind
+                                                                        | Нет
+
+
+
+
+                            // Panel Contacts More :: End
+
+                        .company__sidebar
+                            
+
+                            .company__sidebar-map
+
+
+                                // Panel Map :: Start
+                                section.panel
+                                    .panel__tabs.js-tabs
+                                        ul.panel__tabs-control(role="tablist")
+                                            li
+                                                h2.panel__tabs-btn.js-tabs-btn.is-active(role="tab")
+                                                    span.panel__tabs-icon
+                                                        +sprite('icon-panel-map')
+                                                    | Карта
+                                            li
+                                                h2.panel__tabs-btn.js-tabs-btn(role="tab") Улица
+
+                                        .panel__tabs-container
+                                            .panel__tabs-content.js-tabs-content.is-active
+
+                                                .panel__map
+                                                    button.panel__map-activate
+                                                        +sprite('icon-activate')
+                                                        u Активировать
+                                                    .panel__map-container#map
+
+                                            .panel__tabs-content.js-tabs-content
+                                                | Улица
+
+                                // Panel Map :: End
+
+
+                            .company__sidebar-banner.js-sticky
+                                
+
+                                .row
+                                    .col-md-auto.col-xl-12
+                                    
+
+                                        // Panel Banner :: Start
+                                        .panel
+                                            .panel__container
+
+                                                .panel__banner.panel__banner-336x280
+                                                    img(src="images/banner-336x280.jpg" alt="" aria-hidden="true")
+
+                                        // Panel Banner :: End
+
+                                    .col-md-auto.col-xl-12
+
+                                        // Panel Banner :: Start
+                                        .panel
+                                            .panel__container
+
+                                                .panel__banner.panel__banner-336x280
+                                                    img(src="images/banner-336x280.jpg" alt="" aria-hidden="true")
+
+                                        // Panel Banner :: End
+
+
+                    .company__row
+                        .company__content
+
+
+                            // Panel Photos :: Start
+                            .panel
+                                .panel__container
+
+                                    .panel__gallery.owl-carousel.owl-gallery.js-owl-gallery
+                                        
+                                        figure.panel__gallery-item
+                                            a(href="#" data-photoswipe data-photoswipe-array="images" data-photoswipe-id="0")
+                                                img(src="https://farm4.staticflickr.com/3894/15008518202_c265dfa55f_h.jpg" alt="" aria-hidden="true")
+
+                                        figure.panel__gallery-item
+                                            a(href="#" data-photoswipe data-photoswipe-array="images" data-photoswipe-id="1")
+                                                img(src="https://farm6.staticflickr.com/5591/15008867125_b61960af01_h.jpg" alt="" aria-hidden="true")
+
+                                        figure.panel__gallery-item       
+                                            a(href="#" data-photoswipe data-photoswipe-array="images" data-photoswipe-id="2")
+                                                img(src="https://farm4.staticflickr.com/3902/14985871946_24f47d4b53_h.jpg" alt="" aria-hidden="true")
+
+                                        figure.panel__gallery-item
+                                            .panel__gallery-item-desc
+                                                .panel__gallery-item-icon
+                                                    +sprite('icon-camera')
+                                                p.panel__gallery-item-count 45 фото
+                                                a(href="#").btn.btn--36.btn--whitelight Показать еще
+
+                                        figure.panel__gallery-item
+                                            a(href="#" data-photoswipe data-photoswipe-array="images" data-photoswipe-id="3")
+                                                img(src="https://farm6.staticflickr.com/5584/14985868676_b51baa4071_h.jpg" alt="" aria-hidden="true")
+
+                                        figure.panel__gallery-item  
+                                            a(href="#" data-photoswipe data-photoswipe-array="images" data-photoswipe-id="4")
+                                                img(src="https://farm4.staticflickr.com/3920/15008465772_d50c8f0531_h.jpg" alt="" aria-hidden="true")
+                                        
+                                        figure.panel__gallery-item
+                                            a(href="#" data-photoswipe data-photoswipe-array="images" data-photoswipe-id="5")
+                                                img(src="https://farm4.staticflickr.com/3894/15008518202_c265dfa55f_h.jpg" alt="" aria-hidden="true")
+
+                                        figure.panel__gallery-item
+                                            .panel__gallery-item-desc
+                                                .panel__gallery-item-icon
+                                                    +sprite('icon-camera')
+                                                p.panel__gallery-item-count 145 фото
+                                                a(href="#").btn.btn--36.btn--whitelight Показать еще
+
+                                        figure.panel__gallery-item
+                                            a(href="#" data-photoswipe data-photoswipe-array="images" data-photoswipe-id="6")
+                                                img(src="https://farm6.staticflickr.com/5591/15008867125_b61960af01_h.jpg" alt="" aria-hidden="true")
+
+                                        figure.panel__gallery-item
+                                            a(href="#" data-photoswipe data-photoswipe-array="images" data-photoswipe-id="7")
+                                                img(src="https://farm4.staticflickr.com/3902/14985871946_24f47d4b53_h.jpg" alt="" aria-hidden="true")
+                                        
+                                        figure.panel__gallery-item
+                                            a(href="#" data-photoswipe data-photoswipe-array="images" data-photoswipe-id="8")
+                                                img(src="https://farm6.staticflickr.com/5584/14985868676_b51baa4071_h.jpg" alt="" aria-hidden="true")
+
+                                        figure.panel__gallery-item
+                                            .panel__gallery-item-desc
+                                                .panel__gallery-item-icon
+                                                    +sprite('icon-camera')
+                                                p.panel__gallery-item-count 5 фото
+                                                a(href="#").btn.btn--36.btn--whitelight Показать еще
+
+                            // Panel Photos :: End
+
+
+                            // Panel Directions :: Start
+                            section.panel
+                                .panel__container
+
+                                    .panel__directions
+                                        p.panel__directions-caption Фитнес клуб Физика - фитнес-центры Москвы (ВАО) с бассейном на Носсе Энтузиастов и в Балашихе, около м. Петрово, Новогиреево, Авиамоторная, Измайлово
+                                        
+                                        h2.panel__directions-title
+                                            +sprite('icon-panel-directions')
+                                            | Схема проезда
+                                        ul.panel__directions-list
+                                            li Остановка «ул. Пасечная»
+                                            li м. Тимирязевская - автобус №87 м. Войковская - трамвай №27
+                                            li м. Динамо - автобус №22
+                                        .panel__directions-control
+                                            button.btn.btn--36.btn--whitelight
+                                                +sprite('icon-edit')
+                                                | Редактировать
+
+                            // Panel Directions :: End
+
+
+                            // Panel Description :: Start
+                            .panel
+                                .panel__description
+                                    +sprite('icon-description')
+                                    button.btn.btn--46.btn--whitedark
+                                        +sprite('icon-plus-small')
+                                        | Добавить описание
+
+                            // Panel Description :: End
+
+
+
+                            // Panel Worktime :: Start
+                            section.panel
+                                .panel__container
+
+                                    .panel__head
+
+                                        figure.panel__icon
+                                            +sprite('icon-panel-clock')
+
+                                        h2.panel__title Режим работы
+
+                                        span.panel__update Обновлено 15.15.2018
+
+
+
+                                    .panel__body
+
+                                        .panel__worktime
+                                            table.panel__worktime-table
+                                                tbody
+                                                    tr
+                                                        th.panel__worktime-day
+                                                            span.panel__worktime-day-decor Пн
+                                                        td.panel__worktime-period 10:00 – 18:00
+                                                        td(colspan="2").panel__worktime-break Перерыв 12:00 – 13:00
+                                                        //- td.panel__worktime-comment
+
+                                                    tr.is-hightlight
+                                                        th.panel__worktime-day
+                                                            span.panel__worktime-day-decor Вт
+                                                        td.panel__worktime-period 10:00 – 18:00
+                                                        td.panel__worktime-break Перерыв 12:00 – 13:00
+                                                        td.panel__worktime-comment Комментарий в две стоки пусть будет здесь
+                                                    tr
+                                                        th.panel__worktime-day
+                                                            span.panel__worktime-day-decor Ср
+                                                        td.panel__worktime-period 10:00 – 18:00
+                                                        td(colspan="2").panel__worktime-break Перерыв 12:00 – 13:00
+                                                        //- td.panel__worktime-comment
+                                                    tr
+                                                        th.panel__worktime-day
+                                                            span.panel__worktime-day-decor Чт
+                                                        td.panel__worktime-period 10:00 – 18:00
+                                                        td(colspan="2").panel__worktime-break Перерыв 12:00 – 13:00
+                                                        //- td.panel__worktime-comment
+                                                    tr
+                                                        th.panel__worktime-day
+                                                            span.panel__worktime-day-decor Пт
+                                                        td.panel__worktime-period 10:00 – 18:00
+                                                        td.panel__worktime-break Перерыв 12:00 – 13:00
+                                                        td.panel__worktime-comment Каждую четную неделю
+                                                    tr
+                                                        th.panel__worktime-day
+                                                            span.panel__worktime-day-decor Cб
+                                                        td.panel__worktime-period 12:00 – 15:00
+                                                        td(colspan="2").panel__worktime-break Без перерыва
+                                                        //- td.panel__worktime-comment
+                                                    tr
+                                                        th.panel__worktime-day
+                                                            span.panel__worktime-day-decor Вс
+                                                        td(colspan="3").panel__worktime-period Выходной
+                                                        //- td.panel__worktime-break
+                                                        //- td.panel__worktime-comment
+
+                                            .panel__worktime-call
+                                                p Местное время в Санкт-Петербурге – 16:09.
+                                                p Рекомендация: позвоните по номеру #[a(href="tel:+7(495)780-93-66") +7 (495) 780-93-66] и уточните график
+
+
+                                    .panel__action
+                                        button.panel__action-btn
+                                            span.is-visible-default
+                                                +sprite('icon-edit')
+                                            span.is-visible-blind
+                                                | Редактировать
+                                        button.panel__action-btn Ошибка?
+
+                            // Panel Worktime :: End
+
+
+                            // Panel Worktime :: Start
+                            section.panel
+                                .panel__container
+
+                                    .panel__head
+
+                                        figure.panel__icon
+                                            +sprite('icon-panel-price')
+
+                                        h2.panel__title Прайс
+
+                                        span.panel__update Обновлено 15.15.2018
+
+
+                                    .panel__body
+
+                                        .panel__price
+
+                                            .panel__price-group
+
+                                                table.panel__price-table
+                                                    tbody
+                                                        tr
+                                                            td Печать листа А4 с полным покрытием
+
+                                                            th 40 руб за шт
+                                                        tr
+                                                            td Черно-белая широкоформатная печать САПР/ГИС
+
+                                                            th 54 руб за шт
+
+                                            .panel__price-group.js-collapse
+                                                button.panel__price-group-btn.js-collapse-btn
+                                                    | Полиграфия для рекламы
+                                                    +sprite('icon-arrow-down')
+                                                .panel__price-group-content.js-collapse-content
+
+                                                    table.panel__price-table
+                                                        tbody
+                                                            tr
+                                                                td Печать листа А4 с полным покрытием
+
+                                                                th 40 руб за шт
+                                                            tr
+                                                                td Черно-белая широкоформатная печать САПР/ГИС
+
+                                                                th 54 руб за шт
+
+
+                                            .panel__price-group.js-collapse
+                                                button.panel__price-group-btn.js-collapse-btn
+                                                    | Полиграфия для учебы
+                                                    +sprite('icon-arrow-down')
+                                                .panel__price-group-content.js-collapse-content
+
+                                                    table.panel__price-table
+                                                        tbody
+                                                            tr
+                                                                td Печать листа А4 с полным покрытием
+                                                                th 40 руб за шт
+                                                            tr
+                                                                td Черно-белая широкоформатная печать САПР/ГИС
+                                                                th 54 руб за шт
+
+
+                                            .panel__price-group
+                                                table.panel__price-table
+                                                    tbody
+                                                        tr
+                                                            td Афиши, плакаты - дизайн/макет
+                                                            th 2800 руб за шт
+                                                        tr
+                                                            td Вывески, таблички
+                                                            th 10 800 руб за шт
+
+                                                        tr
+                                                            td
+                                                                .panel__price-item
+                                                                    p.panel__price-item-caption
+                                                                        a(href="#").ui-link.ui-link--dotted.ui-link--grey Прайс-лист, актуальный на июль 2018
+                                                                    .panel__price-item-control
+                                                                        a(href="#").btn.btn--36.btn--grey Скачать
+
+                                                            th .docx, 233 кб
+
+
+
+                                            p.panel__price-call Звоните! Оптовый раздел продаж #[a(href="tel:+7(495)780-93-66") +7 (495) 780-93-66]
+
+
+                            // Panel Price :: End
+
+
+                            // Panel News :: Start
+                            section.panel
+                                .panel__container
+
+                                    .panel__head
+
+                                        figure.panel__icon
+                                            +sprite('icon-panel-news')
+
+                                        h2.panel__title Новости
+
+                                        span.panel__update Обновлено 18.15.2018
+
+
+
+                                    .panel__body
+
+                                        .panel__news.js-scrollbar
+
+                                            ul.panel__news-list
+                                                li
+                                                    .panel__news-item
+                                                        figure.panel__news-item-image
+                                                            img(src="images/img-news-01.jpg" alt="" aria-hidden="true")
+                                                        .panel__news-item-desc
+                                                            mark.panel__news-item-date Пятница, 8 июля 2018
+                                                            h3.panel__news-item-title
+                                                                a(href="#").ui-link.ui-link--dark   В начале сентября (5-7.09.2018) Типография «КЕМ» приняла участие в главной выставке промоиндустрии – IPSA ОСЕНЬ 2018. Участие как в весенней, так и в осенней выставке IPSA – для компании уже традиция.
+                                                            .panel__news-item-voice
+
+                                                                .ui-voice.ui-voice--green
+                                                                    button.ui-voice__btn.ui-voice__btn--like
+                                                                        span.is-visible-default
+                                                                            +sprite('icon-like')
+                                                                        span.is-visible-blind
+                                                                            span.is-xs-visible Голосовать за
+                                                                            span.is-xs-hidden За
+                                                                    p.ui-voice__number 10
+                                                                    button.ui-voice__btn.ui-voice__btn--dislike
+                                                                        span.is-visible-default
+                                                                            +sprite('icon-dislike')
+                                                                        span.is-visible-blind
+                                                                            span.is-xs-visible Голосовать против
+                                                                            span.is-xs-hidden Против
+
+                                                li
+                                                    .panel__news-item
+                                                        figure.panel__news-item-image
+                                                            img(src="images/img-news-02.jpg" alt="" aria-hidden="true")
+                                                        .panel__news-item-desc
+                                                            mark.panel__news-item-date Пятница, 4 июля 2018
+                                                            h3.panel__news-item-title
+                                                                a(href="#").ui-link.ui-link--dark В декабре 2017 года Типография КЕМ предлагает беспрецедентные скидки на ВСЕ ежедневники формата А5 с ДАТИРОВАННЫМ блоком!
+                                                            .panel__news-item-voice
+
+                                                                .ui-voice.ui-voice--green
+                                                                    button.ui-voice__btn.ui-voice__btn--like
+                                                                        span.is-visible-default
+                                                                            +sprite('icon-like')
+                                                                        span.is-visible-blind
+                                                                            span.is-xs-visible Голосовать за
+                                                                            span.is-xs-hidden За
+                                                                    p.ui-voice__number 10
+                                                                    button.ui-voice__btn.ui-voice__btn--dislike
+                                                                        span.is-visible-default
+                                                                            +sprite('icon-dislike')
+                                                                        span.is-visible-blind
+                                                                            span.is-xs-visible Голосовать против
+                                                                            span.is-xs-hidden Против
+
+                                                li
+                                                    .panel__news-item
+                                                        figure.panel__news-item-image
+                                                            img(src="images/img-news-01.jpg" alt="" aria-hidden="true")
+                                                        .panel__news-item-desc
+                                                            mark.panel__news-item-date Пятница, 8 июля 2018
+                                                            h3.panel__news-item-title
+                                                                a(href="#").ui-link.ui-link--dark   В начале сентября (5-7.09.2018) Типография «КЕМ» приняла участие в главной выставке промоиндустрии – IPSA ОСЕНЬ 2018. Участие как в весенней, так и в осенней выставке IPSA – для компании уже традиция.
+                                                            .panel__news-item-voice
+
+                                                                .ui-voice.ui-voice--green
+                                                                    button.ui-voice__btn.ui-voice__btn--like
+                                                                        span.is-visible-default
+                                                                            +sprite('icon-like')
+                                                                        span.is-visible-blind
+                                                                            span.is-xs-visible Голосовать за
+                                                                            span.is-xs-hidden За
+                                                                    p.ui-voice__number 10
+                                                                    button.ui-voice__btn.ui-voice__btn--dislike
+                                                                        span.is-visible-default
+                                                                            +sprite('icon-dislike')
+                                                                        span.is-visible-blind
+                                                                            span.is-xs-visible Голосовать против
+                                                                            span.is-xs-hidden Против
+
+                                                li
+                                                    .panel__news-item
+                                                        figure.panel__news-item-image
+                                                            img(src="images/img-news-02.jpg" alt="" aria-hidden="true")
+                                                        .panel__news-item-desc
+                                                            mark.panel__news-item-date Пятница, 4 июля 2018
+                                                            h3.panel__news-item-title
+                                                                a(href="#").ui-link.ui-link--dark В декабре 2017 года Типография КЕМ предлагает беспрецедентные скидки на ВСЕ ежедневники формата А5 с ДАТИРОВАННЫМ блоком!
+                                                            .panel__news-item-voice
+
+                                                                .ui-voice.ui-voice--green
+                                                                    button.ui-voice__btn.ui-voice__btn--like
+                                                                        span.is-visible-default
+                                                                            +sprite('icon-like')
+                                                                        span.is-visible-blind
+                                                                            span.is-xs-visible Голосовать за
+                                                                            span.is-xs-hidden За
+                                                                    p.ui-voice__number 10
+                                                                    button.ui-voice__btn.ui-voice__btn--dislike
+                                                                        span.is-visible-default
+                                                                            +sprite('icon-dislike')
+                                                                        span.is-visible-blind
+                                                                            span.is-xs-visible Голосовать против
+                                                                            span.is-xs-hidden Против
+
+                                    .panel__action
+                                        button.panel__action-btn
+                                            +sprite('icon-post')
+                                            | Опубликовать пост
+
+                            // Panel News :: End
+
+
+                            // Panel Editor :: Start
+                            section.panel
+                                .panel__container
+
+                                    .panel__head
+
+                                        figure.panel__icon
+                                            +sprite('icon-panel-editor')
+
+                                        h2.panel__title Редактор
+
+                                        span.panel__status Сохранено успешно…
+
+                                    .panel__body
+
+                                        .panel__editor
+                                            form(action="#")
+                                                .panel__editor-head
+
+                                                    ul.panel__editor-menu
+                                                        li
+                                                            label.ui-check
+                                                                input(type="checkbox").ui-check__input
+                                                                span.ui-check__editor
+                                                                    +sprite('icon-editor-bold')
+                                                        li
+                                                            label.ui-check
+                                                                input(type="checkbox").ui-check__input
+                                                                span.ui-check__editor
+                                                                    +sprite('icon-editor-italic')
+                                                        li
+                                                            label.ui-check
+                                                                input(type="checkbox").ui-check__input
+                                                                span.ui-check__editor
+                                                                    +sprite('icon-editor-underline')
+                                                        li
+                                                            label.ui-check
+                                                                input(type="checkbox").ui-check__input
+                                                                span.ui-check__editor
+                                                                    +sprite('icon-editor-h1')
+                                                        li
+                                                            label.ui-check
+                                                                input(type="checkbox").ui-check__input
+                                                                span.ui-check__editor
+                                                                    +sprite('icon-editor-h2')
+
+                                                        li
+                                                            label.ui-check
+                                                                input(type="checkbox").ui-check__input
+                                                                span.ui-check__editor
+                                                                    +sprite('icon-editor-align-left')
+
+                                                        li
+                                                            label.ui-check
+                                                                input(type="checkbox").ui-check__input
+                                                                span.ui-check__editor
+                                                                    +sprite('icon-editor-align-center')
+
+                                                        li
+                                                            label.ui-check
+                                                                input(type="checkbox").ui-check__input
+                                                                span.ui-check__editor
+                                                                    +sprite('icon-editor-align-right')
+
+                                                        li
+                                                            label.ui-check
+                                                                input(type="checkbox").ui-check__input
+                                                                span.ui-check__editor
+                                                                    +sprite('icon-editor-ol')
+
+                                                        li
+                                                            label.ui-check
+                                                                input(type="checkbox").ui-check__input
+                                                                span.ui-check__editor
+                                                                    +sprite('icon-editor-ul')
+
+                                                        li
+                                                            label.ui-check
+                                                                input(type="checkbox").ui-check__input
+                                                                span.ui-check__editor
+                                                                    +sprite('icon-editor-picture')
+
+                                                        li
+                                                            label.ui-check
+                                                                input(type="checkbox").ui-check__input
+                                                                span.ui-check__editor
+                                                                    +sprite('icon-editor-link')
+
+
+                                                .panel__editor-body
+                                                    textarea(placeholder="Напишите текст поста здесь").panel__editor-textarea
+                                                .panel__editor-foot
+
+                                                    .panel__editor-photo
+                                                        label.ui-file
+                                                            input(type="file").ui-file__input
+                                                            span.ui-file__btn
+                                                                +sprite('icon-camera')
+                                                                | Добавить фото
+                                                        .ui-help.js-tooltip(title="Это подсказка...")
+                                                            +sprite('icon-help')
+
+                                                    .panel__editor-buttons
+                                                        button.btn.btn--46.btn--whitedark Отмена
+                                                        button.btn.btn--46.btn--green
+                                                            +sprite('icon-checked')
+                                                            | Опубликовать
+
+                            // Panel Editor :: End
+
+
+
+                            // Panel Places :: Start
+                            section.panel
+                                .panel__container
+
+                                    .panel__head
+
+                                        figure.panel__icon
+                                            +sprite('icon-panel-places')
+
+                                        h2.panel__title Похожие места рядом
+
+
+                                    .panel__body
+
+
+                                        .panel__places.owl-carousel.owl-places.js-owl-places
+
+                                            .panel__places-group
+
+                                                .panel__place
+                                                    .panel__place-distance
+                                                        +sprite('icon-location')
+                                                        | 200 м
+                                                    .panel__place-desc
+                                                        strong.panel__place-title
+                                                            a(href="#").ui-link.ui-link--underline.ui-link--blue Росстрах страхование
+                                                        p.panel__place-text Санкт-Петербург, Зеленый проспект, 20
+
+                                                .panel__place
+                                                    .panel__place-distance
+                                                        +sprite('icon-location')
+                                                        | 670 м
+                                                    .panel__place-desc
+                                                        strong.panel__place-title
+                                                            a(href="#").ui-link.ui-link--underline.ui-link--blue АИГ страховая компания
+                                                        p.panel__place-text Санкт-Петербург, Зеленый проспект, 20
+
+                                                .panel__place
+                                                    .panel__place-distance
+                                                        +sprite('icon-location')
+                                                        | 1.6 км
+                                                    .panel__place-desc
+                                                        strong.panel__place-title
+                                                            a(href="#").ui-link.ui-link--underline.ui-link--blue Компания ТПС
+                                                        p.panel__place-text Санкт-Петербург, Зеленый проспект, 20
+
+
+                                            .panel__places-group
+
+                                                .panel__place
+                                                    .panel__place-distance
+                                                        +sprite('icon-location')
+                                                        | 250 м
+                                                    .panel__place-desc
+                                                        strong.panel__place-title
+                                                            a(href="#").ui-link.ui-link--underline.ui-link--blue Абсолют Страхование
+                                                        p.panel__place-text Санкт-Петербург, Зеленый проспект, 20
+
+                                                .panel__place
+                                                    .panel__place-distance
+                                                        +sprite('icon-location')
+                                                        | 1.3 км
+                                                    .panel__place-desc
+                                                        strong.panel__place-title
+                                                            a(href="#").ui-link.ui-link--underline.ui-link--blue АльфаСтрахование-Жизнь
+                                                        p.panel__place-text Санкт-Петербург, Зеленый проспект, 20
+
+                                                .panel__place
+                                                    .panel__place-distance
+                                                        +sprite('icon-location')
+                                                        | 1.6 км
+                                                    .panel__place-desc
+                                                        strong.panel__place-title
+                                                            a(href="#").ui-link.ui-link--underline.ui-link--blue Кофас Рус Страховая
+                                                        p.panel__place-text Санкт-Петербург, Зеленый проспект, 20
+
+
+                                            .panel__places-group
+
+                                                .panel__place
+                                                    .panel__place-distance
+                                                        +sprite('icon-location')
+                                                        | 200 м
+                                                    .panel__place-desc
+                                                        strong.panel__place-title
+                                                            a(href="#").ui-link.ui-link--underline.ui-link--blue Росстрах страхование
+                                                        p.panel__place-text Санкт-Петербург, Зеленый проспект, 20
+
+                                                .panel__place
+                                                    .panel__place-distance
+                                                        +sprite('icon-location')
+                                                        | 670 м
+                                                    .panel__place-desc
+                                                        strong.panel__place-title
+                                                            a(href="#").ui-link.ui-link--underline.ui-link--blue АИГ страховая компания
+                                                        p.panel__place-text Санкт-Петербург, Зеленый проспект, 20
+
+                                                .panel__place
+                                                    .panel__place-distance
+                                                        +sprite('icon-location')
+                                                        | 1.6 км
+                                                    .panel__place-desc
+                                                        strong.panel__place-title
+                                                            a(href="#").ui-link.ui-link--underline.ui-link--blue Компания ТПС
+                                                        p.panel__place-text Санкт-Петербург, Зеленый проспект, 20
+
+
+
+                            // Panel Places :: End
+
+
+
+                            // Panel Route :: Start
+                            section.panel
+                                .panel__container
+
+                                    .panel__route.js-collapse.js-route
+
+                                        .panel__route-head
+                                            figure.panel__route-icon
+                                                +sprite('icon-panel-route')
+                                            h2.panel__route-title Как доехать
+                                            figure.panel__route-image
+                                                //- img(src="https://static-maps.yandex.ru/1.x/?ll=37.677751,55.757718&spn=0.016457,0.00619&l=map" alt="" aria-hidden="true")
+                                            button.panel__route-btn.js-collapse-btn(aria-expanded="true" aria-controls="route")
+                                                +sprite('icon-arrow-toggle')
+
+                                        .panel__route-body.js-collapse-content#route
+                                            .panel__route-body-in
+
+                                                .panel__route-fromto
+
+                                                    
+
+                                                    .panel__route-from
+                                                        +sprite('icon-location')
+                                                        input(type="text" placeholder="Откуда").panel__route-input.js-route-from
+                                                        button.panel__route-location.js-route-location Определить мое местоположение
+
+                                                    .panel__route-to
+                                                        +sprite('icon-location')
+                                                        input(type="text" placeholder="Куда").panel__route-input.js-route-to
+                                                        button.panel__route-cancel.js-route-cancel
+                                                            +sprite('icon-cancel')
+
+                                                    button.panel__route-reverse.js-route-reverse
+                                                        +sprite('icon-reverse')
+
+
+
+                                                .panel__route-type
+
+                                                    label.ui-check
+                                                        input(type="radio" name="route" value="Автомобиль" checked).ui-check__input.js-route-type
+                                                        span.ui-check__route
+                                                            span.ui-check__icon
+                                                                +sprite('icon-check-auto')
+                                                            span.ui-check__text Автомобиль
+
+                                                    label.ui-check
+                                                        input(type="radio" name="route" value="Общественный транспорт").ui-check__input.js-route-type
+                                                        span.ui-check__route
+                                                            span.ui-check__icon
+                                                                +sprite('icon-check-bus')
+                                                            span.ui-check__text Общественный транспорт
+
+                                                    label.ui-check
+                                                        input(type="radio" name="route" value="Пешком").ui-check__input.js-route-type
+                                                        span.ui-check__route
+                                                            span.ui-check__icon
+                                                                +sprite('icon-check-onfoot')
+                                                            span.ui-check__text Пешком
+
+                                                    label.ui-check
+                                                        input(type="radio" name="route" value="Велосипед").ui-check__input.js-route-type
+                                                        span.ui-check__route
+                                                            span.ui-check__icon
+                                                                +sprite('icon-check-bicycle')
+                                                            span.ui-check__text Велосипед
+
+                                                .panel__route-control
+                                                    button.btn.btn--48.btn--green.js-route-btn
+                                                        | Проложить маршрут
+                                                        +sprite('icon-arrow-right')
+
+                                                .panel__route-map.js-route-map#mapRoute
+
+
+                            // Panel Route :: End
+
+
+
+                            // Panel Video :: Start
+                            section.panel
+                                .panel__tabs.js-tabs
+                                    ul.panel__tabs-control(role="tablist")
+                                        li
+                                            h2.panel__tabs-btn.js-tabs-btn.is-active(role="tab")
+                                                span.panel__tabs-icon
+                                                    +sprite('icon-panel-video')
+                                                | Видео
+                                        li
+                                            h2.panel__tabs-btn.js-tabs-btn(role="tab")
+                                                span.panel__tabs-icon
+                                                    +sprite('icon-tabs-info')
+                                                | О компании
+                                        li
+                                            h2.panel__tabs-btn.js-tabs-btn(role="tab") Промо
+                                        li
+                                            h2.panel__tabs-btn.js-tabs-btn(role="tab") Видео отзыв
+                                    .panel__tabs-container
+                                        .panel__tabs-content.js-tabs-content.is-active
+
+                                            .panel__video
+
+                                                ul.panel__video-menu
+                                                    li
+                                                        a(href="#").panel__video-btn
+                                                            +sprite('icon-play')
+                                                            | О компании
+                                                    li
+                                                        a(href="#").panel__video-btn
+                                                            +sprite('icon-play')
+                                                            | Промо
+
+                                                figure.panel__video-image
+                                                    img(src="images/img-youtube.jpg" alt="" aria-hidden="true")
+
+                                        .panel__tabs-content.js-tabs-content
+                                            | О компании
+                                        .panel__tabs-content.js-tabs-content
+                                            | Промо
+                                        .panel__tabs-content.js-tabs-content
+                                            | Видео отзыв
+
+                            // Panel Video :: End
+
+
+
+                            // Panel Product :: Start
+                            section.panel
+                                .panel__container
+
+                                    .panel__head
+
+                                        figure.panel__icon
+                                            +sprite('icon-panel-product')
+
+                                        h2.panel__title О продукте
+
+
+                                    .panel__body
+
+                                        .panel__product
+                                            figure.panel__product-image
+                                                img(src="images/img-product-01.jpg" alt="" aria-hidden="true")
+                                            .panel__product-desc
+
+
+                                                .panel__product-recommend
+
+                                                    .ui-recommend
+
+                                                        .ui-recommend__head
+
+                                                            .ui-recommend__badge.ui-recommend__badge--green
+                                                                | Рекомендуем!
+                                                                +sprite('icon-like')
+
+                                                            p.ui-recommend__caption На основе 160 голосов
+
+                                                        .ui-recommend__body
+
+                                                            .ui-recommend__line
+                                                                .ui-recommend__line-progress(style="left: 73%;")
+                                                            .ui-recommend__arrow(style="left: 73%;")
+
+                                                        .ui-recommend__foot
+                                                            button.btn.btn--48.btn--whitedark
+                                                                +sprite('icon-dislike')
+                                                                span.is-lg-hidden Нет #[small (27%)]
+                                                                span.is-lg-visible Не рекомендую #[small (27%)]
+
+                                                            button.btn.btn--48.btn--whitedark
+                                                                +sprite('icon-like')
+                                                                span.is-lg-hidden Да #[small (73%)]
+                                                                span.is-lg-visible Рекомендую #[small (73%)]
+
+
+
+                                                .panel__product-info
+                                                    table.panel__product-table
+                                                        tr
+                                                            th
+                                                                span.panel__product-table-title
+                                                                    span.panel__product-table-title-in Бренд
+                                                            td
+                                                                a(href="#").ui-link.ui-link--underline.ui-link--blue Росстрах страхование
+                                                        tr
+                                                            th
+                                                                span.panel__product-table-title
+                                                                    span.panel__product-table-title-in Пол
+                                                            td
+                                                                a(href="#").ui-link.ui-link--underline.ui-link--blue Для мужчин
+                                                        tr
+                                                            th
+                                                                span.panel__product-table-title
+                                                                    span.panel__product-table-title-in Продукт
+                                                            td
+                                                                a(href="#").ui-link.ui-link--underline.ui-link--blue Шампунь
+                                                        tr
+                                                            th
+                                                                span.panel__product-table-title
+                                                                    span.panel__product-table-title-in Категория
+                                                            td
+                                                                ul.panel__product-table-list
+                                                                    li
+                                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue Косметика ухаживающая
+                                                                    li
+                                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue Скрабы для тела
+
+
+
+                            // Panel Product :: End
+
+
+                            // Panel Similars :: Start
+                            section.panel
+                                .panel__container
+
+                                    .panel__head
+
+                                        figure.panel__icon
+                                            +sprite('icon-panel-similar')
+
+                                        h2.panel__title Похожие продукты
+
+
+                                    .panel__body
+
+                                        .panel__similars
+                                            .panel__similars-grid
+                                                .row
+                                                    .col-md-6
+
+                                                        .panel__similar
+                                                            figure.panel__similar-image
+                                                                a(href="#")
+                                                                    img(src="images/img-similar-01.jpg" alt="" aria-hidden="true")
+                                                            .panel__similar-desc
+                                                                h3.panel__similar-title
+                                                                    a(href="#").ui-link.ui-link--underline.ui-link--blue Avon Far Away Gold
+                                                                p.panel__similar-text Парфюмерия
+
+                                                    .col-md-6
+
+                                                        .panel__similar
+                                                            figure.panel__similar-image
+                                                                a(href="#")
+                                                                    img(src="images/img-similar-02.jpg" alt="" aria-hidden="true")
+                                                            .panel__similar-desc
+                                                                h3.panel__similar-title
+                                                                    a(href="#").ui-link.ui-link--underline.ui-link--blue Mary Kay Парфюмерная вода
+                                                                p.panel__similar-text Парфюмерия
+
+                                                    .col-md-6
+
+                                                        .panel__similar
+                                                            figure.panel__similar-image
+                                                                a(href="#")
+                                                                    img(src="images/img-similar-03.jpg" alt="" aria-hidden="true")
+                                                            .panel__similar-desc
+                                                                h3.panel__similar-title
+                                                                    a(href="#").ui-link.ui-link--underline.ui-link--blue Hugo Boss Woman
+                                                                p.panel__similar-text Ухаживающая косметика
+
+                                                    .col-md-6
+
+                                                        .panel__similar
+                                                            figure.panel__similar-image
+                                                                a(href="#")
+                                                                    img(src="images/img-similar-04.jpg" alt="" aria-hidden="true")
+                                                            .panel__similar-desc
+                                                                h3.panel__similar-title
+                                                                    a(href="#").ui-link.ui-link--underline.ui-link--blue Bvlgari Aqva Pour
+                                                                p.panel__similar-text Декоративная косметика
+
+
+                                            .panel__similars-loadmore
+                                                button.btn.btn--loadmore
+                                                    +sprite('icon-loadmore')
+                                                    | Показать еще
+
+                            // Panel Similar :: End
+
+
+
+
+                            // Panel Specials :: Start
+                            section.panel.panel--red
+                                .panel__container
+
+                                    .panel__head
+
+                                        figure.panel__icon
+                                            +sprite('icon-panel-special')
+
+                                        h2.panel__title Спецпредложения по Москве
+
+                                        .panel__help
+                                            .ui-help.js-tooltip(title="Это подсказка...")
+                                                +sprite('icon-help')
+
+
+                                    .panel__body
+
+
+                                        .panel__specials.owl-carousel.owl-specials.js-owl-specials
+
+                                            .panel__special
+                                                figure.panel__special-image
+                                                    a(href="#")
+                                                        img(src="images/img-special-01.jpg" alt="" aria-hidden="true")
+                                                .panel__special-desc
+                                                    strong.panel__special-title
+                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue Audi TT 3.0d с пробегом
+                                                    p.panel__special-price от 70 тыс. руб.
+                                                p.panel__special-location.js-ellipsis Автосалон Audi на Красной площади
+
+                                            .panel__special
+                                                figure.panel__special-image
+                                                    a(href="#")
+                                                        img(src="images/img-special-02.jpg" alt="" aria-hidden="true")
+                                                .panel__special-desc
+                                                    strong.panel__special-title
+                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue Сезонный шиномонтаж
+                                                    p.panel__special-price 999 руб.
+                                                p.panel__special-location.js-ellipsis Автосалон Audi на Красной площади
+
+                                            .panel__special
+                                                figure.panel__special-image
+                                                    a(href="#")
+                                                        img(src="images/img-special-03.jpg" alt="" aria-hidden="true")
+                                                .panel__special-desc
+                                                    strong.panel__special-title
+                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue Золотое масло для КПП
+                                                    p.panel__special-price от 90 тыс. руб.
+                                                p.panel__special-location.js-ellipsis Автосалон Audi на Красной площади
+
+                                            .panel__special
+                                                figure.panel__special-image
+                                                    a(href="#")
+                                                        img(src="images/img-special-04.jpg" alt="" aria-hidden="true")
+                                                .panel__special-desc
+                                                    strong.panel__special-title
+                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue Покраска авто
+                                                    p.panel__special-price от 70 тыс. руб
+                                                p.panel__special-location.js-ellipsis Автосалон Audi на Красной площади
+
+
+                                            .panel__special
+                                                figure.panel__special-image
+                                                    a(href="#")
+                                                        img(src="images/img-special-01.jpg" alt="" aria-hidden="true")
+                                                .panel__special-desc
+                                                    strong.panel__special-title
+                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue Audi TT 3.0d с пробегом
+                                                    p.panel__special-price от 70 тыс. руб.
+                                                p.panel__special-location.js-ellipsis Автосалон Audi на Красной площади
+
+                                            .panel__special
+                                                figure.panel__special-image
+                                                    a(href="#")
+                                                        img(src="images/img-special-02.jpg" alt="" aria-hidden="true")
+                                                .panel__special-desc
+                                                    strong.panel__special-title
+                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue Сезонный шиномонтаж
+                                                    p.panel__special-price 999 руб.
+                                                p.panel__special-location.js-ellipsis Автосалон Audi на Красной площади
+
+                                            .panel__special
+                                                figure.panel__special-image
+                                                    a(href="#")
+                                                        img(src="images/img-special-03.jpg" alt="" aria-hidden="true")
+                                                .panel__special-desc
+                                                    strong.panel__special-title
+                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue Золотое масло для КПП
+                                                    p.panel__special-price от 90 тыс. руб.
+                                                p.panel__special-location.js-ellipsis Автосалон Audi на Красной площади
+
+                                            .panel__special
+                                                figure.panel__special-image
+                                                    a(href="#")
+                                                        img(src="images/img-special-04.jpg" alt="" aria-hidden="true")
+                                                .panel__special-desc
+                                                    strong.panel__special-title
+                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue Покраска авто
+                                                    p.panel__special-price от 70 тыс. руб
+                                                p.panel__special-location.js-ellipsis Автосалон Audi на Красной площади
+
+
+                            // Panel Special :: End
+
+
+
+                            // Panel Adv :: Start
+                            .panel.panel--green
+                                .panel__container
+
+                                    .panel__adv
+
+
+
+                                        figure.panel__adv-image
+                                            img(src="images/img-adv-01.jpg" alt="" aria-hidden="true")
+
+                                        .panel__adv-desc
+
+                                            strong.panel__adv-title
+                                                a(href="#").ui-link.ui-link--underline.ui-link--blue РосГосСтрах - тоже неплохое страхование
+
+                                            p.panel__adv-site
+                                                a(href="#").ui-link.ui-link--green
+                                                    +sprite('icon-target')
+                                                    | http://rgs.ru
+
+                                            p.panel__adv-text ОСАГО, ДСАГО, страхование жизни и всего остального по списку
+
+                                            ul.panel__adv-phones
+                                                li
+                                                    a(href="#").panel__adv-phones-item +7 (953) 25-11-135
+                                                li
+                                                    a(href="#").panel__adv-phones-item +7 (953) 25-11-145
+
+                                            address.panel__adv-address Санкт-Петербург, Яхтенный проект 573
+
+
+                                        p.panel__adv-badge
+                                            | Реклама
+                                            span.ui-help.js-tooltip(title="Это подсказка...")
+                                                +sprite('icon-help')
+
+
+                            // Panel Adv :: End
+
+
+                            // Panel Adv :: Start
+                            .panel.panel--orange
+                                .panel__container
+
+                                    .panel__adv
+
+
+
+                                        .panel__adv-desc
+
+                                            strong.panel__adv-title
+                                                a(href="#").ui-link.ui-link--underline.ui-link--blue РосГосСтрах - тоже неплохое страхование
+
+                                            p.panel__adv-site
+                                                a(href="#").ui-link.ui-link--green
+                                                    +sprite('icon-target')
+                                                    | http://rgs.ru
+
+                                            p.panel__adv-text ОСАГО, ДСАГО, страхование жизни и всего остального по списку
+
+                                            ul.panel__adv-phones
+                                                li
+                                                    a(href="#").panel__adv-phones-item +7 (953) 25-11-135
+                                                li
+                                                    a(href="#").panel__adv-phones-item +7 (953) 25-11-145
+
+                                            address.panel__adv-address Санкт-Петербург, Яхтенный проект 573
+
+                                        p.panel__adv-badge
+                                            | Реклама
+                                            span.ui-help.js-tooltip(title="Это подсказка...")
+                                                +sprite('icon-help')
+
+
+                            // Panel Adv :: End
+
+
+                            // Panel Comments :: Start
+                            section.panel
+                                .panel__container
+
+                                    .panel__head
+
+                                        figure.panel__icon
+                                            +sprite('icon-panel-comments')
+
+                                        h2.panel__title 103 отзыва
+
+
+                                    .panel__body
+
+                                        .panel__add
+
+                                            button.btn.btn--50.btn--green
+                                                +sprite('icon-plus')
+                                                | Добавить отзыв
+
+                                            p.ui-caption Регистрация не требуется
+
+
+                            // Panel Comments :: End
+
+                            
+                            // Panel Sorting :: Start
+                            .panel
+                                form(action="#")
+                                    .panel__sorting.js-toggle
+
+                                        button.panel__sorting-btn.js-toggle-btn
+                                            +sprite('icon-dots')
+
+                                        .row
+                                            .col-md
+
+                                                .panel__sorting-group
+
+                                                    .panel__sorting-select.is-md-visible
+
+                                                        .ui-select.ui-select--40
+                                                            select.js-select
+                                                                option Новые отзывы сверху
+                                                                option Новые отзывы снизу
+
+                                                    .panel__sorting-select
+                                                        
+                                                        .ui-select.ui-select--40
+                                                            select.js-select
+                                                                option За все время
+                                                                option За все время 1
+                                                                option За все время 2
+                                                                option За все время 3
+
+                                                        .ui-help.js-tooltip(title="Это подсказка...")
+                                                            +sprite('icon-help')
+
+                                            .col-md-auto.is-md-visible
+
+                                                .panel__sorting-display
+                                                    .ui-group
+                                                        label.ui-check
+                                                            input(type="radio" name="display").ui-check__input
+                                                            span.ui-check__display
+                                                                +sprite('icon-display-grid')
+                                                        label.ui-check
+                                                            input(type="radio" name="display").ui-check__input
+                                                            span.ui-check__display
+                                                                +sprite('icon-display-list')
+
+                            // Panel Sorting :: End
+
+
+                            // Panel Comments :: Start
+                            .panel
+                                .panel__comments
+
+
+                                    // Comment :: Start
+                                    .panel__comment.panel__comment--green.js-comment
+
+                                        .panel__comment-container
+                                        
+                                            .panel__comment-sidebar
+
+                                                .panel__comment-user
+                                                    p.panel__comment-user-name
+                                                        a(href="#") Константин Константинович Константинопольский
+                                                    figure.panel__comment-user-image
+                                                        img(src="images/img-apple.png" alt="" aria-hidden="true")
+
+                                                p.panel__comment-date 16 дек. 2018 #[span.is-md-visible в 15:04]
+
+                                                ul.panel__comment-list
+                                                    li
+                                                        img(src="images/img-location-ru.png" alt="" aria-hidden="true")
+                                                        span.is-md-visible Санкт-Петербург
+                                                    li
+                                                        span.icon-mark.icon-mark--green 4
+                                                        span.is-md-visible оценка
+                                                    li
+                                                        span.icon-circle.icon-circle--green
+                                                        span.is-md-visible Положительный
+
+
+                                            .panel__comment-content
+
+                                                .ui-toggle.js-toggle
+                                                    button.ui-toggle__btn.js-toggle-btn(aria-expanded="true" aria-controls="toggle-01")
+                                                        +sprite('icon-dots')
+                                                    .ui-toggle__dropdown.js-toggle-dropdown#toggle-01
+                                                        ul.ui-toggle__menu
+                                                            li
+                                                                a(href="#").ui-toggle__link Пометить все отзывы
+                                                            li
+                                                                a(href="#").ui-toggle__link Контакты пользователя
+                                                            li
+                                                                a(href="#").ui-toggle__link Закрепить отзыв
+                                                            li
+                                                                a(href="#").ui-toggle__link Пожаловаться
+
+
+                                                .panel__comment-pinned
+                                                    p.panel__comment-pinned-text Закрепленный отзыв
+                                                    span.ui-help.js-tooltip(title="Это подсказка...")
+                                                        +sprite('icon-help')
+
+                                                .panel__comment-message
+                                                    p 12 сентября на пустой трассе ночью не справился с управлением из-за насекомого, которое влетело в открытое окно мне прямо в глаз. Машина в кювете, повреждения есть и довольно серьезные – оси, кардан, крылья, бампер. Думал что аварийный даже ехать не станет ко мне, но после звонка его выслали. Причину выслушал спокойно, все процедуры в обычном порядке, после направления машину восстановили, хотя повреждений было много.
+                                                    p Loremipsumdolorsitametconsectetur,adipisicingelit.Illumrationequaeratmagnam,maioresprovidentdelenitimaximeundevoluptatereprehenderiteumsedat,doloreliberoquisquamiusto,velitfugiatestdicta.
+
+                                                .panel__comment-control
+                                                    .panel__comment-voice
+
+                                                        .ui-voice.ui-voice--green
+                                                            button.ui-voice__btn.ui-voice__btn--like
+                                                                span.is-visible-default
+                                                                    +sprite('icon-like')
+                                                                span.is-visible-blind
+                                                                    span.is-xs-visible Голосовать за
+                                                                    span.is-xs-hidden За
+                                                            p.ui-voice__number 10
+                                                            button.ui-voice__btn.ui-voice__btn--dislike
+                                                                span.is-visible-default
+                                                                    +sprite('icon-dislike')
+                                                                span.is-visible-blind
+                                                                    span.is-xs-visible Голосовать против
+                                                                    span.is-xs-hidden Против
+
+                                                    .panel__comment-buttons
+
+                                                        button.btn.btn--36.btn--whitedark Ответить
+
+
+                                        .panel__comment-answers.js-answers
+                                            .panel__comment-answers-loadmore
+                                                button.btn.btn--52.btn--loadmore.js-answers-btn
+                                                    +sprite('icon-turn')
+                                                    | Показать ответы (7)
+                                            .panel__comment-answers-content.js-answers-content
+                                                button.panel__comment-answers-close.js-answers-close
+                                                span.panel__comment-answers-line
+                                                | Ответы
+
+                                    // Comment :: End
+
+
+                                    // Comment :: Start
+                                    .panel__comment
+
+                                        .panel__comment-container
+                                            .panel__comment-sidebar
+
+                                                .panel__comment-user
+                                                    p.panel__comment-user-name
+                                                        a(href="#") Длинное_имя_написанное_слитно
+
+                                                p.panel__comment-date 14 дек. 2018 #[span.is-md-visible в 15:04]
+
+                                                ul.panel__comment-list
+                                                    li
+                                                        img(src="images/img-location-ru.png" alt="" aria-hidden="true")
+                                                        span.is-md-visible Санкт-Петербург
+                                                    li
+                                                        span.icon-mark.icon-mark--green 4
+                                                        span.is-md-visible оценка
+                                                    li
+                                                        span.icon-circle.icon-circle--green
+                                                        span.is-md-visible Положительный
+
+
+                                            .panel__comment-content
+
+                                                .ui-toggle.js-toggle
+                                                    button.ui-toggle__btn.js-toggle-btn(aria-expanded="true" aria-controls="toggle-02")
+                                                        +sprite('icon-dots')
+                                                    .ui-toggle__dropdown.js-toggle-dropdown#toggle-02
+                                                        ul.ui-toggle__menu
+                                                            li
+                                                                a(href="#").ui-toggle__link Пометить все отзывы
+                                                            li
+                                                                a(href="#").ui-toggle__link Контакты пользователя
+                                                            li
+                                                                a(href="#").ui-toggle__link Закрепить отзыв
+                                                            li
+                                                                a(href="#").ui-toggle__link Пожаловаться
+
+
+                                                .panel__comment-message
+                                                    p Перед поездкой во Вьетнам оформил страховку, полис включал в себя опцию активный отдых. Во время одного из спусков в горах, я неудачно упал и очень сильно повредил руку. Запястье распухло и очень болело. Позвонил на горячую линию, меня направили в клинику в ближайшем городке. Оказалось это простой ушиб и растяжение.
+                                                    p Визит к врачу полностью покрыла страховка.
+
+                                                .panel__comment-control
+                                                    .panel__comment-voice
+
+                                                        .ui-voice.ui-voice--green
+                                                            button.ui-voice__btn.ui-voice__btn--like
+                                                                span.is-visible-default
+                                                                    +sprite('icon-like')
+                                                                span.is-visible-blind
+                                                                    span.is-xs-visible Голосовать за
+                                                                    span.is-xs-hidden За
+                                                            p.ui-voice__number 10
+                                                            button.ui-voice__btn.ui-voice__btn--dislike
+                                                                span.is-visible-default
+                                                                    +sprite('icon-dislike')
+                                                                span.is-visible-blind
+                                                                    span.is-xs-visible Голосовать против
+                                                                    span.is-xs-hidden Против
+
+                                                    .panel__comment-buttons
+
+                                                        button.btn.btn--36.btn--whitedark Ответить
+
+                                        .panel__comment-answers.js-answers
+                                            .panel__comment-answers-loadmore
+                                                button.btn.btn--52.btn--loadmore.js-answers-btn
+                                                    +sprite('icon-turn')
+                                                    | Показать ответы (3)
+
+                                            .panel__comment-answers-content.js-answers-content
+                                                button.panel__comment-answers-close.js-answers-close
+                                                span.panel__comment-answers-line
+
+                                                // Comment :: Start
+                                                .panel__comment.panel__comment--blue
+
+                                                    .panel__comment-container
+                                                        .panel__comment-sidebar
+
+                                                            .panel__comment-user
+                                                                p.panel__comment-user-name
+                                                                    +sprite('icon-checkmark')
+                                                                    a(href="#") Петр Е
+
+                                                            p.panel__comment-date 16 дек. 2018 #[span.is-md-visible в 15:04]
+
+                                                            p.panel__comment-caption Официальный представитель компании Ренессанс Страхование
+
+
+                                                        .panel__comment-content
+
+                                                            .ui-toggle.js-toggle
+                                                                button.ui-toggle__btn.js-toggle-btn(aria-expanded="true" aria-controls="toggle-03")
+                                                                    +sprite('icon-dots')
+                                                                .ui-toggle__dropdown.js-toggle-dropdown#toggle-03
+                                                                    ul.ui-toggle__menu
+                                                                        li
+                                                                            a(href="#").ui-toggle__link Пометить все отзывы
+                                                                        li
+                                                                            a(href="#").ui-toggle__link Контакты пользователя
+                                                                        li
+                                                                            a(href="#").ui-toggle__link Закрепить отзыв
+                                                                        li
+                                                                            a(href="#").ui-toggle__link Пожаловаться
+
+
+                                                            .panel__comment-message
+                                                                p Ремонтировал свою Toyota Aurus по направлению которое получил от страховой компании. Обращался по полису КАСКО. Было установлено несколько новых запчастей. СТО которое выполняло работу выполнено все очень качественно. Направление получил уже через неделю после обращения. Очереди не было, все процессы в штатном режиме. Ремонтом доволен. 
+
+                                                            .panel__comment-control
+                                                                .panel__comment-voice
+
+                                                                    .ui-voice.ui-voice--red
+                                                                        button.ui-voice__btn.ui-voice__btn--like
+                                                                            span.is-visible-default
+                                                                                +sprite('icon-like')
+                                                                            span.is-visible-blind
+                                                                                span.is-xs-visible Голосовать за
+                                                                                span.is-xs-hidden За
+                                                                        p.ui-voice__number 10
+                                                                        button.ui-voice__btn.ui-voice__btn--dislike
+                                                                            span.is-visible-default
+                                                                                +sprite('icon-dislike')
+                                                                            span.is-visible-blind
+                                                                                span.is-xs-visible Голосовать против
+                                                                                span.is-xs-hidden Против
+
+                                                                .panel__comment-buttons
+                                                                    button.btn.btn--36.btn--whitedark
+                                                                        span.is-md-visible Отправить сообщение
+                                                                        span.is-md-hidden Отправить ЛС
+                                                                    button.btn.btn--36.btn--whitedark Ответить
+
+                                                // Comment :: End
+
+
+                                                // Comment :: Start
+                                                .panel__comment
+                                                    .panel__comment-container
+                                                        .panel__comment-sidebar
+
+                                                            .panel__comment-user
+                                                                p.panel__comment-user-name
+                                                                    a(href="#") Татьяна Ш
+
+                                                            p.panel__comment-date 14 дек. 2018 #[span.is-md-visible в 16:04]
+
+                                                            ul.panel__comment-list
+                                                                li
+                                                                    img(src="images/img-location-ru.png" alt="" aria-hidden="true")
+                                                                    span.is-md-visible Санкт-Петербург
+
+
+
+                                                        .panel__comment-content
+
+                                                            .ui-toggle.js-toggle
+                                                                button.ui-toggle__btn.js-toggle-btn(aria-expanded="true" aria-controls="toggle-04")
+                                                                    +sprite('icon-dots')
+                                                                .ui-toggle__dropdown.js-toggle-dropdown#toggle-04
+                                                                    ul.ui-toggle__menu
+                                                                        li
+                                                                            a(href="#").ui-toggle__link Пометить все отзывы
+                                                                        li
+                                                                            a(href="#").ui-toggle__link Контакты пользователя
+                                                                        li
+                                                                            a(href="#").ui-toggle__link Закрепить отзыв
+                                                                        li
+                                                                            a(href="#").ui-toggle__link Пожаловаться
+
+
+                                                            .panel__comment-message
+                                                                p Есть положительный опыт страхования по каско в «ренессансе». Машина стояла во дворе, на крышу упал (или уронили) горшок с цветком. Были мелкие царапины, но все равно очень неприятно. Страховая все разрулила, предложили конкретное СТО и я согласился. Буквально за 7 дней машину подготовили, никаких проблем не возникло вообще.
+
+                                                            .panel__comment-control
+                                                                .panel__comment-voice
+
+                                                                    .ui-voice.ui-voice--red
+                                                                        button.ui-voice__btn.ui-voice__btn--like
+                                                                            span.is-visible-default
+                                                                                +sprite('icon-like')
+                                                                            span.is-visible-blind
+                                                                                span.is-xs-visible Голосовать за
+                                                                                span.is-xs-hidden За
+                                                                        p.ui-voice__number 10
+                                                                        button.ui-voice__btn.ui-voice__btn--dislike
+                                                                            span.is-visible-default
+                                                                                +sprite('icon-dislike')
+                                                                            span.is-visible-blind
+                                                                                span.is-xs-visible Голосовать против
+                                                                                span.is-xs-hidden Против
+
+                                                                .panel__comment-buttons
+                                                                    button.btn.btn--36.btn--whitedark Ответить
+
+                                                // Comment :: End
+
+
+                                                // Comment :: Start
+                                                .panel__comment.panel__comment--red
+                                                    .panel__comment-container
+
+                                                        .panel__comment-sidebar
+
+                                                            .panel__comment-user
+                                                                p.panel__comment-user-name
+                                                                    a(href="#") Модератор
+
+                                                            p.panel__comment-date 14 дек. 2018 #[span.is-md-visible в 15:04]
+                                                            p.panel__comment-caption Rubrikator.org
+
+
+                                                        .panel__comment-content
+
+                                                            .ui-toggle.js-toggle
+                                                                button.ui-toggle__btn.js-toggle-btn(aria-expanded="true" aria-controls="toggle-05")
+                                                                    +sprite('icon-dots')
+                                                                .ui-toggle__dropdown.js-toggle-dropdown#toggle-05
+                                                                    ul.ui-toggle__menu
+                                                                        li
+                                                                            a(href="#").ui-toggle__link Пометить все отзывы
+                                                                        li
+                                                                            a(href="#").ui-toggle__link Контакты пользователя
+                                                                        li
+                                                                            a(href="#").ui-toggle__link Закрепить отзыв
+                                                                        li
+                                                                            a(href="#").ui-toggle__link Пожаловаться
+
+
+                                                            .panel__comment-message
+                                                                p Татьяна соблюдайте правила приличия на ресурсе, а не то будете заблокированы. Спасибо.
+
+                                                            .panel__comment-control
+                                                                .panel__comment-buttons
+                                                                    button.btn.btn--36.btn--whitedark
+                                                                        span.is-md-visible Отправить сообщение
+                                                                        span.is-md-hidden Отправить ЛС
+                                                                    button.btn.btn--36.btn--whitedark Ответить
+
+                                                // Comment :: End
+
+                                    // Comment :: End
+
+
+
+
+
+
+
+
+
+
+
+                                    // Comment :: Start
+                                    .panel__comment
+
+                                        .panel__comment-container
+                                            .panel__comment-sidebar
+
+                                                .panel__comment-user
+                                                    p.panel__comment-user-name
+                                                        a(href="#") Олег Р.
+
+
+                                                p.panel__comment-date 16 дек. 2018 #[span.is-md-visible в 15:04]
+
+                                                ul.panel__comment-list
+                                                    li
+                                                        img(src="images/img-location-ru.png" alt="" aria-hidden="true")
+                                                        span.is-md-visible Санкт-Петербург
+                                                    li
+                                                        span.icon-mark.icon-mark--green 4
+                                                        span.is-md-visible оценка
+                                                    li
+                                                        span.icon-circle.icon-circle--green
+                                                        span.is-md-visible Положительный
+
+
+                                            .panel__comment-content
+
+                                                .ui-toggle.js-toggle
+                                                    button.ui-toggle__btn.js-toggle-btn(aria-expanded="true" aria-controls="toggle-06")
+                                                        +sprite('icon-dots')
+                                                    .ui-toggle__dropdown.js-toggle-dropdown#toggle-06
+                                                        ul.ui-toggle__menu
+                                                            li
+                                                                a(href="#").ui-toggle__link Пометить все отзывы
+                                                            li
+                                                                a(href="#").ui-toggle__link Контакты пользователя
+                                                            li
+                                                                a(href="#").ui-toggle__link Закрепить отзыв
+                                                            li
+                                                                a(href="#").ui-toggle__link Пожаловаться
+
+
+                                                .panel__comment-invisible
+                                                    +sprite('icon-invisible')
+                                                    p.panel__comment-invisible-text Этот отзыв содержит нецензурную брань или оскорбления, и поэтому был скрыт.
+                                                    button.btn.btn--30.btn--whitedark.btn--arrow
+                                                        span.is-md-visible Показать весь отзыв
+                                                        span.is-md-hidden Содержание данного отзыва скрыто. Нажмите, чтобы показать его
+                                                        +sprite('icon-arrow-down')
+
+
+                                                .panel__comment-control
+                                                    .panel__comment-voice
+
+                                                        .ui-voice.ui-voice--red
+                                                            button.ui-voice__btn.ui-voice__btn--like
+                                                                span.is-visible-default
+                                                                    +sprite('icon-like')
+                                                                span.is-visible-blind
+                                                                    span.is-xs-visible Голосовать за
+                                                                    span.is-xs-hidden За
+                                                            p.ui-voice__number 10
+                                                            button.ui-voice__btn.ui-voice__btn--dislike
+                                                                span.is-visible-default
+                                                                    +sprite('icon-dislike')
+                                                                span.is-visible-blind
+                                                                    span.is-xs-visible Голосовать против
+                                                                    span.is-xs-hidden Против
+
+                                                    .panel__comment-buttons
+
+                                                        button.btn.btn--36.btn--whitedark Ответить
+
+
+                                        .panel__comment-answers.js-answers
+                                            .panel__comment-answers-loadmore
+                                                button.btn.btn--52.btn--loadmore.js-answers-btn
+                                                    +sprite('icon-turn')
+                                                    | Показать ответы (7)
+                                            .panel__comment-answers-content.js-answers-content
+                                                button.panel__comment-answers-close.js-answers-close
+                                                span.panel__comment-answers-line
+                                                | Ответы
+
+                                    // Comment :: End
+
+
+
+                                    // Comment :: Start
+                                    .panel__comment
+
+                                        .panel__comment-container
+                                            .panel__comment-sidebar
+
+                                                .panel__comment-user
+                                                    p.panel__comment-user-name
+                                                        a(href="#") Назарий О.
+
+                                                p.panel__comment-date 16 дек. 2018 #[span.is-md-visible в 15:04]
+
+                                                ul.panel__comment-list
+                                                    li
+                                                        img(src="images/img-location-ru.png" alt="" aria-hidden="true")
+                                                        span.is-md-visible Санкт-Петербург
+                                                    li
+                                                        span.icon-mark.icon-mark--green 4
+                                                        span.is-md-visible оценка
+                                                    li
+                                                        span.icon-circle.icon-circle--green
+                                                        span.is-md-visible Положительный
+
+
+                                            .panel__comment-content
+
+                                                .ui-toggle.js-toggle
+                                                    button.ui-toggle__btn.js-toggle-btn(aria-expanded="true" aria-controls="toggle-07")
+                                                        +sprite('icon-dots')
+                                                    .ui-toggle__dropdown.js-toggle-dropdown#toggle-07
+                                                        ul.ui-toggle__menu
+                                                            li
+                                                                a(href="#").ui-toggle__link Пометить все отзывы
+                                                            li
+                                                                a(href="#").ui-toggle__link Контакты пользователя
+                                                            li
+                                                                a(href="#").ui-toggle__link Закрепить отзыв
+                                                            li
+                                                                a(href="#").ui-toggle__link Пожаловаться
+
+
+                                                .panel__comment-images
+                                                    figure.panel__comment-image
+                                                        img(src="images/img-comment-image-01.jpg" alt="" aria-hidden="true")
+                                                    figure.panel__comment-image
+                                                        img(src="images/img-comment-image-02.jpg" alt="" aria-hidden="true")
+                                                    figure.panel__comment-image
+                                                        img(src="images/img-comment-image-03.jpg" alt="" aria-hidden="true")
+
+                                                .panel__comment-message
+
+                                                    p Есть положительный опыт страхования по каско в «ренессансе». Машина стояла во дворе, на крышу упал (или уронили) горшок с цветком. Были мелкие царапины, но все равно очень неприятно. Страховая все разрулила, предложили конкретное СТО и я согласился.
+
+                                                    button.btn.btn--30.btn--whitedark
+                                                        | Показать весь отзыв
+                                                        +sprite('icon-arrow-down')
+
+
+                                                .panel__comment-control
+                                                    .panel__comment-voice
+
+                                                        .ui-voice.ui-voice--red
+                                                            button.ui-voice__btn.ui-voice__btn--like
+                                                                span.is-visible-default
+                                                                    +sprite('icon-like')
+                                                                span.is-visible-blind
+                                                                    span.is-xs-visible Голосовать за
+                                                                    span.is-xs-hidden За
+                                                            p.ui-voice__number 10
+                                                            button.ui-voice__btn.ui-voice__btn--dislike
+                                                                span.is-visible-default
+                                                                    +sprite('icon-dislike')
+                                                                span.is-visible-blind
+                                                                    span.is-xs-visible Голосовать против
+                                                                    span.is-xs-hidden Против
+
+                                                    .panel__comment-buttons
+
+                                                        button.btn.btn--36.btn--whitedark Ответить
+
+
+                                    // Comment :: End
+
+
+
+                                    // Comment :: Start
+                                    .panel__comment
+
+                                        .panel__comment-container
+                                            .panel__comment-sidebar
+
+                                                .panel__comment-user
+                                                    p.panel__comment-user-name
+                                                        a(href="#") Петр Е
+
+                                                p.panel__comment-date 14 дек. 2018 #[span.is-md-visible в 15:04]
+
+                                                ul.panel__comment-list
+                                                    li
+                                                        img(src="images/img-location-ru.png" alt="" aria-hidden="true")
+                                                        span.is-md-visible Санкт-Петербург
+                                                    li
+                                                        span.icon-mark.icon-mark--red 3
+                                                        span.is-md-visible оценка
+                                                    li
+                                                        span.icon-circle.icon-circle--red
+                                                        span.is-md-visible Отрицательный
+
+
+                                            .panel__comment-content
+
+                                                .ui-toggle.js-toggle
+                                                    button.ui-toggle__btn.js-toggle-btn(aria-expanded="true" aria-controls="toggle-08")
+                                                        +sprite('icon-dots')
+                                                    .ui-toggle__dropdown.js-toggle-dropdown#toggle-08
+                                                        ul.ui-toggle__menu
+                                                            li
+                                                                a(href="#").ui-toggle__link Пометить все отзывы
+                                                            li
+                                                                a(href="#").ui-toggle__link Контакты пользователя
+                                                            li
+                                                                a(href="#").ui-toggle__link Закрепить отзыв
+                                                            li
+                                                                a(href="#").ui-toggle__link Пожаловаться
+
+
+                                                .panel__comment-warning
+                                                    p.panel__comment-warning-text Недостоверный отзыв
+                                                    span.ui-help.js-tooltip(title="Это подсказка...")
+                                                        +sprite('icon-help')
+
+                                                .panel__comment-message
+                                                    p КАСКО на все машины в семье делаем в «Ренессансе», обычно все нормально проходит. Из последнего дочери в бок въехал человек на светофоре, нужен был довольно значительный ремонт. С «ренессансом» все прошло гладко, у них видимо там отработанные механизмы. Сам ремонт был немного недоделан, пришлось обратить внимание в СТО и оставить еще на пару дней, но тут никто особо не возмущался. В целом довольны.
+
+
+                                                .panel__comment-control
+                                                    .panel__comment-voice
+
+                                                        .ui-voice.ui-voice--red
+                                                            button.ui-voice__btn.ui-voice__btn--like
+                                                                span.is-visible-default
+                                                                    +sprite('icon-like')
+                                                                span.is-visible-blind
+                                                                    span.is-xs-visible Голосовать за
+                                                                    span.is-xs-hidden За
+                                                            p.ui-voice__number 10
+                                                            button.ui-voice__btn.ui-voice__btn--dislike
+                                                                span.is-visible-default
+                                                                    +sprite('icon-dislike')
+                                                                span.is-visible-blind
+                                                                    span.is-xs-visible Голосовать против
+                                                                    span.is-xs-hidden Против
+
+                                                    .panel__comment-buttons
+                                                        button.btn.btn--36.btn--whitedark Ответить
+
+                                            .panel__comment-settings
+                                                
+                                                .panel__comment-info.js-collapse
+                                                    button.panel__comment-info-btn.js-collapse-btn
+                                                        +sprite('icon-view')
+                                                        | Показать инфо
+                                                    .panel__comment-info-content.js-collapse-content
+                                                        ul.panel__comment-info-list
+                                                            li ID: #[mark 2345789]
+                                                            li IP: #[mark 46.676.767.866]
+                                                            li FP: #[mark 787654687]
+                                                            li DT: #[mark 16-10-2018  16:34:43]
+                                                            li DV: #[mark PC]
+                                                            li PL: #[mark Windows]
+                                                            li BR: #[mark Chrome 66.0.3356.170]
+                                                            li SD: #[mark 1920x1080]
+                                                            li BD: #[mark 1827x1014]
+                                                            li TW: #[mark 1]
+                                                            li UA: #[mark hover]
+                                                            li RF: #[mark hover]
+
+
+                                                .panel__comment-action
+
+                                                    .panel__comment-action-group
+                                                        button.btn.btn--34.btn--whitedark.btn--outline-red Отриц
+                                                        button.btn.btn--34.btn--whitedark Нейтр
+                                                        button.btn.btn--34.btn--whitedark.btn--outline-green Полож
+
+                                                    button.btn.btn--34.btn--whitedark Метка
+                                                    button.btn.btn--34.btn--whitedark Сбросить
+                                                    button.btn.btn--34.btn--whitedark Скрыть
+                                                    button.btn.btn--34.btn--whitedark.btn--outline-dark Бан
+                                                    button.btn.btn--34.btn--whitedark.btn--outline-green Обновить
+                                                    button.btn.btn--34.btn--whitedark.btn--outline-orange Редактировать
+                                                    button.btn.btn--34.btn--whitedark.btn--outline-red Удалить
+
+
+                                    // Comment :: End
+
+
+
+
+
+                                    // Comment :: Start
+                                    .panel__comment
+
+                                        .panel__comment-container
+                                            .panel__comment-sidebar
+
+                                                .panel__comment-user
+                                                    p.panel__comment-user-name
+                                                        a(href="#") Петр Е
+
+                                                p.panel__comment-date 14 дек. 2018 #[span.is-md-visible в 15:04]
+
+                                                ul.panel__comment-list
+                                                    li
+                                                        img(src="images/img-location-ru.png" alt="" aria-hidden="true")
+                                                        span.is-md-visible Санкт-Петербург
+                                                    li
+                                                        span.icon-mark.icon-mark--green 4
+                                                        span.is-md-visible оценка
+                                                    li
+                                                        span.icon-circle.icon-circle--red
+                                                        span.is-md-visible Отрицательный
+
+
+                                            .panel__comment-content
+
+                                                .ui-toggle.js-toggle
+                                                    button.ui-toggle__btn.js-toggle-btn(aria-expanded="true" aria-controls="toggle-09")
+                                                        +sprite('icon-dots')
+                                                    .ui-toggle__dropdown.js-toggle-dropdown#toggle-09
+                                                        ul.ui-toggle__menu
+                                                            li
+                                                                a(href="#").ui-toggle__link Пометить все отзывы
+                                                            li
+                                                                a(href="#").ui-toggle__link Контакты пользователя
+                                                            li
+                                                                a(href="#").ui-toggle__link Закрепить отзыв
+                                                            li
+                                                                a(href="#").ui-toggle__link Пожаловаться
+
+                                                .panel__comment-warning
+                                                    p.panel__comment-warning-text Недостоверный отзыв
+                                                    span.ui-help.js-tooltip(title="Это подсказка...")
+                                                        +sprite('icon-help')
+
+                                                .panel__comment-message
+                                                    p Был смят бок, въехали на парковке. Расчет сделали быстро, предложили несколько вариантов СТО на выбор – что-то подальше, что-то поближе. Выбрали наиболее комфортный вариант для нас, сотрудники страховой все время на связи были, подсказывали что и как. Сам ремонт довольно качественный, довольны.
+
+
+                                                .panel__comment-control
+                                                    .panel__comment-voice
+
+                                                        .ui-voice.ui-voice--red
+                                                            button.ui-voice__btn.ui-voice__btn--like
+                                                                span.is-visible-default
+                                                                    +sprite('icon-like')
+                                                                span.is-visible-blind
+                                                                    span.is-xs-visible Голосовать за
+                                                                    span.is-xs-hidden За
+                                                            p.ui-voice__number 10
+                                                            button.ui-voice__btn.ui-voice__btn--dislike
+                                                                span.is-visible-default
+                                                                    +sprite('icon-dislike')
+                                                                span.is-visible-blind
+                                                                    span.is-xs-visible Голосовать против
+                                                                    span.is-xs-hidden Против
+
+                                                    .panel__comment-buttons
+                                                        button.btn.btn--36.btn--whitedark Ответить
+
+                                            .panel__comment-settings
+
+
+                                                .panel__comment-info.js-collapse
+                                                    button.panel__comment-info-btn.js-collapse-btn
+                                                        +sprite('icon-view')
+                                                        | Показать инфо
+                                                    .panel__comment-info-content.js-collapse-content
+                                                        ul.panel__comment-info-list
+                                                            li
+                                                                +sprite('icon-info')
+                                                                | 46.676.767.866
+                                                            li
+                                                                +sprite('icon-info')
+                                                                | 44578995866
+                                                            li
+                                                                +sprite('icon-info')
+                                                                | Windows, Chrome
+                                                            li
+                                                                +sprite('icon-info')
+                                                                | 1920x1080
+                                                            li
+                                                                +sprite('icon-info')
+                                                                | Показать реферер
+
+
+                                                .panel__comment-action
+
+                                                    .panel__comment-action-left
+
+                                                        button.btn.btn--34.btn--whitedark Метка
+                                                        button.btn.btn--34.btn--whitedark Сбросить
+
+                                                    .panel__comment-action-right
+                                                        button.btn.btn--34.btn--whitedark Скрыть
+                                                        button.btn.btn--34.btn--whitedark.btn--outline-dark Бан
+                                                        button.btn.btn--34.btn--whitedark.btn--outline-red Удалить
+
+
+                                    // Comment :: End
+
+
+                                    // Comment :: Start
+                                    .panel__comment.panel__comment--orange
+
+                                        .panel__comment-container
+                                            .panel__comment-sidebar
+
+                                                .panel__comment-user
+                                                    p.panel__comment-user-admin Администратор
+
+                                                p.panel__comment-date 14 дек. 2018 #[span.is-md-visible в 15:04]
+
+                                            .panel__comment-content
+
+                                                .panel__comment-message
+                                                    p Благодарим вас за ваши отзывы. Мы рады, что вы остались довольны качеством нашей работы. Желаем вам всего наилучшего и будем рады помочь вам, если у вас возникнут 
+
+
+                                    // Comment :: End
+
+
+                                    // Comment :: Start
+                                    .panel__comment.panel__comment--notice
+
+                                        .panel__comment-container
+                                            .panel__comment-sidebar
+
+                                                figure.panel__comment-icon
+                                                    +sprite('icon-comment-notice')
+
+                                            .panel__comment-content
+
+                                                .panel__comment-notice
+                                                    p Пожалуйста оставьте небольшой отзыв об этой организации: несколько слов о качестве работы и общем впечатлении – помогите другим посетителям сделать правильный выбор.
+                                                    strong Огромное спасибо!
+
+
+                                    // Comment :: End
+
+
+                                    // Txt :: Start
+                                    .panel__txt
+                                        figure.panel__txt-icon
+                                            +sprite('icon-txt-notice')
+
+                                        .panel__txt-notice
+                                            p Пожалуйста оставьте небольшой отзыв об этой организации: несколько слов о качестве работы и общем впечатлении – помогите другим посетителям сделать правильный выбор.
+                                            strong Огромное спасибо!
+
+                                    // Txt :: End
+
+
+                            // Panel Comments :: End
+
+                    
+
+                            // Panel Loadmore :: Start
+                            .panel
+                                .panel__loadmore
+                                    button.panel__loadmore-btn
+                                        +sprite('icon-loadmore')
+                                        | Загрузить еще
+                            // Panel Loadmore :: End
+
+
+                            // Panel Pagination :: Start
+                            .panel
+                                .panel__pagination.panel__pagination--7
+
+                                    .panel__pagination-container
+
+                                        a(href="#").panel__pagination-link.panel__pagination-link--prev
+                                            +sprite('icon-pagination-prev')
+                                            | Предыдущая
+                                        
+                                        ul.panel__pagination-menu
+                                            li
+                                                a(href="#").panel__pagination-link.is-active 1
+                                            li
+                                                a(href="#").panel__pagination-link 2
+                                            li
+                                                a(href="#").panel__pagination-link 3
+                                            li
+                                                a(href="#").panel__pagination-link 4
+                                            li
+                                                a(href="#").panel__pagination-link 5
+                                            li
+                                                a(href="#").panel__pagination-link 6
+                                            li
+                                                a(href="#").panel__pagination-link 7
+                                            li
+                                                a(href="#").panel__pagination-link ...
+                                            li
+                                                a(href="#").panel__pagination-link 234
+
+                                        
+                                        a(href="#").panel__pagination-link.panel__pagination-link--next
+                                            | Следующая
+                                            +sprite('icon-pagination-next')
+
+
+
+                            // Panel Pagination :: End
+
+
+                            // Panel Companies :: Start
+                            section.panel
+                                .panel__container
+
+                                    .panel__head
+
+                                        figure.panel__icon
+                                            +sprite('icon-panel-companies')
+
+                                        h2.panel__title Конкурирующие компании
+
+
+                                    .panel__body
+
+
+                                        .panel__reviews
+                                        
+                                            .panel__reviews.owl-carousel.owl-reviews.js-owl-reviews
+
+                                                .panel__reviews-item
+                                                    .panel__reviews-item-body
+                                                        p.panel__reviews-item-text Еле доехал, ДПС останавливали 9 раз! Когда приехал в Москву, сразу поехал в страховую. На удивление прониклись моей проблемой, менеджер даже посочувствовал.
+                                                    .panel__reviews-item-foot
+                                                        .panel__reviews-item-group
+                                                            p.panel__reviews-item-rating
+                                                                span.ui-rating(data-rating="3")
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                            span.panel__reviews-item-name Длинное_имя_написанное_слитно
+                                                        strong.panel__reviews-item-title
+                                                            a(href="#").ui-link.ui-link--underline.ui-link--blue Школа результативных языков
+
+
+                                                .panel__reviews-item
+                                                    .panel__reviews-item-body
+                                                        p.panel__reviews-item-text Выезжала со стоянки во дворе, притерлась к соседней машине. Поцарапала свое крыло сильно и крыло второй машины немного. Сразу сообщила в страховую менеджер сказал, чтобы...
+                                                    .panel__reviews-item-foot
+                                                        .panel__reviews-item-group
+                                                            p.panel__reviews-item-rating
+                                                                span.ui-rating(data-rating="4")
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                            span.panel__reviews-item-name Константин Константинович Константинопольский
+                                                        strong.panel__reviews-item-title
+                                                            a(href="#").ui-link.ui-link--underline.ui-link--blue Школа результативных языков
+
+
+                                                .panel__reviews-item
+                                                    .panel__reviews-item-body
+                                                        p.panel__reviews-item-text Когда я отдыхал в Греции у меня случился приступ острой зубной боли, началось нагноение, щека начала раздуваться. 
+                                                    .panel__reviews-item-foot
+                                                        .panel__reviews-item-group
+                                                            p.panel__reviews-item-rating
+                                                                span.ui-rating(data-rating="1")
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                            span.panel__reviews-item-name Петр Шаповалов
+                                                        strong.panel__reviews-item-title
+                                                            a(href="#").ui-link.ui-link--underline.ui-link--blue Школа результативных языков
+
+                                                .panel__reviews-item
+                                                    .panel__reviews-item-body
+                                                        p.panel__reviews-item-text Еле доехал, ДПС останавливали 9 раз! Когда приехал в Москву, сразу поехал в страховую. На удивление прониклись моей проблемой, менеджер даже посочувствовал.
+                                                    .panel__reviews-item-foot
+                                                        .panel__reviews-item-group
+                                                            p.panel__reviews-item-rating
+                                                                span.ui-rating(data-rating="4")
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                            span.panel__reviews-item-name Петр Шаповалов
+                                                        strong.panel__reviews-item-title
+                                                            a(href="#").ui-link.ui-link--underline.ui-link--blue Школа результативных языков
+
+
+                                                .panel__reviews-item
+                                                    .panel__reviews-item-body
+                                                        p.panel__reviews-item-text Выезжала со стоянки во дворе, притерлась к соседней машине. Поцарапала свое крыло сильно и крыло второй машины немного. Сразу сообщила в страховую менеджер сказал, чтобы...
+                                                    .panel__reviews-item-foot
+                                                        .panel__reviews-item-group
+                                                            p.panel__reviews-item-rating
+                                                                span.ui-rating(data-rating="4")
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                            span.panel__reviews-item-name Петр Шаповалов
+                                                        strong.panel__reviews-item-title
+                                                            a(href="#").ui-link.ui-link--underline.ui-link--blue Школа результативных языков
+
+
+                                                .panel__reviews-item
+                                                    .panel__reviews-item-body
+                                                        p.panel__reviews-item-text Когда я отдыхал в Греции у меня случился приступ острой зубной боли, началось нагноение, щека начала раздуваться. 
+                                                    .panel__reviews-item-foot
+                                                        .panel__reviews-item-group
+                                                            p.panel__reviews-item-rating
+                                                                span.ui-rating(data-rating="4")
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                                    +sprite('icon-rating')
+                                                            span.panel__reviews-item-name Петр Шаповалов
+                                                        strong.panel__reviews-item-title
+                                                            a(href="#").ui-link.ui-link--underline.ui-link--blue Школа результативных языков
+
+
+
+
+
+
+
+                            // Panel Companies :: End
+
+
+                            // Panel Form :: Start
+                            .panel
+                                .panel__form
+                                    form(action="#")
+
+                                        .panel__form-body
+
+                                            .panel__form-row
+                                                .panel__form-col
+                                                    label.ui-label.ui-label--icon
+                                                        +sprite('icon-form-user')
+                                                        | Ваше имя
+                                                .panel__form-content
+                                                    .row
+                                                        .col-md
+                                                            input(type="text" placeholder="").ui-input.ui-input--42
+                                                        .col-md-auto
+                                                            button.btn.btn--block.btn--42.btn--grey(aria-expanded="true")
+                                                                +sprite('icon-form-contacts')
+                                                                | Добавить контакты
+
+                                            .panel__form-rate.js-collapse
+
+                                                .panel__form-rate-control
+
+                                                    button.btn.btn--block.btn--42.btn--grey.js-collapse-btn(aria-expanded="true" aria-controls="form-rating")
+                                                        +sprite('icon-form-rating')
+                                                        | Поставить оценки
+
+                                                .panel__form-rate-content.js-collapse-content#form-rating
+
+                                                    fieldset.panel__form-fieldset
+
+                                                        .panel__form-row
+
+                                                            .panel__form-col
+                                                                label.ui-label.ui-label--icon
+                                                                    +sprite('icon-form-rating')
+                                                                    | Оценка
+                                                            .panel__form-content
+
+                                                                .ui-rating
+                                                                    input(type="radio" name="rating" value="1" id="rating-1").ui-rating__input
+                                                                    label(for="rating-1").ui-rating__btn 1
+                                                                    span.ui-rating__caption Ужасно!
+
+                                                                    input(type="radio" name="rating" value="2" id="rating-2" checked).ui-rating__input
+                                                                    label(for="rating-2").ui-rating__btn 2
+                                                                    span.ui-rating__caption Плохо!
+
+                                                                    input(type="radio" name="rating" value="3" id="rating-3").ui-rating__input
+                                                                    label(for="rating-3").ui-rating__btn 3
+                                                                    span.ui-rating__caption Нормально!
+
+                                                                    input(type="radio" name="rating" value="4" id="rating-4").ui-rating__input
+                                                                    label(for="rating-4").ui-rating__btn 4
+                                                                    span.ui-rating__caption Хорошо!
+
+                                                                    input(type="radio" name="rating" value="5" id="rating-5").ui-rating__input
+                                                                    label(for="rating-5").ui-rating__btn 5
+                                                                    span.ui-rating__caption Отлично!
+
+                                                    fieldset.panel__form-fieldset
+                                                        .panel__form-row
+                                                            .panel__form-col
+                                                                label.ui-label.ui-label--42.ui-label--icon
+                                                                    +sprite('icon-form-review')
+                                                                    | Ваш отзыв
+                                                            .panel__form-content
+                                                                .ui-review
+                                                                    input(type="radio" name="review" id="review-1").ui-review__input
+                                                                    label(for="review-1").ui-review__btn.ui-review__btn--red Не рекомендую
+                                                                    input(type="radio" name="review" id="review-2").ui-review__input
+                                                                    label(for="review-2").ui-review__btn.ui-review__btn--orange Нейтральный
+                                                                    input(type="radio" name="review" id="review-3").ui-review__input
+                                                                    label(for="review-3").ui-review__btn.ui-review__btn--green Рекомендую
+
+
+
+
+                                            .panel__form-textarea
+                                                textarea(placeholder="Напишите ваш отзыв здесь" required).ui-textarea
+
+
+                                            .panel__form-group
+
+                                                .panel__form-upload
+
+                                                    .ui-upload
+
+                                                        .ui-upload__control
+
+                                                            label.ui-file
+                                                                input(type="file").ui-file__input
+                                                                span.ui-file__btn
+                                                                    +sprite('icon-camera')
+                                                                    | Добавить фото
+
+                                                        .ui-upload__images
+                                                            figure.ui-upload__image
+                                                                img(src="images/img-upload-01.jpg" alt="" aria-hidden="true")
+                                                                span.ui-upload__delete
+                                                                    +sprite('icon-delete')
+                                                            figure.ui-upload__image
+                                                                img(src="images/img-upload-02.jpg" alt="" aria-hidden="true")
+                                                                span.ui-upload__delete
+                                                                    +sprite('icon-delete')
+                                                            figure.ui-upload__image
+                                                                img(src="images/img-upload-03.jpg" alt="" aria-hidden="true")
+                                                                span.ui-upload__delete
+                                                                    +sprite('icon-delete')
+                                                            figure.ui-upload__image
+                                                                img(src="images/img-upload-04.jpg" alt="" aria-hidden="true")
+                                                                span.ui-upload__delete
+                                                                    +sprite('icon-delete')
+                                                            figure.ui-upload__image
+                                                                img(src="images/img-upload-01.jpg" alt="" aria-hidden="true")
+                                                                span.ui-upload__delete
+                                                                    +sprite('icon-delete')
+                                                            figure.ui-upload__image
+                                                                img(src="images/img-upload-02.jpg" alt="" aria-hidden="true")
+                                                                span.ui-upload__delete
+                                                                    +sprite('icon-delete')
+                                                            figure.ui-upload__image
+                                                                img(src="images/img-upload-03.jpg" alt="" aria-hidden="true")
+                                                                span.ui-upload__delete
+                                                                    +sprite('icon-delete')
+                                                            figure.ui-upload__image
+                                                                img(src="images/img-upload-04.jpg" alt="" aria-hidden="true")
+                                                                span.ui-upload__delete
+                                                                    +sprite('icon-delete')
+
+                                                .panel__form-pin
+
+                                                    .ui-pin.js-pin
+
+                                                        label.ui-pin__label.ui-check
+                                                            input(type="checkbox").ui-check__input.js-pin-btn
+                                                            +sprite('icon-star')
+                                                            | Закрепить отзыв сверху
+                                                            span.ui-check__switch
+
+                                                        .ui-pin__content.js-pin-content
+                                                            .ui-pin__content-in
+
+                                                                .ui-pin__info
+                                                                    +sprite('icon-pin-up')
+                                                                    strong Всегда сверху
+                                                                    p В 7 раз больше просмотров
+                                                                .ui-pin__info
+                                                                    +sprite('icon-pin-color')
+                                                                    strong Выделение цветом
+                                                                    p Отзыв выделяется ярким цветом
+
+                                                                .ui-pin__days
+                                                                    .ui-group
+                                                                        label.ui-check
+                                                                            input(type="radio" name="days" data-days="7 дней" data-notice="7 дней за 299 рублей" checked).ui-check__input.js-pin-input
+                                                                            span.ui-check__btn 7
+                                                                        label.ui-check
+                                                                            input(type="radio" name="days" data-days="14 дней" data-notice="14 дней за 499 рублей").ui-check__input.js-pin-input
+                                                                            span.ui-check__btn 14
+                                                                        label.ui-check
+                                                                            input(type="radio" name="days" data-days="30 дней" data-notice="30 дней за 899 рублей").ui-check__input.js-pin-input
+                                                                            span.ui-check__btn 30
+                                                                        label.ui-check
+                                                                            input(type="radio" name="days" data-days="Навсегда" data-notice="Навсегда за 2299 рублей").ui-check__input.js-pin-input
+                                                                            span.ui-check__btn
+                                                                                +sprite('icon-infinity')
+
+                                                                    .ui-help.js-tooltip(title="Это подсказка...")
+                                                                        | дней
+                                                                        +sprite('icon-help')
+
+
+                                                                p.ui-pin__notice.js-pin-notice 7 дней за #[b 299] рублей
+
+                                        .panel__form-foot
+                                            label.ui-check
+                                                input(type="checkbox" checked required).ui-check__input
+                                                span.ui-check__switch
+                                                span.ui-check__text Согласен с #[a(href="#") условиями и правилами]
+
+                                            button(type="reset").btn.btn--reset Отмена
+                                            button(type="submit").btn.btn--46.btn--green
+                                                +sprite('icon-checked')
+                                                | Отправить
+                                                span.is-lg-visible.js-pin-text
+
+                            // Panel Form :: End
+
+
+
+                // Panel Cities :: Start
+                section.panel
+                    .panel__container
+
+                        .panel__cities
+                            h2.panel__cities-title В других городах
+                            ul.panel__cities-list
+                                li
+                                    a(href="#").panel__cities-link
+                                        +sprite('icon-location')
+                                        u Росстрах страхование
+                                li
+                                    a(href="#").panel__cities-link
+                                        +sprite('icon-location')
+                                        u Кафе в Тюмени
+                                li
+                                    a(href="#").panel__cities-link
+                                        +sprite('icon-location')
+                                        u Служба доставки азиатской кухни
+                                li
+                                    a(href="#").panel__cities-link
+                                        +sprite('icon-location')
+                                        u Служба доставки украинской кухни
+                                li
+                                    a(href="#").panel__cities-link
+                                        +sprite('icon-location')
+                                        u АФК страхование
+
+                // Panel Cities :: End
+
+                // Panel Places :: Start
+                section.panel.panel--grey
+                    .panel__container
+
+                        .panel__places
+
+                            h2.panel__places-title Похожие места рядом
+
+                            .panel__places-grid
+                                .row
+                                    .col-lg-4
+
+                                        .panel__place
+                                            .panel__place-distance
+                                                +sprite('icon-location')
+                                                | 200 м
+                                            .panel__place-desc
+                                                strong.panel__place-title
+                                                    a(href="#").ui-link.ui-link--underline.ui-link--blue Росстрах страхование
+                                                p.panel__place-text Санкт-Петербург, Зеленый проспект, 20
+
+                                    .col-lg-4
+
+                                        .panel__place
+                                            .panel__place-distance
+                                                +sprite('icon-location')
+                                                | 250 м
+                                            .panel__place-desc
+                                                strong.panel__place-title
+                                                    a(href="#").ui-link.ui-link--underline.ui-link--blue Абсолют Страхование
+                                                p.panel__place-text Санкт-Петербург, Зеленый проспект, 20
+
+                                    .col-lg-4
+
+                                        .panel__place
+                                            .panel__place-distance
+                                                +sprite('icon-location')
+                                                | 1.3 км
+                                            .panel__place-desc
+                                                strong.panel__place-title
+                                                    a(href="#").ui-link.ui-link--underline.ui-link--blue АльфаСтрахование-Жизнь
+                                                p.panel__place-text Санкт-Петербург, Зеленый проспект, 20
+
+
+                                    .col-lg-4
+
+                                        .panel__place
+                                            .panel__place-distance
+                                                +sprite('icon-location')
+                                                | 670 м
+                                            .panel__place-desc
+                                                strong.panel__place-title
+                                                    a(href="#").ui-link.ui-link--underline.ui-link--blue АИГ страховая компания
+                                                p.panel__place-text Санкт-Петербург, Зеленый проспект, 20
+
+                                    .col-lg-4
+
+                                        .panel__place
+                                            .panel__place-distance
+                                                +sprite('icon-location')
+                                                | 1.3 км
+                                            .panel__place-desc
+                                                strong.panel__place-title
+                                                    a(href="#").ui-link.ui-link--underline.ui-link--blue АльфаСтрахование-Жизнь
+                                                p.panel__place-text Санкт-Петербург, Зеленый проспект, 20
+
+                                    .col-lg-4
+
+                                        .panel__place
+                                            .panel__place-distance
+                                                +sprite('icon-location')
+                                                | 1.3 км
+                                            .panel__place-desc
+                                                strong.panel__place-title
+                                                    a(href="#").ui-link.ui-link--underline.ui-link--blue АльфаСтрахование-Жизнь
+                                                p.panel__place-text Санкт-Петербург, Зеленый проспект, 20
+
+                            .panel__places-control
+                                button.btn.btn--52.btn--loadmore
+                                    +sprite('icon-loadmore')
+                                    | Показать еще
+    // Company :: End
+
+
+
+
+

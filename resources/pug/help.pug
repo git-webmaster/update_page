@@ -1,0 +1,308 @@
+---
+title: Помощь - Рубрикатор
+bodyClass: is-page-help
+---
+extends includes/_app
+
+block main
+
+    // Help :: Start
+    .l.l--help
+
+        // Scrolltop :: Start
+        button.scrolltop.js-scrolltop
+            +sprite('icon-scrolltop')
+        // Scrolltop :: End
+        
+        .l__head(role="banner")
+            .container-fluid
+
+                nav.l__breadcrumbs
+                    ul.l__breadcrumbs-menu
+                        li
+                            a(href="#").l__breadcrumbs-link Помощь
+                            +sprite('icon-arrow-right')
+                        li
+                            a(href="#").l__breadcrumbs-link Частые вопросы
+                            +sprite('icon-arrow-right')
+
+                h1.l__heading Изменение данных компании
+
+        .l__body
+            .container-fluid
+
+                .l__wrapper.js-sticky-container
+
+                    .l__content
+
+
+                        .panel
+                            .panel__container
+
+                                .panel__body
+
+                                    .panel__back
+
+                                        a(href="#").ui-link.ui-link--grey
+                                            +sprite('icon-back')
+                                            u Назад
+                                    
+                                    .ui-wysiwyg
+
+                                        p Мы создали эту панель администратора для всех, кто хочет создать любые шаблоны на основе наших готовых компонентов.
+
+                                        p
+                                            strong Настройка среды
+
+                                        p Чтобы использовать нашу систему сборки и запустить нашу документацию локально, вам понадобится копия исходных файлов Tabler и узла. Следуй этим шагам:
+
+                                        ol
+                                            li #[a(href="#") Загрузите и установите Node.js], которые мы используем для управления нашими зависимостями.
+                                            li Перейдите в каталог root / tabler и запустите npm install для установки наших локальных зависимостей, перечисленных в package.json.
+
+                                        .ui-notice.ui-notice--green
+                                            .ui-notice__icon
+                                                +sprite('icon-notice-warning')
+                                            .ui-notice__text
+                                                p #[b Внимание!] Чтобы использовать нашу систему сборки и запустить нашу документацию локально, вам понадобится копия исходных файлов Tabler и узла.
+
+                                        nav.ui-questions
+                                            ul.ui-questions__menu
+                                                li
+                                                    a(href="#").ui-questions__link
+                                                        span.ui-questions__link-icon
+                                                            +sprite('icon-comments')
+                                                        span.ui-questions__link-text
+                                                            u Вопросы по отзывам и комментариям
+                                                            mark (18)
+
+                                                li
+                                                    a(href="#").ui-questions__link
+                                                        span.ui-questions__link-icon
+                                                            +sprite('icon-questions')
+                                                        span.ui-questions__link-text
+                                                            u Вопросы по работе администрации
+                                                            mark (18)
+
+
+                                        ul
+                                            li
+                                                a(href="#") Как я могу удалить отзыв, который порочит деловую репутцию моей компании?
+                                            li
+                                                a(href="#") Каким образом можно пополнить счёт?
+
+
+                                    .ui-accordion.ui-accordion--border.js-accordion
+
+                                        .ui-accordion__item.js-accordion-item
+                                            button.ui-accordion__btn.js-accordion-btn
+                                                span.ui-accordion__arrow
+                                                    +sprite('icon-accordion-arrow')
+                                                | Почему мой аккаунт забанили?
+                                            .ui-accordion__content.js-accordion-content
+                                                .ui-accordion__content-in
+
+                                                    p Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Буквенных приставка живет снова ручеек заманивший страна букв страну буквоград рыбными, рукопись силуэт осталось своих о, рекламных пор до щеке.
+
+                                        .ui-accordion__item.js-accordion-item
+                                            button.ui-accordion__btn.js-accordion-btn
+                                                span.ui-accordion__arrow
+                                                    +sprite('icon-accordion-arrow')
+                                                | Почему мой отзыв помечен как недействительный?
+                                            .ui-accordion__content.js-accordion-content
+                                                .ui-accordion__content-in
+
+                                                    p Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Буквенных приставка живет снова ручеек заманивший страна букв страну буквоград рыбными, рукопись силуэт осталось своих о, рекламных пор до щеке.
+
+
+                                    .panel__buttons
+                                        .row
+                                            .col-md-6
+                                                a(href="#").btn.btn--64.btn--white.btn--flex
+                                                    span.btn__icon
+                                                        +sprite('icon-file')
+                                                    span.btn__text Скачать медиакит #[span.btn__size (PDF, 2 МБ)]
+                                            .col-md-6
+                                                a(href="#").btn.btn--64.btn--green.btn--flex Стать клиентом
+
+
+                                    .panel__message
+
+                                        form(action="#")   
+
+                                            .row
+                                                .col-md-6
+
+                                                    label(for="help-name").ui-label Ваше имя
+                                                    input(type="text" placeholder="").ui-input#help-name
+
+                                            .row
+                                                .col-md-6
+
+                                                    label(for="help-why").ui-label Причина обращения
+                                                    .ui-select
+                                                        select.js-select
+                                                            option Жалоба на отзыв
+                                                            option Жалоба на отзыв 2
+                                                            option Жалоба на отзыв 3
+                                                            option Жалоба на отзыв 4
+                                                            option Жалоба на отзыв 5
+                                                    //- input(type="text" placeholder="Жалоба на отзыв").ui-input#help-why
+
+                                            textarea.ui-textarea(placeholder="Напиши ваше сообщение здесь")
+
+                                            label.ui-check
+                                                input(type="checkbox").ui-check__input
+                                                span.ui-check__switch
+                                                span.ui-check__text Согласен с #[a(href="#") условиями и правилами]
+
+
+                                            .ui-control
+                                                .row
+                                                    
+                                                    .col-md-auto.order-md-2
+
+                                                        .ui-upload
+
+                                                            .ui-upload__control
+
+                                                                label.ui-file
+                                                                    input(type="file").ui-file__input
+                                                                    span.ui-file__btn
+                                                                        +sprite('icon-camera')
+                                                                        | Добавить изображение
+
+                                                            .ui-upload__images
+                                                                figure.ui-upload__image
+                                                                    img(src="images/img-upload-01.jpg" alt="" aria-hidden="true")
+                                                                    span.ui-upload__delete
+                                                                        +sprite('icon-delete')
+                                                                figure.ui-upload__image
+                                                                    img(src="images/img-upload-02.jpg" alt="" aria-hidden="true")
+                                                                    span.ui-upload__delete
+                                                                        +sprite('icon-delete')
+                                                                figure.ui-upload__image
+                                                                    img(src="images/img-upload-03.jpg" alt="" aria-hidden="true")
+                                                                    span.ui-upload__delete
+                                                                        +sprite('icon-delete')
+
+                                                    
+                                                    .col-md-auto.order-md-1
+
+                                                        button.btn.btn--46.btn--green
+                                                            +sprite('icon-checked')
+                                                            | Отправить
+
+
+                                            
+                                            .ui-success
+                                                figure.ui-success__icon
+                                                    +sprite('icon-success')
+                                                strong.ui-success__title Спасибо!
+                                                p.ui-success__text Ваше сообщение было успешно отправлено
+                                                a(href="#").ui-success__link На главную
+
+                                            
+                                .panel__foot
+
+                                    .panel__voice
+                                        p.panel__voice-text Была ли данная статья полезна?
+                                        .panel__voice-control
+                                            button.btn.btn--48.btn--white.btn--white
+                                                +sprite('icon-like')
+                                                | Да
+                                            button.btn.btn--48.btn--white.btn--white
+                                                +sprite('icon-dislike')
+                                                | Нет
+
+                    .l__sidebar
+
+
+                        .js-sticky
+
+                            .panel
+                                .panel__container
+                                    .panel__head
+
+                                        h2.panel__title Частые вопросы
+
+                                    .panel__body
+
+                                        .panel__faq
+                                            ul.panel__faq-menu
+                                                li
+                                                    a(href="#").panel__faq-link
+                                                        span.panel__faq-link-icon
+                                                            +sprite('icon-faq-payment')
+                                                        span.panel__faq-link-text Оплата услуг
+                                                li
+                                                    a(href="#").panel__faq-link
+                                                        span.panel__faq-link-icon
+                                                            +sprite('icon-faq-edit')
+                                                        span.panel__faq-link-text Изменение данных компании
+                                                li
+                                                    a(href="#").panel__faq-link
+                                                        span.panel__faq-link-icon
+                                                            +sprite('icon-faq-comments')
+                                                        span.panel__faq-link-text Условия публикации отзывов
+                                                li
+                                                    a(href="#").panel__faq-link
+                                                        span.panel__faq-link-icon
+                                                            +sprite('icon-faq-private')
+                                                        span.panel__faq-link-text Политика конфиденциальности
+                                                li
+                                                    a(href="#").panel__faq-link
+                                                        span.panel__faq-link-icon
+                                                            +sprite('icon-faq-terms')
+                                                        span.panel__faq-link-text Условия оказания услуг
+                                                li
+                                                    a(href="#").panel__faq-link
+                                                        span.panel__faq-link-icon
+                                                            +sprite('icon-faq-contacts')
+                                                        span.panel__faq-link-text Контактная информация
+
+
+                            
+                            .panel.panel--nobg
+                                .panel__container
+                                    .panel__head
+
+                                        h2.panel__title Частые вопросы
+
+                                    .panel__body
+
+                                        nav.panel__faq
+                                            ul.panel__faq-menu
+                                                li
+                                                    a(href="#").panel__faq-link
+                                                        span.panel__faq-link-icon
+                                                            +sprite('icon-faq-payment')
+                                                        span.panel__faq-link-text Оплата услуг
+                                                li
+                                                    a(href="#").panel__faq-link
+                                                        span.panel__faq-link-icon
+                                                            +sprite('icon-faq-edit')
+                                                        span.panel__faq-link-text Изменение данных компании
+                                                li
+                                                    a(href="#").panel__faq-link
+                                                        span.panel__faq-link-icon
+                                                            +sprite('icon-faq-comments')
+                                                        span.panel__faq-link-text Условия публикации отзывов
+                                                li
+                                                    a(href="#").panel__faq-link
+                                                        span.panel__faq-link-icon
+                                                            +sprite('icon-faq-private')
+                                                        span.panel__faq-link-text Политика конфиденциальности
+                                                li
+                                                    a(href="#").panel__faq-link
+                                                        span.panel__faq-link-icon
+                                                            +sprite('icon-faq-terms')
+                                                        span.panel__faq-link-text Условия оказания услуг
+                                                li
+                                                    a(href="#").panel__faq-link
+                                                        span.panel__faq-link-icon
+                                                            +sprite('icon-faq-contacts')
+                                                        span.panel__faq-link-text Контактная информация
+
+
+    // Help :: End

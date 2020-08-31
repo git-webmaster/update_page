@@ -1,0 +1,254 @@
+---
+title: Чекаут / Клиент - Рубрикатор
+bodyClass: is-page-client
+---
+extends includes/_app-client
+
+block main
+
+    // Checkout :: Start
+    .l.l--checkout
+        form(action="#")
+
+            // Scrolltop :: Start
+            button.scrolltop.js-scrolltop(aria-label="Прокрутить вверх")
+                +sprite('icon-scrolltop')
+            // Scrolltop :: End
+
+            .l__head
+
+                .container-fluid
+
+                    nav.l__steps
+                        ul.l__steps-menu
+                            li
+                                .l__steps-item
+                                    span.l__steps-item-icon
+                                        +sprite('icon-success-step')
+                                    span.l__steps-item-text Выбор тарифа
+                                    span.l__steps-item-number 1
+                                +sprite('icon-arrow-right')
+
+                            li.is-active
+                                .l__steps-item
+                                    span.l__steps-item-icon
+                                        +sprite('icon-success-step')
+                                    span.l__steps-item-text Проверка данных
+                                    span.l__steps-item-number 2
+                                +sprite('icon-arrow-right')
+
+                            li
+                                .l__steps-item
+                                    span.l__steps-item-icon
+                                        +sprite('icon-success-step')
+                                    span.l__steps-item-text Оплата
+                                    span.l__steps-item-number 3
+                                +sprite('icon-arrow-right')
+
+
+
+            .l__body
+
+                .container-fluid
+
+
+                    
+
+                    .l__wrapper.js-sticky-container
+                        .l__content
+
+
+                            // Panel :: Start
+                            .panel.panel--grey
+                                .panel__container
+                                    .panel__head
+
+                                        figure.panel__icon
+                                                +sprite('icon-panel-details')
+
+                                        span.panel__title Подробности заказа
+                                       
+
+                                    .panel__body
+
+                                        .panel__settings
+                                            .panel__settings-group
+
+                                                label.ui-label.ui-label--grey.ui-label--fullwidth.ui-label--18 Страница компании
+
+                                                ul.ui-list
+                                                    li
+                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue Ренессанс страхование
+                                                    li
+                                                        a(href="#").ui-link.ui-link--green http://rubrikator.org/russia/saint-petersburg/rospotrebnadzor-3
+
+                                            .panel__settings-group
+                                                label.ui-label.ui-label--grey.ui-label--fullwidth.ui-label--18 Услуга
+                                                .ui-select
+                                                    select.js-select
+                                                        option Подключение тарифа PREMIUM сроком на 1 ГОД
+                                                        option Подключение тарифа PREMIUM сроком на 6 месяцев
+                                                        option Подключение тарифа PREMIUM сроком на 3 месяца
+                                                        option Подключение тарифа PREMIUM сроком на 1 месяц
+
+                                            .panel__settings-group
+                                                label.ui-label.ui-label--grey.ui-label--fullwidth.ui-label--18 Дополнительно
+                                                label.ui-check.ui-check--dark
+                                                    input(type="checkbox" checked).ui-check__input
+                                                    span.ui-check__switch
+                                                    span.ui-check__text Брендирование страницы
+
+                                            .panel__settings-group
+
+                                                label.ui-label.ui-label--grey.ui-label--fullwidth.ui-label--18
+                                                    | Есть ли у компании филиалы в других городах?
+                                                    span.ui-help.js-tooltip(title="Это подсказка...")
+                                                        +sprite('icon-help')
+
+                                                ul.ui-check-horizontal
+                                                    li
+                                                        label.ui-check.ui-check--18.ui-check--dark
+                                                            input(type="radio" name="branches" checked).ui-check__input
+                                                            span.ui-check__wrapper
+                                                                span.ui-check__radio
+                                                                span.ui-check__text Нет
+                                                    li
+                                                        label.ui-check.ui-check--18.ui-check--dark
+                                                            input(type="radio" name="branches").ui-check__input
+                                                            span.ui-check__wrapper
+                                                                span.ui-check__radio
+                                                                span.ui-check__text Есть филиалы
+                                                   
+                                                .ui-number.ui-number--w340.js-number
+                                                    button.ui-number__btn.ui-number__btn--minus.js-number-btn -
+                                                    input(type="text" value="1 филиал").ui-number__input.js-number-input
+                                                    button.ui-number__btn.ui-number__btn--plus.js-number-btn +
+                                                
+
+                            
+                            // Panel :: End
+
+
+                            // Panel :: Start
+                            .panel.panel--grey
+                                .panel__container
+                                    .panel__head
+
+                                        figure.panel__icon
+                                                +sprite('icon-panel-email')
+
+                                        span.panel__title Электронная почта для связи по вопросам оплаты
+                                       
+
+                                    .panel__body
+
+                                        .panel__settings
+                                            .panel__settings-group
+
+                                                .row
+                                                    .col-md-6
+
+                                                        .ui-input-field
+                                                            button.ui-input-cancel
+                                                                +sprite('icon-cancel')
+                                                            input(type="email" placeholder="" value="anton_company@mail.ru").ui-input
+
+                                                a(href="#").ui-link.ui-link--dotted.ui-link--grey Добавить комментарий
+
+                            
+                            // Panel :: End
+
+                            // Panel :: Start
+                            
+                            .panel
+
+
+                                .panel__payments
+
+                                    span.panel__payments-heading Выберите способ оплаты:
+
+                                    label.panel__payments-group
+                                        input(type="radio" name="payments").panel__payments-input
+                                        span.panel__payments-radio
+                                        .panel__payments-desc
+                                            span.panel__payments-title Оплата картами VISA, MasterCard, МИР
+                                            p.panel__payments-text К оплате принимаются карты VISA, MAsterCard и МИР выпущенные Российскими банками. Платежный оператор АО "Яндекс.Деньги"
+                                        .panel__payments-images
+                                            img(src="images/img-payments-visa.png" alt="")
+                                            img(src="images/img-payments-mastercard.png" alt="")
+                                            img(src="images/img-payments-mir.png" alt="")
+
+                                    label.panel__payments-group
+                                        input(type="radio" name="payments").panel__payments-input
+                                        span.panel__payments-radio
+                                        .panel__payments-desc
+                                            span.panel__payments-title Оплата электронными деньгами
+                                        .panel__payments-images
+                                            img(src="images/img-payments-bitcoin.png" alt="")
+
+                                    label.panel__payments-group
+                                        input(type="radio" name="payments").panel__payments-input
+                                        span.panel__payments-radio
+                                        .panel__payments-desc
+                                            span.panel__payments-title Оплата со счёта юридического лица
+                                        .panel__payments-images
+                                            img(src="images/img-payments-bank.png" alt="")
+
+
+                            // Panel :: End
+
+
+                        .l__sidebar
+
+                            // Panel :: Start
+                            .panel.panel--grey.js-sticky
+                                
+                                .panel__container
+                                    .panel__head
+
+                                        figure.panel__icon
+                                                +sprite('icon-panel-total')
+
+                                        span.panel__title Итого
+                                       
+
+                                    .panel__body
+
+                                        .panel__total
+                                            p.panel__total-price 65 300 рублей
+                                            table.panel__total-table
+                                                tr
+                                                    td 40 000
+                                                    td Тариф PREMIUM
+                                                tr
+                                                    td 10 000
+                                                    td Брендирование страницы
+                                                tr
+                                                    td 10 000
+                                                    td 35 филиалов
+                                                tr
+                                                    td 5 300 
+                                                    td НДС 20%
+
+                                            p.panel__total-payments
+                                                mark Способ оплаты
+                                                | Оплата картами VISA, MasterCard, МИР
+
+                                            .panel__total-control
+
+                                                label.ui-check.ui-check--dark
+                                                    input(type="checkbox" checked).ui-check__input
+                                                    span.ui-check__switch
+                                                    span.ui-check__text Согласен с #[a(href="#") условиями] предоставления услуги
+
+                                                button.btn.btn--64.btn--green
+                                                    +sprite('icon-checked')
+                                                    | Оплатить
+
+                                                p.ui-lock
+                                                    +sprite('icon-lock')
+                                                    | Защищённый платёж
+
+
+                            
+                            // Panel :: End

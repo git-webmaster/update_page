@@ -1,0 +1,1430 @@
+---
+title: Дополнительная категория - Рубрикатор
+bodyClass: is-page-category
+---
+extends includes/_app
+
+block main
+
+    // Category :: Start
+    .l.l--category
+
+
+        // Scrolltop :: Start
+        button.scrolltop.js-scrolltop(aria-label="Прокрутить вверх")
+            +sprite('icon-scrolltop')
+        // Scrolltop :: End
+
+
+        .l__head(role="banner")
+            .container-fluid
+
+                h1.l__heading Школы иностранных языков
+                p.l__text Возле м. «Площадь Ленина» в Санкт-Петербург
+
+                .l__search
+
+                    .ui-search
+                        form(action="#")
+                            p.ui-search__find Найдено 1200 мест
+                            .ui-search__field
+                                figure.ui-search__icon
+                                    +sprite('icon-search')
+                                input(type="search" placeholder="Поиск по сайту").ui-search__input.js-search-input
+                                button.ui-search__btn
+                                    span.is-xs-visible Поиск
+                                    span.is-xs-hidden
+                                        +sprite('icon-search-arrow')
+
+                                .ui-search__dropdown
+
+                                    .ui-search__progress
+                                        +sprite('icon-reload')
+                                        | Выполняется поиск...
+
+                                    .ui-search__results
+
+                                        ul.ui-search__list
+                                            li
+                                                .ui-search__item
+                                                    span.ui-search__item-text Санкт-Петербург, Ленинский проспект
+                                            li
+                                                .ui-search__item
+                                                    span.ui-search__item-title
+                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue Корпоративный английский вместе с Corpenglish.ru (SELECTED)
+                                                    span.ui-search__item-category Школы иностранных языков
+                                                    span.ui-search__item-text Санкт-Петербург, ул. Шостаковича, 3 к1
+                                            li
+                                                .ui-search__item
+                                                    span.ui-search__item-open
+                                                        | Открыть категорию #[a(href="#").ui-link.ui-link--underline.ui-link--blue Школы иностранных языков]
+                                                    span.ui-search__item-text «Покупали онлайн страховку для путешествий в этой компании на Ленинском проспекте.Я, вроде как, вбила, что нужна страховка для путешествия по Италии, а в результате полис, который я купила, оказался для путешествий по России...»
+                                                    span.ui-search__item-author
+                                                        | Анастасия про #[a(href="#").ui-link.ui-link--underline.ui-link--blue Корпоративный английский вместе с Corpenglish.ru]
+                                            
+                                        .ui-search__categories
+                                            span.ui-search__categories-title Категории:
+                                            ul.ui-search__categories-list
+                                                li
+                                                    .ui-search__categories-item
+                                                        a(href="tel:+73422779799]").ui-link.ui-link--dark +7 (342) #[b 277-97-99]
+                                                    .ui-search__categories-item
+                                                        a(href="#").ui-link.ui-link--underline.ui-link--blue Школы иностранных языков
+
+
+                                        .ui-search__all
+                                            a(href="#").ui-link.ui-link--underline.ui-link--blue Показать все результаты
+
+                .l__filter
+
+                    .ui-filter
+                        form(action="#")
+
+                            .ui-filter__wrapper.js-filter
+                                ul.ui-filter__list.js-filter-list
+                                    li
+                                        .ui-filter__group
+                                            label.ui-label.ui-label--icon
+                                                +sprite('icon-filter-metro')
+                                                | Метро
+                                            .ui-selection.ui-selection--w160.js-selection
+                                                button.ui-selection__btn.js-selection-btn
+                                                    span.ui-selection__text.js-selection-text Метро
+                                                    span.ui-selection__icon
+                                                        +sprite('icon-selection-arrow')
+                                                        +sprite('icon-selection-cancel')
+                                                .ui-selection__dropdown.js-selection-dropdown
+                                                    .ui-selection__search
+                                                        input(type="search").ui-selection__search-input.js-selection-input
+                                                        span.ui-selection__search-icon
+                                                            +sprite('icon-search')
+                                                    .ui-selection__scrollbar.js-scrollbar
+                                                        ul.ui-selection__menu
+                                                            li
+                                                                button.ui-selection__option.js-selection-option
+                                                                    span.icon-circle.icon-circle--blue
+                                                                    | Проспект Просвещения
+                                                            li
+                                                                button.ui-selection__option.js-selection-option
+                                                                    span.icon-circle.icon-circle--blue
+                                                                    | Библиотека им. В. И. Ленина
+                                                            li
+                                                                button.ui-selection__option.js-selection-option
+                                                                    span.icon-circle.icon-circle--purple
+                                                                    | Черная речка
+                                                            li
+                                                                button.ui-selection__option.js-selection-option
+                                                                    span.icon-circle.icon-circle--purple
+                                                                    | Старая деревня
+                                                            li
+                                                                button.ui-selection__option.js-selection-option
+                                                                    span.icon-circle.icon-circle--red
+                                                                    | Библиотека им. В. И. Ленина
+                                                            li
+                                                                button.ui-selection__option.js-selection-option
+                                                                    span.icon-circle.icon-circle--red
+                                                                    | Черная речка
+                                                            li
+                                                                button.ui-selection__option.js-selection-option
+                                                                    span.icon-circle.icon-circle--blue
+                                                                    | Проспект Просвещения
+                                                            li
+                                                                button.ui-selection__option.js-selection-option
+                                                                    span.icon-circle.icon-circle--blue
+                                                                    | Библиотека им. В. И. Ленина
+                                                            li
+                                                                button.ui-selection__option.js-selection-option
+                                                                    span.icon-circle.icon-circle--purple
+                                                                    | Черная речка
+                                                            li
+                                                                button.ui-selection__option.js-selection-option
+                                                                    span.icon-circle.icon-circle--purple
+                                                                    | Старая деревня
+                                                            li
+                                                                button.ui-selection__option.js-selection-option
+                                                                    span.icon-circle.icon-circle--green
+                                                                    | Библиотека им. В. И. Ленина
+                                                            li
+                                                                button.ui-selection__option.js-selection-option
+                                                                    span.icon-circle.icon-circle--green
+                                                                    | Черная речка
+
+
+                                    li
+
+                                        .ui-filter__group
+                                            label.ui-label.ui-label--icon
+                                                +sprite('icon-filter-district')
+                                                | Район
+                                            .ui-selection.ui-selection--w130.js-selection
+                                                button.ui-selection__btn.js-selection-btn
+                                                    span.ui-selection__text.js-selection-text Район
+                                                    span.ui-selection__icon
+                                                        +sprite('icon-selection-arrow')
+                                                        +sprite('icon-selection-cancel')
+                                                .ui-selection__dropdown.js-selection-dropdown
+                                                    .ui-selection__search
+                                                        input(type="search").ui-selection__search-input.js-selection-input
+                                                        span.ui-selection__search-icon
+                                                            +sprite('icon-search')
+                                                    .ui-selection__scrollbar.js-scrollbar
+                                                        ul.ui-selection__menu
+                                                            li
+                                                                button.ui-selection__option.js-selection-option Калининский
+                                                            li
+                                                                button.ui-selection__option.js-selection-option Красногвардейской армии
+                                                            li
+                                                                button.ui-selection__option.js-selection-option Автопарк
+                                                            li
+                                                                button.ui-selection__option.js-selection-option Центральный
+                                                            li
+                                                                button.ui-selection__option.js-selection-option Калининский
+                                                            li
+                                                                button.ui-selection__option.js-selection-option Красногвардейской армии
+                                                            li
+                                                                button.ui-selection__option.js-selection-option Автопарк
+                                                            li
+                                                                button.ui-selection__option.js-selection-option Центральный
+                                                            li
+                                                                button.ui-selection__option.js-selection-option Калининский
+                                                            li
+                                                                button.ui-selection__option.js-selection-option Красногвардейской армии
+                                                            li
+                                                                button.ui-selection__option.js-selection-option Автопарк
+                                                            li
+                                                                button.ui-selection__option.js-selection-option Центральный
+
+                                    li
+                                        .ui-filter__group
+                                            label.ui-check
+                                                input(type="checkbox").ui-check__input
+                                                span.ui-check__switch
+                                                span.ui-check__text Есть сайт
+
+                                    li
+                                        .ui-filter__group
+                                            label.ui-check
+                                                input(type="checkbox").ui-check__input
+                                                span.ui-check__switch
+                                                span.ui-check__text Оценка 4+
+
+                                    li
+                                        .ui-filter__group
+                                            label.ui-check
+                                                input(type="checkbox").ui-check__input
+                                                span.ui-check__switch
+                                                span.ui-check__text Есть отзывы
+
+
+                                    li
+                                        .ui-filter__group
+                                            label.ui-check
+                                                input(type="checkbox").ui-check__input
+                                                span.ui-check__switch
+                                                span.ui-check__text Другое
+
+                                    li
+                                        .ui-filter__group
+                                            label.ui-check
+                                                input(type="checkbox").ui-check__input
+                                                span.ui-check__switch
+                                                span.ui-check__text Другое
+
+                                    li
+                                        .ui-filter__group
+                                            label.ui-check
+                                                input(type="checkbox").ui-check__input
+                                                span.ui-check__switch
+                                                span.ui-check__text Другое
+
+
+
+        .l__body
+            .container-fluid
+
+
+                
+
+                .l__wrapper
+                    .l__content
+
+
+                        // Panel Map :: Start
+                        section.panel
+                            .panel__map.panel__map--collapsed.panel__map--h150
+                                button.panel__map-btn Развернуть карту
+                                .panel__map-container#map
+
+
+                        // Panel Map :: Start
+
+                        // Panel Offer :: Start
+                        section.panel.panel--green
+                            .panel__container
+
+                                .panel__offer
+                                    .panel__offer-body
+
+
+                                        p.panel__offer-adv
+                                            | Реклама
+                                            span.ui-help.js-tooltip(title="Это подсказка...")
+                                                +sprite('icon-help')
+
+                                        h2.panel__offer-title
+                                            a(href="#") Школа результативных языков Lingvocat.com
+
+                                        p.panel__offer-category Школа английского языка
+
+                                        ul.panel__offer-photos
+                                            li
+                                                img(src="images/img-square-01.jpg", alt="")
+                                            li
+                                                img(src="images/img-square-02.jpg", alt="")
+                                            li
+                                                img(src="images/img-square-03.jpg", alt="")
+                                            li
+                                                img(src="images/img-square-04.jpg", alt="")
+                                            li
+                                                img(src="images/img-square-05.jpg", alt="")
+                                            li
+                                                img(src="images/img-square-06.jpg", alt="")
+
+
+                                        ul.panel__offer-phones
+                                            li
+                                                a(href="#").panel__offer-phones-item +7 (953) 25-11-135
+                                            li Сегодня 12:00 - 23:00
+
+                                        blockquote.panel__offer-blockquote
+                                            +sprite('icon-quote')
+                                            .panel__offer-blockquote-content
+                                                p Угощали очень вкусным печеньем в отеле. Номер большой, уютный.Расположение от Кремля, ул. Баумана в шаговой доступности. Дешевое такси по #[a(href="#").ui-link.ui-link--underline.ui-link--blue Читать дальше]
+
+                                    .panel__offer-sidebar
+
+                                        .panel__offer-reviews
+
+                                            mark.panel__offer-reviews-badge 4.8
+                                            p.panel__offer-reviews-count 190 отзывов
+
+                                    .panel__offer-foot
+                                        p.panel__offer-address Ул. Шостаковича
+                                        p.panel__offer-near
+                                            span.icon-circle-group
+                                                span.icon-circle.icon-circle--red
+                                                span.icon-circle.icon-circle--blue
+                                            | Проспект Просвещения, Невский проспект  800 м
+
+                        // Panel Offer :: End
+
+
+                        // Panel Offer :: Start
+                        section.panel.panel--orange
+                            .panel__container
+
+                                .panel__offer
+                                    .panel__offer-body
+
+                                        p.panel__offer-adv
+                                            | Реклама
+                                            span.ui-help.js-tooltip(title="Это подсказка...")
+                                                +sprite('icon-help')
+
+                                        h2.panel__offer-title
+                                            a(href="#") Школа для взрослых и детей «Мультилингво»
+
+                                        p.panel__offer-category Школа английского языка
+
+                                        ul.panel__offer-phones
+                                            li
+                                                a(href="#").panel__offer-phones-item +7 (812) 986-88-13
+                                            li Сегодня 12:00 - 23:00
+
+                                        blockquote.panel__offer-blockquote.panel__offer-blockquote--text
+                                            +sprite('icon-quote')
+                                            .panel__offer-blockquote-content
+                                                p Угощали очень вкусным печеньем в отеле. Номер большой, уютный.Расположение от Кремля, ул. Баумана в шаговой доступности. Дешевое такси по #[a(href="#").ui-link.ui-link--underline.ui-link--blue Читать дальше]
+
+                                    .panel__offer-sidebar
+
+                                        .panel__offer-reviews
+
+                                            mark.panel__offer-reviews-badge 4.8
+                                            p.panel__offer-reviews-count 64 отзыва
+
+                                .panel__offer-foot
+                                    p.panel__offer-address Ул. Шостаковича 3
+                                    p.panel__offer-near
+                                        span.icon-circle-group
+                                            span.icon-circle.icon-circle--blue
+                                        | Проспект Просвещения  800 м
+
+                        // Panel Offer :: End
+
+
+                        // Panel Reviews :: Start
+                        section.panel
+
+                            .panel__reviews.panel__reviews--new
+
+                                h2.panel__reviews-title
+                                    +sprite('icon-reviews')
+                                    | Новые отзывы
+
+                                .panel__reviews-carousel.owl-carousel.owl-reviews-new.js-owl-reviews-new
+
+                                    .panel__reviews-item
+                                        .panel__reviews-item-body
+                                            p.panel__reviews-item-text Еле доехал, ДПС останавливали 9 раз! Когда приехал в Москву, сразу поехал в страховую. На удивление прониклись моей проблемой, менеджер даже посочувствовал.
+                                        .panel__reviews-item-foot
+                                            .panel__reviews-item-group
+                                                p.panel__reviews-item-rating
+                                                    span.ui-rating(data-rating="3")
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                span.panel__reviews-item-name Петр Шаповалов
+                                            strong.panel__reviews-item-title
+                                                a(href="#").ui-link.ui-link--underline.ui-link--blue Школа результативных языков
+
+
+                                    .panel__reviews-item
+                                        .panel__reviews-item-body
+                                            p.panel__reviews-item-text Выезжала со стоянки во дворе, притерлась к соседней машине. Поцарапала свое крыло сильно и крыло второй машины немного. Сразу сообщила в страховую менеджер сказал, чтобы...
+                                        .panel__reviews-item-foot
+                                            .panel__reviews-item-group
+                                                p.panel__reviews-item-rating
+                                                    span.ui-rating(data-rating="4")
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                span.panel__reviews-item-name Аноним
+                                            strong.panel__reviews-item-title
+                                                a(href="#").ui-link.ui-link--underline.ui-link--blue Школа результативных языков
+
+
+                                    .panel__reviews-item
+                                        .panel__reviews-item-body
+                                            p.panel__reviews-item-text Когда я отдыхал в Греции у меня случился приступ острой зубной боли, началось нагноение, щека начала раздуваться. 
+                                        .panel__reviews-item-foot
+                                            .panel__reviews-item-group
+                                                p.panel__reviews-item-rating
+                                                    span.ui-rating(data-rating="1")
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                span.panel__reviews-item-name Аноним
+                                            strong.panel__reviews-item-title
+                                                a(href="#").ui-link.ui-link--underline.ui-link--blue Школа результативных языков
+
+                                    .panel__reviews-item
+                                        .panel__reviews-item-body
+                                            p.panel__reviews-item-text Еле доехал, ДПС останавливали 9 раз! Когда приехал в Москву, сразу поехал в страховую. На удивление прониклись моей проблемой, менеджер даже посочувствовал.
+                                        .panel__reviews-item-foot
+                                            .panel__reviews-item-group
+                                                p.panel__reviews-item-rating
+                                                    span.ui-rating(data-rating="4")
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                span.panel__reviews-item-name Петр Шаповалов
+                                            strong.panel__reviews-item-title
+                                                a(href="#").ui-link.ui-link--underline.ui-link--blue Школа результативных языков
+
+
+                                    .panel__reviews-item
+                                        .panel__reviews-item-body
+                                            p.panel__reviews-item-text Выезжала со стоянки во дворе, притерлась к соседней машине. Поцарапала свое крыло сильно и крыло второй машины немного. Сразу сообщила в страховую менеджер сказал, чтобы...
+                                        .panel__reviews-item-foot
+                                            .panel__reviews-item-group
+                                                p.panel__reviews-item-rating
+                                                    span.ui-rating(data-rating="4")
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                span.panel__reviews-item-name Петр Шаповалов
+                                            strong.panel__reviews-item-title
+                                                a(href="#").ui-link.ui-link--underline.ui-link--blue Школа результативных языков
+
+
+                                    .panel__reviews-item
+                                        .panel__reviews-item-body
+                                            p.panel__reviews-item-text Когда я отдыхал в Греции у меня случился приступ острой зубной боли, началось нагноение, щека начала раздуваться. 
+                                        .panel__reviews-item-foot
+                                            .panel__reviews-item-group
+                                                p.panel__reviews-item-rating
+                                                    span.ui-rating(data-rating="4")
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                        +sprite('icon-rating')
+                                                span.panel__reviews-item-name Петр Шаповалов
+                                            strong.panel__reviews-item-title
+                                                a(href="#").ui-link.ui-link--underline.ui-link--blue Школа результативных языков
+
+
+
+
+
+                        // Panel Reviews :: End
+
+
+                        // Panel Offer :: Start
+                        section.panel.panel--greensidebar
+                            .panel__container
+
+                                .panel__offer
+                                    .panel__offer-body
+
+                                        h2.panel__offer-title
+                                            a(href="#") Школа детского английского языка Kidlingvo.ru
+
+                                        p.panel__offer-category Школа английского языка
+
+                                        ul.panel__offer-phones
+                                            li
+                                                a(href="#").panel__offer-phones-item 986-88-13
+                                            li Сегодня 12:00 - 23:00
+
+                                        blockquote.panel__offer-blockquote
+                                            +sprite('icon-quote')
+                                            .panel__offer-blockquote-content
+                                                p Угощали очень вкусным печеньем в отеле. Номер большой, уютный.Расположение от Кремля, ул. Баумана в шаговой доступности. Дешевое такси по #[a(href="#").ui-link.ui-link--underline.ui-link--blue Читать дальше]
+
+                                    .panel__offer-sidebar
+
+                                        .panel__offer-reviews
+
+                                            mark.panel__offer-reviews-badge 4.2
+                                            p.panel__offer-reviews-count 190 отзыва
+
+                                .panel__offer-foot
+                                    p.panel__offer-address Ул. Шостаковича
+                                    p.panel__offer-near
+                                        span.icon-circle-group
+                                            span.icon-circle.icon-circle--blue
+                                        | Проспект Просвещения, Невский проспект  800 м
+
+                        // Panel Offer :: End
+
+
+                        // Panel Offer :: Start
+                        section.panel.panel--redsidebar
+                            .panel__container
+
+                                .panel__offer
+                                    .panel__offer-body
+
+                                        h2.panel__offer-title
+                                            a(href="#") Средняя общеобразовательная школа №185 с углубленным изучением английского языка 
+
+                                        p.panel__offer-category Школа английского языка
+
+                                        ul.panel__offer-phones
+                                            li
+                                                span.panel__offer-phones-item.panel__offer-phones-item--disabled Телефон не указан
+
+                                    .panel__offer-sidebar
+
+                                        .panel__offer-reviews
+
+                                            mark.panel__offer-reviews-badge 3
+                                            p.panel__offer-reviews-count 16 отзывов
+
+                                .panel__offer-foot
+                                    p.panel__offer-address ул. Дорога на Туруханные острова, 120 к14
+                                    p.panel__offer-near
+                                        span.icon-circle-group
+                                            span.icon-circle.icon-circle--blue
+                                        | Старая деревня, Чёрная речка  2 км
+
+                        // Panel Offer :: End
+
+
+                        // Panel Offer :: Start
+                        section.panel
+                            .panel__container
+
+                                .panel__offer
+                                    .panel__offer-body
+
+                                        h2.panel__offer-title
+                                            a(href="#") Корпоративный английский вместе с учителем
+
+                                        p.panel__offer-category Школа английского языка
+
+                                        ul.panel__offer-phones
+                                            li
+                                                a(href="#").panel__offer-phones-item 353-28-80
+                                            li Сегодня 12:00 - 23:00
+
+                                        .panel__notice.panel__notice--small.panel__notice--red
+                                            figure.panel__notice-icon
+                                                +sprite('icon-locked')
+                                            p.panel__notice-text
+                                                | 2 человека сообщили, что это место закрыто
+                                            span.ui-help.js-tooltip(title="Это подсказка...")
+                                                +sprite('icon-help')
+
+                                    .panel__offer-sidebar
+
+
+                                .panel__offer-foot
+                                    p.panel__offer-address ул. Шостаковича, 3 к1
+                                    p.panel__offer-near
+                                        span.icon-circle-group
+                                            span.icon-circle.icon-circle--blue
+                                        | Проспект Просвещения  800 м
+
+                        // Panel Offer :: End
+
+
+                        // Panel Offer :: Start
+                        section.panel.panel--greensidebar
+                            .panel__container
+
+                                .panel__offer
+                                    .panel__offer-body
+
+
+                                        .panel__offer-wrapper
+
+                                            figure.panel__offer-image
+                                                img(src="images/img-offer-01.jpg", alt="")
+
+                                            h2.panel__offer-title
+                                                a(href="#") DoubleTree by Hilton
+                                                span.ui-rating(data-rating="3")
+                                                    +sprite('icon-rating')
+                                                    +sprite('icon-rating')
+                                                    +sprite('icon-rating')
+                                                    +sprite('icon-rating')
+                                                    +sprite('icon-rating')
+
+                                            p.panel__offer-category Отели типа «постель и завтрак»
+
+                                            ul.panel__offer-photos
+                                                li
+                                                    img(src="images/img-square-07.jpg", alt="")
+                                                li
+                                                    img(src="images/img-square-08.jpg", alt="")
+                                                li
+                                                    img(src="images/img-square-09.jpg", alt="")
+                                                li
+                                                    img(src="images/img-square-10.jpg", alt="")
+                                                li
+                                                    img(src="images/img-square-11.jpg", alt="")
+
+
+                                            ul.panel__offer-badges
+                                                li
+                                                    +sprite('icon-wifi')
+                                                    | Бесплатный WiFi
+                                                li
+                                                    +sprite('icon-parking')
+                                                    | Бесплатная
+
+                                            .panel__offer-text
+                                                p Этот отель расположен в центре Казани, в 5 минутах ходьбы от таких исторических достопримечательностей, как Казанский Кремль, Национальный музей Татарстана и 
+
+                                        blockquote.panel__offer-blockquote
+                                            +sprite('icon-quote')
+                                            .panel__offer-blockquote-content
+                                                p Угощали очень вкусным печеньем в отеле. Номер большой, уютный.Расположение от Кремля, ул. Баумана в шаговой доступности. Дешевое такси по #[a(href="#").ui-link.ui-link--underline.ui-link--blue Читать дальше]
+
+
+                                        p.panel__offer-airport
+                                            +sprite('icon-airport')
+                                            | Международный аэропорт Кольцово - 60 мин.
+
+                                    .panel__offer-sidebar
+
+                                        .panel__offer-reviews
+
+                                            mark.panel__offer-reviews-badge 8.2
+                                            p.panel__offer-reviews-text Очень хорошо
+                                            p.panel__offer-reviews-count 16 отзывов
+
+                                .panel__offer-foot
+                                    p.panel__offer-address Ул. Шостаковича
+                                    p.panel__offer-near
+                                        span.icon-circle-group
+                                            span.icon-circle.icon-circle--red
+                                            span.icon-circle.icon-circle--blue
+                                        | Проспект Просвещения, Невский проспект  800 м
+
+                        // Panel Offer :: End
+
+
+
+
+                        // Panel Offer :: Start
+                        section.panel.panel--greensidebar
+                            .panel__container
+
+                                .panel__offer
+                                    .panel__offer-body
+
+                                        .panel__offer-wrapper
+
+                                            figure.panel__offer-image
+                                                img(src="images/img-offer-02.jpg", alt="")
+
+                                            h2.panel__offer-title
+                                                a(href="#") Средняя общеобразовательная школа №185 с углубленным изучением английского языка
+
+                                            p.panel__offer-category Школа Школа английского языка
+
+                                            ul.panel__offer-phones
+                                                li
+                                                    a(href="#").panel__offer-phones-item +7 (812) 986-88-13
+
+                                        table.panel__offer-table
+                                            thead
+                                                tr
+                                                    th(colspa="2") Стоимость услуг
+                                            tbody
+                                                tr
+                                                    td
+                                                        span.panel__offer-table-title
+                                                            span.panel__offer-table-title-in Урок английский
+                                                    td
+                                                        span.panel__offer-table-price 2000 р
+                                                tr
+                                                    td
+                                                        span.panel__offer-table-title
+                                                            span.panel__offer-table-title-in Услуга репетитора
+                                                    td
+                                                        span.panel__offer-table-price 2300 р
+                                                tr
+                                                    td
+                                                        span.panel__offer-table-title
+                                                            span.panel__offer-table-title-in Услуга переводчика
+                                                    td
+                                                        span.panel__offer-table-price 3100 р
+
+
+
+
+                                    .panel__offer-sidebar
+
+                                        .panel__offer-reviews
+
+                                            mark.panel__offer-reviews-badge 8.2
+                                            p.panel__offer-reviews-text Очень хорошо
+                                            p.panel__offer-reviews-count 16 отзывов
+
+                                .panel__offer-foot
+                                    p.panel__offer-address Ул. Шостаковича
+                                    p.panel__offer-near
+                                        span.icon-circle-group
+                                            span.icon-circle.icon-circle--red
+                                            span.icon-circle.icon-circle--blue
+                                        | Проспект Просвещения, Невский проспект  800 м
+
+                        // Panel Offer :: End
+
+
+
+
+
+                        // Panel Offer :: Start
+                        section.panel
+                            .panel__container
+
+                                .panel__offer
+                                    .panel__offer-body
+
+                                        .panel__offer-wrapper
+
+                                            figure.panel__offer-image.panel__offer-image--noimage
+
+
+                                            h2.panel__offer-title
+                                                a(href="#") Locazione turistica Paradise.36
+
+                                            p.panel__offer-category Мотель
+
+                                            .panel__offer-text
+                                                p Отель «Алмаз» находится в Казани, на пешеходной улице Баумана, в 200 метрах от Петропавловского собора. К услугам гостей бесплатный Wi-Fi.  
+
+
+
+                                    .panel__offer-sidebar
+
+
+                                .panel__offer-foot
+                                    p.panel__offer-address 7038 Коста-Парадисо, Италия (Great Smoky Mountains National Park)
+
+
+                        // Panel Offer :: End
+
+
+
+
+
+                        // Panel Offer :: Start
+                        section.panel.panel--greensidebar
+                            .panel__container
+
+                                .panel__offer
+                                    .panel__offer-body
+
+
+                                        h2.panel__offer-title
+                                            a(href="#") Почтовое отделение САНКТ-ПЕТЕРБУРГ 45
+
+                                        p.panel__offer-category Индекс 195009
+
+                                        ul.panel__offer-phones
+                                            li
+                                                a(href="#").panel__offer-phones-item +7 (812) 986-88-13
+                                            li
+                                                a(href="#").panel__offer-phones-item +7 (812) 986-88-14
+                                            li Сегодня 12:00 - 23:00
+
+                                        blockquote.panel__offer-blockquote
+                                            +sprite('icon-quote')
+                                            .panel__offer-blockquote-content
+                                                p Угощали очень вкусным печеньем в отеле. Номер большой, уютный.Расположение от Кремля, ул. Баумана в шаговой доступности. Дешевое такси по #[a(href="#").ui-link.ui-link--underline.ui-link--blue Читать дальше]
+
+                                    .panel__offer-sidebar
+
+                                        p.panel__offer-index 195009
+
+                                        .panel__offer-reviews
+                                            mark.panel__offer-reviews-badge 4.8
+                                            p.panel__offer-reviews-count 190 отзывов
+
+                                    .panel__offer-foot
+                                        p.panel__offer-address Ул. Шостаковича
+                                        p.panel__offer-near
+                                            span.icon-circle-group
+                                                span.icon-circle.icon-circle--red
+                                                span.icon-circle.icon-circle--blue
+                                            | Проспект Просвещения, Невский проспект  800 м
+
+                        // Panel Offer :: End
+
+
+
+                        // Panel Offer :: Start
+                        section.panel.panel--greensidebar
+                            .panel__container
+
+                                .panel__offer
+                                    .panel__offer-body
+
+
+                                        .panel__offer-wrapper
+
+                                            figure.panel__offer-image
+                                                img(src="images/img-product-01.jpg", alt="")
+
+                                            h2.panel__offer-title
+                                                a(href="#") Шампунь Savonry "Фруктовые брызги" для нормальных волос
+
+
+                                            .panel__offer-recommend
+                                                
+                                                .ui-recommend.ui-recommend--green
+
+                                                    .ui-recommend__head
+
+                                                        .ui-recommend__badge
+                                                            | Рекомендуем!
+                                                            +sprite('icon-like')
+
+                                                        p.ui-recommend__caption На основе 160 голосов
+
+                                                    .ui-recommend__body
+
+                                                        .ui-recommend__line
+                                                            .ui-recommend__line-progress(style="left: 73%;")
+                                                        .ui-recommend__arrow(style="left: 73%;")
+
+                                                    .ui-recommend__foot
+                                                        button.btn.btn--48.btn--whitedark
+                                                            | Нет #[small (27%)]
+
+                                                        button.btn.btn--48.btn--whitedark
+                                                            | Да #[small (73%)]
+
+                                        
+                                        blockquote.panel__offer-blockquote
+                                            +sprite('icon-quote')
+                                            .panel__offer-blockquote-content
+                                                p Угощали очень вкусным печеньем в отеле. Номер большой, уютный.Расположение от Кремля, ул. Баумана в шаговой доступности. Дешевое такси по #[a(href="#").ui-link.ui-link--underline.ui-link--blue Читать дальше]
+                                                            
+
+
+
+                                    .panel__offer-sidebar
+
+                                        .panel__offer-reviews
+                                            mark.panel__offer-reviews-badge 4.8
+                                            p.panel__offer-reviews-text Очень хорошо
+                                            p.panel__offer-reviews-count 190 отзывов
+
+
+
+                        // Panel Offer :: End
+
+
+                        // Panel Offer :: Start
+                        section.panel.panel--greensidebar
+                            .panel__container
+
+                                .panel__offer
+                                    .panel__offer-body
+
+
+                                        .panel__offer-wrapper
+
+                                            .panel__offer-gallery
+                                                .owl-carousel.owl-mouse.js-owl-mouse
+                                                    .panel__offer-image
+                                                        img(src="images/img-hotel-01.jpg", alt="")
+                                                    .panel__offer-image
+                                                        img(src="images/img-hotel-02.jpg", alt="")
+                                                    .panel__offer-image
+                                                        img(src="images/img-hotel-03.jpg", alt="")
+                                                    .panel__offer-image
+                                                        img(src="images/img-hotel-04.jpg", alt="")
+                                                    .panel__offer-image
+                                                        img(src="images/img-hotel-05.jpg", alt="")
+
+                                            h2.panel__offer-title
+                                                a(href="#") Шампунь Savonry "Фруктовые брызги" Demo Gallery 01
+
+
+                                            .panel__offer-recommend
+                                                
+                                                .ui-recommend.ui-recommend--green
+
+                                                    .ui-recommend__head
+
+                                                        .ui-recommend__badge
+                                                            | Рекомендуем!
+                                                            +sprite('icon-like')
+
+                                                        p.ui-recommend__caption На основе 160 голосов
+
+                                                    .ui-recommend__body
+
+                                                        .ui-recommend__line
+                                                            .ui-recommend__line-progress(style="left: 73%;")
+                                                        .ui-recommend__arrow(style="left: 73%;")
+
+                                                    .ui-recommend__foot
+                                                        button.btn.btn--48.btn--whitedark
+                                                            | Нет #[small (27%)]
+
+                                                        button.btn.btn--48.btn--whitedark
+                                                            | Да #[small (73%)]
+
+                                        
+                                        blockquote.panel__offer-blockquote
+                                            +sprite('icon-quote')
+                                            .panel__offer-blockquote-content
+                                                p Угощали очень вкусным печеньем в отеле. Номер большой, уютный.Расположение от Кремля, ул. Баумана в шаговой доступности. Дешевое такси по #[a(href="#").ui-link.ui-link--underline.ui-link--blue Читать дальше]
+                                                            
+
+
+
+                                    .panel__offer-sidebar
+
+                                        .panel__offer-reviews
+                                            mark.panel__offer-reviews-badge 4.8
+                                            p.panel__offer-reviews-text Очень хорошо
+                                            p.panel__offer-reviews-count 190 отзывов
+
+
+
+                        // Panel Offer :: End
+
+                        // Panel Offer :: Start
+                        section.panel.panel--greensidebar
+                            .panel__container
+
+                                .panel__offer
+                                    .panel__offer-body
+
+
+                                        .panel__offer-wrapper
+
+                                            .panel__offer-gallery
+                                                .owl-carousel.owl-mouse.js-owl-mouse
+                                                    .panel__offer-image
+                                                        img(src="images/img-hotel-01.jpg", alt="")
+                                                    .panel__offer-image
+                                                        img(src="images/img-hotel-02.jpg", alt="")
+                                                    .panel__offer-image
+                                                        img(src="images/img-hotel-03.jpg", alt="")
+
+                                            h2.panel__offer-title
+                                                a(href="#") Шампунь Savonry "Фруктовые брызги" Demo Gallery 02
+
+
+                                            .panel__offer-recommend
+                                                
+                                                .ui-recommend.ui-recommend--green
+
+                                                    .ui-recommend__head
+
+                                                        .ui-recommend__badge
+                                                            | Рекомендуем!
+                                                            +sprite('icon-like')
+
+                                                        p.ui-recommend__caption На основе 160 голосов
+
+                                                    .ui-recommend__body
+
+                                                        .ui-recommend__line
+                                                            .ui-recommend__line-progress(style="left: 73%;")
+                                                        .ui-recommend__arrow(style="left: 73%;")
+
+                                                    .ui-recommend__foot
+                                                        button.btn.btn--48.btn--whitedark
+                                                            | Нет #[small (27%)]
+
+                                                        button.btn.btn--48.btn--whitedark
+                                                            | Да #[small (73%)]
+
+                                        
+                                        blockquote.panel__offer-blockquote
+                                            +sprite('icon-quote')
+                                            .panel__offer-blockquote-content
+                                                p Угощали очень вкусным печеньем в отеле. Номер большой, уютный.Расположение от Кремля, ул. Баумана в шаговой доступности. Дешевое такси по #[a(href="#").ui-link.ui-link--underline.ui-link--blue Читать дальше]
+                                                            
+
+
+
+                                    .panel__offer-sidebar
+
+                                        .panel__offer-reviews
+                                            mark.panel__offer-reviews-badge 4.8
+                                            p.panel__offer-reviews-text Очень хорошо
+                                            p.panel__offer-reviews-count 190 отзывов
+
+
+
+                        // Panel Offer :: End
+
+
+                        // Panel Offer :: Start
+                        section.panel
+                            .panel__container
+
+                                .panel__offer
+                                    .panel__offer-body
+
+
+                                        .panel__offer-wrapper
+
+                                            figure.panel__offer-image.panel__offer-image--noimage
+
+
+                                            h2.panel__offer-title
+                                                a(href="#") Bvlgari Men
+
+
+                                            .panel__offer-recommend
+                                                
+                                                .ui-recommend.ui-recommend--disabled
+
+                                                    .ui-recommend__head
+
+                                                        mark.ui-recommend__badge
+                                                            | Рекомендуем?
+
+                                                        p.ui-recommend__caption Нет голосов
+
+                                                    .ui-recommend__body
+
+                                                        .ui-recommend__line
+                                                            .ui-recommend__line-progress
+                                                        .ui-recommend__arrow
+
+                                                    .ui-recommend__foot
+                                                        button.btn.btn--48.btn--whitedark
+                                                            | Нет
+
+                                                        button.btn.btn--48.btn--whitedark
+                                                            | Да
+
+                                            
+                                        blockquote.panel__offer-blockquote
+                                            +sprite('icon-quote')
+                                            .panel__offer-blockquote-content
+                                                p Угощали очень вкусным печеньем в отеле. Номер большой, уютный.Расположение от Кремля, ул. Баумана в шаговой доступности. Дешевое такси по #[a(href="#").ui-link.ui-link--underline.ui-link--blue Читать дальше]
+                                                            
+
+
+
+                                    .panel__offer-sidebar
+
+                                        .panel__offer-reviews
+                                            p.panel__offer-reviews-write Напишите первый отзыв!
+
+
+
+                        // Panel Offer :: End
+
+
+
+
+
+                        // Panel Tags :: Start
+                        .panel
+
+                            .panel__tags
+                                ul.panel__tags-list
+                                    li
+                                        a(href="#").panel__tags-link Декоративная косметика
+                                    li
+                                        a(href="#").panel__tags-link Косметические аксессуары
+                                    li
+                                        a(href="#").panel__tags-link Техника для красоты и здоровья
+                                    li
+                                        a(href="#").panel__tags-link Диеты
+                                    li
+                                        a(href="#").panel__tags-link Спортивные товары
+
+                        // Panel Tags :: End
+
+
+                        // Panel Accordion :: Start
+                        .panel
+                            .panel__container
+
+                                .ui-accordion.js-accordion
+
+                                    .ui-accordion__item.js-accordion-item
+                                        button.ui-accordion__btn.js-accordion-btn
+                                            span.ui-accordion__icon
+                                                +sprite('icon-faq')
+                                            span.ui-accordion__arrow
+                                                +sprite('icon-accordion-arrow')
+                                            | Советы и рекомендации
+                                        .ui-accordion__content.js-accordion-content
+                                            .ui-accordion__content-in
+                                                strong Какую стоматологическую страховку я должен получить?
+                                                p Выберите свой план: большинство людей покупают три основных сорта, обычно через своих работодателей.
+                                                p Плата за возмещение или плата за обслуживание означает, что вам придется оплачивать ежегодные вычеты и совместные страховые платежи из своего кармана.
+
+                                    .ui-accordion__item.js-accordion-item
+                                        button.ui-accordion__btn.js-accordion-btn
+                                            span.ui-accordion__icon
+                                                +sprite('icon-faq')
+                                            span.ui-accordion__arrow
+                                                +sprite('icon-accordion-arrow')
+                                            | Как выбрать школу?
+                                        .ui-accordion__content.js-accordion-content
+                                            .ui-accordion__content-in
+                                                strong Как выбрать школу?
+
+                                    .ui-accordion__item.js-accordion-item
+                                        button.ui-accordion__btn.js-accordion-btn
+                                            span.ui-accordion__icon
+                                                +sprite('icon-faq')
+                                            span.ui-accordion__arrow
+                                                +sprite('icon-accordion-arrow')
+                                            | Платная или бесплатная?
+                                        .ui-accordion__content.js-accordion-content
+                                            .ui-accordion__content-in
+                                                strong Платная или бесплатная?
+                                    
+                                    .ui-accordion__item.js-accordion-item
+                                        button.ui-accordion__btn.js-accordion-btn
+                                            span.ui-accordion__icon
+                                                +sprite('icon-faq')
+                                            span.ui-accordion__arrow
+                                                +sprite('icon-accordion-arrow')
+                                            | Какой язык выбрать?
+                                        .ui-accordion__content.js-accordion-content
+                                            .ui-accordion__content-in
+                                                strong Какой язык выбрать?
+
+                                    .ui-accordion__more
+                                        a(href="#").ui-link.ui-link--dotted.ui-link--blue Смотреть остальные советы
+
+                        // Panel Accordion :: End
+
+
+
+                        // Panel Loadmore :: Start
+                        .panel
+                            .panel__loadmore
+                                button.panel__loadmore-btn
+                                    +sprite('icon-loadmore')
+                                    | Загрузить еще
+                        // Panel Loadmore :: End
+
+
+                        // Panel Pagination :: Start
+                        .panel
+                            .panel__pagination.panel__pagination--7
+
+                                .panel__pagination-container
+
+                                    a(href="#").panel__pagination-link.panel__pagination-link--prev
+                                        +sprite('icon-pagination-prev')
+                                        | Предыдущая
+                                
+
+                                    ul.panel__pagination-menu
+                                        li
+                                            a(href="#").panel__pagination-link.is-active 1
+                                        li
+                                            a(href="#").panel__pagination-link 2
+                                        li
+                                            a(href="#").panel__pagination-link 3
+                                        li
+                                            a(href="#").panel__pagination-link 4
+                                        li
+                                            a(href="#").panel__pagination-link 5
+                                        li
+                                            a(href="#").panel__pagination-link 6
+                                        li
+                                            a(href="#").panel__pagination-link 7
+                                        li
+                                            a(href="#").panel__pagination-link ...
+                                        li
+                                            a(href="#").panel__pagination-link 234
+
+                                    
+                                    a(href="#").panel__pagination-link.panel__pagination-link--next
+                                        | Следующая
+                                        +sprite('icon-pagination-next')
+
+
+                        // Panel Pagination :: End
+
+
+
+
+                        // Panel Cities :: Start
+                        section.panel
+                            .panel__container
+
+                                .panel__cities
+                                    h2.panel__cities-title В других городах
+                                    ul.panel__cities-list
+                                        li
+                                            a(href="#").panel__cities-link
+                                                +sprite('icon-location')
+                                                u Росстрах страхование
+                                        li
+                                            a(href="#").panel__cities-link
+                                                +sprite('icon-location')
+                                                u Кафе в Тюмени
+                                        li
+                                            a(href="#").panel__cities-link
+                                                +sprite('icon-location')
+                                                u Служба доставки азиатской кухни
+                                        li
+                                            a(href="#").panel__cities-link
+                                                +sprite('icon-location')
+                                                u Служба доставки украинской кухни
+                                        li
+                                            a(href="#").panel__cities-link
+                                                +sprite('icon-location')
+                                                u АФК страхование
+
+                        // Panel Cities :: End
+
+
+
+
+
+
+                    .l__sidebar
+
+                        // Panel Banner :: Start
+                        .panel
+                            .panel__container
+
+                                .panel__banner.panel__banner-336x280
+                                    img(src="images/banner-336x280.jpg" alt="" aria-hidden="true")
+
+                        // Panel Banner :: End
+
+
+                        // Panel Accordion :: Start
+                        .panel
+                            .panel__container
+
+                                .ui-accordion.ui-accordion--small.js-accordion
+
+                                    .ui-accordion__item.js-accordion-item
+                                        button.ui-accordion__btn.js-accordion-btn
+                                            span.ui-accordion__icon
+                                                +sprite('icon-faq')
+                                            span.ui-accordion__arrow
+                                                +sprite('icon-accordion-arrow')
+                                            | Советы и рекомендации
+                                        .ui-accordion__content.js-accordion-content
+                                            .ui-accordion__content-in
+                                                strong Какую стоматологическую страховку я должен получить?
+                                                p Выберите свой план: большинство людей покупают три основных сорта, обычно через своих работодателей.
+                                                p Плата за возмещение или плата за обслуживание означает, что вам придется оплачивать ежегодные вычеты и совместные страховые платежи из своего кармана.
+
+                                    .ui-accordion__item.js-accordion-item
+                                        button.ui-accordion__btn.js-accordion-btn
+                                            span.ui-accordion__icon
+                                                +sprite('icon-faq')
+                                            span.ui-accordion__arrow
+                                                +sprite('icon-accordion-arrow')
+                                            | Как выбрать школу?
+                                        .ui-accordion__content.js-accordion-content
+                                            .ui-accordion__content-in
+                                                strong Как выбрать школу?
+
+                                    .ui-accordion__item.js-accordion-item
+                                        button.ui-accordion__btn.js-accordion-btn
+                                            span.ui-accordion__icon
+                                                +sprite('icon-faq')
+                                            span.ui-accordion__arrow
+                                                +sprite('icon-accordion-arrow')
+                                            | Платная или бесплатная?
+                                        .ui-accordion__content.js-accordion-content
+                                            .ui-accordion__content-in
+                                                strong Платная или бесплатная?
+                                    
+                                    .ui-accordion__item.js-accordion-item
+                                        button.ui-accordion__btn.js-accordion-btn
+                                            span.ui-accordion__icon
+                                                +sprite('icon-faq')
+                                            span.ui-accordion__arrow
+                                                +sprite('icon-accordion-arrow')
+                                            | Какой язык выбрать?
+                                        .ui-accordion__content.js-accordion-content
+                                            .ui-accordion__content-in
+                                                strong Какой язык выбрать?
+
+                                    .ui-accordion__more
+                                        a(href="#").ui-link.ui-link--dotted.ui-link--blue Смотреть остальные советы
+
+                        // Panel Accordion :: End
+
+
+                        // Panel Offer :: End
+
+                        .panel.panel--orange
+
+                            .panel__container
+
+                                .panel__offer.panel__offer--orange.panel__offer--small
+                                    .panel__offer-body
+
+                                        p.panel__offer-adv
+                                            | Реклама
+                                            span.ui-help.js-tooltip(title="Это подсказка...")
+                                                +sprite('icon-help')
+
+                                        h2.panel__offer-title
+                                            a(href="#") Школа для взрослых и детей «Мультилингво»
+
+                                        .panel__offer-wrapper
+
+                                            figure.panel__offer-image
+                                                img(src="images/img-offer-01.jpg", alt="")
+
+                                            .panel__offer-desc
+
+                                                ul.panel__offer-list
+                                                    li Лучшие преподаватели
+                                                    li Умеренные цены
+                                                    li Гарантированный результат
+
+
+                                        ul.panel__offer-phones
+                                            li
+                                                a(href="#").panel__offer-phones-item +7 (812) 986-88-13
+
+                                        p.panel__offer-address Санкт-Петербург, ул. Шостаковича, 3 к
+
+                            .panel__container
+
+                                .panel__offer.panel__offer--orange.panel__offer--small
+                                    .panel__offer-body
+
+
+                                        h2.panel__offer-title
+                                            a(href="#") Средняя общеобразовательная школа №185 с углубленным изучением английского языка
+
+                                        .panel__offer-wrapper
+
+                                            .panel__offer-desc
+
+                                                ul.panel__offer-list
+                                                    li Лучшие преподаватели
+                                                    li Умеренные цены
+                                                    li Гарантированный результат
+
+                                        p.panel__offer-address Комсомольск-на-Амуре, ул. Римского-Корсакова, дом 112, офис 23
+
+                                        a(href="#").panel__offer-btn
+                                            | Подробнее
+                                            +sprite('icon-arrow-right')
+
+
+                        // Panel Offer :: End
+
+
+                        // Panel Offer :: End
+
+                        .panel.panel--green
+
+                            .panel__container
+
+                                .panel__offer.panel__offer--orange.panel__offer--small
+                                    .panel__offer-body
+
+                                        p.panel__offer-adv
+                                            | Реклама
+                                            span.ui-help.js-tooltip(title="Это подсказка...")
+                                                +sprite('icon-help')
+
+                                        h2.panel__offer-title
+                                            a(href="#") Средняя общеобразовательная школа №185 с углубленным изучением английского языка
+
+                                        .panel__offer-wrapper
+
+                                            .panel__offer-desc
+
+                                                ul.panel__offer-list
+                                                    li Лучшие преподаватели
+                                                    li Умеренные цены
+                                                    li Гарантированный результат
+
+
+                                        ul.panel__offer-phones
+                                            li
+                                                a(href="#").panel__offer-phones-item +7 (812) 986-88-13
+
+                                        p.panel__offer-address Комсомольск-на-Амуре, ул. Римского-Корсакова, дом 112, офис 23
+
+                                        a(href="#").panel__offer-btn
+                                            | Подробнее
+                                            +sprite('icon-arrow-right')
+
+                        
+                        // Panel Offer :: End
+
+
+
+    // Category :: End

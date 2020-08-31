@@ -604,7 +604,68 @@ button.owl-prev, button.owl-next {
 	
 }
 
+.owl-reviews-primary-2 {
 
+	width: auto;
+
+	.owl-nav {
+		display: none;
+	}
+
+	.owl-stage {
+		display: flex;
+	}
+
+	.newrev-item {
+		border-radius: 4px;
+		box-shadow: 0 0 1px 0 rgba(0,0,0,.02), 0 2px 6px 0 rgba(67,83,159,.1);
+	}
+
+	.panel__reviews-item-foot {
+		border-radius: 4px;
+	}
+
+	@include breakpoint(md) {
+
+		.owl-nav {
+			display: block;
+			button.owl-prev, button.owl-next {
+				position: absolute;
+				top: 0;
+				color: #808080;
+				width: 50px;
+				height: 100%;
+				display: flex;
+				padding: 0;
+				align-items: center;
+				justify-content: center;
+				margin: 0;
+			}
+			button.owl-prev {
+				left: -50px;
+			}
+			button.owl-next {
+				right: -50px;
+			}
+		}
+	}
+
+	@include breakpointMax(md) {
+
+		.owl-stage-outer {
+			margin: 0 -20px;
+			padding: 0 20px;
+		}
+		.owl-stage {
+			display: flex;
+		}
+
+		.newrev-item {
+			width: 270px!important;
+		}
+	}
+
+}
 
 
 .owl-hotels-primary {

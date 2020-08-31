@@ -3943,7 +3943,7 @@
     .section:not(.hero) {
         background: #fff;
         border-bottom: 1px solid #000;
-        &:nth-of-type(odd) {
+        &:nth-of-type(even) {
             box-shadow: none;
             border: none;
             border-bottom: 1px solid #000;

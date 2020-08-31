@@ -15,7 +15,7 @@
     margin: 0 0 10px;
 
     .ui-help {
-        margin: 0 0 0 10px;
+        margin: 0 0 0 5px;
         top: -1px;
     }
 
@@ -90,7 +90,7 @@
     }
     // height: 4.8rem;
     &::-webkit-input-placeholder {
-        color: #808080;
+        color: #aaa;
     }
     &:hover {
         z-index: 500;
@@ -768,8 +768,8 @@ html:not(.is-theme-dark):not(.is-theme-blind) .ui-file__btn {
         top: 50%;
         left: 50%;
         height: 1px;
-        width: 16px;
-        margin: 0 0 0 -8px;
+        width: 12px;
+        margin: 0 0 0 -6px;
         background: #131313;
     }
     & > li {
