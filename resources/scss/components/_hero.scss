@@ -102,6 +102,20 @@
             margin: 0;
         }
     }
+    &--scrollable{
+        @include breakpointMax(xs) {
+            & > li {
+                display: flex;
+                align-items: center;
+                flex-shrink: 0;
+                padding: 0 20px;
+                &:first-child {
+                    padding: 0 20px 0 0;
+                }
+            }
+        }
+    }
+
 
     @include breakpoint(md) {
         //margin-bottom: -40px;
@@ -122,6 +136,12 @@
     @extend .ui-link;
     @extend .ui-link--blue;
     white-space: nowrap;
+    &--scrollable {
+        @include breakpoint(xs) {
+            display: flex;
+            align-items: center;
+        }
+    }
 }
 
 .hero__heading {

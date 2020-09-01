@@ -1,0 +1,47 @@
+// --------------------------------------------------------------------------
+// scrollable items needs 1 nested div
+// --------------------------------------------------------------------------
+
+.ui-scrollable {
+    &--lg{
+        @include breakpointMax(lg) {
+            overflow: hidden;
+            & > div, > ul {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: scroll;
+                margin: 0 0 -30px;
+                padding-bottom: 30px;
+                justify-content: normal;
+            }
+        }
+        &--with-underline{
+            padding: 0;
+            display: flex;
+            & > div, > ul {
+                margin: 0 0 -25px;
+            }
+        }
+    }
+    &--xs {
+        @include breakpointMax(xs) {
+            overflow: hidden;
+            & > div, > ul {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: scroll;
+                margin: 0 0 -30px;
+                padding-bottom: 30px;
+                justify-content: normal;
+            }
+        }
+        &--with-underline{
+            padding: 0;
+            display: flex;
+            & > div, > ul {
+                margin: 0 0 -25px;
+            }
+        }
+    }
+}
+
