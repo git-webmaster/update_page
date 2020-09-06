@@ -293,6 +293,11 @@
         }
         
     }
+    &_no-a-border{
+       & .arrow {
+            border-left: 0!important;
+        }
+    }
 }
 
 

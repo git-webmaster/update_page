@@ -1,7 +1,157 @@
 // --------------------------------------------------------------------------
 // Modal
 // --------------------------------------------------------------------------
+//класс которыйй добавляется body при открытии модалки
+.modal-opened{
+	overflow: hidden;
+	& #modal-overlay{
+		display: block;
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		opacity: 0.5;
+		transition: 200ms ease-in-out;
+		z-index: 9996;
+		background-color: #000000;
+		@include breakpointMax(md) {
+			background-color: unset;
+		}
+	}
+}
+.show{
+	&.modal {
+		display: block;
+		overflow-x: hidden;
+		overflow-y: auto;
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		outline: 0;
+		& .modal-dialog{
+			display: block;
+			@include breakpointMax(md) {
+				opacity: 1!important;
+			}
+		}
+	}
+}
+.modal {
+	//немного опишу грид для модалки
 
+	z-index: 9997;
+	& .ui-label{
+		& .green-text{
+			@include breakpointMax(md) {
+				display: flex;
+			}
+		}
+	}
+	&-dialog {
+		display: none;
+		position: relative;
+		background: #FFFFFF;
+		max-width: 640px;
+		width: 100%;
+		margin: 15% auto;
+		opacity: 0;
+		border-radius: 3px;
+		@include breakpointMax(md) {
+			max-width: 100%;
+			margin: 0!important;
+			min-height: 100vh;
+		}
+		@include breakpoint(md) {
+			border: solid 1px #cccccc;
+		}
+	}
+	&__header{
+		display: flex;
+		justify-content: space-between;
+		padding: 13px 20px 11px;
+		border-bottom: solid 1px #cccccc;
+	}
+	&__footer{
+		display: flex;
+		justify-content: space-between;
+		padding: 13px 17px 14px 15px;
+		border-top: solid 1px #cccccc;
+		& >*:first-child{
+			@include breakpoint(sm) {
+				margin: 0 auto 0 0;
+			}
+		}
+		& >*:not(:first-child):not(:last-child){
+			@include breakpoint(sm) {
+				margin: 0 15px 0 0;
+			}
+		}
+		& >*{
+			@include breakpointMax(sm) {
+				margin: 0 0 15px 0;
+			}
+		}
+		@include breakpointMax(sm) {
+			flex-direction: column-reverse;
+			align-items: center;
+			justify-content: unset;
+			& > *{
+				@include breakpointMax(md) {
+					width: 100%!important;
+				}
+
+			}
+		}
+	}
+	&__closer{
+		cursor: pointer;
+		position: relative;
+		width: 16px;
+		height: 16px;
+		display: block;
+		transition: 200ms ease-in-out;
+		&:before, &:after{
+			position: absolute;
+			left: 7px;
+			content: ' ';
+			height: 20px;
+			width: 2px;
+			background-color: #999999;
+		}
+		&:before{
+			transform: rotate(45deg);
+		}
+		&:after{
+			transform: rotate(-45deg);
+		}
+		&:hover {
+			&:before, &:after{
+				background-color: #000000;
+			}
+		}
+	}
+	&__body{
+		padding: 17px 20px 14px 15px;
+	}
+	&__title{
+		text-align: left;
+		display: flex;
+		align-items: center;
+		font-weight: bold;
+		& img{
+			width: 15px;
+			height: 17px;
+			object-fit: contain;
+			margin: 0 10px 0 0;
+		}
+	}
+}
+#modal-overlay{
+	display: none;
+}
 .ui-modal {
 	position: relative;
 	display: block;

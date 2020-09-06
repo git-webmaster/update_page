@@ -19,8 +19,11 @@
     color: #000; }
   .is-theme-blind .scrolltop {
     border-color: #000;
+    border-right: 1px #000 solid;
     background: #fff;
     color: #000; }
+  .is-theme-blind .nsb {
+    display: none; }
   .is-theme-blind .btn--light,
   .is-theme-blind .btn--greylight,
   .is-theme-blind .btn--greenlight {
@@ -830,6 +833,7 @@
   .is-theme-blind .header__notice-close, .is-theme-blind .header__notice-btn {
     color: #000; }
   .is-theme-blind .header__banner {
+    display: none;
     border-color: #000; }
   .is-theme-blind .header__logo {
     filter: grayscale(100%);
@@ -1458,7 +1462,7 @@
       box-shadow: 0 0 0 1px #000; }
   .is-theme-blind .panel__route-reverse {
     color: #000; }
-  .is-theme-blind .panel__product-image, .is-theme-blind .panel__product-info {
+  .is-theme-blind .panel__product-info {
     border-color: #000; }
   .is-theme-blind .panel__product-table-title {
     color: #000; }
@@ -1759,7 +1763,7 @@
     .is-theme-blind .panel__offer-image:after {
       background-color: #fff;
       box-shadow: none;
-      background-image: url(../../images/bg-noimage-blind.png); }
+      background-image: url(/images/bg-noimage-blind.png); }
   .is-theme-blind .panel__offet-index {
     font-size: 2.4rem;
     line-height: 3.4rem;
@@ -1838,9 +1842,6 @@
     border: 1px solid #000;
     background: #fff;
     color: #000; }
-    .is-theme-blind .panel__nears-item:hover {
-      background: #000;
-      color: #fff; }
   .is-theme-blind .panel__nears-type, .is-theme-blind .panel__nears-distance {
     color: inherit; }
   .is-theme-blind .panel__route-variable:after {
@@ -1967,8 +1968,6 @@
     color: inherit; }
   .is-theme-blind .company__head {
     background: #fff; }
-    .is-theme-blind .company__head:after {
-      border-color: #000; }
   .is-theme-blind .company__image {
     display: none; }
   .is-theme-blind .company__nav:after,
@@ -2047,7 +2046,7 @@
   .is-theme-blind .section:not(.hero) {
     background: #fff;
     border-bottom: 1px solid #000; }
-    .is-theme-blind .section:not(.hero):nth-of-type(odd) {
+    .is-theme-blind .section:not(.hero):nth-of-type(even) {
       box-shadow: none;
       border: none;
       border-bottom: 1px solid #000;
@@ -2403,4 +2402,15 @@
     border-color: #000; }
   .is-theme-blind .map__marker-rating,
   .is-theme-blind .map__marker-address {
+    color: #000; }
+  .is-theme-blind .owl-gallery .owl-nav .owl-next, .is-theme-blind .owl-gallery .owl-nav .owl-prev {
+    background: #000; }
+    .is-theme-blind .owl-gallery .owl-nav .owl-next:hover, .is-theme-blind .owl-gallery .owl-nav .owl-prev:hover {
+      background: #000; }
+  .is-theme-blind .panel__provided-link {
+    color: #000; }
+  .is-theme-blind .panel__offices-btn.is-active {
+    text-decoration: none;
+    border-color: #000;
+    background: #fff;
     color: #000; }

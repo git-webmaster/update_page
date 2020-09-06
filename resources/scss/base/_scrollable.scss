@@ -5,6 +5,8 @@
 .ui-scrollable {
     &--lg{
         @include breakpointMax(lg) {
+            padding: 0!important;
+            margin: 0 -20px  -30px -20px;
             overflow: hidden;
             & > div, > ul {
                 display: flex;
@@ -26,6 +28,8 @@
     &--xs {
         @include breakpointMax(xs) {
             overflow: hidden;
+            padding: 0!important;
+            margin: 0 -20px  0 -20px;
             & > div, > ul {
                 display: flex;
                 flex-wrap: nowrap;

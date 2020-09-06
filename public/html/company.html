@@ -204,6 +204,7 @@
 	<!-- Main :: Start-->
 <main class="main" id="main">
 	<!-- Company :: Start-->
+	<button class="ui-button modal__opener" data-modal="modal-new">Вызывать модальное окно</button>
 	<div class="company company--tablist">
 		<div class="company__head" role="banner">
 			<div class="container-fluid">
@@ -1616,6 +1617,105 @@
 		</div>
 	</div>
 	<!-- Company :: End-->
+	<div class="modal modal-new">
+		<div class="modal-dialog">
+			<form class="modal__form">
+			<div class="modal__header">
+				<div class="modal__title">
+<!--в макете нет в ассетах данной иконки, подставил пока рыбную-->
+					<img src="https://st3.depositphotos.com/2229436/13702/v/450/depositphotos_137029388-stock-illustration-yellow-triangle-exclamation-mark-icon.jpg">
+					<span>Сообщить об ошибке</span>
+				</div>
+				<div class="modal__closer"></div>
+			</div>
+			<div class="modal__body">
+				<div class="panel__settings-row">
+				<div class="at-banner">
+					<div class="at-banner__title">
+						Внимание!
+					</div>
+					<div class="at-banner__text">
+						Жалобы на удаление отзывов из этой формы не рассматриваются. Пожалуйста, пишите на почту mail@mail.com
+					</div>
+				</div>
+				</div>
+				<div class="panel__settings-row">
+
+					<div class="row">
+						<div class="col-sm">
+							<label class="ui-label">Категория
+								<span class="green-text">Важно! Выбирайте корректную категорию</span>
+							</label>
+
+						</div>
+					</div>
+
+					<div class="ui-input-group">
+						<div class="ui-select ui-select_no-a-border">
+							<select class="js-select">
+								<option>Персональные данные на странице</option>
+								<option>Еще что-нибудь</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="panel__settings-row">
+					<div class="row">
+						<div class="col-sm">
+							<label class="ui-label">На какой странице ошибка</label>
+						</div>
+					</div>
+					<div class="ui-input-group">
+						<div class="ui-select ui-select_no-a-border">
+							<select class="js-select">
+								<option>Текущая страница</option>
+								<option>Еще что-нибудь</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="panel__settings-row">
+
+					<label class="ui-label">Заголовок</label>
+					<div class="ui-input-group">
+						<input class="ui-input" type="text" name="header" placeholder="Короткое описание проблемы">
+					</div>
+				</div>
+				<div class="panel__settings-row">
+					<label class="ui-label">Описание</label>
+					<textarea name="company-long-desc"  placeholder="Подробно опишите проблему здесь" class="ui-textarea" style="overflow-x: hidden; overflow-wrap: break-word; resize: none; height: 120px;"></textarea>
+				</div>
+				<div class="panel__settings-row ui-upload ui-upload_with-files">
+					<button class="ui-upload__add-files btn btn--grey">
+						<img src="https://st3.depositphotos.com/2229436/13702/v/450/depositphotos_137029388-stock-illustration-yellow-triangle-exclamation-mark-icon.jpg">
+						<span>Добавить вложение</span></button>
+					<div class="grey-text">До 5 файлов, только фото и документы</div>
+					<div class="ui-upload__files">
+						<div class="file">
+							<div class="file__name">
+								Вложение1.pdf
+							</div>
+						<div class="file__remove">
+							удалить
+						</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="modal__footer">
+				<label class="ui-check">
+					<input class="ui-check__input accept-rules" data-allow-submit="modal__submit" type="checkbox" checked="checked" id="submit_checkbox"><span class="ui-check__switch"></span><span class="ui-check__text">Согласен с <a href="/" target="_blank">условиям</a> и <a href="/" target="_blank">правилами</a></span>
+				</label>
+				<a class="btn btn--grey" href="#">Отмена</a>
+				<button class="btn btn--green modal__submit" href="#" type="submit">Отправить</button>
+			</div>
+			</form>
+		</div>
+
+	</div>
+	<div id="modal-overlay">
+	</div>
 </main>
 <!-- Main :: End-->
 
@@ -1986,12 +2086,15 @@
 
 <!-- PhotoSwipe DOM :: End-->
 
-	
 
 
-<script defer src="/js/app.standart.min.js?v=2"></script>
-<script defer src="/js/company.js?v=2"></script>
 
 
+
+
+<script defer src="../js/app.full.min.js"></script>
+<script defer src="../js/all_pages.js"></script>
+<script defer src="../js/company.js"></script>
+<script defer src="../js/modal.js"></script>
 </body>
 </html>

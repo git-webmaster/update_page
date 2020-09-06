@@ -211,8 +211,7 @@ h2.company__text {
 }
 
 .company__badges {
-    padding: 0 0 18px;
-    margin: 0 0 -12px;
+   padding: 0 0 8px;
     .ui-badge {
         margin: 0 12px 12px 0;
     }
@@ -416,7 +415,7 @@ h2.company__text {
 }
 
 .company__taglist {
-    padding: 0 0 10px;
+    padding: 0 0 20px;
 }
 
 .company__taglist-menu {
@@ -425,7 +424,9 @@ h2.company__text {
     flex-wrap: wrap;
     margin: 0 0 -8px;
     & > li {
-        margin: 0 10px 10px 0;
+        @include breakpointMax(xs) {
+            margin: 0 5px 0;
+        }
     }
 
     @include breakpoint(xs) {

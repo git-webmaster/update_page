@@ -21,6 +21,57 @@
             padding: 0 10px;
         }
     }
+    &__add-files{
+        margin: 0 15px 0 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include breakpointMax(md) {
+            width: 100%;
+            margin: 0 0 15px 0;
+        }
+        & img{
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            margin: 0 8px 0 0;
+        }
+    }
+    &_with-files{
+        display: flex;
+        justify-content: flex-start;
+    }
+    &__files{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 20px 0 0 0;
+        & .file{
+            &:not(:last-child){
+                margin: 0 0 7px 0;
+            }
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include breakpointMax(md) {
+                width: 100%;
+                justify-content: space-between;
+            }
+            &__name{
+                @include breakpointMax(md) {
+                    margin: 0;
+                }
+                word-break: break-word;
+                margin: 0 15px 0 0;
+            }
+            &__remove{
+                cursor: pointer;
+                text-decoration: underline;
+                color: rgba(255, 1, 1, 0.85);
+            }
+        }
+    }
 }
 
 
