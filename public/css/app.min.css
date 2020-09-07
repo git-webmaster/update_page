@@ -7005,7 +7005,11 @@ body.dragging, body.dragging * {
   text-align: center; }
 
 .modal-opened {
-  overflow: hidden; }
+  position: fixed;
+  overflow-y: scroll;
+  width: 100%;
+  -ms-touch-action: none;
+  touch-action: none; }
   .modal-opened #modal-overlay {
     display: block;
     position: fixed;
@@ -7039,17 +7043,28 @@ body.dragging, body.dragging * {
 
 .modal {
   z-index: 9997; }
+  .modal_centered {
+    min-height: calc(100% - (1.75rem * 2));
+    margin: 1.75rem auto;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+    @media (max-width: 767px) {
+      .modal_centered {
+        margin: 0; } }
   @media (max-width: 767px) {
     .modal .ui-label .green-text {
       display: -ms-flexbox;
       display: flex; } }
   .modal-dialog {
     display: none;
-    position: relative;
     background: #FFFFFF;
     max-width: 640px;
     width: 100%;
-    margin: 15% auto;
+    margin-top: -5%;
     opacity: 0;
     border-radius: 3px; }
     @media (max-width: 767px) {
