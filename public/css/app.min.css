@@ -7384,7 +7384,9 @@ body.dragging, body.dragging * {
   .ui-scrollable--xs {
     overflow: hidden;
     padding: 0 !important;
-    margin: 0 -20px  0 -20px; }
+    margin: 0 -20px  0 -20px;
+    display: -ms-flexbox;
+    display: flex; }
     .ui-scrollable--xs > div, .ui-scrollable--xs > ul {
       display: -ms-flexbox;
       display: flex;
@@ -7394,14 +7396,13 @@ body.dragging, body.dragging * {
       margin: 0 0 -30px;
       padding-bottom: 30px;
       -ms-flex-pack: normal;
-      justify-content: normal; } }
+      justify-content: normal; }
+    .ui-scrollable--xs > div, .ui-scrollable--xs > ul {
+      margin: 0 0 -25px; } }
 
-.ui-scrollable--xs--with-underline {
-  padding: 0;
-  display: -ms-flexbox;
-  display: flex; }
-  .ui-scrollable--xs--with-underline > div, .ui-scrollable--xs--with-underline > ul {
-    margin: 0 0 -25px; }
+@media (min-width: 449px) and (max-width: 479px) {
+  .ui-scrollable--with-underline {
+    padding: 0 15px !important; } }
 
 .at-banner {
   display: -ms-flexbox;
@@ -23014,7 +23015,11 @@ h2.company__text {
   margin: 0 0 -8px; }
   @media (max-width: 479px) {
     .company__taglist-menu > li {
-      margin: 0 5px 0; } }
+      padding: 0 5px 0; }
+      .company__taglist-menu > li:first-child {
+        padding-left: 20px; }
+      .company__taglist-menu > li:last-child {
+        padding-right: 20px; } }
   @media (min-width: 480px) {
     .company__taglist-menu {
       margin: 0 0 -10px; }

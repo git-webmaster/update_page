@@ -38,13 +38,17 @@
                 padding-bottom: 30px;
                 justify-content: normal;
             }
-        }
-        &--with-underline{
-            padding: 0;
             display: flex;
             & > div, > ul {
                 margin: 0 0 -25px;
             }
+        }
+
+
+        }
+    &--with-underline{
+        @include breakpointBetween(450px,480px){
+            padding: 0 15px!important;
         }
     }
 }

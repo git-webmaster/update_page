@@ -61,3 +61,6 @@
         @media (max-width: $hd - 1px) { @content ; }
     }
 }
+@mixin breakpointBetween($min,$max) {
+        @media (min-width: $min - 1px) and (max-width: $max - 1px){ @content ; }
+}
