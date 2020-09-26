@@ -37,7 +37,7 @@
 
 	<style>
 	.icon-arrow-right{width:6px;height:12px}.icon-close{width:16px;height:16px}.icon-moon{width:17px;height:18px}.icon-signin{width:18px;height:18px}html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}header,nav{display:block}main{display:block}a{background-color:transparent;-webkit-text-decoration-skip:objects}svg:not(:root){overflow:hidden}button{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button{overflow:visible}button{text-transform:none}button{-webkit-appearance:button}button::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring{outline:1px dotted ButtonText}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}:focus{outline:0;z-index:1000}body{font:400 1.6rem/1.38 Arial,Helvetica,sans-serif}a{text-decoration:underline;color:#003771}[class^=icon-]{display:inline-block;vertical-align:middle;position:relative;fill:currentColor;fill-rule:evenodd}.header__breadcrumbs-link{text-decoration:none}.header__breadcrumbs-link{border-bottom:1px solid transparent}.header__breadcrumbs-link{color:#131313;border-color:rgba(179,179,179,.4)}.ui-modal{position:relative;display:block;background:#fff;border:1px solid #ebebeb;box-shadow:0 4px 10px rgba(0,0,0,.1);padding:30px;overflow:hidden;width:400px;max-width:calc(100vw - 60px)}.ui-modal--fixed{position:fixed;bottom:20px;right:20px;z-index:1200;display:none}@media (max-width:575px){.ui-modal{padding:15px 20px}.ui-modal--fixed{bottom:0;right:0;left:0;width:100%;max-width:none}}.ui-modal__close{display:block;position:absolute;top:0;right:0;padding:0;background:0 0;border:1px solid transparent;color:#ccc;padding:14px;z-index:10}.ui-modal__close .icon-close{width:16px;height:16px;display:block}@-ms-viewport{width:device-width}html{box-sizing:border-box}*,::after,::before{box-sizing:inherit}.container-fluid{width:100%;margin-right:auto;margin-left:auto;padding-right:10px;padding-left:10px}html{font-size:62.5%}body,html{height:100%}body{background:#fafafa;color:#131313}.app{position:relative;min-height:100%;overflow:hidden;width:100%;min-width:320px}.container-fluid{max-width:1280px;padding:0 20px}.header{position:relative;z-index:2100;background:#fff;border-bottom:1px solid #ebebeb}.header__topbar{height:100%;height:50px;background:inherit}.header__topbar .container-fluid{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;height:100%;background:inherit}.header__logo{position:relative;height:100%;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;margin:0 auto 0 0;background:inherit;color:rgba(0,0,0,.64)}.header__logo a{color:inherit}.header__logo svg{display:block}.header__breadcrumbs{display:none}.header__breadcrumbs-menu{margin:0;padding:0;list-style:none;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}.header__breadcrumbs-menu>li{position:relative;padding:0 20px 0 0;margin:0 12px 0 0}.header__breadcrumbs-menu>li:last-of-type{margin:0;padding:0}.header__breadcrumbs-menu>li:last-of-type .icon-arrow-right{display:none}.header__breadcrumbs-menu .icon-arrow-right{position:absolute;top:50%;right:0;width:6px;height:12px;margin:-6px 0 0}.header__control{position:relative;right:-20px;margin:0 0 0 auto;height:100%;display:-ms-flexbox;display:flex}.header__blind{display:none}.header__dark{display:none}.header__dark-toggle{width:44px;height:24px;border-radius:12px;background:#ccc;margin:0 10px 0 0;display:block;position:relative}.header__dark-toggle:after{content:'';display:block;position:absolute;top:50%;left:3px;width:18px;height:18px;background:#fff;border-radius:50%;margin:-9px 0 0}.header__signin{height:100%;border-left:1px solid #ebebeb;border-right:1px solid #ebebeb}.header__signin-btn{height:100%;display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;padding:0 20px;font-size:1.5rem;line-height:1.13;text-align:center;color:#555;text-decoration:none}.header__signin-btn [class^=icon-]{margin:0 8px 0 0;color:#9b9b9b}.header__signin-btn u{text-decoration:none;border-bottom:1px solid rgba(179,179,179,.4)}.main{-ms-flex:1 1 auto;flex:1 1 auto;padding:0 0 30px}
-	.uppy-FileInput-input {visibility: hidden;}
+	.uppy-FileInput-input {position:absolute; top:-100px;}
 	.suggestions-promo {visibility: hidden;}
 	</style>
 
@@ -1653,7 +1653,7 @@
 
 							<div class="ui-input-group">
 								<div class="ui-select ui-select_no-a-border">
-									<select class="js-select">
+									<select class="js-select" name="category">
 										<option>Персональные данные на странице</option>
 										<option>Еще что-нибудь</option>
 									</select>
@@ -1668,7 +1668,7 @@
 							</div>
 							<div class="ui-input-group">
 								<div class="ui-select ui-select_no-a-border">
-									<select class="js-select">
+									<select class="js-select" name="page">
 										<option>Текущая страница</option>
 										<option>Еще что-нибудь</option>
 									</select>
@@ -1686,15 +1686,15 @@
 
 							<label class="ui-label">Заголовок</label>
 							<div class="ui-input-group">
-								<input class="ui-input" type="text" name="header" placeholder="Короткое описание проблемы">
+								<input class="ui-input" type="text" name="title" placeholder="Короткое описание проблемы">
 							</div>
 						</div>
 						<div class="panel__settings-row">
 							<label class="ui-label">Описание</label>
-							<textarea name="company-long-desc"  placeholder="Подробно опишите проблему здесь" class="ui-textarea" style="overflow-x: hidden; overflow-wrap: break-word; resize: none; height: 120px;"></textarea>
+							<textarea name="description" placeholder="Подробно опишите проблему здесь" class="ui-textarea" style="overflow-x: hidden; overflow-wrap: break-word; resize: none; height: 120px;"></textarea>
 						</div>
 						<div class="panel__settings-row ui-upload ui-upload_with-files">
-							<button class="ui-upload__add-files btn btn--grey">
+							<button class="ui-upload__add-files modal__upload-photo btn btn--grey">
 								<img src="https://st3.depositphotos.com/2229436/13702/v/450/depositphotos_137029388-stock-illustration-yellow-triangle-exclamation-mark-icon.jpg">
 								<span>Добавить вложение</span></button>
 							<div class="grey-text">До 5 файлов, только фото и документы</div>
@@ -1715,8 +1715,8 @@
 						<label class="ui-check">
 							<input class="ui-check__input accept-rules" data-allow-submit="modal__submit" type="checkbox" checked="checked" id="submit_checkbox"><span class="ui-check__switch"></span><span class="ui-check__text">Согласен с <a href="/" target="_blank">условиям</a> и <a href="/" target="_blank">правилами</a></span>
 						</label>
-						<a class="btn btn--grey" href="#">Отмена</a>
-						<button class="btn btn--green modal__submit" href="#" type="submit">Отправить</button>
+						<a class="btn btn--grey modal__button_close" href="#">Отмена</a>
+						<button class="btn btn--green modal__submit"  type="submit">Отправить</button>
 					</div>
 				</form>
 			</div>
@@ -2105,6 +2105,8 @@
 <script defer src="../js/app.full.min.js"></script>
 <script defer src="../js/all_pages.js"></script>
 <script defer src="../js/company.js"></script>
+<script defer src="../../node_modules/jquery-validation/dist/jquery.validate.js"></script>
+
 <script defer src="../js/modal.js"></script>
 </body>
 </html>

@@ -133,7 +133,15 @@
         padding-right: 50px;
     }
 }
-
+//стили для текста ошибок
+label {
+    &.is-error{
+        position: absolute;
+        bottom: -25px;
+        right: 0;
+        color: #FF5050;
+    }
+}
 
 .ui-field {
     position: relative;

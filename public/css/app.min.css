@@ -1902,6 +1902,12 @@ mark {
     background-position: right 15px center;
     padding-right: 50px; }
 
+label.is-error {
+  position: absolute;
+  bottom: -25px;
+  right: 0;
+  color: #FF5050; }
+
 .ui-field {
   position: relative;
   width: 100%;
@@ -7132,7 +7138,7 @@ body.dragging, body.dragging * {
     .modal__closer:hover:before, .modal__closer:hover:after {
       background-color: #000000; }
   .modal__body {
-    padding: 17px 20px 14px 15px; }
+    padding: 17px 20px 20px 15px; }
   .modal__title {
     text-align: left;
     display: -ms-flexbox;
@@ -17272,6 +17278,7 @@ body {
     margin: 0; }
 
 .panel__settings-row {
+  position: relative;
   margin: 0 0 20px; }
   .panel__settings-row:last-child {
     margin: 0; }
