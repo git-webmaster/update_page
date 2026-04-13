@@ -86,7 +86,7 @@
     "garlicjs": "https://github.com/guillaumepotier/garlic.js",
     "gulp-uglify-es": "^2.0.0",
     "inputmask": "^3.3.11",
-    "jquery": "3.4.1",
+    "jquery": "3.5.0",
     "jquery-sortable": "^0.9.13",
     "jquery-touchswipe": "^1.6.19",
     "jquery-validate": "^2.0.0",
